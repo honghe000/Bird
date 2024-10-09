@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -14,11 +14,11 @@ using Debug = UnityEngine.Debug;
 /// /////////////////////////////////////////////////////////////////////////
 /// </summary>
 
-public class ÕÅÈı·â´óÊ¦ : BaseSkill
+public class å¼ ä¸‰å°å¤§å¸ˆ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 3f;
-    public ÕÅÈı·â´óÊ¦(GameObject Card, MonoBehaviour monoBehaviour)
+    public å¼ ä¸‰å°å¤§å¸ˆ(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -33,7 +33,7 @@ public class ÕÅÈı·â´óÊ¦ : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -44,10 +44,10 @@ public class ÕÅÈı·â´óÊ¦ : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ÕÅÈı·â´óÊ¦");
+            ValueHolder.uid_to_name.Add(uid, "å¼ ä¸‰å°å¤§å¸ˆ");
         }
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(uid,(int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(uid,(int)delay);
     }
 
     public override void Action_1()
@@ -58,8 +58,8 @@ public class ÕÅÈı·â´óÊ¦ : BaseSkill
             return;
         }
         int card_id = int.Parse(card.transform.parent.name);
-        List<int> killGrid = Grids.GetNeighbors_¾Å(card_id);
-        Dictionary<int, GameObject> killCards = mainfunction.ÏûÃğ_destroy(killGrid);
+        List<int> killGrid = Grids.GetNeighbors_ä¹(card_id);
+        Dictionary<int, GameObject> killCards = mainfunction.æ¶ˆç­_destroy(killGrid);
 
 
         foreach (KeyValuePair<int, GameObject> kvp in killCards)
@@ -99,11 +99,11 @@ public class ÕÅÈı·â´óÊ¦ : BaseSkill
 
 }
 
-public class Ïà°²ÎŞÊÂ: BaseSkill
+public class ç›¸å®‰æ— äº‹: BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 2f;
-    public Ïà°²ÎŞÊÂ(GameObject Card, MonoBehaviour monoBehaviour)
+    public ç›¸å®‰æ— äº‹(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -113,7 +113,7 @@ public class Ïà°²ÎŞÊÂ: BaseSkill
         activateTurn_4 = -1;
         this.monoBehaviour = monoBehaviour;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
 
 
         activateTurn_1_finish = 0;
@@ -121,7 +121,7 @@ public class Ïà°²ÎŞÊÂ: BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -132,41 +132,41 @@ public class Ïà°²ÎŞÊÂ: BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "Ïà°²ÎŞÊÂ");
+            ValueHolder.uid_to_name.Add(uid, "ç›¸å®‰æ— äº‹");
         }
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(card_data.uid, (int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(card_data.uid, (int)delay);
     }
     public override void Action_1()
     {
-        GameObject cardone = Instantiate(ValueHolder.ÑÓÊ±·¨ÊõÅÆ);
+        GameObject cardone = Instantiate(ValueHolder.å»¶æ—¶æ³•æœ¯ç‰Œ);
         GameObject card_summon = summon_one(cardone, card_data.id);
-        card_summon.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid = uid;
+        card_summon.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid = uid;
         Debug.Log(uid);
 
-        mainfunction.Ëõ·Åµ÷Õû(card_summon);
+        mainfunction.ç¼©æ”¾è°ƒæ•´(card_summon);
 
-        card_summon.transform.SetParent(ValueHolder.ÖĞÁ¢ÑÓÊ±·¨Êõ¿ò.transform);
-        ValueHolder.·¨Êõ½ûÓÃ.Add(card_data.Ãû×Ö, activateTurn_2);
+        card_summon.transform.SetParent(ValueHolder.ä¸­ç«‹å»¶æ—¶æ³•æœ¯æ¡†.transform);
+        ValueHolder.æ³•æœ¯ç¦ç”¨.Add(card_data.åå­—, activateTurn_2);
 
-        mainfunction.SendÖĞÁ¢·¨Êõ´´½¨(card_data.id);
-        mainfunction.Send·¨Êõ½ûÓÃ(card_data.id, activateTurn_2);
+        mainfunction.Sendä¸­ç«‹æ³•æœ¯åˆ›å»º(card_data.id);
+        mainfunction.Sendæ³•æœ¯ç¦ç”¨(card_data.id, activateTurn_2);
         activateTurn_1_finish = 1;
     }
 
     public override void Action_2()
     {
-        Debug.Log("Ïà°²ÎŞÊÂ");
-        foreach (Transform child in ValueHolder.ÖĞÁ¢ÑÓÊ±·¨Êõ¿ò.transform)
+        Debug.Log("ç›¸å®‰æ— äº‹");
+        foreach (Transform child in ValueHolder.ä¸­ç«‹å»¶æ—¶æ³•æœ¯æ¡†.transform)
         {
-            Debug.Log(child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid);
-            if (child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid == uid)
+            Debug.Log(child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid);
+            if (child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid == uid)
             {
-                ValueHolder.·¨Êõ½ûÓÃ.Remove(child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.Ãû×Ö);
+                ValueHolder.æ³•æœ¯ç¦ç”¨.Remove(child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.åå­—);
                 Destroy(child.gameObject);
 
-                mainfunction.SendÖĞÁ¢·¨ÊõÏú»Ù(card_data.id);
-                mainfunction.Send·¨Êõ½ûÓÃÈ¡Ïû(card_data.id);
+                mainfunction.Sendä¸­ç«‹æ³•æœ¯é”€æ¯(card_data.id);
+                mainfunction.Sendæ³•æœ¯ç¦ç”¨å–æ¶ˆ(card_data.id);
             }
         }
         skill_end = 1;
@@ -185,12 +185,12 @@ public class Ïà°²ÎŞÊÂ: BaseSkill
 
 }
 
-public class ¹íÎİ : BaseSkill
+public class é¬¼å±‹ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    //private ¿¨ÅÆÊı¾İ card_data;
+    //private å¡ç‰Œæ•°æ® card_data;
     private int card_grid;
-    public ¹íÎİ(GameObject Card, MonoBehaviour monoBehaviour)
+    public é¬¼å±‹(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -199,7 +199,7 @@ public class ¹íÎİ : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
         this.monoBehaviour = monoBehaviour;
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
 
 
         activateTurn_1_finish = 0;
@@ -207,7 +207,7 @@ public class ¹íÎİ : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -217,22 +217,22 @@ public class ¹íÎİ : BaseSkill
     private void initialization()
     {
         card_grid = int.Parse(card.transform.parent.name);
-        ÍöÓï = 1;
+        äº¡è¯­ = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "¹íÎİ");
+            ValueHolder.uid_to_name.Add(uid, "é¬¼å±‹");
         }
     }
     public override void Action_1()
     {
-        List<int> ½ûÖ¹·ÅÖÃ = Grids.GetColumnIndices(card_grid);
-        mainfunction.SendÈËÎïÎ»ÖÃ½ûÓÃ(card_data.id,½ûÖ¹·ÅÖÃ);
+        List<int> ç¦æ­¢æ”¾ç½® = Grids.GetColumnIndices(card_grid);
+        mainfunction.Sendäººç‰©ä½ç½®ç¦ç”¨(card_data.id,ç¦æ­¢æ”¾ç½®);
         activateTurn_1_finish = 1;
     }
 
     public override void Action_2()
     {
-        mainfunction.SendÈËÎïÎ»ÖÃ½ûÓÃÈ¡Ïû(card_data.id);
+        mainfunction.Sendäººç‰©ä½ç½®ç¦ç”¨å–æ¶ˆ(card_data.id);
 
         activateTurn_2_finish = 1;
         skill_end = 1;
@@ -250,10 +250,10 @@ public class ¹íÎİ : BaseSkill
 
 }
 
-public class ¹í½« : BaseSkill
+public class é¬¼å°† : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    public ¹í½«(GameObject Card, MonoBehaviour monoBehaviour)
+    public é¬¼å°†(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -268,7 +268,7 @@ public class ¹í½« : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -276,11 +276,11 @@ public class ¹í½« : BaseSkill
 
     private void initialization()
     {
-        ÍöÓï = 1;
+        äº¡è¯­ = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "¹í½«");
+            ValueHolder.uid_to_name.Add(uid, "é¬¼å°†");
         }
     }
     public override void Action_1()
@@ -307,11 +307,11 @@ public class ¹í½« : BaseSkill
 
 }
 
-public class ÁúÊ×Ö®Óñ : BaseSkill
+public class é¾™é¦–ä¹‹ç‰ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 2f;
-    public ÁúÊ×Ö®Óñ(GameObject Card, MonoBehaviour monoBehaviour)
+    public é¾™é¦–ä¹‹ç‰(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -320,7 +320,7 @@ public class ÁúÊ×Ö®Óñ : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -329,7 +329,7 @@ public class ÁúÊ×Ö®Óñ : BaseSkill
         activateTurn_4_finish = 0;
 
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -339,31 +339,31 @@ public class ÁúÊ×Ö®Óñ : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ÁúÊ×Ö®Óñ");
+            ValueHolder.uid_to_name.Add(uid, "é¾™é¦–ä¹‹ç‰");
         }
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(card_data.uid, (int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(card_data.uid, (int)delay);
     }
     public override void Action_1()
     {
-        GameObject cardone = Instantiate(ValueHolder.ÑÓÊ±·¨ÊõÅÆ);
+        GameObject cardone = Instantiate(ValueHolder.å»¶æ—¶æ³•æœ¯ç‰Œ);
 
         GameObject card_summon = summon_one(cardone, card_data.id);
-        card_summon.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid = uid;
+        card_summon.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid = uid;
 
 
-        mainfunction.Ëõ·Åµ÷Õû(card_summon);
+        mainfunction.ç¼©æ”¾è°ƒæ•´(card_summon);
         change_card_color(card_summon, "blue");
 
 
-        card_summon.transform.SetParent(ValueHolder.µĞ·½ÑÓÊ±·¨Êõ¿ò.transform);
+        card_summon.transform.SetParent(ValueHolder.æ•Œæ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform);
 
 
-        mainfunction.SendÎÒ·½ºìÅÆ·¨Êõ´´½¨(card_data.id, uid);
-        mainfunction.SendÈËÎï½ûÓÃ(uid, activateTurn_2);
+        mainfunction.Sendæˆ‘æ–¹çº¢ç‰Œæ³•æœ¯åˆ›å»º(card_data.id, uid);
+        mainfunction.Sendäººç‰©ç¦ç”¨(uid, activateTurn_2);
 
         Debug.Log(uid);
-        Debug.Log(card_summon.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid);
+        Debug.Log(card_summon.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid);
 
         activateTurn_1_finish = 1;
 
@@ -371,17 +371,17 @@ public class ÁúÊ×Ö®Óñ : BaseSkill
 
     public override void Action_2()
     {
-        Debug.Log("´İ»Ù");
-        foreach (Transform child in ValueHolder.µĞ·½ÑÓÊ±·¨Êõ¿ò.transform)
+        Debug.Log("æ‘§æ¯");
+        foreach (Transform child in ValueHolder.æ•Œæ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform)
         {
             //Debug.Log(uid);
-            //Debug.Log(child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid);
-            if (child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid == uid)
+            //Debug.Log(child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid);
+            if (child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid == uid)
             {
                 Destroy(child.gameObject);
 
-                mainfunction.SendÎÒ·½ºìÅÆ·¨ÊõÏú»Ù(card_data.id,uid);
-                mainfunction.SendÈËÎï½ûÓÃÈ¡Ïû(uid);
+                mainfunction.Sendæˆ‘æ–¹çº¢ç‰Œæ³•æœ¯é”€æ¯(card_data.id,uid);
+                mainfunction.Sendäººç‰©ç¦ç”¨å–æ¶ˆ(uid);
             }
         }
         activateTurn_2_finish = 1;
@@ -401,11 +401,11 @@ public class ÁúÊ×Ö®Óñ : BaseSkill
 }
 
 
-public class ·ğ¹â : BaseSkill
+public class ä½›å…‰ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 1f;
-    public ·ğ¹â(GameObject Card, MonoBehaviour monoBehaviour)
+    public ä½›å…‰(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
 
@@ -415,7 +415,7 @@ public class ·ğ¹â : BaseSkill
         activateTurn_3 = ValueHolder.turn + delay;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -423,7 +423,7 @@ public class ·ğ¹â : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -431,72 +431,72 @@ public class ·ğ¹â : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().³¡ÉÏÎÒ·½ÈËÊıÒªÇó = 1;
+        card.GetComponent<MoveController>().åœºä¸Šæˆ‘æ–¹äººæ•°è¦æ±‚ = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "·ğ¹â");
+            ValueHolder.uid_to_name.Add(uid, "ä½›å…‰");
         }
     }
     public override void Action_1()
     {
-        ValueHolder.·¨Êõ×÷ÓÃµĞÎÒÀàĞÍ = 0;
-        mainfunction.½ûÓÃÆåÅÌÎï¼ş´úÂë("b_moveca",0);
-        mainfunction.½ûÓÃÊÖÅÆÎï¼ş´úÂë("b_cardaction");
+        ValueHolder.æ³•æœ¯ä½œç”¨æ•Œæˆ‘ç±»å‹ = 0;
+        mainfunction.ç¦ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_moveca",0);
+        mainfunction.ç¦ç”¨æ‰‹ç‰Œç‰©ä»¶ä»£ç ("b_cardaction");
         mainfunction.ShowCardchoose(0);
-        mainfunction.ÆôÓÃÆåÅÌÎï¼ş´úÂë("b_choose_fa",0);
-        ValueHolder.·¨ÊõÑ¡ÔñÈ¡Ïû.gameObject.SetActive(true);
-        Debug.Log("Ñ¡Ôñ");
+        mainfunction.å¯ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_choose_fa",0);
+        ValueHolder.æ³•æœ¯é€‰æ‹©å–æ¶ˆ.gameObject.SetActive(true);
+        Debug.Log("é€‰æ‹©");
         activateTurn_1_finish = 1;
 
     }
 
     public override void Action_2()
     {
-        GameObject cardone = Instantiate(ValueHolder.ÑÓÊ±·¨ÊõÅÆ);
+        GameObject cardone = Instantiate(ValueHolder.å»¶æ—¶æ³•æœ¯ç‰Œ);
         GameObject card_summon = summon_one(cardone, card_data.id);
-        card_summon.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid = uid;
+        card_summon.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid = uid;
 
 
-        mainfunction.Ëõ·Åµ÷Õû(card_summon);
+        mainfunction.ç¼©æ”¾è°ƒæ•´(card_summon);
         change_card_color(card_summon, "blue");
 
-        card_summon.transform.SetParent(ValueHolder.ÎÒ·½ÑÓÊ±·¨Êõ¿ò.transform);
+        card_summon.transform.SetParent(ValueHolder.æˆ‘æ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform);
 
 
 
-        ¿¨ÅÆÊı¾İ ×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ = ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        å¡ç‰Œæ•°æ® ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ® = ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
 
-        ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<MoveController>().»÷É±ÃâÒß = 1;
-        ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<MoveController>().ÏûÃğÃâÒß = 1;
+        ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<MoveController>().å‡»æ€å…ç–« = 1;
+        ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<MoveController>().æ¶ˆç­å…ç–« = 1;
 
-        mainfunction.SendµĞ·½ºìÅÆ·¨Êõ´´½¨(card_data.id, uid);
-        mainfunction.SendĞ§¹û¹ÒÔØ(×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.uid, 1);
-        mainfunction.SendĞ§¹û¹ÒÔØ(×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.uid, 2);
+        mainfunction.Sendæ•Œæ–¹çº¢ç‰Œæ³•æœ¯åˆ›å»º(card_data.id, uid);
+        mainfunction.Sendæ•ˆæœæŒ‚è½½(ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.uid, 1);
+        mainfunction.Sendæ•ˆæœæŒ‚è½½(ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.uid, 2);
 
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(card_data.uid, (int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(card_data.uid, (int)delay);
 
         activateTurn_2_finish = 1;
     }
 
     public override void Action_3()
     {
-        foreach (Transform child in ValueHolder.ÎÒ·½ÑÓÊ±·¨Êõ¿ò.transform)
+        foreach (Transform child in ValueHolder.æˆ‘æ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform)
         {
-            if (child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid == uid)
+            if (child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid == uid)
             {
                 Destroy(child.gameObject);
 
-                ¿¨ÅÆÊı¾İ ×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ = ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
-                mainfunction.SendµĞ·½ºìÅÆ·¨ÊõÏú»Ù(card_data.id, uid);
-                mainfunction.SendĞ§¹ûĞ¶ÔØ(×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.uid, 1);
-                mainfunction.SendĞ§¹ûĞ¶ÔØ(×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.uid, 2);
+                å¡ç‰Œæ•°æ® ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ® = ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
+                mainfunction.Sendæ•Œæ–¹çº¢ç‰Œæ³•æœ¯é”€æ¯(card_data.id, uid);
+                mainfunction.Sendæ•ˆæœå¸è½½(ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.uid, 1);
+                mainfunction.Sendæ•ˆæœå¸è½½(ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.uid, 2);
             }
         }
 
-        ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<MoveController>().»÷É±ÃâÒß = 0;
-        ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<MoveController>().ÏûÃğÃâÒß = 0;
+        ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<MoveController>().å‡»æ€å…ç–« = 0;
+        ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<MoveController>().æ¶ˆç­å…ç–« = 0;
 
         activateTurn_3_finish = 1;
         skill_end = 1;
@@ -509,10 +509,10 @@ public class ·ğ¹â : BaseSkill
 
 }
 
-public class ÅĞ¹Ù±Ê : BaseSkill
+public class åˆ¤å®˜ç¬” : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    public ÅĞ¹Ù±Ê(GameObject Card, MonoBehaviour monoBehaviour)
+    public åˆ¤å®˜ç¬”(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
 
@@ -524,7 +524,7 @@ public class ÅĞ¹Ù±Ê : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -532,30 +532,30 @@ public class ÅĞ¹Ù±Ê : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
     }
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().³¡ÉÏµĞ·½ÈËÊıÒªÇó = 1;
-        Ğ§¹û = "ÏûÃğ";
+        card.GetComponent<MoveController>().åœºä¸Šæ•Œæ–¹äººæ•°è¦æ±‚ = 1;
+        æ•ˆæœ = "æ¶ˆç­";
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ÅĞ¹Ù±Ê");
+            ValueHolder.uid_to_name.Add(uid, "åˆ¤å®˜ç¬”");
         }
     }
     public override void Action_1()
     {
-        ValueHolder.·¨Êõ×÷ÓÃµĞÎÒÀàĞÍ = 1;
-        mainfunction.½ûÓÃÆåÅÌÎï¼ş´úÂë("b_moveca", 0);
-        mainfunction.½ûÓÃÊÖÅÆÎï¼ş´úÂë("b_cardaction");
+        ValueHolder.æ³•æœ¯ä½œç”¨æ•Œæˆ‘ç±»å‹ = 1;
+        mainfunction.ç¦ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_moveca", 0);
+        mainfunction.ç¦ç”¨æ‰‹ç‰Œç‰©ä»¶ä»£ç ("b_cardaction");
         mainfunction.ShowCardchoose(1);
-        mainfunction.ÆôÓÃÆåÅÌÎï¼ş´úÂë("b_choose_fa", 1);
-        ValueHolder.·¨ÊõÑ¡ÔñÈ¡Ïû.gameObject.SetActive(true);
-        Debug.Log("Ñ¡Ôñ");
+        mainfunction.å¯ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_choose_fa", 1);
+        ValueHolder.æ³•æœ¯é€‰æ‹©å–æ¶ˆ.gameObject.SetActive(true);
+        Debug.Log("é€‰æ‹©");
 
 
 
@@ -566,8 +566,8 @@ public class ÅĞ¹Ù±Ê : BaseSkill
 
     public override void Action_2()
     {
-        ValueHolder.ÊÖÅÆ¶ÔÕ½ÅÆ.GetComponent<MonoBehaviour>().StartCoroutine(RotateAndScaleCoroutine(×÷ÓÃÄ¿±ê¿¨ÅÆ));
-        mainfunction.Send¿¨ÅÆ´İ»Ù(×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid);
+        ValueHolder.æ‰‹ç‰Œå¯¹æˆ˜ç‰Œ.GetComponent<MonoBehaviour>().StartCoroutine(RotateAndScaleCoroutine(ä½œç”¨ç›®æ ‡å¡ç‰Œ));
+        mainfunction.Sendå¡ç‰Œæ‘§æ¯(ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid);
 
 
         activateTurn_2_finish = 1;
@@ -586,10 +586,10 @@ public class ÅĞ¹Ù±Ê : BaseSkill
 
 }
 
-public class ¾ŞÁéÉñ : BaseSkill
+public class å·¨çµç¥ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    public ¾ŞÁéÉñ(GameObject Card, MonoBehaviour monoBehaviour)
+    public å·¨çµç¥(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -604,7 +604,7 @@ public class ¾ŞÁéÉñ : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -613,12 +613,12 @@ public class ¾ŞÁéÉñ : BaseSkill
 
     private void initialization()
     {
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
-        ¼º·½»ØºÏ½áÊøÊ±´¥·¢ = 1;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
+        å·±æ–¹å›åˆç»“æŸæ—¶è§¦å‘ = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "¾ŞÁéÉñ");
+            ValueHolder.uid_to_name.Add(uid, "å·¨çµç¥");
         }
     }
 
@@ -631,9 +631,9 @@ public class ¾ŞÁéÉñ : BaseSkill
         }
         card_data.nowHp += 1;
         card_data.maxHp += 1;
-        card.GetComponent<Êı¾İÏÔÊ¾>().¸üĞÂÊı¾İ();
+        card.GetComponent<æ•°æ®æ˜¾ç¤º>().æ›´æ–°æ•°æ®();
 
-        mainfunction.SendÑªÁ¿¸Ä±ä(card_data.uid, 1);
+        mainfunction.Sendè¡€é‡æ”¹å˜(card_data.uid, 1);
     }
 
     public override void Action_2()
@@ -654,10 +654,10 @@ public class ¾ŞÁéÉñ : BaseSkill
 }
 
 
-public class ÑÅµäÄÈ : BaseSkill
+public class é›…å…¸å¨œ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    public ÑÅµäÄÈ(GameObject Card, MonoBehaviour monoBehaviour)
+    public é›…å…¸å¨œ(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
 
@@ -667,7 +667,7 @@ public class ÑÅµäÄÈ : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -675,7 +675,7 @@ public class ÑÅµäÄÈ : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid =  card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid =  card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -686,22 +686,22 @@ public class ÑÅµäÄÈ : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ÑÅµäÄÈ");
+            ValueHolder.uid_to_name.Add(uid, "é›…å…¸å¨œ");
         }
     }
     public override void Action_1()
     {
-        if (mainfunction.ÎÒ·½ÈËÎïÊıÁ¿() == 0)
+        if (mainfunction.æˆ‘æ–¹äººç‰©æ•°é‡() == 0)
         {
             skill_end = 1;
             return;
         }
-        ValueHolder.ÊÍ·Å·¨Êõuid = uid;
-        ValueHolder.·¨Êõ×÷ÓÃµĞÎÒÀàĞÍ = 0;
-        mainfunction.½ûÓÃÆåÅÌÎï¼ş´úÂë("b_moveca", 0);
-        mainfunction.½ûÓÃÊÖÅÆÎï¼ş´úÂë("b_cardaction");
+        ValueHolder.é‡Šæ”¾æ³•æœ¯uid = uid;
+        ValueHolder.æ³•æœ¯ä½œç”¨æ•Œæˆ‘ç±»å‹ = 0;
+        mainfunction.ç¦ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_moveca", 0);
+        mainfunction.ç¦ç”¨æ‰‹ç‰Œç‰©ä»¶ä»£ç ("b_cardaction");
         mainfunction.ShowCardchoose(0);
-        mainfunction.ÆôÓÃÆåÅÌÎï¼ş´úÂë("b_choose_fa", 0);
+        mainfunction.å¯ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_choose_fa", 0);
 
         activateTurn_1_finish = 1;
 
@@ -709,12 +709,12 @@ public class ÑÅµäÄÈ : BaseSkill
 
     public override void Action_2()
     {
-        ¿¨ÅÆÊı¾İ ×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ = ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        å¡ç‰Œæ•°æ® ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ® = ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
 
-        ×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.maxAttack += 2;
-        ×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.nowAttack += 2;
-        ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<Êı¾İÏÔÊ¾>().¸üĞÂÊı¾İ();
-        mainfunction.Send¹¥»÷Á¦¸Ä±ä(×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.uid, 2);
+        ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.maxAttack += 2;
+        ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.nowAttack += 2;
+        ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<æ•°æ®æ˜¾ç¤º>().æ›´æ–°æ•°æ®();
+        mainfunction.Sendæ”»å‡»åŠ›æ”¹å˜(ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.uid, 2);
 
         activateTurn_2_finish = 1;
         skill_end = 1;
@@ -736,11 +736,11 @@ public class ÑÅµäÄÈ : BaseSkill
 
 
 
-public class Ğ«Î²¶¾ : BaseSkill
+public class èå°¾æ¯’ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 3f;
-    public Ğ«Î²¶¾(GameObject Card, MonoBehaviour monoBehaviour)
+    public èå°¾æ¯’(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -749,7 +749,7 @@ public class Ğ«Î²¶¾ : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -758,37 +758,37 @@ public class Ğ«Î²¶¾ : BaseSkill
         activateTurn_4_finish = 0;
 
 
-        uid = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
     }
     private void initialization()
     {
-        ¼º·½»ØºÏ½áÊøÊ±´¥·¢ = 1;
+        å·±æ–¹å›åˆç»“æŸæ—¶è§¦å‘ = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "Ğ«Î²¶¾");
+            ValueHolder.uid_to_name.Add(uid, "èå°¾æ¯’");
         }
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(card_data.uid, (int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(card_data.uid, (int)delay);
     }
     public override void Action_1()
     {
-        GameObject cardone = Instantiate(ValueHolder.ÑÓÊ±·¨ÊõÅÆ);
+        GameObject cardone = Instantiate(ValueHolder.å»¶æ—¶æ³•æœ¯ç‰Œ);
 
         GameObject card_summon = summon_one(cardone, card_data.id);
-        card_summon.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid = uid;
+        card_summon.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid = uid;
 
 
-        mainfunction.Ëõ·Åµ÷Õû(card_summon);
+        mainfunction.ç¼©æ”¾è°ƒæ•´(card_summon);
         change_card_color(card_summon, "blue");
 
 
-        card_summon.transform.SetParent(ValueHolder.µĞ·½ÑÓÊ±·¨Êõ¿ò.transform);
+        card_summon.transform.SetParent(ValueHolder.æ•Œæ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform);
 
 
-        mainfunction.SendÎÒ·½ºìÅÆ·¨Êõ´´½¨(card_data.id, uid);
+        mainfunction.Sendæˆ‘æ–¹çº¢ç‰Œæ³•æœ¯åˆ›å»º(card_data.id, uid);
 
 
         activateTurn_1_finish = 1;
@@ -804,23 +804,23 @@ public class Ğ«Î²¶¾ : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.Send»ØºÏ½áÊøÆúÅÆ(1);
+        mainfunction.Sendå›åˆç»“æŸå¼ƒç‰Œ(1);
         delay -= 1;
         if (delay == 0)
         {
-            ¼º·½»ØºÏ¿ªÊ¼Ê±´¥·¢ = 1;
+            å·±æ–¹å›åˆå¼€å§‹æ—¶è§¦å‘ = 1;
         }
     }
 
     public override void Action_3()
     {
-        foreach (Transform child in ValueHolder.µĞ·½ÑÓÊ±·¨Êõ¿ò.transform)
+        foreach (Transform child in ValueHolder.æ•Œæ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform)
         {
-            if (child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid == uid)
+            if (child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid == uid)
             {
                 Destroy(child.gameObject);
 
-                mainfunction.SendÎÒ·½ºìÅÆ·¨ÊõÏú»Ù(card_data.id, uid);
+                mainfunction.Sendæˆ‘æ–¹çº¢ç‰Œæ³•æœ¯é”€æ¯(card_data.id, uid);
             }
         }
         activateTurn_3_finish = 1;
@@ -835,12 +835,12 @@ public class Ğ«Î²¶¾ : BaseSkill
 
 
 
-public class ºÓÉñÖ®Å­ : BaseSkill
+public class æ²³ç¥ä¹‹æ€’ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 1f;
     private Dictionary<string,int> atk = new Dictionary<string,int>();
-    public ºÓÉñÖ®Å­(GameObject Card, MonoBehaviour monoBehaviour)
+    public æ²³ç¥ä¹‹æ€’(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -849,7 +849,7 @@ public class ºÓÉñÖ®Å­ : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -858,7 +858,7 @@ public class ºÓÉñÖ®Å­ : BaseSkill
         activateTurn_4_finish = 0;
 
 
-        uid = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -868,31 +868,31 @@ public class ºÓÉñÖ®Å­ : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ºÓÉñÖ®Å­");
+            ValueHolder.uid_to_name.Add(uid, "æ²³ç¥ä¹‹æ€’");
         }
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(card_data.uid, (int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(card_data.uid, (int)delay);
     }
     public override void Action_1()
     {
-        GameObject cardone = Instantiate(ValueHolder.ÑÓÊ±·¨ÊõÅÆ);
+        GameObject cardone = Instantiate(ValueHolder.å»¶æ—¶æ³•æœ¯ç‰Œ);
         GameObject card_summon = summon_one(cardone, card_data.id);
-        card_summon.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid = uid;
-        mainfunction.Ëõ·Åµ÷Õû(card_summon);
+        card_summon.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid = uid;
+        mainfunction.ç¼©æ”¾è°ƒæ•´(card_summon);
         change_card_color(card_summon, "blue");
-        card_summon.transform.SetParent(ValueHolder.µĞ·½ÑÓÊ±·¨Êõ¿ò.transform);
-        mainfunction.SendÖĞÁ¢·¨Êõ´´½¨(card_data.id);
+        card_summon.transform.SetParent(ValueHolder.æ•Œæ–¹å»¶æ—¶æ³•æœ¯æ¡†.transform);
+        mainfunction.Sendä¸­ç«‹æ³•æœ¯åˆ›å»º(card_data.id);
 
 
-        foreach (GameObject card in mainfunction.»ñÈ¡ÇÅÉÏ¿¨ÅÆ())
+        foreach (GameObject card in mainfunction.è·å–æ¡¥ä¸Šå¡ç‰Œ())
         {
-            string uid = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
-            int before_atk = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.nowAttack;
+            string uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
+            int before_atk = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.nowAttack;
             this.atk.Add(uid, before_atk);
 
-            card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.nowAttack = 0;
-            card.GetComponent<Êı¾İÏÔÊ¾>().¸üĞÂÊı¾İ();
-            mainfunction.Send¹¥»÷Á¦¸Ä±ä(uid, -999);
+            card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.nowAttack = 0;
+            card.GetComponent<æ•°æ®æ˜¾ç¤º>().æ›´æ–°æ•°æ®();
+            mainfunction.Sendæ”»å‡»åŠ›æ”¹å˜(uid, -999);
         }
 
         activateTurn_1_finish = 1;
@@ -901,9 +901,9 @@ public class ºÓÉñÖ®Å­ : BaseSkill
 
     public override void Action_2()
     {
-        foreach (Transform child in ValueHolder.ÖĞÁ¢ÑÓÊ±·¨Êõ¿ò.transform)
+        foreach (Transform child in ValueHolder.ä¸­ç«‹å»¶æ—¶æ³•æœ¯æ¡†.transform)
         {
-            if (child.gameObject.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid == uid)
+            if (child.gameObject.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid == uid)
             {
                 Destroy(child.gameObject);
             }
@@ -911,11 +911,11 @@ public class ºÓÉñÖ®Å­ : BaseSkill
 
         foreach (KeyValuePair<string, int> kvp in atk)
         {
-            GameObject card = mainfunction.uidÕÒ¿¨(kvp.Key);
-            card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.nowAttack = kvp.Value;
-            card.GetComponent<Êı¾İÏÔÊ¾>().¸üĞÂÊı¾İ();
+            GameObject card = mainfunction.uidæ‰¾å¡(kvp.Key);
+            card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.nowAttack = kvp.Value;
+            card.GetComponent<æ•°æ®æ˜¾ç¤º>().æ›´æ–°æ•°æ®();
 
-            mainfunction.Send¹¥»÷Á¦¸Ä±ä(kvp.Key, kvp.Value);
+            mainfunction.Sendæ”»å‡»åŠ›æ”¹å˜(kvp.Key, kvp.Value);
         }
 
         activateTurn_2_finish = 1;
@@ -935,10 +935,10 @@ public class ºÓÉñÖ®Å­ : BaseSkill
 }
 
 
-public class ÉáÉú : BaseSkill
+public class èˆç”Ÿ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    public ÉáÉú(GameObject Card, MonoBehaviour monoBehaviour)
+    public èˆç”Ÿ(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
 
@@ -948,7 +948,7 @@ public class ÉáÉú : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -956,7 +956,7 @@ public class ÉáÉú : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -967,18 +967,18 @@ public class ÉáÉú : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ÉáÉú");
+            ValueHolder.uid_to_name.Add(uid, "èˆç”Ÿ");
         }
-        card.GetComponent<MoveController>().³¡ÉÏÎÒ·½ÈËÊıÒªÇó = 1;
+        card.GetComponent<MoveController>().åœºä¸Šæˆ‘æ–¹äººæ•°è¦æ±‚ = 1;
     }
     public override void Action_1()
     {
-        ValueHolder.ÊÍ·Å·¨Êõuid = uid;
-        ValueHolder.·¨Êõ×÷ÓÃµĞÎÒÀàĞÍ = 0;
-        mainfunction.½ûÓÃÆåÅÌÎï¼ş´úÂë("b_moveca", 0);
-        mainfunction.½ûÓÃÊÖÅÆÎï¼ş´úÂë("b_cardaction");
+        ValueHolder.é‡Šæ”¾æ³•æœ¯uid = uid;
+        ValueHolder.æ³•æœ¯ä½œç”¨æ•Œæˆ‘ç±»å‹ = 0;
+        mainfunction.ç¦ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_moveca", 0);
+        mainfunction.ç¦ç”¨æ‰‹ç‰Œç‰©ä»¶ä»£ç ("b_cardaction");
         mainfunction.ShowCardchoose(0);
-        mainfunction.ÆôÓÃÆåÅÌÎï¼ş´úÂë("b_choose_fa", 0);
+        mainfunction.å¯ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_choose_fa", 0);
 
         activateTurn_1_finish = 1;
 
@@ -986,10 +986,10 @@ public class ÉáÉú : BaseSkill
 
     public override void Action_2()
     {
-        ¿¨ÅÆÊı¾İ ×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ = ×÷ÓÃÄ¿±ê¿¨ÅÆ.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        å¡ç‰Œæ•°æ® ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ® = ä½œç”¨ç›®æ ‡å¡ç‰Œ.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
 
-        mainfunction.¿¨ÅÆ´İ»Ù(×÷ÓÃÄ¿±ê¿¨ÅÆ);
-        mainfunction.Send¿¨ÅÆ´İ»Ù(×÷ÓÃÄ¿±ê¿¨ÅÆÊı¾İ.uid);
+        mainfunction.å¡ç‰Œæ‘§æ¯(ä½œç”¨ç›®æ ‡å¡ç‰Œ);
+        mainfunction.Sendå¡ç‰Œæ‘§æ¯(ä½œç”¨ç›®æ ‡å¡ç‰Œæ•°æ®.uid);
         summonHandcard(2);
 
         activateTurn_2_finish = 1;
@@ -1012,11 +1012,11 @@ public class ÉáÉú : BaseSkill
 
 
 
-public class ÉñÚÍÕß : BaseSkill
+public class ç¥è°•è€… : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
     private float delay = 1f;
-    public ÉñÚÍÕß(GameObject Card, MonoBehaviour monoBehaviour)
+    public ç¥è°•è€…(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -1025,7 +1025,7 @@ public class ÉñÚÍÕß : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ;
+        card_data = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®;
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1033,7 +1033,7 @@ public class ÉñÚÍÕß : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
 
@@ -1044,20 +1044,20 @@ public class ÉñÚÍÕß : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "ÉñÚÍÕß");
+            ValueHolder.uid_to_name.Add(uid, "ç¥è°•è€…");
         }
-        ValueHolder.µ¹¼ÆÊ±´¢´æ.Add(uid, delay);
-        mainfunction.Sendµ¹¼ÆÊ±(uid, (int)delay);
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜.Add(uid, delay);
+        mainfunction.Sendå€’è®¡æ—¶(uid, (int)delay);
     }
 
     public override void Action_1()
     {
 
-        card.GetComponent<MoveController>().»÷É±ÃâÒß = 1;
-        card.GetComponent<MoveController>().ÏûÃğÃâÒß = 1;
+        card.GetComponent<MoveController>().å‡»æ€å…ç–« = 1;
+        card.GetComponent<MoveController>().æ¶ˆç­å…ç–« = 1;
 
-        mainfunction.SendĞ§¹û¹ÒÔØ(card_data.uid, 1);
-        mainfunction.SendĞ§¹û¹ÒÔØ(card_data.uid, 2);
+        mainfunction.Sendæ•ˆæœæŒ‚è½½(card_data.uid, 1);
+        mainfunction.Sendæ•ˆæœæŒ‚è½½(card_data.uid, 2);
 
         activateTurn_1_finish = 1;
 
@@ -1065,11 +1065,11 @@ public class ÉñÚÍÕß : BaseSkill
 
     public override void Action_2()
     {
-        mainfunction.SendĞ§¹ûĞ¶ÔØ(card_data.uid, 1);
-        mainfunction.SendĞ§¹ûĞ¶ÔØ(card_data.uid, 2);
+        mainfunction.Sendæ•ˆæœå¸è½½(card_data.uid, 1);
+        mainfunction.Sendæ•ˆæœå¸è½½(card_data.uid, 2);
 
-        card.GetComponent<MoveController>().»÷É±ÃâÒß = 0;
-        card.GetComponent<MoveController>().ÏûÃğÃâÒß = 0;
+        card.GetComponent<MoveController>().å‡»æ€å…ç–« = 0;
+        card.GetComponent<MoveController>().æ¶ˆç­å…ç–« = 0;
         activateTurn_2_finish = 1;
         skill_end = 1;
     }
@@ -1088,11 +1088,11 @@ public class ÉñÚÍÕß : BaseSkill
 
 
 
-public class Íâ½»¹Ù : BaseSkill
+public class å¤–äº¤å®˜ : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
 
-    public Íâ½»¹Ù(GameObject Card, MonoBehaviour monoBehaviour)
+    public å¤–äº¤å®˜(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -1107,7 +1107,7 @@ public class Íâ½»¹Ù : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid;
+        uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
         initialization();
 
     }
@@ -1117,7 +1117,7 @@ public class Íâ½»¹Ù : BaseSkill
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "Íâ½»¹Ù");
+            ValueHolder.uid_to_name.Add(uid, "å¤–äº¤å®˜");
         }
 
     }
@@ -1125,9 +1125,64 @@ public class Íâ½»¹Ù : BaseSkill
     public override void Action_1()
     {
         summonHandcard(1);
-        mainfunction.SendÃşÅÆ(1);
+        mainfunction.Sendæ‘¸ç‰Œ(1);
         activateTurn_1_finish = 1;
         skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class è‚¥å˜Ÿå˜Ÿå·¦å«é—¨ : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public è‚¥å˜Ÿå˜Ÿå·¦å«é—¨(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().æ€äººåè§¦å‘ = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "è‚¥å˜Ÿå˜Ÿå·¦å«é—¨");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        summonHandcard(3);
     }
 
     public override void Action_2()

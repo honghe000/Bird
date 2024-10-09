@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +19,8 @@ public class MoveController : MonoBehaviour
 
     public int 击杀免疫 = 0;
     public int 消灭免疫 = 0;
+
+    public int 杀人后触发 = 0;
 
     public MoveController()
     {

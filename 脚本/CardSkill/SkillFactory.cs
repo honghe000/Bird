@@ -1,39 +1,41 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 public static class SkillFactory
 {
     public static BaseSkill CreateSkill(GameObject card, MonoBehaviour monoBehaviour)
     {
-        switch (card.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.Ãû×Ö)
+        switch (card.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.åå­—)
         {
-            case "ÕÅÈı·â´óÊ¦":
-                return new ÕÅÈı·â´óÊ¦(card, monoBehaviour);
-            case "Ïà°²ÎŞÊÂ":
-                return new Ïà°²ÎŞÊÂ(card, monoBehaviour);
-            case "¹íÎİ":
-                return new ¹íÎİ(card, monoBehaviour);
-            case "¹í½«":
-                return new ¹í½«(card, monoBehaviour);
-            case "ÁúÊ×Ö®Óñ":
-                return new ÁúÊ×Ö®Óñ(card, monoBehaviour);
-            case "·ğ¹â":
-                return new ·ğ¹â(card, monoBehaviour);
-            case "ÅĞ¹Ù±Ê":
-                return new ÅĞ¹Ù±Ê(card, monoBehaviour);
-            case "¾ŞÁéÉñ":
-                return new ¾ŞÁéÉñ(card, monoBehaviour);
-            case "ÑÅµäÄÈ":
-                return new ÑÅµäÄÈ(card, monoBehaviour);
-            case "Ğ«Î²¶¾":
-                return new Ğ«Î²¶¾(card, monoBehaviour);
-            case "ºÓÉñÖ®Å­":
-                return new ºÓÉñÖ®Å­(card, monoBehaviour);
-            case "ÉáÉú":
-                return new ÉáÉú(card, monoBehaviour);
-            case "ÉñÚÍÕß":
-                return new ÉñÚÍÕß(card, monoBehaviour);
-            case "Íâ½»¹Ù":
-                return new Íâ½»¹Ù(card, monoBehaviour);
+            case "å¼ ä¸‰å°å¤§å¸ˆ":
+                return new å¼ ä¸‰å°å¤§å¸ˆ(card, monoBehaviour);
+            case "ç›¸å®‰æ— äº‹":
+                return new ç›¸å®‰æ— äº‹(card, monoBehaviour);
+            case "é¬¼å±‹":
+                return new é¬¼å±‹(card, monoBehaviour);
+            case "é¬¼å°†":
+                return new é¬¼å°†(card, monoBehaviour);
+            case "é¾™é¦–ä¹‹ç‰":
+                return new é¾™é¦–ä¹‹ç‰(card, monoBehaviour);
+            case "ä½›å…‰":
+                return new ä½›å…‰(card, monoBehaviour);
+            case "åˆ¤å®˜ç¬”":
+                return new åˆ¤å®˜ç¬”(card, monoBehaviour);
+            case "å·¨çµç¥":
+                return new å·¨çµç¥(card, monoBehaviour);
+            case "é›…å…¸å¨œ":
+                return new é›…å…¸å¨œ(card, monoBehaviour);
+            case "èå°¾æ¯’":
+                return new èå°¾æ¯’(card, monoBehaviour);
+            case "æ²³ç¥ä¹‹æ€’":
+                return new æ²³ç¥ä¹‹æ€’(card, monoBehaviour);
+            case "èˆç”Ÿ":
+                return new èˆç”Ÿ(card, monoBehaviour);
+            case "ç¥è°•è€…":
+                return new ç¥è°•è€…(card, monoBehaviour);
+            case "å¤–äº¤å®˜":
+                return new å¤–äº¤å®˜(card, monoBehaviour);
+            case "è‚¥å˜Ÿå˜Ÿå·¦å«é—¨":
+                return new è‚¥å˜Ÿå˜Ÿå·¦å«é—¨(card, monoBehaviour);
             default:
                 return null;
         }

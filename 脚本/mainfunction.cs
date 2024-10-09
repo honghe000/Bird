@@ -1,4 +1,4 @@
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -619,7 +619,14 @@ public class mainfunction : MonoBehaviour
 
         if (card_data1.nowHp > 0 && card_data2.nowHp <= 0)
         {
+
+            if (mycard.GetComponent<MoveController>().杀人后触发==1)
+            {
+                BaseSkill skill = ValueHolder.SkillAction[mycard.GetComponent<数据显示>().卡牌数据.uid];
+                运行下个技能阶段(skill);
+            }
             卡牌摧毁(hecard,mycard);
+
             Winmove(mycard);
 
         }else if (card_data1.nowHp <= 0 && card_data2.nowHp > 0)
@@ -628,6 +635,11 @@ public class mainfunction : MonoBehaviour
 
         }else if (card_data1.nowHp <= 0 && card_data2.nowHp <= 0)
         {
+            if (mycard.GetComponent<MoveController>().杀人后触发 == 1)
+            {
+                BaseSkill skill = ValueHolder.SkillAction[mycard.GetComponent<数据显示>().卡牌数据.uid];
+                运行下个技能阶段(skill);
+            }
             卡牌摧毁(mycard);
             卡牌摧毁(hecard);
         }
