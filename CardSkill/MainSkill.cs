@@ -1289,6 +1289,16 @@ public class 雷电 : BaseSkill
             mainfunction.Send效果卸载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
         }
 
+        foreach (Transform child in ValueHolder.敌方延时法术框.transform)
+        {
+            if (child.gameObject.GetComponent<数据显示>().卡牌数据.uid == uid)
+            {
+                Destroy(child.gameObject);
+
+                mainfunction.Send我方红牌法术销毁(card_data.id, uid);
+            }
+        }
+
 
         activateTurn_3_finish = 1;
         skill_end = 1;
