@@ -107,7 +107,7 @@ public class ValueHolder : MonoBehaviour
     public static GameObject 手牌对战牌 = null;
     public static GameObject 弃牌 = null;
     public static int initiative = 1;
-    public static List<int> random_card = new List<int> { 1,2,2,4,76};
+    public static List<int> random_card = new List<int> { 1,2,2,4,168};
     public static List<int> Discard_pile = new List<int>();
     public static string choosegroup = "666";
     public static GameObject choosed_object = null;

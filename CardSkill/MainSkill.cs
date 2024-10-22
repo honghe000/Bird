@@ -1182,6 +1182,7 @@ public class 肥嘟嘟左卫门 : BaseSkill
 
     public override void Action_1()
     {
+        Debug.Log("肥嘟嘟左卫门");
         summonHandcard(3);
     }
 
