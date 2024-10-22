@@ -489,9 +489,14 @@ public class b_listen : MonoBehaviour
                         card.GetComponent<MoveController>().击杀免疫 = 1;
                     }
                     else if (mes.effect == 2) //消灭免疫
-                    { 
+                    {
                         card.GetComponent<MoveController>().消灭免疫 = 1;
                     }
+                    else if (mes.effect == 3) //眩晕
+                    {
+                        card.GetComponent<MoveController>().眩晕 = 1;
+                    }
+
                 }
             }
         }
@@ -513,6 +518,10 @@ public class b_listen : MonoBehaviour
                     }else if (mes.effect == 2) //消灭免疫
                     {
                         card.GetComponent<MoveController>().消灭免疫 = 0;
+                    }
+                    else if (mes.effect == 3) //眩晕
+                    {
+                        card.GetComponent<MoveController>().眩晕 = 0;
                     }
                 }
             }

@@ -1260,7 +1260,22 @@ public class 雷电 : BaseSkill
 
     public override void Action_2()
     {
+        GameObject cardone = Instantiate(ValueHolder.延时法术牌);
+
+        GameObject card_summon = summon_one(cardone, card_data.id);
+        card_summon.GetComponent<数据显示>().卡牌数据.uid = uid;
+
+
+        mainfunction.缩放调整(card_summon);
+        change_card_color(card_summon, "blue");
+
+
+        card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
+
+
+        mainfunction.Send我方红牌法术创建(card_data.id, uid);
         作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
+        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
 
         activateTurn_2_finish = 1;
 
@@ -1271,6 +1286,7 @@ public class 雷电 : BaseSkill
         if (作用目标卡牌 != null)
         {
             作用目标卡牌.GetComponent<MoveController>().眩晕 = 0;
+            mainfunction.Send效果卸载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
         }
 
 
