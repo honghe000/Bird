@@ -19,6 +19,10 @@ public class b_choose_fa : MonoBehaviour, IPointerClickHandler
         {
             ValueHolder.hintManager.AddHint("此牌无法被消灭！");
             return;
+        }else if (skill.效果 == "眩晕" && eventData.pointerClick.gameObject.GetComponent<MoveController>().眩晕免疫 == 0)
+        {
+            ValueHolder.hintManager.AddHint("此牌无法被眩晕！");
+            return;
         }
 
 

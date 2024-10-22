@@ -1202,3 +1202,85 @@ public class 肥嘟嘟左卫门 : BaseSkill
     }
 
 }
+
+public class 雷电 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 雷电(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = ValueHolder.turn + 1;
+        activateTurn_4 = -1;
+
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().场上敌方人数要求 = 1;
+        效果 = "眩晕";
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "雷电");
+        }
+    }
+    public override void Action_1()
+    {
+        ValueHolder.法术作用敌我类型 = 1;
+        mainfunction.禁用棋盘物件代码("b_moveca", 0);
+        mainfunction.禁用手牌物件代码("b_cardaction");
+        mainfunction.ShowCardchoose(1);
+        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
+        ValueHolder.法术选择取消.gameObject.SetActive(true);
+        Debug.Log("选择");
+
+
+
+        activateTurn_1_finish = 1;
+
+
+    }
+
+    public override void Action_2()
+    {
+        作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
+
+        activateTurn_2_finish = 1;
+
+    }
+
+    public override void Action_3()
+    {
+        if (作用目标卡牌 != null)
+        {
+            作用目标卡牌.GetComponent<MoveController>().眩晕 = 0;
+        }
+
+
+        activateTurn_3_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}

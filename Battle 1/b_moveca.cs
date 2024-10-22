@@ -87,6 +87,12 @@ public class b_moveca : MonoBehaviour,IPointerClickHandler
             return;
         }
 
+        if (eventData.pointerClick.GetComponent<MoveController>().眩晕 == 1)
+        {
+            ValueHolder.hintManager.AddHint("此牌被眩晕，无法行动！");
+            return;
+        }
+
         //选中一张卡时，处理点击另一张卡的情况
         if (ValueHolder.choosed_object!= null && eventData.pointerClick.GetComponent<CanvasGroup>().alpha == 1f)
         {

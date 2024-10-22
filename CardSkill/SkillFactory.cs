@@ -36,6 +36,8 @@ public static class SkillFactory
                 return new 外交官(card, monoBehaviour);
             case "肥嘟嘟左卫门":
                 return new 肥嘟嘟左卫门(card, monoBehaviour);
+            case "雷电":
+                return new 雷电(card, monoBehaviour);
             default:
                 return null;
         }
