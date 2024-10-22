@@ -1359,7 +1359,7 @@ public class 阿尔卡祭坛 : BaseSkill
 
                     作用目标卡牌数据.maxAttack += 1;
                     作用目标卡牌数据.nowAttack += 1;
-                    作用目标卡牌.GetComponent<数据显示>().更新数据();
+                    card.GetComponent<数据显示>().更新数据();
                     mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 1);
 
                 }
