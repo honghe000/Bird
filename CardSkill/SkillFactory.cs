@@ -38,6 +38,8 @@ public static class SkillFactory
                 return new 肥嘟嘟左卫门(card, monoBehaviour);
             case "雷电":
                 return new 雷电(card, monoBehaviour);
+            case "阿尔卡祭坛":
+                return new 阿尔卡祭坛(card, monoBehaviour);
             default:
                 return null;
         }
