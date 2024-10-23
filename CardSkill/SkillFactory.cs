@@ -44,6 +44,8 @@ public static class SkillFactory
                 return new 太乙真人(card, monoBehaviour);
             case "关羽":
                 return new 关羽(card, monoBehaviour);
+            case "困兽之斗":
+                return new 困兽之斗(card, monoBehaviour);
             default:
                 return null;
         }
