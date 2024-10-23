@@ -1631,3 +1631,76 @@ public class 困兽之斗 : BaseSkill
     }
 
 }
+
+
+
+public class 牛头马面 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 牛头马面(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        场上角色死亡触发 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "牛头马面");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+
+        card_data.maxAttack += 1;
+        card_data.nowAttack += 1;
+        card_data.maxHp += 1;
+        card_data.nowHp += 1;
+        card.GetComponent<数据显示>().更新数据();
+        mainfunction.Send攻击力改变(uid, 1);
+        mainfunction.Send血量改变(uid, 1);
+
+
+    }
+
+    public override void Action_2()
+    {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}

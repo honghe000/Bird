@@ -29,6 +29,8 @@ public abstract class BaseSkill : MonoBehaviour
 
     public int 亡语 = 0; // 亡语
 
+    public int 场上角色死亡触发 = 0; // 场上角色死亡触发
+
     public abstract void Action_1();
     public abstract void Action_2();
     public abstract void Action_3();

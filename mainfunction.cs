@@ -555,8 +555,20 @@ public class mainfunction : MonoBehaviour
 
     public static void 卡牌摧毁(GameObject card,GameObject mycard = null)
     {
+        场上角色死亡触发();
         MonoBehaviour monoBehaviour = card.GetComponent<MonoBehaviour>();
         monoBehaviour.StartCoroutine(RotateAndScaleCoroutine(card, mycard));
+    }
+
+    public static void 场上角色死亡触发()
+    {
+        foreach(BaseSkill skill in ValueHolder.SkillAction.Values)
+        {
+            if (skill.场上角色死亡触发 == 1)
+            {
+                运行下个技能阶段(skill);
+            }
+        }
     }
 
     public static void Winmove(GameObject card)
@@ -625,6 +637,7 @@ public class mainfunction : MonoBehaviour
                 BaseSkill skill = ValueHolder.SkillAction[mycard.GetComponent<数据显示>().卡牌数据.uid];
                 运行下个技能阶段(skill);
             }
+
             卡牌摧毁(hecard,mycard);
 
             Winmove(mycard);
