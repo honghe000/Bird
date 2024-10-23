@@ -76,6 +76,10 @@ public class b_al_ac : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
             Load_img(copycard, transform.gameObject.GetComponent<数据显示>().卡牌数据.id);
 
 
+            if(卡牌放大展示.transform.childCount > 0)
+            {
+                Destroy(卡牌放大展示.transform.GetChild(0).gameObject);
+            }
             // 设置复制品的父物体
             copycard.transform.SetParent(卡牌放大展示.transform, false);
 

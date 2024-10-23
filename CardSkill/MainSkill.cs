@@ -566,7 +566,7 @@ public class 判官笔 : BaseSkill
 
     public override void Action_2()
     {
-        ValueHolder.手牌对战牌.GetComponent<MonoBehaviour>().StartCoroutine(RotateAndScaleCoroutine(作用目标卡牌));
+        mainfunction.卡牌摧毁(作用目标卡牌);
         mainfunction.Send卡牌摧毁(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid);
 
 
@@ -1521,7 +1521,7 @@ public class 关羽 : BaseSkill
 
     public override void Action_2()
     {
-        ValueHolder.手牌对战牌.GetComponent<MonoBehaviour>().StartCoroutine(RotateAndScaleCoroutine(作用目标卡牌));
+        mainfunction.卡牌摧毁(作用目标卡牌);
         mainfunction.Send卡牌摧毁(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid);
         activateTurn_2_finish = 1;
         activateTurn_1_finish = 0;
