@@ -1588,8 +1588,8 @@ public class 困兽之斗 : BaseSkill
         card_summon.transform.SetParent(ValueHolder.中立延时法术框.transform);
         foreach (GameObject card in mainfunction.获取全部人物())
         {
-            string uid = card.GetComponent<数据显示>().卡牌数据.uid;
            card.GetComponent<MoveController>().眩晕 = 1;
+            mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
         }
         mainfunction.Send中立法术创建(card_data.id);
        
