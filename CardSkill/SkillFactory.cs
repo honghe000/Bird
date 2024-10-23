@@ -40,6 +40,8 @@ public static class SkillFactory
                 return new 雷电(card, monoBehaviour);
             case "阿尔卡祭坛":
                 return new 阿尔卡祭坛(card, monoBehaviour);
+            case "太乙真人":
+                return new 太乙真人(card, monoBehaviour);
             default:
                 return null;
         }
