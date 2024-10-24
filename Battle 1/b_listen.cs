@@ -259,6 +259,7 @@ public class b_listen : MonoBehaviour
         mainfunction.倒计时回合变化();
 
         summonHandcard(1);
+        mainfunction.灵力回合更新();
     }
 
      void summonHandcard(int num)

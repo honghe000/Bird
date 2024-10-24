@@ -144,6 +144,10 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
     {
         数据显示 card_show = eventData.pointerDrag.gameObject.GetComponent<数据显示>();
         int level = card_show.灵力消耗等级;
+        if (card_show.灵力.text == "")
+        {
+            return 1;
+        }
         int num = int.Parse(card_show.灵力.text);
         int res = mainfunction.灵力减少(level, num);
         return res;
