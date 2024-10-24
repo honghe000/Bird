@@ -58,7 +58,24 @@ public class mainfunction : MonoBehaviour
         // 批量销毁指定父物体的所有子物体
         for (int i = 0; i < childCount; i++)
         {
-            DestroyImmediate(children[i]);
+            Destroy(children[i]);
+        }
+    }
+
+    public static void DestroyChildAtIndex(GameObject parent, int index)
+    {
+        // 检查父物体是否存在，并且子物体序号有效
+        if (parent != null && index >= 0 && index < parent.transform.childCount)
+        {
+            // 获取指定序号的子物体
+            Transform child = parent.transform.GetChild(index);
+
+            // 销毁子物体
+            Destroy(child.gameObject);
+        }
+        else
+        {
+            Debug.LogWarning("无效的父物体或子物体索引！");
         }
     }
 
@@ -1176,4 +1193,83 @@ public class mainfunction : MonoBehaviour
         }
         return 桥上卡牌;
     }
+
+    public static void 灵力增加(int level,int num)
+    {
+        if (num <= 0)
+        {
+            return;
+        }
+        GameObject 灵力 = new GameObject();
+        for (int i = 0; i < num; i++)
+        {
+            if (ValueHolder.灵力当前状态[level] >= ValueHolder.灵力当前上限[level])
+            {
+                break;
+            }
+
+            if (level == 1)
+            {
+                灵力 = Instantiate(ValueHolder.黄, ValueHolder.灵力栏.transform);
+                ValueHolder.灵力当前状态[level] += 1;
+            }
+            else if (level == 2)
+            {
+                灵力 = Instantiate(ValueHolder.绿, ValueHolder.灵力栏.transform);
+                ValueHolder.灵力当前状态[level] += 1;
+            }
+            else if (level == 3)
+            {
+                灵力 = Instantiate(ValueHolder.蓝, ValueHolder.灵力栏.transform);
+                ValueHolder.灵力当前状态[level] += 1;
+            }
+            else if (level == 4)
+            {
+                灵力 = Instantiate(ValueHolder.紫, ValueHolder.灵力栏.transform);
+                ValueHolder.灵力当前状态[level] += 1;
+            }
+
+        }
+
+    }
+
+    public static int 灵力减少(int level, int num)
+    {
+        if (ValueHolder.灵力当前状态[level] < num)
+        {
+            return 0;
+        }
+
+        for (int i = 0; i < num; i++)
+        {
+            DestroyChildAtIndex(ValueHolder.灵力栏, ValueHolder.灵力当前状态[level] - 1);
+            ValueHolder.灵力当前状态[level] -= 1;
+        }
+        return 1;
+    }
+
+    public static void 灵力回合更新()
+    {
+        if (ValueHolder.灵力当前上限[1] < 4)
+        {
+            ValueHolder.灵力当前上限[1] += 1;
+        }else if (ValueHolder.灵力当前上限[2] < 3)
+        {
+            ValueHolder.灵力当前上限[2] += 1;
+        }else if (ValueHolder.灵力当前上限[3] < 2)
+        {
+            ValueHolder.灵力当前上限[3] += 1;
+        }else if (ValueHolder.灵力当前上限[4] < 1)
+        {
+            ValueHolder.灵力当前上限[4] += 1;
+        }
+
+        DestroyAllChildren(ValueHolder.灵力栏);
+        灵力增加(1, ValueHolder.灵力当前上限[1]);
+        灵力增加(2, ValueHolder.灵力当前上限[2]);
+        灵力增加(3, ValueHolder.灵力当前上限[3]);
+        灵力增加(4, ValueHolder.灵力当前上限[4]);
+    }
+
+
 }

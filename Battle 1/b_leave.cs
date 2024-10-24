@@ -76,6 +76,16 @@ public class b_leave : MonoBehaviour
         ValueHolder.弃牌uid = new List<string>();
         ValueHolder.弃牌数量限制 = 0;
         ValueHolder.回合结束弃牌 = 0;
+
+        ValueHolder.黄 = null;
+        ValueHolder.绿 = null;
+        ValueHolder.蓝 = null;
+        ValueHolder.紫 = null;
+        ValueHolder.灵力栏 = null;
+        ValueHolder.灵力当前状态 = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
+        ValueHolder.灵力当前上限 = new Dictionary<int, int> { { 1, 1 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
+
+
         SceneManager.LoadScene("mainpage");
     }
 }

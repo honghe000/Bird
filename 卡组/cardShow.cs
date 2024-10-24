@@ -16,12 +16,20 @@ public class cardShow : MonoBehaviour
     public TextMeshProUGUI HP;
     public TextMeshProUGUI ATK;
 
+    public TextMeshProUGUI 灵力;
+
     public Image 背景人;
     public Image 背景法;
     public Image 背景筑;
 
     public Image HP背景;
     public Image ATK背景;
+
+    public Image 黄;
+    public Image 绿;
+    public Image 蓝;
+    public Image 紫;
+
 
     public 卡牌数据 卡牌数据;
     void Start()
@@ -69,6 +77,36 @@ public class cardShow : MonoBehaviour
         {
             背景法.gameObject.SetActive(false);
             背景人.gameObject.SetActive(false);
+        }
+
+        黄.gameObject.SetActive(false);
+        绿.gameObject.SetActive(false);
+        蓝.gameObject.SetActive(false);
+        紫.gameObject.SetActive(false);
+
+        if (卡牌数据.黄 > 0)
+        {
+            黄.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.黄.ToString();
+        }
+        else if (卡牌数据.绿 > 0)
+        {
+            绿.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.绿.ToString();
+        }
+        else if (卡牌数据.蓝 > 0)
+        {
+            蓝.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.蓝.ToString();
+        }
+        else if (卡牌数据.紫 > 0)
+        {
+            紫.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.紫.ToString();
+        }
+        else
+        {
+            灵力.text = "";
         }
 
     }

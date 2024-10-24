@@ -27,6 +27,13 @@ public class b_global : MonoBehaviour
     public GameObject 弃牌显示;
     public GameObject 弃牌区;
     // Start is called before the first frame update
+
+    public GameObject 黄;
+    public GameObject 绿;
+    public GameObject 蓝;
+    public GameObject 紫;
+    public GameObject 灵力栏;
+
     private void Start()
     {
         打乱牌组();
@@ -117,5 +124,11 @@ public class b_global : MonoBehaviour
         ValueHolder.弃牌显示 = 弃牌显示;
         ValueHolder.弃牌区 = 弃牌区;
         ValueHolder.弃牌 = 弃牌;
+
+        ValueHolder.黄 = 黄;
+        ValueHolder.绿 = 绿;
+        ValueHolder.蓝 = 蓝;
+        ValueHolder.紫 = 紫;
+        ValueHolder.灵力栏 = 灵力栏;
     }
 }

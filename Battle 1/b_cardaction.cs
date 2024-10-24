@@ -84,6 +84,8 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
 
     }
 
+
+
     void 法术(PointerEventData eventData)
     {
         if (eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.类别 != "法术")
@@ -113,7 +115,12 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
         // 检查鼠标是否在目标物体的内部
         if (targetRectTransform.rect.Contains(localMousePosition))
         {
-            Debug.Log("物体被放在目标物体的内部");
+            int res = 消耗灵力(eventData);
+            if (res == 0)
+            {
+                hintManager.AddHint("灵力不足！");
+                return;
+            }
             //技能初始化
             BaseSkill skill = SkillFactory.CreateSkill(eventData.pointerDrag, this);
             if (法术禁用(eventData) == 0)
@@ -132,6 +139,19 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
             ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
             Destroy(eventData.pointerDrag.gameObject);
         }
+    }
+    int 消耗灵力(PointerEventData eventData)
+    {
+        数据显示 card_show = eventData.pointerDrag.gameObject.GetComponent<数据显示>();
+        int level = card_show.灵力消耗等级;
+        int num = int.Parse(card_show.灵力.text);
+        int res = mainfunction.灵力减少(level, num);
+        return res;
+
+    }
+    void 敌方视角显示()
+    {
+
     }
 
     int 法术禁用(PointerEventData eventData)

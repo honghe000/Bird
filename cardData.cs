@@ -19,7 +19,12 @@ public class 卡牌数据
 
     public int nowHp;
     public int nowAttack;
-    public 卡牌数据(string 名字, string 技能, string 等级, string 类别, int id,string uid,int maxHp,int maxAttack,int nowHp,int nowAttack)
+
+    public int 黄;
+    public int 绿;
+    public int 蓝;
+    public int 紫;
+    public 卡牌数据(string 名字, string 技能, string 等级, string 类别, int id,string uid,int maxHp,int maxAttack,int nowHp,int nowAttack,int 黄,int 绿,int 蓝,int 紫)
     {
         this.名字 = 名字;
         this.技能 = 技能;
@@ -32,6 +37,10 @@ public class 卡牌数据
         this.maxAttack = maxAttack;
         this.nowHp = nowHp;
         this.nowAttack = nowAttack;
+        this.黄 = 黄;
+        this.绿 = 绿;
+        this.蓝 = 蓝;
+        this.紫 = 紫;
 
         
     }
@@ -50,5 +59,9 @@ public class 卡牌数据
         this.maxAttack = other.maxAttack;
         this.nowHp = other.nowHp;
         this.nowAttack = other.nowAttack;
+        this.黄 = other.黄;
+        this.绿 = other.绿;
+        this.蓝 = other.蓝;
+        this.紫 = other.紫;
     }
 }

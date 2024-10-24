@@ -371,8 +371,6 @@ public class b_listen : MonoBehaviour
         card_summon.transform.SetParent(ValueHolder.中立延时法术框.transform);
     }
 
-
-
     void 中立法术销毁(Message mes)
     {
         卡牌数据 card_data = ValueHolder.gloabCaedData[mes.cardID];
@@ -550,6 +548,11 @@ public class b_listen : MonoBehaviour
             card.GetComponent<数据显示>().卡牌数据.nowHp += mes.num;
             card.GetComponent<数据显示>().卡牌数据.maxHp += mes.num;
             card.GetComponent<数据显示>().更新数据();
+            if (card.GetComponent<数据显示>().卡牌数据.nowHp <= 0)
+            {
+                mainfunction.卡牌摧毁(card);
+            }
+
         }
     }
 

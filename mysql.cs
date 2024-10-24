@@ -36,7 +36,11 @@ public class mysql : MonoBehaviour
             int id = reader.GetInt32("id");
             int maxHP = reader.GetInt32("HP");
             int maxATK = reader.GetInt32("ATK");
-            卡牌数据 card = new 卡牌数据(name, skill, level, type,id,"0",maxHP,maxATK,maxHP, maxATK);
+            int 黄 = reader.GetInt32("yellow");
+            int 绿 = reader.GetInt32("green");
+            int 蓝 = reader.GetInt32("blue");
+            int 紫 = reader.GetInt32("purple");
+            卡牌数据 card = new 卡牌数据(name, skill, level, type, id, "0", maxHP, maxATK, maxHP, maxATK, 黄, 绿, 蓝, 紫);
             selectedCards.Add(card);
         }
         reader.Close();

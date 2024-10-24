@@ -157,5 +157,15 @@ public class ValueHolder : MonoBehaviour
     public static int 弃牌数量限制 = 0;
     public static int 回合结束弃牌 = 0;
 
+    //灵力
+    public static GameObject 黄 = null;
+    public static GameObject 绿 = null;
+    public static GameObject 蓝 = null;
+    public static GameObject 紫 = null;
+    public static GameObject 灵力栏 = null;
+
+    public static Dictionary<int,int> 灵力当前状态 = new Dictionary<int,int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }};
+    public static Dictionary<int,int> 灵力当前上限 = new Dictionary<int,int> { { 1, 1 }, { 2, 0 }, { 3, 0 }, { 4, 0 }};
+
 
 }

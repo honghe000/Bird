@@ -86,6 +86,7 @@ public class b_al_ac : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
             foreach (Transform child in transform)
             {
                 TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+
                 if (text != null)
                 {
                     color1 = text.color;
@@ -96,9 +97,12 @@ public class b_al_ac : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
             foreach (Transform child in copycard.transform)
             {
                 TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-                if (text != null)
+                if (text != null){
+                if (text.transform.name == "ÁéÁ¦ÏûºÄ")
                 {
-                    text.color = color1;
+                    continue;
+                }
+                text.color = color1;
                 }
             }
 

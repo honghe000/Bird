@@ -64,15 +64,14 @@ public class 张三封大师 : BaseSkill
 
         foreach (KeyValuePair<int, GameObject> kvp in killCards)
         {
-            Debug.Log("Destroying card: " + kvp.Value.name);
-            monoBehaviour.StartCoroutine(RotateAndScaleCoroutine(kvp.Value));
+            mainfunction.卡牌摧毁(kvp.Value);
 
             mainfunction.ChangeSendMessage("Action", 13);
             mainfunction.ChangeSendMessage("end_index",kvp.Key);
             ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
         }
 
-        monoBehaviour.StartCoroutine(RotateAndScaleCoroutine(card));
+        mainfunction.卡牌摧毁(card);
 
         mainfunction.ChangeSendMessage("Action", 13);
         mainfunction.ChangeSendMessage("end_index", card_id);
@@ -1788,6 +1787,172 @@ public class 迅雷的崩玉 : BaseSkill
     public override void Action_3()
     {
         activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+
+public class 鬼琵琶 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 鬼琵琶(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+        己方回合结束时触发 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "鬼琵琶");
+        }
+        card.GetComponent<MoveController>().场上我方人数要求 = 1;
+    }
+    public override void Action_1()
+    {
+        ValueHolder.释放法术uid = uid;
+        ValueHolder.法术作用敌我类型 = 0;
+        mainfunction.禁用棋盘物件代码("b_moveca", 0);
+        mainfunction.禁用手牌物件代码("b_cardaction");
+        mainfunction.ShowCardchoose(0);
+        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
+
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+
+        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
+
+        作用目标卡牌数据.maxAttack += 5;
+        作用目标卡牌数据.nowAttack += 5;
+        作用目标卡牌.GetComponent<数据显示>().更新数据();
+        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 2);
+
+
+        activateTurn_2_finish = 1;
+
+    }
+
+    public override void Action_3()
+    {
+        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
+
+        mainfunction.卡牌摧毁(作用目标卡牌);
+        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+        skill_end = 1;
+        activateTurn_3_finish = 1;
+
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+
+
+public class 毒雾 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 毒雾(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "毒雾");
+        }
+
+    }
+    public override void Action_1()
+    {
+
+        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+        {
+            GameObject grid = grids.Value;
+            if (grid.transform.childCount != 0 && grids.Key != "0")
+            {
+                GameObject card = grid.transform.GetChild(0).gameObject;
+                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                {
+                    卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
+
+
+                    作用目标卡牌数据.nowHp -= 2;
+                    card.GetComponent<数据显示>().更新数据();
+                    mainfunction.Send血量改变(作用目标卡牌数据.uid, 1);
+
+                }
+            }
+        }
+
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+
+        activateTurn_2_finish = 1;
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+
     }
 
     public override void Action_4()

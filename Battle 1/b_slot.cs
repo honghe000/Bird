@@ -1,3 +1,4 @@
+using ExitGames.Client.Photon;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -26,6 +27,8 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
         {
             return;
         }
+
+
         int index = int.Parse(gameObject.name);
         string 禁止放置来源 = mainfunction.判断是否处于禁用位置(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别,index);
 
@@ -40,7 +43,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             {
 
                 //人物禁用
-                if(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别 == "角色" && ValueHolder.人物禁用.Count != 0)
+                if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别 == "角色" && ValueHolder.人物禁用.Count != 0)
                 {
                     foreach (KeyValuePair<string, float> kvp in ValueHolder.人物禁用)
                     {
@@ -51,7 +54,12 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
 
 
-
+                int res = 消耗灵力(eventData);
+                if (res == 0)
+                {
+                    hintManager.AddHint("灵力不足！");
+                    return;
+                }
                 send_summon_card(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.id, int.Parse(transform.name), eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.uid);
                 eventData.pointerDrag.transform.SetParent(transform);
                 eventData.pointerDrag.GetComponent<CanvasGroup>().alpha = 1.0f;
@@ -80,14 +88,17 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                     Debug.Log("技能触发");
                 }
                 ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
-
-
-
-
-
             }
-
         }
+    }
+
+    int 消耗灵力(PointerEventData eventData)
+    {
+        数据显示 card_show = eventData.pointerDrag.gameObject.GetComponent<数据显示>();
+        int level = card_show.灵力消耗等级;
+        int num = int.Parse(card_show.灵力.text);
+        int res = mainfunction.灵力减少(level, num);
+        return res;
 
     }
 

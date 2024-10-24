@@ -43,7 +43,11 @@ public class globalLoad : MonoBehaviour
             string type = reader.GetString("type");
             int maxHP = reader.GetInt32("HP");
             int maxATK = reader.GetInt32("ATK");
-            card = new 卡牌数据(name, skill, level, type, id, "0", maxHP, maxATK, maxHP, maxATK);
+            int 黄 = reader.GetInt32("yellow");
+            int 绿 = reader.GetInt32("green");
+            int 蓝 = reader.GetInt32("blue");
+            int 紫 = reader.GetInt32("purple");
+            card = new 卡牌数据(name, skill, level, type, id, "0", maxHP, maxATK, maxHP, maxATK,黄,绿,蓝,紫);
             ValueHolder.gloabCaedData[id] = card;
         }
         reader.Close();

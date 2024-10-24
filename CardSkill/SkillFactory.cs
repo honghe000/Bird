@@ -50,6 +50,10 @@ public static class SkillFactory
                 return new 牛头马面(card, monoBehaviour);
             case "迅雷的崩玉":
                 return new 迅雷的崩玉(card, monoBehaviour);
+            case "鬼琵琶":
+                return new 鬼琵琶(card, monoBehaviour);
+            case "毒雾":
+                return new 毒雾(card, monoBehaviour);
             default:
                 return null;
         }

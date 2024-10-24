@@ -15,6 +15,8 @@ public class 数据显示 : MonoBehaviour
     public TextMeshProUGUI HP;
     public TextMeshProUGUI ATK;
 
+    public TextMeshProUGUI 灵力;
+
     public Image 背景人;
     public Image 背景法;
     public Image 背景筑;
@@ -22,7 +24,13 @@ public class 数据显示 : MonoBehaviour
     public Image HP背景;
     public Image ATK背景;
 
+    public Image 黄;
+    public Image 绿;
+    public Image 蓝;
+    public Image 紫;
+
     public 卡牌数据 卡牌数据;
+    public int 灵力消耗等级;
     void Start()
     {
         展示数据();
@@ -70,6 +78,39 @@ public class 数据显示 : MonoBehaviour
             背景人.gameObject.SetActive(false);
         }
 
+
+
+        黄.gameObject.SetActive(false);
+        绿.gameObject.SetActive(false);
+        蓝.gameObject.SetActive(false);
+        紫.gameObject.SetActive(false);
+
+        if(卡牌数据.黄 > 0)
+        {
+            黄.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.黄.ToString();
+            灵力消耗等级 = 1;
+        }else if (卡牌数据.绿 > 0)
+        {
+            绿.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.绿.ToString();
+            灵力消耗等级 = 2;
+        }else if (卡牌数据.蓝 > 0)
+        {
+            蓝.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.蓝.ToString();
+            灵力消耗等级 = 3;
+        }else if (卡牌数据.紫 > 0)
+        {
+            紫.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.紫.ToString();
+            灵力消耗等级 = 4;
+        }
+        else
+        {
+            灵力.text = "";
+        }
+
     }
 
     public void 更新数据()
@@ -105,6 +146,40 @@ public class 数据显示 : MonoBehaviour
         {
             背景法.gameObject.SetActive(false);
             背景人.gameObject.SetActive(false);
+        }
+
+        黄.gameObject.SetActive(false);
+        绿.gameObject.SetActive(false);
+        蓝.gameObject.SetActive(false);
+        紫.gameObject.SetActive(false);
+
+        if (卡牌数据.黄 > 0)
+        {
+            黄.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.黄.ToString();
+            灵力消耗等级 = 1;
+        }
+        else if (卡牌数据.绿 > 0)
+        {
+            绿.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.绿.ToString();
+            灵力消耗等级 = 2;
+        }
+        else if (卡牌数据.蓝 > 0)
+        {
+            蓝.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.蓝.ToString();
+            灵力消耗等级 = 3;
+        }
+        else if (卡牌数据.紫 > 0)
+        {
+            紫.gameObject.SetActive(true);
+            灵力.text = 卡牌数据.紫.ToString();
+            灵力消耗等级 = 4;
+        }
+        else
+        {
+            灵力.text = "";
         }
     }
 
