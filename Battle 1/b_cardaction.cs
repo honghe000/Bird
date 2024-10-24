@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -125,6 +125,10 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
                 skill.Action_1();
             }
             ValueHolder.释放法术uid = eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid;
+            if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid == "0")
+            {
+                Debug.Log(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.名字);
+            }
             ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
             Destroy(eventData.pointerDrag.gameObject);
         }
