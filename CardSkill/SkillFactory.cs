@@ -48,6 +48,8 @@ public static class SkillFactory
                 return new 困兽之斗(card, monoBehaviour);
             case "牛头马面":
                 return new 牛头马面(card, monoBehaviour);
+            case "迅雷的崩玉":
+                return new 迅雷的崩玉(card, monoBehaviour);
             default:
                 return null;
         }

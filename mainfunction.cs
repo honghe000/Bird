@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using TMPro;
+using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -1046,6 +1047,23 @@ public class mainfunction : MonoBehaviour
             }
         }
         return 全部人物;
+    }
+    public static List<GameObject> 获取敌方全部人物()
+    {
+        List<GameObject> 全部敌方人物 = new List<GameObject>();
+        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+        {
+            GameObject grid = grids.Value;
+            if (grid.transform.childCount != 0 && grids.Key != "0")
+            {
+                GameObject card = grid.transform.GetChild(0).gameObject;
+                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                {
+                    全部敌方人物.Add(card);
+                }
+            }
+        }
+        return 全部敌方人物;
     }
     public static int 敌方人物数量()
     {

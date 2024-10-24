@@ -1631,9 +1631,6 @@ public class 困兽之斗 : BaseSkill
     }
 
 }
-
-
-
 public class 牛头马面 : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
@@ -1690,6 +1687,101 @@ public class 牛头马面 : BaseSkill
 
     public override void Action_2()
     {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 迅雷的崩玉 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    private float delay = 2f;
+    public 迅雷的崩玉(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = ValueHolder.turn + delay;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().场上敌方人数要求 = 1;
+        效果 = "眩晕";
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "迅雷的崩玉");
+        }
+        ValueHolder.倒计时储存.Add(uid, delay);
+        mainfunction.Send倒计时(card_data.uid, (int)delay);
+    }
+    public override void Action_1()
+    {
+        GameObject cardone = Instantiate(ValueHolder.延时法术牌);
+        GameObject card_summon = summon_one(cardone, card_data.id);
+        card_summon.GetComponent<数据显示>().卡牌数据.uid = uid;
+
+        mainfunction.缩放调整(card_summon);
+
+        card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
+        mainfunction.Send我方红牌法术创建(card_data.id,uid);
+
+        foreach (GameObject card in mainfunction.获取敌方全部人物())
+        {
+            card.GetComponent<MoveController>().眩晕 = 1;
+            mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
+        }
+       
+
+        activateTurn_1_finish = 1;
+    }
+
+    public override void Action_2()
+    {
+        foreach (GameObject card in mainfunction.获取全部人物())
+        {
+            if (card != null)
+            {
+                card.GetComponent<MoveController>().眩晕 = 0;
+                mainfunction.Send效果卸载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
+            }
+        }
+        foreach (Transform child in ValueHolder.敌方延时法术框.transform)
+        {
+
+            if (child.gameObject.GetComponent<数据显示>().卡牌数据.uid == uid)
+            {
+                Destroy(child.gameObject);
+                mainfunction.Send我方红牌法术销毁(card_data.id, uid);
+            }
+        }
+        skill_end = 1;
         activateTurn_2_finish = 1;
     }
 
