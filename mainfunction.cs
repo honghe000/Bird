@@ -1268,6 +1268,12 @@ public class mainfunction : MonoBehaviour
             ValueHolder.灵力当前上限[4] += 1;
         }
 
+        for (int i = 1; i < 5; i++)
+        {
+            Debug.Log(i + "灵力:" + ValueHolder.灵力当前上限[i]);
+
+        }
+
         DestroyAllChildren(ValueHolder.灵力栏);
         灵力增加(1, ValueHolder.灵力当前上限[1]);
         灵力增加(2, ValueHolder.灵力当前上限[2]);

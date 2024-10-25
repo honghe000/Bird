@@ -1853,7 +1853,7 @@ public class 鬼琵琶 : BaseSkill
         作用目标卡牌数据.maxAttack += 5;
         作用目标卡牌数据.nowAttack += 5;
         作用目标卡牌.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 2);
+        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 5);
 
 
         activateTurn_2_finish = 1;
