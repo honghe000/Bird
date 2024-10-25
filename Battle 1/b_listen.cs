@@ -505,9 +505,9 @@ public class b_listen : MonoBehaviour
                     {
                         card.GetComponent<MoveController>().眩晕 = 1;
                     }
-                    else if (mes.effect == 4)//法术可作用
+                    else if (mes.effect == 4)//法术不可作用
                     {
-                        card.GetComponent<MoveController>().法术可作用 = 1;
+                        card.GetComponent<MoveController>().法术可作用 = 0;
                     }
                 }
             }
@@ -535,9 +535,9 @@ public class b_listen : MonoBehaviour
                     {
                         card.GetComponent<MoveController>().眩晕 = 0;
                     }
-                    else if (mes.effect == 4)//法术可作用
+                    else if (mes.effect == 4)//法术不可作用
                     {
-                        card.GetComponent<MoveController>().法术可作用 = 0;
+                        card.GetComponent<MoveController>().法术可作用 = 1;
                     }
                 }
             }
