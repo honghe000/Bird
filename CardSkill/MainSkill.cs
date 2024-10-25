@@ -1759,7 +1759,7 @@ public class 迅雷的崩玉 : BaseSkill
 
         foreach (GameObject card in mainfunction.获取敌方全部人物())
         {
-            if( card.GetComponent<MoveController>().法术可作用 == 1)
+            if( card.GetComponent<MoveController>().法术可作用 == 0)
             {
                 continue;
             }
