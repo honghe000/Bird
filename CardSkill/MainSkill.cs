@@ -879,7 +879,7 @@ public class 河神之怒 : BaseSkill
         card_summon.GetComponent<数据显示>().卡牌数据.uid = uid;
         mainfunction.缩放调整(card_summon);
         change_card_color(card_summon, "blue");
-        card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
+        card_summon.transform.SetParent(ValueHolder.中立延时法术框.transform);
         mainfunction.Send中立法术创建(card_data.id);
 
 
@@ -978,7 +978,7 @@ public class 舍生 : BaseSkill
         mainfunction.禁用手牌物件代码("b_cardaction");
         mainfunction.ShowCardchoose(0);
         mainfunction.启用棋盘物件代码("b_choose_fa", 0);
-
+        ValueHolder.法术选择取消.gameObject.SetActive(true);
         activateTurn_1_finish = 1;
 
     }
@@ -1270,8 +1270,6 @@ public class 雷电 : BaseSkill
 
 
         card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
-
-
         mainfunction.Send我方红牌法术创建(card_data.id, uid);
         作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
         mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
@@ -1840,7 +1838,7 @@ public class 鬼琵琶 : BaseSkill
         mainfunction.禁用手牌物件代码("b_cardaction");
         mainfunction.ShowCardchoose(0);
         mainfunction.启用棋盘物件代码("b_choose_fa", 0);
-
+        ValueHolder.法术选择取消.gameObject.SetActive(true);
         activateTurn_1_finish = 1;
 
     }
@@ -2041,6 +2039,240 @@ public class 战国犀牛 : BaseSkill
     {
         activateTurn_3_finish = 1;
 
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 牛魔 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    private Dictionary<string, int> atk = new Dictionary<string, int>();
+    public 牛魔(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = ValueHolder.turn+1;
+        activateTurn_4 = -1;
+
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "牛魔");
+        }
+    }
+    public override void Action_1()
+    {
+        if (mainfunction.敌方人物数量() == 0)
+        {
+            skill_end = 1;
+            return;
+        }
+        ValueHolder.释放法术uid = uid;
+        ValueHolder.法术作用敌我类型 = 1;
+        mainfunction.禁用棋盘物件代码("b_moveca", 0);
+        mainfunction.禁用手牌物件代码("b_cardaction");
+        mainfunction.ShowCardchoose(0);
+        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
+
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        
+        string uid = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid;
+        int before_atk = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.nowAttack;
+        this.atk.Add(uid, before_atk);
+
+        作用目标卡牌.GetComponent<数据显示>().卡牌数据.nowAttack = 0;
+        作用目标卡牌.GetComponent<数据显示>().更新数据();
+        mainfunction.Send攻击力改变(uid, -999);
+        
+
+        activateTurn_2_finish = 1;
+        
+    }
+
+    public override void Action_3()
+    {
+        foreach (KeyValuePair<string, int> kvp in atk)
+        {
+            GameObject card = mainfunction.uid找卡(kvp.Key);
+            card.GetComponent<数据显示>().卡牌数据.nowAttack = kvp.Value;
+            card.GetComponent<数据显示>().更新数据();
+
+            mainfunction.Send攻击力改变(kvp.Key, kvp.Value);
+        }
+        activateTurn_3_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 贩卖鸦片 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 贩卖鸦片(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().场上敌方人数要求 = 1;
+        效果 = "眩晕";
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "贩卖鸦片");
+        }
+    }
+    public override void Action_1()
+    {
+        ValueHolder.法术作用敌我类型 = 1;
+        mainfunction.禁用棋盘物件代码("b_moveca", 0);
+        mainfunction.禁用手牌物件代码("b_cardaction");
+        mainfunction.ShowCardchoose(1);
+        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
+        ValueHolder.法术选择取消.gameObject.SetActive(true);
+        Debug.Log("选择");
+
+
+
+        activateTurn_1_finish = 1;
+
+
+    }
+
+    public override void Action_2()
+    {
+        GameObject cardone = Instantiate(ValueHolder.延时法术牌);
+
+        GameObject card_summon = summon_one(cardone, card_data.id);
+        card_summon.GetComponent<数据显示>().卡牌数据.uid = uid;
+
+
+        mainfunction.缩放调整(card_summon);
+        change_card_color(card_summon, "blue");
+
+
+        card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
+        mainfunction.Send我方红牌法术创建(card_data.id, uid);
+        作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
+        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
+
+        activateTurn_2_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 漫步者 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 漫步者(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().法术可作用 = 0;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "漫步者");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        
+        activateTurn_1_finish = 1;
+        
+    }
+
+    public override void Action_2()
+    {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
     }
 
     public override void Action_4()

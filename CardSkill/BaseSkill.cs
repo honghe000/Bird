@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,18 +18,18 @@ public abstract class BaseSkill : MonoBehaviour
 
     public string uid { get; protected set; }
 
-    public int ¼º·½»ØºÏ¿ªÊ¼Ê±´¥·¢ = 0;
-    public int ¼º·½»ØºÏ½áÊøÊ±´¥·¢ = 0;
+    public int å·±æ–¹å›åˆå¼€å§‹æ—¶è§¦å‘ = 0;
+    public int å·±æ–¹å›åˆç»“æŸæ—¶è§¦å‘ = 0;
 
 
-    public ¿¨ÅÆÊı¾İ card_data { get; protected set; } // ¼¼ÄÜ¶ÔÓ¦µÄ¿¨ÅÆÊı¾İ
-    public GameObject ×÷ÓÃÄ¿±ê¿¨ÅÆ { get; set; } // ¼¼ÄÜ×÷ÓÃµÄÄ¿±ê¿¨ÅÆ
+    public å¡ç‰Œæ•°æ® card_data { get; protected set; } // æŠ€èƒ½å¯¹åº”çš„å¡ç‰Œæ•°æ®
+    public GameObject ä½œç”¨ç›®æ ‡å¡ç‰Œ { get; set; } // æŠ€èƒ½ä½œç”¨çš„ç›®æ ‡å¡ç‰Œ
 
-    public string Ğ§¹û = ""; // ¼¼ÄÜĞ§¹û
+    public string æ•ˆæœ = ""; // æŠ€èƒ½æ•ˆæœ
 
-    public int ÍöÓï = 0; // ÍöÓï
+    public int äº¡è¯­ = 0; // äº¡è¯­è§¦å‘æœ€åä¸€ä¸ªæŠ€èƒ½é˜¶æ®µ
 
-    public int ³¡ÉÏ½ÇÉ«ËÀÍö´¥·¢ = 0; // ³¡ÉÏ½ÇÉ«ËÀÍö´¥·¢
+    public int åœºä¸Šè§’è‰²æ­»äº¡è§¦å‘ = 0; // åœºä¸Šè§’è‰²æ­»äº¡è§¦å‘
 
     public abstract void Action_1();
     public abstract void Action_2();
@@ -38,45 +38,45 @@ public abstract class BaseSkill : MonoBehaviour
 
 
 
-    // ÆäËû¿ÉÒÔ¹²ÏíµÄÊôĞÔºÍ·½·¨
+    // å…¶ä»–å¯ä»¥å…±äº«çš„å±æ€§å’Œæ–¹æ³•
     public IEnumerator RotateAndScaleCoroutine(GameObject card)
     {
         Vector3 originalScale = card.transform.localScale;
         float elapsedTime = 0f;
 
         float rotationSpeed = 360f;
-        float fadeDuration = 2f; // ³ÖĞøÊ±¼ä
+        float fadeDuration = 2f; // æŒç»­æ—¶é—´
 
         while (elapsedTime < fadeDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = elapsedTime / fadeDuration; // Ê±¼ä±ÈÀı [0, 1]
+            float t = elapsedTime / fadeDuration; // æ—¶é—´æ¯”ä¾‹ [0, 1]
 
-            // ¼ÆËãËõ·Å
+            // è®¡ç®—ç¼©æ”¾
             float scale = Mathf.Lerp(1f, 0f, t);
             card.transform.localScale = new Vector3(scale, scale, 1f);
 
-            // ¼ÆËãĞı×ª
+            // è®¡ç®—æ—‹è½¬
             float rotation = rotationSpeed * Time.deltaTime;
             card.transform.Rotate(Vector3.forward, rotation);
 
             yield return null;
         }
 
-        // È·±£×îÖÕ×´Ì¬
+        // ç¡®ä¿æœ€ç»ˆçŠ¶æ€
         card.transform.localScale = Vector3.zero;
-        Destroy(card); // ¿ÉÑ¡Ôñ½ûÓÃÎïÌå
+        Destroy(card); // å¯é€‰æ‹©ç¦ç”¨ç‰©ä½“
     }
 
     public GameObject summon_one(GameObject commoncard, int id)
     {
         Texture2D texture = Resources.Load<Texture2D>("card/" + id.ToString());
-        ¿¨ÅÆÊı¾İ Ô­¿¨ÅÆÊı¾İ = ValueHolder.gloabCaedData[id];
-        // Éî¿½±´
-        ¿¨ÅÆÊı¾İ ĞÂ¿¨ÅÆÊı¾İ = new ¿¨ÅÆÊı¾İ(Ô­¿¨ÅÆÊı¾İ);
-        commoncard.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ = ĞÂ¿¨ÅÆÊı¾İ;
-        commoncard.GetComponent<Êı¾İÏÔÊ¾>().¿¨ÅÆÊı¾İ.uid = "0";
-        commoncard.GetComponent<Êı¾İÏÔÊ¾>().enabled = true;
+        å¡ç‰Œæ•°æ® åŸå¡ç‰Œæ•°æ® = ValueHolder.gloabCaedData[id];
+        // æ·±æ‹·è´
+        å¡ç‰Œæ•°æ® æ–°å¡ç‰Œæ•°æ® = new å¡ç‰Œæ•°æ®(åŸå¡ç‰Œæ•°æ®);
+        commoncard.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ® = æ–°å¡ç‰Œæ•°æ®;
+        commoncard.GetComponent<æ•°æ®æ˜¾ç¤º>().å¡ç‰Œæ•°æ®.uid = "0";
+        commoncard.GetComponent<æ•°æ®æ˜¾ç¤º>().enabled = true;
         if (texture != null)
         {
             foreach (Image image in commoncard.GetComponentsInChildren<Image>())
@@ -96,9 +96,9 @@ public abstract class BaseSkill : MonoBehaviour
         foreach (int id in mainfunction.SumomonHandCardID(num))
         {
             Debug.Log(id);
-            GameObject cardone = Instantiate(ValueHolder.ÊÖÅÆ¶ÔÕ½ÅÆ);
+            GameObject cardone = Instantiate(ValueHolder.æ‰‹ç‰Œå¯¹æˆ˜ç‰Œ);
             cardone = summon_one(cardone, id);
-            cardone.transform.SetParent(ValueHolder.ÊÖÅÆÇø.transform, false);
+            cardone.transform.SetParent(ValueHolder.æ‰‹ç‰ŒåŒº.transform, false);
         }
     }
 
