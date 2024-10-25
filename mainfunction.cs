@@ -1239,6 +1239,12 @@ public class mainfunction : MonoBehaviour
 
     public static int 灵力减少(int level, int num)
     {
+        int index = 0;
+
+        for (int i = 1; i < level; i++)
+        {
+            index += ValueHolder.灵力当前状态[i];
+        }
         if (ValueHolder.灵力当前状态[level] < num)
         {
             return 0;
@@ -1246,7 +1252,7 @@ public class mainfunction : MonoBehaviour
 
         for (int i = 0; i < num; i++)
         {
-            DestroyChildAtIndex(ValueHolder.灵力栏, ValueHolder.灵力当前状态[level] - 1);
+            DestroyChildAtIndex(ValueHolder.灵力栏, index);
             ValueHolder.灵力当前状态[level] -= 1;
         }
         return 1;
