@@ -1124,7 +1124,7 @@ public class 外交官 : BaseSkill
         activateTurn_4_finish = 0;
 
         uid = card.GetComponent<数据显示>().卡牌数据.uid;
-        = card.GetComponent<数据显示>().卡牌数据;
+        card_data =  card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
