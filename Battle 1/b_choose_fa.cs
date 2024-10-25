@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -12,26 +12,30 @@ public class b_choose_fa : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         int cardType = eventData.pointerClick.gameObject.GetComponent<MoveController>().cardType;
-        BaseSkill skill = ValueHolder.SkillAction[ValueHolder.ÊÍ·Å·¨Êõuid];
-        skill.×÷ÓÃÄ¿±ê¿¨ÅÆ = eventData.pointerClick.gameObject;
+        BaseSkill skill = ValueHolder.SkillAction[ValueHolder.é‡Šæ”¾æ³•æœ¯uid];
+        skill.ä½œç”¨ç›®æ ‡å¡ç‰Œ = eventData.pointerClick.gameObject;
 
-        if (skill.Ğ§¹û == "ÏûÃğ" && eventData.pointerClick.gameObject.GetComponent<MoveController>().ÏûÃğÃâÒß == 1)
+        if (skill.æ•ˆæœ == "æ¶ˆç­" && eventData.pointerClick.gameObject.GetComponent<MoveController>().æ¶ˆç­å…ç–« == 1)
         {
-            ValueHolder.hintManager.AddHint("´ËÅÆÎŞ·¨±»ÏûÃğ£¡");
+            ValueHolder.hintManager.AddHint("æ­¤ç‰Œæ— æ³•è¢«æ¶ˆç­ï¼");
             return;
-        }else if (skill.Ğ§¹û == "Ñ£ÔÎ" && eventData.pointerClick.gameObject.GetComponent<MoveController>().Ñ£ÔÎÃâÒß == 1)
+        }else if (skill.æ•ˆæœ == "çœ©æ™•" && eventData.pointerClick.gameObject.GetComponent<MoveController>().çœ©æ™•å…ç–« == 1)
         {
-            ValueHolder.hintManager.AddHint("´ËÅÆÎŞ·¨±»Ñ£ÔÎ£¡");
+            ValueHolder.hintManager.AddHint("æ­¤ç‰Œæ— æ³•è¢«çœ©æ™•ï¼");
+            return;
+        }
+        else if (eventData.pointerClick.gameObject.GetComponent<MoveController>().æ³•æœ¯å¯ä½œç”¨ == 0)
+        {
+            ValueHolder.hintManager.AddHint("æ­¤ç‰Œæ— æ³•è¢«æ³•æœ¯é€‰ä¸­ï¼");
             return;
         }
 
-
-        mainfunction.ÆôÓÃÆåÅÌÎï¼ş´úÂë("b_moveca", 0);
-        mainfunction.ÆôÓÃÊÖÅÆÎï¼ş´úÂë("b_cardaction");
+        mainfunction.å¯ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_moveca", 0);
+        mainfunction.å¯ç”¨æ‰‹ç‰Œç‰©ä»¶ä»£ç ("b_cardaction");
         mainfunction.HideCardchoose();
-        ValueHolder.·¨ÊõÑ¡ÔñÈ¡Ïû.gameObject.SetActive(false);
-        mainfunction.½ûÓÃÆåÅÌÎï¼ş´úÂë("b_choose_fa", cardType);
-        mainfunction.ÔËĞĞÏÂ¸ö¼¼ÄÜ½×¶Î(skill);
+        ValueHolder.æ³•æœ¯é€‰æ‹©å–æ¶ˆ.gameObject.SetActive(false);
+        mainfunction.ç¦ç”¨æ£‹ç›˜ç‰©ä»¶ä»£ç ("b_choose_fa", cardType);
+        mainfunction.è¿è¡Œä¸‹ä¸ªæŠ€èƒ½é˜¶æ®µ(skill);
 
     }
 }

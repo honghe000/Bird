@@ -12,7 +12,7 @@ public class MoveController : MonoBehaviour
 
     public Dictionary<string,string> 效果 = new Dictionary<string,string>();
 
-    public int 法术可作用 = 0; // 0表示不可作用，1表示可作用
+    public int 法术可作用 = 1; // 0表示不可作用，1表示可作用
 
     public int 场上我方人数要求 = 0;
     public int 场上敌方人数要求 = 0;

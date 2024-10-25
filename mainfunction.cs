@@ -1007,7 +1007,7 @@ public class mainfunction : MonoBehaviour
                     {
                         // 设置子物件为可见
                         chooseChild.gameObject.SetActive(true);
-                        card.GetComponent<MoveController>().法术可作用 = 1;
+                        
                     }
                 }
             }

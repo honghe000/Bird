@@ -2090,12 +2090,11 @@ public class 牛魔 : BaseSkill
             skill_end = 1;
             return;
         }
-        ValueHolder.释放法术uid = uid;
         ValueHolder.法术作用敌我类型 = 1;
         mainfunction.禁用棋盘物件代码("b_moveca", 0);
         mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
+        mainfunction.ShowCardchoose(1);
+        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
 
         activateTurn_1_finish = 1;
 
