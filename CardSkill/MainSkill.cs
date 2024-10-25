@@ -1930,6 +1930,11 @@ public class 毒雾 : BaseSkill
 
 
                     作用目标卡牌数据.nowHp -= 2;
+                    if (作用目标卡牌数据.nowHp <= 0)
+                    {
+                        mainfunction.卡牌摧毁(card);
+                        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+                    }
                     card.GetComponent<数据显示>().更新数据();
                     mainfunction.Send血量改变(作用目标卡牌数据.uid, 1);
 
@@ -2013,7 +2018,7 @@ public class 战国犀牛 : BaseSkill
 
                     if (作用目标卡牌数据.nowHp <= 2)
                     {
-                        mainfunction.卡牌摧毁(作用目标卡牌);
+                        mainfunction.卡牌摧毁(card);
                         mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
                     }
                 }
