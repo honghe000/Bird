@@ -112,7 +112,7 @@ public class 相安无事: BaseSkill
         activateTurn_4 = -1;
         this.monoBehaviour = monoBehaviour;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
 
 
         activateTurn_1_finish = 0;
@@ -198,7 +198,7 @@ public class 鬼屋 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
         this.monoBehaviour = monoBehaviour;
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
 
 
         activateTurn_1_finish = 0;
@@ -319,7 +319,7 @@ public class 龙首之玉 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -414,7 +414,7 @@ public class 佛光 : BaseSkill
         activateTurn_3 = ValueHolder.turn + delay;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -523,7 +523,7 @@ public class 判官笔 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -612,7 +612,7 @@ public class 巨灵神 : BaseSkill
 
     private void initialization()
     {
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         己方回合结束时触发 = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
@@ -666,7 +666,7 @@ public class 雅典娜 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -748,7 +748,7 @@ public class 蝎尾毒 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -757,7 +757,7 @@ public class 蝎尾毒 : BaseSkill
         activateTurn_4_finish = 0;
 
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -848,7 +848,7 @@ public class 河神之怒 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -857,7 +857,7 @@ public class 河神之怒 : BaseSkill
         activateTurn_4_finish = 0;
 
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -951,7 +951,7 @@ public class 舍生 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -959,7 +959,7 @@ public class 舍生 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1028,7 +1028,7 @@ public class 神谕者 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1036,7 +1036,7 @@ public class 神谕者 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1110,7 +1110,7 @@ public class 外交官 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
@@ -1168,7 +1168,7 @@ public class 肥嘟嘟左卫门 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
@@ -1221,7 +1221,7 @@ public class 雷电 : BaseSkill
         activateTurn_3 = ValueHolder.turn + 1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1229,7 +1229,7 @@ public class 雷电 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
@@ -1324,7 +1324,7 @@ public class 阿尔卡祭坛 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1332,7 +1332,7 @@ public class 阿尔卡祭坛 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
@@ -1406,7 +1406,7 @@ public class 太乙真人 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1485,7 +1485,7 @@ public class 关羽 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
@@ -1553,7 +1553,7 @@ public class 困兽之斗 : BaseSkill
         activateTurn_4 = -1;
         this.monoBehaviour = monoBehaviour;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
 
 
         activateTurn_1_finish = 0;
@@ -1561,7 +1561,7 @@ public class 困兽之斗 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1655,8 +1655,8 @@ public class 牛头马面 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         initialization();
 
     }
@@ -1720,7 +1720,7 @@ public class 迅雷的崩玉 : BaseSkill
         activateTurn_4 = -1;
         this.monoBehaviour = monoBehaviour;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
 
 
         activateTurn_1_finish = 0;
@@ -1728,7 +1728,7 @@ public class 迅雷的崩玉 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1819,7 +1819,7 @@ public class 鬼琵琶 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1827,7 +1827,7 @@ public class 鬼琵琶 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1902,7 +1902,7 @@ public class 毒雾 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1910,7 +1910,7 @@ public class 毒雾 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -1990,7 +1990,7 @@ public class 战国犀牛 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -1998,7 +1998,7 @@ public class 战国犀牛 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -2073,7 +2073,7 @@ public class 牛魔 : BaseSkill
         activateTurn_3 = ValueHolder.turn+1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -2081,7 +2081,7 @@ public class 牛魔 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
 
@@ -2163,7 +2163,7 @@ public class 贩卖鸦片 : BaseSkill
         activateTurn_3 = -1;
         activateTurn_4 = -1;
 
-        card_data = card.GetComponent<数据显示>().卡牌数据;
+        
         this.monoBehaviour = monoBehaviour;
 
         activateTurn_1_finish = 0;
@@ -2171,7 +2171,7 @@ public class 贩卖鸦片 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }
@@ -2243,7 +2243,7 @@ public class 漫步者 : BaseSkill
     {
         card = Card;
         skill_end = 0;
-        activateTurn_1 = -1;
+        activateTurn_1 = ValueHolder.turn;
         activateTurn_2 = -1;
         activateTurn_3 = -1;
         activateTurn_4 = -1;
@@ -2254,7 +2254,7 @@ public class 漫步者 : BaseSkill
         activateTurn_3_finish = 0;
         activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;card_data = card.GetComponent<数据显示>().卡牌数据;
         initialization();
 
     }

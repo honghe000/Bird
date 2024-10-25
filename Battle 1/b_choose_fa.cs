@@ -24,7 +24,7 @@ public class b_choose_fa : MonoBehaviour, IPointerClickHandler
             ValueHolder.hintManager.AddHint("此牌无法被眩晕！");
             return;
         }
-        else if (eventData.pointerClick.gameObject.GetComponent<MoveController>().法术可作用 == 0)
+        else if (eventData.pointerClick.gameObject.GetComponent<MoveController>().法术可作用 == 0 && skill.card_data.类别 == "法术")
         {
             ValueHolder.hintManager.AddHint("此牌无法被法术选中！");
             return;
