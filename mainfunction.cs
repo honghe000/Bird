@@ -62,20 +62,26 @@ public class mainfunction : MonoBehaviour
         }
     }
 
-    public static void DestroyChildAtIndex(GameObject parent, int index)
+    public static void DestroyChildByName(Transform parent, string childName, int count)
     {
-        // 检查父物体是否存在，并且子物体序号有效
-        if (parent != null && index >= 0 && index < parent.transform.childCount)
-        {
-            // 获取指定序号的子物体
-            Transform child = parent.transform.GetChild(index);
+        int destroyedCount = 0; // 记录已销毁的子物体数量
 
-            // 销毁子物体
-            Destroy(child.gameObject);
-        }
-        else
+        // 遍历父物体的所有子物体
+        foreach (Transform child in parent)
         {
-            Debug.LogWarning("无效的父物体或子物体索引！");
+            // 检查子物体名称是否匹配
+            if (child.name == childName)
+            {
+                // 销毁该子物体
+                Destroy(child.gameObject);
+                destroyedCount++; // 更新已销毁的子物体数量
+
+                // 如果达到指定数量，停止操作
+                if (destroyedCount >= count)
+                {
+                    break;
+                }
+            }
         }
     }
 
@@ -1239,28 +1245,30 @@ public class mainfunction : MonoBehaviour
 
     public static int 灵力减少(int level, int num)
     {
-        int index = 0;
-        Debug.Log("消耗灵力:" + level);
-        for (int i = 1; i < level; i++)
+        string 灵力名 = "";
+        switch (level)
         {
-            index += ValueHolder.灵力当前状态[i];
+            case 1:
+                灵力名 = "黄(Clone)";
+                break;
+            case 2:
+                灵力名 = "绿(Clone)";
+                break;
+            case 3:
+                灵力名 = "蓝(Clone)";
+                break;
+            case 4:
+                灵力名 = "紫(Clone)";
+                break;
         }
+
+        DestroyChildByName(ValueHolder.灵力栏.transform, 灵力名, num);
+        ValueHolder.灵力当前状态[level] -= num;
         if (ValueHolder.灵力当前状态[level] < num)
         {
             return 0;
         }
-
-        for (int i = 0; i < num; i++)
-        {
-            DestroyChildAtIndex(ValueHolder.灵力栏, index);
-            ValueHolder.灵力当前状态[level] -= 1;
-
-            index = 0;
-            for (int j = 1; i < level; i++)
-            {
-                index += ValueHolder.灵力当前状态[j];
-            }
-        }
+        
         return 1;
     }
 
