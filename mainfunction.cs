@@ -1263,12 +1263,13 @@ public class mainfunction : MonoBehaviour
         }
 
         DestroyChildByName(ValueHolder.灵力栏.transform, 灵力名, num);
-        ValueHolder.灵力当前状态[level] -= num;
+
         if (ValueHolder.灵力当前状态[level] < num)
         {
             return 0;
         }
-        
+        ValueHolder.灵力当前状态[level] -= num;
+
         return 1;
     }
 
