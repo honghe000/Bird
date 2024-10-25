@@ -1936,7 +1936,7 @@ public class 毒雾 : BaseSkill
                         mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
                     }
                     card.GetComponent<数据显示>().更新数据();
-                    mainfunction.Send血量改变(作用目标卡牌数据.uid, 1);
+                    mainfunction.Send血量改变(作用目标卡牌数据.uid, -2);
 
                 }
             }
