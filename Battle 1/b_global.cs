@@ -39,6 +39,7 @@ public class b_global : MonoBehaviour
         打乱牌组();
         生成棋盘();
         静态设置();
+        mainfunction.灵力回合更新();
         if (ValueHolder.initiative == 1)
         {
             ValueHolder.is_myturn = 1;

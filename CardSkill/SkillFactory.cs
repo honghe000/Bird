@@ -54,6 +54,8 @@ public static class SkillFactory
                 return new 鬼琵琶(card, monoBehaviour);
             case "毒雾":
                 return new 毒雾(card, monoBehaviour);
+            case "战国犀牛":
+                return new 战国犀牛(card, monoBehaviour);
             default:
                 return null;
         }

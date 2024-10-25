@@ -1210,22 +1210,26 @@ public class mainfunction : MonoBehaviour
 
             if (level == 1)
             {
-                灵力 = Instantiate(ValueHolder.黄, ValueHolder.灵力栏.transform);
+                灵力 = Instantiate(ValueHolder.黄);
+                灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
             else if (level == 2)
             {
-                灵力 = Instantiate(ValueHolder.绿, ValueHolder.灵力栏.transform);
+                灵力 = Instantiate(ValueHolder.绿);
+                灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
             else if (level == 3)
             {
-                灵力 = Instantiate(ValueHolder.蓝, ValueHolder.灵力栏.transform);
+                灵力 = Instantiate(ValueHolder.蓝);
+                灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
             else if (level == 4)
             {
-                灵力 = Instantiate(ValueHolder.紫, ValueHolder.灵力栏.transform);
+                灵力 = Instantiate(ValueHolder.紫);
+                灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
 

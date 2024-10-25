@@ -83,7 +83,7 @@ public class b_leave : MonoBehaviour
         ValueHolder.紫 = null;
         ValueHolder.灵力栏 = null;
         ValueHolder.灵力当前状态 = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
-        ValueHolder.灵力当前上限 = new Dictionary<int, int> { { 1, 1 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
+        ValueHolder.灵力当前上限 = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
 
 
         SceneManager.LoadScene("mainpage");
