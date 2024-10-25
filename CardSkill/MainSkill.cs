@@ -885,6 +885,10 @@ public class 河神之怒 : BaseSkill
 
         foreach (GameObject card in mainfunction.获取桥上卡牌())
         {
+            if( card.GetComponent<MoveController>().法术可作用 == 0)
+            {
+                continue;
+            }
             string uid = card.GetComponent<数据显示>().卡牌数据.uid;
             int before_atk = card.GetComponent<数据显示>().卡牌数据.nowAttack;
             this.atk.Add(uid, before_atk);
@@ -1585,6 +1589,10 @@ public class 困兽之斗 : BaseSkill
         card_summon.transform.SetParent(ValueHolder.中立延时法术框.transform);
         foreach (GameObject card in mainfunction.获取全部人物())
         {
+            if( card.GetComponent<MoveController>().法术可作用 == 0)
+            {
+                continue;
+            }
            card.GetComponent<MoveController>().眩晕 = 1;
             mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
         }
@@ -1751,6 +1759,10 @@ public class 迅雷的崩玉 : BaseSkill
 
         foreach (GameObject card in mainfunction.获取敌方全部人物())
         {
+            if( card.GetComponent<MoveController>().法术可作用 == 1)
+            {
+                continue;
+            }
             card.GetComponent<MoveController>().眩晕 = 1;
             mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
         }
@@ -1922,7 +1934,7 @@ public class 毒雾 : BaseSkill
             if (grid.transform.childCount != 0 && grids.Key != "0")
             {
                 GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色"&& card.GetComponent<MoveController>().法术可作用 == 1)
                 {
                     卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
 
@@ -2095,7 +2107,7 @@ public class 牛魔 : BaseSkill
         mainfunction.禁用手牌物件代码("b_cardaction");
         mainfunction.ShowCardchoose(1);
         mainfunction.启用棋盘物件代码("b_choose_fa", 1);
-
+        ValueHolder.释放法术uid = card_data.uid;
         activateTurn_1_finish = 1;
 
     }
@@ -2259,9 +2271,9 @@ public class 漫步者 : BaseSkill
 
     public override void Action_1()
     {
-        
+        mainfunction.Send效果挂载(uid,4);
         activateTurn_1_finish = 1;
-        
+        skill_end = 1;
     }
 
     public override void Action_2()

@@ -1,4 +1,4 @@
-using ExitGames.Client.Photon;
+﻿using ExitGames.Client.Photon;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -505,7 +505,10 @@ public class b_listen : MonoBehaviour
                     {
                         card.GetComponent<MoveController>().眩晕 = 1;
                     }
-
+                    else if (mes.effect == 4)//法术可作用
+                    {
+                        card.GetComponent<MoveController>().法术可作用 = 1;
+                    }
                 }
             }
         }
@@ -531,6 +534,10 @@ public class b_listen : MonoBehaviour
                     else if (mes.effect == 3) //眩晕
                     {
                         card.GetComponent<MoveController>().眩晕 = 0;
+                    }
+                    else if (mes.effect == 4)//法术可作用
+                    {
+                        card.GetComponent<MoveController>().法术可作用 = 0;
                     }
                 }
             }
