@@ -1240,7 +1240,7 @@ public class mainfunction : MonoBehaviour
     public static int 灵力减少(int level, int num)
     {
         int index = 0;
-
+        Debug.Log("消耗灵力:" + level);
         for (int i = 1; i < level; i++)
         {
             index += ValueHolder.灵力当前状态[i];
@@ -1254,6 +1254,12 @@ public class mainfunction : MonoBehaviour
         {
             DestroyChildAtIndex(ValueHolder.灵力栏, index);
             ValueHolder.灵力当前状态[level] -= 1;
+
+            index = 0;
+            for (int j = 1; i < level; i++)
+            {
+                index += ValueHolder.灵力当前状态[j];
+            }
         }
         return 1;
     }
