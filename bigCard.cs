@@ -85,22 +85,22 @@ public class 数据显示 : MonoBehaviour
         蓝.gameObject.SetActive(false);
         紫.gameObject.SetActive(false);
 
-        if(卡牌数据.黄 > 0)
+        if(卡牌数据.黄 >= 0)
         {
             黄.gameObject.SetActive(true);
             灵力.text = 卡牌数据.黄.ToString();
             灵力消耗等级 = 1;
-        }else if (卡牌数据.绿 > 0)
+        }else if (卡牌数据.绿 >= 0)
         {
             绿.gameObject.SetActive(true);
             灵力.text = 卡牌数据.绿.ToString();
             灵力消耗等级 = 2;
-        }else if (卡牌数据.蓝 > 0)
+        }else if (卡牌数据.蓝 >= 0)
         {
             蓝.gameObject.SetActive(true);
             灵力.text = 卡牌数据.蓝.ToString();
             灵力消耗等级 = 3;
-        }else if (卡牌数据.紫 > 0)
+        }else if (卡牌数据.紫 >= 0)
         {
             紫.gameObject.SetActive(true);
             灵力.text = 卡牌数据.紫.ToString();
@@ -153,25 +153,25 @@ public class 数据显示 : MonoBehaviour
         蓝.gameObject.SetActive(false);
         紫.gameObject.SetActive(false);
 
-        if (卡牌数据.黄 > 0)
+        if (卡牌数据.黄 >= 0)
         {
             黄.gameObject.SetActive(true);
             灵力.text = 卡牌数据.黄.ToString();
             灵力消耗等级 = 1;
         }
-        else if (卡牌数据.绿 > 0)
+        else if (卡牌数据.绿 >= 0)
         {
             绿.gameObject.SetActive(true);
             灵力.text = 卡牌数据.绿.ToString();
             灵力消耗等级 = 2;
         }
-        else if (卡牌数据.蓝 > 0)
+        else if (卡牌数据.蓝 >= 0)
         {
             蓝.gameObject.SetActive(true);
             灵力.text = 卡牌数据.蓝.ToString();
             灵力消耗等级 = 3;
         }
-        else if (卡牌数据.紫 > 0)
+        else if (卡牌数据.紫 >= 0)
         {
             紫.gameObject.SetActive(true);
             灵力.text = 卡牌数据.紫.ToString();

@@ -40,7 +40,21 @@ public class mysql : MonoBehaviour
             int 绿 = reader.GetInt32("green");
             int 蓝 = reader.GetInt32("blue");
             int 紫 = reader.GetInt32("purple");
-            卡牌数据 card = new 卡牌数据(name, skill, level, type, id, "0", maxHP, maxATK, maxHP, maxATK, 黄, 绿, 蓝, 紫);
+            int 灵力消耗 = -1;
+            if (黄 >= 0)
+            {
+                灵力消耗 = 黄;
+            }else if (绿 >= 0)
+            {
+                灵力消耗 = 绿;
+            }else if(蓝 >= 0)
+            {
+                灵力消耗 = 蓝;
+            }else if (紫 >= 0)
+            {
+                灵力消耗 = 紫;
+            }
+            卡牌数据 card = new 卡牌数据(name, skill, level, type, id, "0", maxHP, maxATK, maxHP, maxATK, 黄, 绿, 蓝, 紫,灵力消耗);
             selectedCards.Add(card);
         }
         reader.Close();

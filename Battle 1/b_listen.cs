@@ -1,4 +1,5 @@
 using ExitGames.Client.Photon;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -38,10 +39,19 @@ public class b_listen : MonoBehaviour
             else
             {
                 // 假设 ValueHolder.ResieveMessages 是一个消息队列或存储最新消息的地方
-                Message mes = JsonUtility.FromJson<Message>(ValueHolder.receiveQueue.Dequeue());
-                mes.is_used = 1;
-                mainfunction.ChangeRecieveMessage("is_used", 1);
-                process(mes); // 处理消息
+                try
+                {
+                    Message mes = JsonUtility.FromJson<Message>(ValueHolder.receiveQueue.Dequeue());
+                    mes.is_used = 1;
+                    mainfunction.ChangeRecieveMessage("is_used", 1);
+                    process(mes); // 处理消息
+                }
+                catch (ArgumentException e)
+                {
+                    Debug.LogError("JSON Parsing Error: " + e.Message);
+                    Debug.LogError("JSON String: " + ValueHolder.receiveQueue.Dequeue());
+                }
+
                 yield return new WaitForSeconds(0.2f); // 等待0.1秒
             }
         }

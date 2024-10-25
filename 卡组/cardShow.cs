@@ -84,22 +84,22 @@ public class cardShow : MonoBehaviour
         蓝.gameObject.SetActive(false);
         紫.gameObject.SetActive(false);
 
-        if (卡牌数据.黄 > 0)
+        if (卡牌数据.黄 >= 0)
         {
             黄.gameObject.SetActive(true);
             灵力.text = 卡牌数据.黄.ToString();
         }
-        else if (卡牌数据.绿 > 0)
+        else if (卡牌数据.绿 >= 0)
         {
             绿.gameObject.SetActive(true);
             灵力.text = 卡牌数据.绿.ToString();
         }
-        else if (卡牌数据.蓝 > 0)
+        else if (卡牌数据.蓝 >= 0)
         {
             蓝.gameObject.SetActive(true);
             灵力.text = 卡牌数据.蓝.ToString();
         }
-        else if (卡牌数据.紫 > 0)
+        else if (卡牌数据.紫 >= 0)
         {
             紫.gameObject.SetActive(true);
             灵力.text = 卡牌数据.紫.ToString();
