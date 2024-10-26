@@ -509,6 +509,10 @@ public class b_listen : MonoBehaviour
                     {
                         card.GetComponent<MoveController>().法术可作用 = 0;
                     }
+                    else if(mes.effect == 5)//眩晕免疫
+                    {
+                        card.GetComponent<MoveController>().眩晕免疫 = 1;
+                    }
                 }
             }
         }
@@ -538,6 +542,10 @@ public class b_listen : MonoBehaviour
                     else if (mes.effect == 4)//法术不可作用
                     {
                         card.GetComponent<MoveController>().法术可作用 = 1;
+                    }
+                    else if (mes.effect == 5)//眩晕免疫
+                    {
+                        card.GetComponent<MoveController>().眩晕免疫 = 0;
                     }
                 }
             }

@@ -1344,7 +1344,7 @@ public class mainfunction : MonoBehaviour
         灵力增加(4, ValueHolder.灵力当前上限[4]);
     }
 
-    public static void 选择我方卡牌施放(卡牌数据 card_data, int can_cancel)
+    public static void 选择我方卡牌施放(卡牌数据 card_data, int can_cancel)//可以取消施法：1.不可以为0
     {
         ValueHolder.法术作用敌我类型 = 0;
         禁用棋盘物件代码("b_moveca", 0);

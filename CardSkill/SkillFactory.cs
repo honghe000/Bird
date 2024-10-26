@@ -68,6 +68,10 @@ public static class SkillFactory
                 return new 远古石像鬼(card, monoBehaviour);
             case "丁达尔效应":
                 return new 丁达尔效应(card, monoBehaviour);
+            case "钟馗":
+                return new 钟馗(card, monoBehaviour);
+            case "武僧":
+                return new 武僧(card, monoBehaviour);
             default:
                 return null;
         }
