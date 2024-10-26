@@ -926,7 +926,7 @@ public class 河神之怒 : BaseSkill
         foreach (KeyValuePair<string, int> kvp in atk)
         {
             GameObject card = mainfunction.uid找卡(kvp.Key);
-            card.GetComponent<数据显示>().卡牌数据.nowAttack = kvp.Value;
+            card.GetComponent<数据显示>().卡牌数据.nowAttack += kvp.Value;
             card.GetComponent<数据显示>().更新数据();
 
             mainfunction.Send攻击力改变(kvp.Key, kvp.Value);
@@ -2159,7 +2159,7 @@ public class 牛魔 : BaseSkill
         foreach (KeyValuePair<string, int> kvp in atk)
         {
             GameObject card = mainfunction.uid找卡(kvp.Key);
-            card.GetComponent<数据显示>().卡牌数据.nowAttack = kvp.Value;
+            card.GetComponent<数据显示>().卡牌数据.nowAttack += kvp.Value;
             card.GetComponent<数据显示>().更新数据();
 
             mainfunction.Send攻击力改变(kvp.Key, kvp.Value);
