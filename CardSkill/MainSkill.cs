@@ -2363,8 +2363,8 @@ public class 杨枝甘露 : BaseSkill
         ValueHolder.法术作用敌我类型 = 0;
         mainfunction.禁用棋盘物件代码("b_moveca", 0);
         mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(1);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
+        mainfunction.ShowCardchoose(0);
+        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
         ValueHolder.法术选择取消.gameObject.SetActive(true);
         Debug.Log("选择");
         activateTurn_1_finish = 1;
