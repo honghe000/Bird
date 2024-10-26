@@ -2445,7 +2445,7 @@ public class 丁达尔效应 : BaseSkill
 
     public override void Action_2()
     {
-        card.GetComponent<MoveController>().行动点 += 1;
+        作用目标卡牌.GetComponent<MoveController>().行动点 += 1;
         activateTurn_2_finish = 1;
         skill_end = 1;
     }
