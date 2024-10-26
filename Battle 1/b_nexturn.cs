@@ -49,13 +49,20 @@ public class b_nexturn : MonoBehaviour
             mainfunction.ChangeSendMessage("Action", 12);
             ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
             mainfunction.倒计时回合变化();
+            行动点归零();
             HintManager.AddHint("敌方回合！");
         }
+    }
 
-
-
-
-
+    void 行动点归零()
+    {
+        foreach (GameObject card in mainfunction.获取我方全部人物())
+        {
+            if (card != null)
+            {
+                card.GetComponent<MoveController>().行动点 = 0;
+            }
+        }
     }
 
     void skillturn()

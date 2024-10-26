@@ -9,7 +9,6 @@ using UnityEngine.UI;
 public class b_moveca : MonoBehaviour,IPointerClickHandler
 {
     public GameObject commoncard;
-    private GameObject copycard;
     //public GameObject canvas;
     //private float scale_x;
 
@@ -93,6 +92,12 @@ public class b_moveca : MonoBehaviour,IPointerClickHandler
             return;
         }
 
+        if (ValueHolder.point <= 0 && eventData.pointerClick.GetComponent<MoveController>().行动点 <= 0)
+        {
+            ValueHolder.hintManager.AddHint("体力不足！");
+            return;
+        }
+
         //选中一张卡时，处理点击另一张卡的情况
         if (ValueHolder.choosed_object!= null && eventData.pointerClick.GetComponent<CanvasGroup>().alpha == 1f)
         {
@@ -102,7 +107,6 @@ public class b_moveca : MonoBehaviour,IPointerClickHandler
         }
         if (eventData.pointerClick.GetComponent<CanvasGroup>().alpha == 1f)
         {
-            Destroy(copycard);
             eventData.pointerClick.GetComponent<CanvasGroup>().alpha = 0.8f;
             ValueHolder.is_choose = 1;
             ValueHolder.choosed_object = eventData.pointerClick;

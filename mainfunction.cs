@@ -699,7 +699,26 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
+    public static void Send卡牌移动(int start_index, int end_index)
+    {
+        start_index = ConvertPosition(start_index);
+        end_index = ConvertPosition(end_index);
+        ChangeSendMessage("Action", 10);
+        ChangeSendMessage("start_index", start_index);
+        ChangeSendMessage("end_index", end_index);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
 
+    }
+
+    public static void Send卡牌生成(int cardID, int start_index, string uid)
+    {
+        start_index = ConvertPosition(start_index);
+        ChangeSendMessage("Action", 9);
+        ChangeSendMessage("cardID", cardID);
+        ChangeSendMessage("start_index", start_index);
+        ChangeSendMessage("uid", uid);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
 
 
 
@@ -1053,41 +1072,7 @@ public class mainfunction : MonoBehaviour
         }
         return i;
     }
-
-    public static List<GameObject> 获取全部人物()
-    {
-       List<GameObject> 全部人物 = new List<GameObject>();
-        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
-        {
-            GameObject grid = grids.Value;
-            if (grid.transform.childCount != 0 && grids.Key != "0")
-            {
-                GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
-                {
-                    全部人物.Add(card);
-                }
-            }
-        }
-        return 全部人物;
-    }
-    public static List<GameObject> 获取敌方全部人物()
-    {
-        List<GameObject> 全部敌方人物 = new List<GameObject>();
-        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
-        {
-            GameObject grid = grids.Value;
-            if (grid.transform.childCount != 0 && grids.Key != "0")
-            {
-                GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
-                {
-                    全部敌方人物.Add(card);
-                }
-            }
-        }
-        return 全部敌方人物;
-    }
+    
     public static int 敌方人物数量()
     {
         int i = 0;
@@ -1106,6 +1091,60 @@ public class mainfunction : MonoBehaviour
         return i;
     }
 
+    public static List<GameObject> 获取全部人物()
+    {
+       List<GameObject> 全部人物 = new List<GameObject>();
+        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+        {
+            GameObject grid = grids.Value;
+            if (grid.transform.childCount != 0 && grids.Key != "0")
+            {
+                GameObject card = grid.transform.GetChild(0).gameObject;
+                if (card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                {
+                    全部人物.Add(card);
+                }
+            }
+        }
+        return 全部人物;
+    }
+    
+    public static List<GameObject> 获取我方全部人物()
+    {
+        List<GameObject> 全部我方人物 = new List<GameObject>();
+        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+        {
+            GameObject grid = grids.Value;
+            if (grid.transform.childCount != 0 && grids.Key != "0")
+            {
+                GameObject card = grid.transform.GetChild(0).gameObject;
+                if (card.GetComponent<MoveController>().cardType == 0 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                {
+                    全部我方人物.Add(card);
+                }
+            }
+        }
+        return 全部我方人物;
+    }
+    
+    public static List<GameObject> 获取敌方全部人物()
+    {
+        List<GameObject> 全部敌方人物 = new List<GameObject>();
+        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+        {
+            GameObject grid = grids.Value;
+            if (grid.transform.childCount != 0 && grids.Key != "0")
+            {
+                GameObject card = grid.transform.GetChild(0).gameObject;
+                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                {
+                    全部敌方人物.Add(card);
+                }
+            }
+        }
+        return 全部敌方人物;
+    }
+    
     public static GameObject uid找卡(string uid) {
 
         foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
@@ -1305,5 +1344,33 @@ public class mainfunction : MonoBehaviour
         灵力增加(4, ValueHolder.灵力当前上限[4]);
     }
 
+    public static void 选择我方卡牌施放(卡牌数据 card_data, int can_cancel)
+    {
+        ValueHolder.法术作用敌我类型 = 0;
+        禁用棋盘物件代码("b_moveca", 0);
+        禁用手牌物件代码("b_cardaction");
+        ShowCardchoose(0);
+        启用棋盘物件代码("b_choose_fa", 0);
+        ValueHolder.释放法术uid = card_data.uid;
 
+        if (can_cancel == 1)
+        {
+            ValueHolder.法术选择取消.gameObject.SetActive(true);
+        }
+    }
+
+    public static void 选择敌方卡牌施放(卡牌数据 card_data, int can_cancel)
+    {
+        ValueHolder.法术作用敌我类型 = 1;
+        禁用棋盘物件代码("b_moveca", 0);
+        禁用手牌物件代码("b_cardaction");
+        ShowCardchoose(1);
+        启用棋盘物件代码("b_choose_fa", 1);
+        ValueHolder.释放法术uid = card_data.uid;
+
+        if (can_cancel == 1)
+        {
+            ValueHolder.法术选择取消.gameObject.SetActive(true);
+        }
+    }
 }

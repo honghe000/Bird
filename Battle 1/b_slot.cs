@@ -60,7 +60,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                     hintManager.AddHint("灵力不足！");
                     return;
                 }
-                send_summon_card(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.id, int.Parse(transform.name), eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.uid);
+                mainfunction.Send卡牌生成(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.id, int.Parse(transform.name), eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.uid);
                 eventData.pointerDrag.transform.SetParent(transform);
                 eventData.pointerDrag.GetComponent<CanvasGroup>().alpha = 1.0f;
                 eventData.pointerDrag.GetComponent<CanvasGroup>().blocksRaycasts = true;
@@ -95,8 +95,8 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
     int 消耗灵力(PointerEventData eventData)
     {
         数据显示 card_show = eventData.pointerDrag.gameObject.GetComponent<数据显示>();
-        int level = card_show.灵力消耗等级;
-        int 灵力消耗 = card_show.卡牌数据.灵力消耗;
+        int level = card_show.卡牌数据.灵力消耗等级;
+        int 灵力消耗 = card_show.卡牌数据.灵力消耗数量;
         if (灵力消耗 == -1)
         {
             return 1;
@@ -109,31 +109,45 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (ValueHolder.choosed_object!= null && ValueHolder.point> 0)
+        
+        if (ValueHolder.choosed_object!= null)
         {
             int start_index = int.Parse(ValueHolder.choosed_object.transform.parent.name);
             int end_index = int.Parse(gameObject.name);
             List<int> availableMoves = ValueHolder.choosed_object.GetComponent<MoveController>().GetAvailableMoves(start_index);
+            int 行动点 = ValueHolder.choosed_object.GetComponent<MoveController>().行动点;
 
 
 
 
             if (availableMoves.Contains(end_index))
             {
-                send_move_card(start_index, end_index);
+                if (ValueHolder.point < 0 && 行动点 < 0)
+                {
+                    return;
+                }
+
+                mainfunction.Send卡牌移动(start_index, end_index);
                 ValueHolder.is_choose = 0;
                 ValueHolder.choosed_object.GetComponent<CanvasGroup>().alpha = 1.0f;
                 ValueHolder.choosed_object.GetComponent<CanvasGroup>().blocksRaycasts = true;
                 ValueHolder.choosed_object.transform.SetParent(transform);
-                Winmove(ValueHolder.choosed_object);
+                //Winmove(ValueHolder.choosed_object);
 
                 ValueHolder.choosed_object = null;
                 set_color_white(availableMoves);
 
 
-                //更新体力
-                ValueHolder.point -= 1;
-                体力.text = ValueHolder.point.ToString();
+                if (行动点 > 0)
+                {
+                    ValueHolder.choosed_object.GetComponent<MoveController>().行动点 -= 1;
+                }
+                else
+                {
+                    ValueHolder.point -= 1;
+                    体力.text = ValueHolder.point.ToString();
+                }
+
 
             }
 
@@ -151,42 +165,9 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
         }
     }
 
-    public int ConvertPosition(int position)
-    {
-        // 将位置编号转换为行和列坐标
-        int row = (position - 1) / 5;
-        int column = (position - 1) % 5;
 
-        // 计算对手看到的行和列坐标
-        int opponentRow = 5 - 1 - row;
-        int opponentColumn = 5 - 1 - column;
 
-        // 将对手看到的行和列坐标转换回位置编号
-        int opponentPosition = (opponentRow * 5 + opponentColumn) + 1;
 
-        return opponentPosition;
-    }
-
-    void send_summon_card(int cardID,int start_index,string uid)
-    {
-        start_index = ConvertPosition(start_index);
-        mainfunction.ChangeSendMessage("Action", 9);
-        mainfunction.ChangeSendMessage("cardID", cardID);
-        mainfunction.ChangeSendMessage("start_index", start_index);
-        mainfunction.ChangeSendMessage("uid", uid);
-        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
-    }
-
-    void send_move_card(int start_index,int end_index)
-    {
-        start_index = ConvertPosition(start_index);
-        end_index = ConvertPosition(end_index);
-        mainfunction.ChangeSendMessage("Action", 10);
-        mainfunction.ChangeSendMessage("start_index", start_index);
-        mainfunction.ChangeSendMessage("end_index", end_index);
-        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
-
-    }
 
     void change_card_color(GameObject card,string color)
     {
@@ -210,38 +191,9 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
         List<int> winpos = card.GetComponent<MoveController>().GetWinpos();
 
         if (winpos.Contains(int.Parse(card.transform.parent.name))){
-            StartCoroutine(RotateAndScaleCoroutine(card));
+            mainfunction.卡牌摧毁(card);
             Debug.Log("win");
         }
     
-    }
-
-    IEnumerator RotateAndScaleCoroutine(GameObject card)
-    {
-        Vector3 originalScale = card.transform.localScale;
-        float elapsedTime = 0f;
-
-        float rotationSpeed = 360f;
-        float fadeDuration = 2f; // 持续时间
-
-        while (elapsedTime < fadeDuration)
-        {
-            elapsedTime += Time.deltaTime;
-            float t = elapsedTime / fadeDuration; // 时间比例 [0, 1]
-
-            // 计算缩放
-            float scale = Mathf.Lerp(1f, 0f, t);
-            card.transform.localScale = new Vector3(scale, scale, 1f);
-
-            // 计算旋转
-            float rotation = rotationSpeed * Time.deltaTime;
-            card.transform.Rotate(Vector3.forward, rotation);
-
-            yield return null;
-        }
-
-        // 确保最终状态
-        card.transform.localScale = Vector3.zero;
-        Destroy(card); // 可选择禁用物体
     }
 }

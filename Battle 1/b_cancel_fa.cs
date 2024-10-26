@@ -33,6 +33,10 @@ public class b_cancel_fa : MonoBehaviour
         cardone.transform.SetSiblingIndex(ValueHolder.拖拽序号);
 
         ValueHolder.SkillAction.Remove(ValueHolder.释放法术uid);
+
+        //返还灵力
+        mainfunction.灵力增加(skill.card_data.灵力消耗等级, skill.card_data.灵力消耗数量);
+
     }
 
     public GameObject summon_one(GameObject commoncard, int id)

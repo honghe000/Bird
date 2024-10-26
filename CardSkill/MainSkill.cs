@@ -445,13 +445,7 @@ public class 佛光 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.法术作用敌我类型 = 0;
-        mainfunction.禁用棋盘物件代码("b_moveca",0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa",0);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
-        Debug.Log("选择");
+        mainfunction.选择我方卡牌施放(card_data, 1);
         activateTurn_1_finish = 1;
 
     }
@@ -555,14 +549,7 @@ public class 判官笔 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.法术作用敌我类型 = 1;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(1);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
-        Debug.Log("选择");
-        ValueHolder.释放法术uid = card_data.uid;
+        mainfunction.选择敌方卡牌施放(card_data, 1);
 
 
         activateTurn_1_finish = 1;
@@ -704,12 +691,7 @@ public class 雅典娜 : BaseSkill
             skill_end = 1;
             return;
         }
-        ValueHolder.释放法术uid = uid;
-        ValueHolder.法术作用敌我类型 = 0;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
+        mainfunction.选择我方卡牌施放(card_data, 0);
 
         activateTurn_1_finish = 1;
 
@@ -988,13 +970,7 @@ public class 舍生 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.释放法术uid = uid;
-        ValueHolder.法术作用敌我类型 = 0;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
+        mainfunction.选择我方卡牌施放(card_data, 1);
         activateTurn_1_finish = 1;
 
     }
@@ -1262,13 +1238,7 @@ public class 雷电 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.法术作用敌我类型 = 1;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(1);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
-        Debug.Log("选择");
+        mainfunction.选择敌方卡牌施放(card_data, 1);
 
 
 
@@ -1446,12 +1416,7 @@ public class 太乙真人 : BaseSkill
             skill_end = 1;
             return;
         }
-        ValueHolder.释放法术uid = uid;
-        ValueHolder.法术作用敌我类型 = 0;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
+        mainfunction.选择我方卡牌施放(card_data, 0);
 
         activateTurn_1_finish = 1;
 
@@ -1526,14 +1491,7 @@ public class 关羽 : BaseSkill
         {
             return;
         }
-        ValueHolder.法术作用敌我类型 = 1;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(1);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
-        Debug.Log("选择");
-        ValueHolder.释放法术uid = uid;
+        mainfunction.选择敌方卡牌施放(card_data, 0);
         activateTurn_1_finish = 1;
 
 
@@ -1867,13 +1825,7 @@ public class 鬼琵琶 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.释放法术uid = uid;
-        ValueHolder.法术作用敌我类型 = 0;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
+        mainfunction.选择我方卡牌施放(card_data, 1);
         activateTurn_1_finish = 1;
 
     }
@@ -2128,12 +2080,7 @@ public class 牛魔 : BaseSkill
             skill_end = 1;
             return;
         }
-        ValueHolder.法术作用敌我类型 = 1;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(1);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
-        ValueHolder.释放法术uid = card_data.uid;
+        mainfunction.选择敌方卡牌施放(card_data, 0);
         activateTurn_1_finish = 1;
 
     }
@@ -2215,13 +2162,7 @@ public class 贩卖鸦片 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.法术作用敌我类型 = 1;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(1);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 1);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
-        Debug.Log("选择");
+        mainfunction.选择敌方卡牌施放(card_data, 1);
 
 
 
@@ -2360,13 +2301,7 @@ public class 杨枝甘露 : BaseSkill
     }
     public override void Action_1()
     {
-        ValueHolder.法术作用敌我类型 = 0;
-        mainfunction.禁用棋盘物件代码("b_moveca", 0);
-        mainfunction.禁用手牌物件代码("b_cardaction");
-        mainfunction.ShowCardchoose(0);
-        mainfunction.启用棋盘物件代码("b_choose_fa", 0);
-        ValueHolder.法术选择取消.gameObject.SetActive(true);
-        Debug.Log("选择");
+        mainfunction.选择我方卡牌施放(card_data, 1);
         activateTurn_1_finish = 1;
     }
 
@@ -2463,3 +2398,70 @@ public class 远古石像鬼 : BaseSkill
     }
 
 }
+
+public class 丁达尔效应 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 丁达尔效应(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().场上我方人数要求 = 1;
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "丁达尔效应");
+        }
+    }
+    public override void Action_1()
+    {
+        mainfunction.选择我方卡牌施放(card_data, 1);
+        activateTurn_1_finish = 1;
+    }
+
+    public override void Action_2()
+    {
+        card.GetComponent<MoveController>().行动点 += 1;
+        activateTurn_2_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_3()
+    {
+
+
+        activateTurn_3_finish = 1;
+
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+

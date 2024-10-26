@@ -143,8 +143,8 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
     int 消耗灵力(PointerEventData eventData)
     {
         数据显示 card_show = eventData.pointerDrag.gameObject.GetComponent<数据显示>();
-        int level = card_show.灵力消耗等级;
-        int 灵力消耗 = card_show.卡牌数据.灵力消耗;
+        int level = card_show.卡牌数据.灵力消耗等级;
+        int 灵力消耗 = card_show.卡牌数据.灵力消耗数量;
         if (灵力消耗 == -1)
         {
             return 1;

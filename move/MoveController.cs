@@ -25,6 +25,8 @@ public class MoveController : MonoBehaviour
 
     public int 杀人后触发 = 0;
 
+    public int 行动点 = 0;
+
     public MoveController()
     {
         InitializeBoard();

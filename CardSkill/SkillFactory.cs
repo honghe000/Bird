@@ -66,6 +66,8 @@ public static class SkillFactory
                 return new 杨枝甘露(card, monoBehaviour);
             case "远古石像鬼":
                 return new 远古石像鬼(card, monoBehaviour);
+            case "丁达尔效应":
+                return new 丁达尔效应(card, monoBehaviour);
             default:
                 return null;
         }
