@@ -134,8 +134,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                 ValueHolder.choosed_object.transform.SetParent(transform);
                 //Winmove(ValueHolder.choosed_object);
 
-                ValueHolder.choosed_object = null;
-                set_color_white(availableMoves);
+
 
 
                 if (行动点 > 0)
@@ -147,6 +146,9 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                     ValueHolder.point -= 1;
                     体力.text = ValueHolder.point.ToString();
                 }
+
+                ValueHolder.choosed_object = null;
+                set_color_white(availableMoves);
 
 
             }
