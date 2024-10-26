@@ -62,6 +62,10 @@ public static class SkillFactory
                 return new 贩卖鸦片(card, monoBehaviour);
             case "漫步者":
                 return new 漫步者(card, monoBehaviour);
+            case "杨枝甘露":
+                return new 杨枝甘露(card, monoBehaviour);
+            case "远古石像鬼":
+                return new 远古石像鬼(card, monoBehaviour);
             default:
                 return null;
         }
