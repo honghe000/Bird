@@ -23,10 +23,16 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
             int start_index = int.Parse(ValueHolder.choosed_object.transform.parent.name);
             List<int> availableMoves = ValueHolder.choosed_object.GetComponent<MoveController>().GetAvailableMoves(start_index);
             ValueHolder.choosed_object.GetComponent<CanvasGroup>().alpha = 1f;
+            int 行动点 = ValueHolder.choosed_object.GetComponent<MoveController>().行动点;
 
             set_color_white(availableMoves);
-            if (availableMoves.Contains(enemy_index) && ValueHolder.point > 0)
+            if (availableMoves.Contains(enemy_index))
             {
+                if (ValueHolder.point < 0 && 行动点 < 0)
+                {
+                    return;
+                }
+
                 if (ValueHolder.copyed_object != null)
                 {
                     Destroy(ValueHolder.copyed_object);
@@ -39,8 +45,15 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
                 }
                 mainfunction.cardAttack(ValueHolder.choosed_object,this.gameObject,0);
 
-                ValueHolder.point -= 1;
-                体力.text = ValueHolder.point.ToString();
+                if (行动点 > 0)
+                {
+                    ValueHolder.choosed_object.GetComponent<MoveController>().行动点 -= 1;
+                }
+                else
+                {
+                    ValueHolder.point -= 1;
+                    体力.text = ValueHolder.point.ToString();
+                }
 
                 ValueHolder.choosed_object = null;
 
