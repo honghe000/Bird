@@ -4,6 +4,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
 using System.Text;
@@ -12,6 +13,7 @@ using Unity.Burst.Intrinsics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Color = UnityEngine.Color;
 
 
 /*
@@ -1434,9 +1436,32 @@ public class mainfunction : MonoBehaviour
             }
             ValueHolder.SkillAction.Add(summonCard.GetComponent<数据显示>().卡牌数据.uid, skill);
         }
-        summonCard.transform.SetParent(ValueHolder.棋盘[index.ToString()].transform);
+
+        改变卡牌汉字颜色(summonCard, "blue");
+        summonCard.transform.SetParent(ValueHolder.棋盘[ValueHolder.点击格子编号.ToString()].transform);
+        Send卡牌生成(cardID, ValueHolder.点击格子编号, summonCard.GetComponent<数据显示>().卡牌数据.uid);
+
         return summonCard;
 
+    }
+
+    public static void 改变卡牌汉字颜色(GameObject card, string color)//支持"red"和"blue"
+    {
+        foreach (Transform child in card.transform)
+        {
+            TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+            if (text != null)
+            {
+                if (color == "red")
+                {
+                    text.color = UnityEngine.Color.red;
+                }
+                if (color == "blue")
+                {
+                    text.color = UnityEngine.Color.blue;
+                }
+            }
+        }
     }
 
 }

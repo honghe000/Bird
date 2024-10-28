@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Reflection;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
@@ -2649,7 +2650,9 @@ public class 虾兵蟹将 : BaseSkill
 
     public override void Action_2()
     {
-        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 0);
+        GameObject summon = mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 0);
+        Debug.Log(ValueHolder.点击格子编号.ToString());
+        summon.transform.SetParent(ValueHolder.棋盘[ValueHolder.点击格子编号.ToString()].transform);
         activateTurn_2_finish = 1;
     }
 

@@ -68,8 +68,8 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                 eventData.pointerDrag.GetComponent<b_moveca>().enabled = true;
                 Debug.Log(eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.uid);
 
-                change_card_color(eventData.pointerDrag,"blue");
-                set_color_white(avalibaleDrag);
+                mainfunction.改变卡牌汉字颜色(eventData.pointerDrag,"blue");
+                mainfunction.格子颜色还原();
 
                 if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别 == "角色")
                 {
@@ -117,12 +117,16 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             ValueHolder.下个回合.interactable = true;
             ValueHolder.下个回合.image.color = Color.white;
             mainfunction.格子颜色还原();
-            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid];
-            mainfunction.运行下个技能阶段(skill);
+
 
 
             int clicked_index = int.Parse(gameObject.name);
             ValueHolder.点击格子编号 = clicked_index;
+
+
+            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid];
+            mainfunction.运行下个技能阶段(skill);
+
             ValueHolder.启用点选格子 = 0;
             ValueHolder.点选技能uid = null;
             return;
@@ -168,7 +172,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                 }
 
                 ValueHolder.choosed_object = null;
-                set_color_white(availableMoves);
+                mainfunction.格子颜色还原();
 
 
             }
@@ -176,37 +180,6 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
         }
 
 
-    }
-
-    public void set_color_white(List<int> availableMoves)
-    {
-        foreach (int i in availableMoves)
-        {
-            Color grenn = new Color(0.4f, 0.9f, 0.5f, 0f);
-            ValueHolder.棋盘[i.ToString()].GetComponent<UnityEngine.UI.Image>().color = grenn;
-        }
-    }
-
-
-
-
-
-    void change_card_color(GameObject card,string color)
-    {
-        foreach (Transform child in card.transform)
-        {
-            TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-            if (text != null)
-            {
-                if (color == "red")
-                {
-                    text.color = Color.red;
-                }if (color == "blue")
-                {
-                    text.color = Color.blue;
-                }
-            }
-        }
     }
 
     void Winmove(GameObject card) { 
