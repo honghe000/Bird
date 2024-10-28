@@ -1568,7 +1568,7 @@ public class 困兽之斗 : BaseSkill
         card_summon.transform.SetParent(ValueHolder.中立延时法术框.transform);
         foreach (GameObject card in mainfunction.获取全部人物())
         {
-            if( card.GetComponent<MoveController>().法术可作用 == 0)
+            if( card.GetComponent<MoveController>().法术可作用 == 0 || card.GetComponent<MoveController>().眩晕免疫 == 1)
             {
                 continue;
             }
@@ -1740,7 +1740,7 @@ public class 迅雷的崩玉 : BaseSkill
 
         foreach (GameObject card in mainfunction.获取敌方全部人物())
         {
-            if( card.GetComponent<MoveController>().法术可作用 == 0)
+            if( card.GetComponent<MoveController>().法术可作用 == 0 || card.GetComponent<MoveController>().眩晕免疫==1 )
             {
                 continue;
             }
@@ -2635,6 +2635,221 @@ public class 虾兵蟹将 : BaseSkill
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "虾兵蟹将");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        //可点击范围
+        List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        mainfunction.点选格子(uid, clickable);
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 0);
+
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 猩猩守卫 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 猩猩守卫(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+
+
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "猩猩守卫");
+        }
+    }
+    public override void Action_1()
+    {
+        card.GetComponent<MoveController>().行动点 += 1;
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+        
+        activateTurn_2_finish = 1;
+       
+    }
+
+    public override void Action_3()
+    {
+
+
+        activateTurn_3_finish = 1;
+
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 火焰小鬼 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 火焰小鬼(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+        亡语 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "火焰小鬼");
+        }
+
+    }
+    public override void Action_1()
+    {
+
+        foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+        {
+            GameObject grid = grids.Value;
+            if (grid.transform.childCount != 0 && grids.Key != "0")
+            {
+                GameObject card = grid.transform.GetChild(0).gameObject;
+                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色" && card.GetComponent<MoveController>().法术可作用 == 1)
+                {
+                    卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
+
+
+                    作用目标卡牌数据.nowHp -= 1;
+                    if (作用目标卡牌数据.nowHp <= 0)
+                    {
+                        mainfunction.卡牌摧毁(card);
+                        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+                    }
+                    card.GetComponent<数据显示>().更新数据();
+                    mainfunction.Send血量改变(作用目标卡牌数据.uid, -1);
+
+                }
+            }
+        }
+
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+
+        activateTurn_2_finish = 1;
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 火灵法师 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 火灵法师(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        召唤物id = 343;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "火灵法师");
         }
 
     }
