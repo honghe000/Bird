@@ -1438,8 +1438,8 @@ public class mainfunction : MonoBehaviour
         }
 
         改变卡牌汉字颜色(summonCard, "blue");
-        summonCard.transform.SetParent(ValueHolder.棋盘[ValueHolder.点击格子编号.ToString()].transform);
-        Send卡牌生成(cardID, ValueHolder.点击格子编号, summonCard.GetComponent<数据显示>().卡牌数据.uid);
+        summonCard.transform.SetParent(ValueHolder.棋盘[index.ToString()].transform);
+        Send卡牌生成(cardID, index, summonCard.GetComponent<数据显示>().卡牌数据.uid);
 
         return summonCard;
 
