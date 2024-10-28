@@ -75,11 +75,11 @@ public static class SkillFactory
             case "虾兵蟹将":
                 return new 虾兵蟹将(card, monoBehaviour);
             case "猩猩守卫":
-                return new 虾兵蟹将(card, monoBehaviour);
+                return new 猩猩守卫(card, monoBehaviour);
             case "火灵法师":
-                return new 虾兵蟹将(card, monoBehaviour);
+                return new 火灵法师(card, monoBehaviour);
             case "火焰小鬼":
-                return new 虾兵蟹将(card, monoBehaviour);
+                return new 火焰小鬼(card, monoBehaviour);
             default:
                 return null;
         }
