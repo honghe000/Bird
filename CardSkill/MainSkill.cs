@@ -2650,9 +2650,8 @@ public class 虾兵蟹将 : BaseSkill
 
     public override void Action_2()
     {
-        GameObject summon = mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 0);
-        Debug.Log(ValueHolder.点击格子编号.ToString());
-        summon.transform.SetParent(ValueHolder.棋盘[ValueHolder.点击格子编号.ToString()].transform);
+        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 0);
+
         activateTurn_2_finish = 1;
     }
 
