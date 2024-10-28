@@ -1434,7 +1434,7 @@ public class mainfunction : MonoBehaviour
             }
             ValueHolder.SkillAction.Add(summonCard.GetComponent<数据显示>().卡牌数据.uid, skill);
         }
-
+        summonCard.transform.SetParent(ValueHolder.棋盘[index.ToString()].transform);
         return summonCard;
 
     }
