@@ -109,7 +109,27 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        
+        //点选格子（召唤）
+        if (ValueHolder.启用点选格子 == 1)
+        {
+            mainfunction.禁用棋盘物件代码("b_moveca", 0);
+            mainfunction.禁用手牌物件代码("b_cardaction");
+            ValueHolder.下个回合.interactable = true;
+            ValueHolder.下个回合.image.color = Color.white;
+            mainfunction.格子颜色还原();
+            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid];
+            mainfunction.运行下个技能阶段(skill);
+
+
+            int clicked_index = int.Parse(gameObject.name);
+            ValueHolder.点击格子编号 = clicked_index;
+            ValueHolder.启用点选格子 = 0;
+            ValueHolder.点选技能uid = null;
+            return;
+        }
+
+
+        //点击移动
         if (ValueHolder.choosed_object!= null)
         {
             int start_index = int.Parse(ValueHolder.choosed_object.transform.parent.name);

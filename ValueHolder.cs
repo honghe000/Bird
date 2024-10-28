@@ -150,6 +150,8 @@ public class ValueHolder : MonoBehaviour
     public static Image 倒计时显示1 = null;
     public static Image 倒计时显示2 = null;
 
+    public static Button 下个回合 = null;
+
     public static TextMeshProUGUI 弃牌数量 = null;
     public static GameObject 弃牌显示 = null;
     public static GameObject 弃牌区 = null;
@@ -167,6 +169,11 @@ public class ValueHolder : MonoBehaviour
 
     public static Dictionary<int,int> 灵力当前状态 = new Dictionary<int,int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }};
     public static Dictionary<int,int> 灵力当前上限 = new Dictionary<int,int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 }};
+
+    //点选格子
+    public static int 启用点选格子 = 0;
+    public static int 点击格子编号 = 0;
+    public static string 点选技能uid = null;
 
 
 }

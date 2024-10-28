@@ -31,6 +31,8 @@ public abstract class BaseSkill : MonoBehaviour
 
     public int 场上角色死亡触发 = 0; // 场上角色死亡触发
 
+    public int 召唤物id = 0;
+
     public abstract void Action_1();
     public abstract void Action_2();
     public abstract void Action_3();

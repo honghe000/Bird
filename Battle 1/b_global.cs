@@ -34,6 +34,8 @@ public class b_global : MonoBehaviour
     public GameObject 紫;
     public GameObject 灵力栏;
 
+    public Button 下个回合;
+
     private void Start()
     {
         打乱牌组();
@@ -131,5 +133,7 @@ public class b_global : MonoBehaviour
         ValueHolder.蓝 = 蓝;
         ValueHolder.紫 = 紫;
         ValueHolder.灵力栏 = 灵力栏;
+
+        ValueHolder.下个回合 = 下个回合;
     }
 }

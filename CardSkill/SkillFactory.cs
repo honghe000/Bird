@@ -72,6 +72,8 @@ public static class SkillFactory
                 return new 钟馗(card, monoBehaviour);
             case "武僧":
                 return new 武僧(card, monoBehaviour);
+            case "虾兵蟹将":
+                return new 虾兵蟹将(card, monoBehaviour);
             default:
                 return null;
         }

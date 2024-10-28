@@ -76,6 +76,7 @@ public class b_leave : MonoBehaviour
         ValueHolder.弃牌uid = new List<string>();
         ValueHolder.弃牌数量限制 = 0;
         ValueHolder.回合结束弃牌 = 0;
+        ValueHolder.下个回合 = null;
 
         ValueHolder.黄 = null;
         ValueHolder.绿 = null;
@@ -85,6 +86,9 @@ public class b_leave : MonoBehaviour
         ValueHolder.灵力当前状态 = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
         ValueHolder.灵力当前上限 = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
 
+        ValueHolder.启用点选格子 = 0;
+        ValueHolder.点击格子编号 = 0;
+        ValueHolder.点选技能uid = null;
 
         SceneManager.LoadScene("mainpage");
     }

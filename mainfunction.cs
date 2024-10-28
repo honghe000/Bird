@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using ExitGames.Client.Photon;
+using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
 using System.Collections;
@@ -1328,11 +1329,6 @@ public class mainfunction : MonoBehaviour
             ValueHolder.灵力当前上限[4] += 1;
         }
 
-        for (int i = 1; i < 5; i++)
-        {
-            Debug.Log(i + "灵力:" + ValueHolder.灵力当前上限[i]);
-
-        }
         DestroyAllChildren(ValueHolder.灵力栏);
         for (int i = 1; i < 5; i++)
         {
@@ -1373,4 +1369,74 @@ public class mainfunction : MonoBehaviour
             ValueHolder.法术选择取消.gameObject.SetActive(true);
         }
     }
+
+    public static void 点选格子(string uid ,List<int> ClickList)
+    {
+        禁用棋盘物件代码("b_moveca", 0);
+        禁用手牌物件代码("b_cardaction");
+        ValueHolder.下个回合.interactable = false;
+        ValueHolder.下个回合.image.color = Color.gray;
+        格子绿色显示(ClickList);
+        ValueHolder.启用点选格子 = 1;
+        ValueHolder.点选技能uid = uid;
+    }
+
+    public static void 格子绿色显示(List<int> availableMoves)
+    {
+        foreach (int i in availableMoves)
+        {
+            Color green = new Color(0.4f, 0.9f, 0.5f, 0.3f);
+            ValueHolder.棋盘[i.ToString()].GetComponent<UnityEngine.UI.Image>().color = green;
+        }
+    }
+
+    public static void 格子颜色还原()
+    {
+        List<int> availableMoves = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 };
+        foreach (int i in availableMoves)
+        {
+            Color grenn = new Color(0.4f, 0.9f, 0.5f, 0f);
+            ValueHolder.棋盘[i.ToString()].GetComponent<UnityEngine.UI.Image>().color = grenn;
+        }
+    }
+
+    public static GameObject 指定位置生成卡牌(int index,int cardID,int have_skill)//have_skill标识是否有技能，1则触发技能，0则不触发
+    {
+        GameObject summonCard = Instantiate(ValueHolder.手牌对战牌);
+        MonoBehaviour summonCardMono = ValueHolder.手牌区.GetComponent<MonoBehaviour>();
+        Texture2D texture = Resources.Load<Texture2D>("card/" + cardID.ToString());
+        卡牌数据 原卡牌数据 = ValueHolder.gloabCaedData[cardID];
+        // 深拷贝
+        卡牌数据 新卡牌数据 = new 卡牌数据(原卡牌数据);
+        summonCard.GetComponent<数据显示>().卡牌数据 = 新卡牌数据;
+        summonCard.GetComponent<数据显示>().卡牌数据.uid = System.Guid.NewGuid().ToString();
+        summonCard.GetComponent<数据显示>().enabled = true;
+        if (texture != null)
+        {
+            foreach (Image image in summonCard.GetComponentsInChildren<Image>())
+            {
+                if (image.ToString() == "pics (UnityEngine.UI.Image)")
+                {
+                    image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
+                }
+            }
+        }
+
+        if (have_skill == 1)
+        {
+            //技能初始化
+            BaseSkill skill = SkillFactory.CreateSkill(summonCard, summonCardMono);
+
+            if (skill.activateTurn_1 == ValueHolder.turn)
+            {
+                skill.Action_1();
+                Debug.Log("技能触发");
+            }
+            ValueHolder.SkillAction.Add(summonCard.GetComponent<数据显示>().卡牌数据.uid, skill);
+        }
+
+        return summonCard;
+
+    }
+
 }
