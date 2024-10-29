@@ -80,6 +80,8 @@ public static class SkillFactory
                 return new 火灵法师(card, monoBehaviour);
             case "火焰小鬼":
                 return new 火焰小鬼(card, monoBehaviour);
+            case "潜水僵尸":
+                return new 潜水僵尸(card, monoBehaviour);
             default:
                 return null;
         }

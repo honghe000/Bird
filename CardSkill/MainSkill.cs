@@ -2881,3 +2881,63 @@ public class 火灵法师 : BaseSkill
     }
 
 }
+
+
+
+public class 潜水僵尸 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 潜水僵尸(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "潜水僵尸");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        card.GetComponent<MoveController>().识水 = 1;
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}

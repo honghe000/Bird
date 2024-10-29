@@ -575,7 +575,12 @@ public class mainfunction : MonoBehaviour
         Destroy(card); // 可选择禁用物体
         if (mycard != null)
         {
-            mycard.transform.SetParent(ValueHolder.棋盘[endindex].transform);
+            List<int> obstacles = card.GetComponent<MoveController>().obstacles;
+            if (!obstacles.Contains(int.Parse(endindex)))
+            {
+                mycard.transform.SetParent(ValueHolder.棋盘[endindex].transform);
+            }
+
         }
     }
 
@@ -597,47 +602,16 @@ public class mainfunction : MonoBehaviour
             }
         }
     }
-
-    public static void Winmove(GameObject card)
-    {
-        List<int> winpos = card.GetComponent<MoveController>().GetWinpos();
-
-        Debug.Log(card.transform.parent.name);
-        if (card.transform.parent.name == "commonCard(Clone)")
-        {
-            if (winpos.Contains(int.Parse(card.transform.parent.parent.name)))
-            {
-                卡牌摧毁(card);
-                Debug.Log("win");
-            }
-        }
-        else
-        {
-
-            if (winpos.Contains(int.Parse(card.transform.parent.name)))
-            {
-                卡牌摧毁(card);
-                Debug.Log("win");
-            }
-        }
-    }
-
+    
     public static void cardAttack(GameObject mycard,GameObject hecard,int is_send)
     {
         卡牌数据 card_data1 = mycard.GetComponent<数据显示>().卡牌数据;
         卡牌数据 card_data2 = hecard.GetComponent<数据显示>().卡牌数据;
 
-        Debug.Log("我方血量:" + card_data1.nowHp);
-        Debug.Log("敌方血量:" + card_data2.nowHp);
-
-        Debug.Log("我方攻击力:" + card_data1.nowAttack);
-        Debug.Log("敌方攻击力:" + card_data2.nowAttack);
 
         card_data1.nowHp = card_data1.nowHp - card_data2.nowAttack;
         card_data2.nowHp = card_data2.nowHp - card_data1.nowAttack;
 
-        Debug.Log("我方血量：" + card_data1.nowHp);
-        Debug.Log("敌方血量：" + card_data2.nowHp);
 
         mycard.GetComponent<数据显示>().更新数据();
         hecard.GetComponent<数据显示>().更新数据();
@@ -666,8 +640,6 @@ public class mainfunction : MonoBehaviour
             }
 
             卡牌摧毁(hecard,mycard);
-
-            Winmove(mycard);
 
         }else if (card_data1.nowHp <= 0 && card_data2.nowHp > 0)
         {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MoveController : MonoBehaviour
 {
     private int[,] board = new int[5, 5];
-    public HashSet<int> obstacles = new HashSet<int> { 12, 14 }; // 障碍物格子编号
+    public List<int> obstacles = new List<int> { 12, 14 }; // 障碍物格子编号
     public int cardType = 1; // 0表示我方卡牌，1表示敌方卡牌
     public int is_myturn = 1; // 0表示敌方回合，1表示我方回合
     public int point = 1; // 0表示没有体力，1表示有体力
@@ -27,6 +27,7 @@ public class MoveController : MonoBehaviour
 
     public int 行动点 = 0;
 
+    public int 识水 = 0;
     public MoveController()
     {
         InitializeBoard();
@@ -46,6 +47,11 @@ public class MoveController : MonoBehaviour
 
     public List<int> GetAvailableMoves(int currentPos)
     {
+        if (识水 == 1)
+        {
+            obstacles.Remove(12);
+            obstacles.Remove(14);
+        }
         List<int> availableMoves = new List<int>();
         if (gameObject.GetComponent<数据显示>().卡牌数据.类别 == "建筑")
         {
