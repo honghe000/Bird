@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -119,6 +119,8 @@ public class b_global : MonoBehaviour
         ValueHolder.法术选择取消 = 法术选择取消;
         ValueHolder.放大展示区1 = 放大展示区1;
         ValueHolder.放大展示区2 = 放大展示区2;
+
+        ValueHolder.体力 = 体力;
 
         ValueHolder.倒计时显示1 = 倒计时显示1;
         ValueHolder.倒计时显示2 = 倒计时显示2;

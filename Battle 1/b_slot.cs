@@ -1,4 +1,4 @@
-using ExitGames.Client.Photon;
+﻿using ExitGames.Client.Photon;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
@@ -75,7 +75,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                 {
                     //更新体力
                     ValueHolder.point -= 1;
-                    体力.text = ValueHolder.point.ToString();
+                    ValueHolder.体力.text = ValueHolder.point.ToString();
                 }
 
 

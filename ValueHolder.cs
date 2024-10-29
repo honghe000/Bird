@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Net.Sockets;
 using TMPro;
 using Unity.VisualScripting;
@@ -140,6 +140,7 @@ public class ValueHolder : MonoBehaviour
     public static Dictionary<string, float> 人物禁用 = new Dictionary<string, float>();
 
     public static string 释放法术uid = null;
+    public static TextMeshProUGUI 体力 = null;
 
     public static Dictionary<string,string> uid_to_name = new Dictionary<string, string>();
     public static int 法术作用敌我类型 = 0;

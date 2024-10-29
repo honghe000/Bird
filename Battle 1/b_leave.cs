@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -24,8 +24,8 @@ public class b_leave : MonoBehaviour
         ValueHolder.hename = "";
 
 
-        ValueHolder.ÑÓÊ±·¨ÊõÅÆ = null;
-        ValueHolder.ÊÖÅÆ¶ÔÕ½ÅÆ = null;
+        ValueHolder.å»¶æ—¶æ³•æœ¯ç‰Œ = null;
+        ValueHolder.æ‰‹ç‰Œå¯¹æˆ˜ç‰Œ = null;
         ValueHolder.initiative = 1;
         ValueHolder.random_card = new List<int> { 1, 2, 3, 4, 76 };
         ValueHolder.Discard_pile = new List<int>();
@@ -33,12 +33,12 @@ public class b_leave : MonoBehaviour
         ValueHolder.choosed_object = null;
         ValueHolder.copyed_object = null;
         ValueHolder.is_choose = 0;
-        ValueHolder.ÆåÅÌ = new Dictionary<string, GameObject>();
-        ValueHolder.ÊÖÅÆÇø = null;
-        ValueHolder.ÍÏ×§ĞòºÅ = 0;
-        ValueHolder.ÊÓÍ¼ = null;
+        ValueHolder.æ£‹ç›˜ = new Dictionary<string, GameObject>();
+        ValueHolder.æ‰‹ç‰ŒåŒº = null;
+        ValueHolder.æ‹–æ‹½åºå· = 0;
+        ValueHolder.è§†å›¾ = null;
         ValueHolder.turn = 1;
-        ValueHolder.·¨ÊõÑ¡ÔñÈ¡Ïû = null;
+        ValueHolder.æ³•æœ¯é€‰æ‹©å–æ¶ˆ = null;
 
         ValueHolder.is_myturn = 1;
         ValueHolder.point = 1;
@@ -46,49 +46,50 @@ public class b_leave : MonoBehaviour
         ValueHolder.hintManager = null;
         ValueHolder.SkillAction = new Dictionary<string, BaseSkill>();
 
-        ValueHolder.ÈËÎï¿É·ÅÖÃÎ»ÖÃ = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        ValueHolder.½¨Öş¿É·ÅÖÃÎ»ÖÃ = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        ValueHolder.äººç‰©å¯æ”¾ç½®ä½ç½® = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        ValueHolder.å»ºç­‘å¯æ”¾ç½®ä½ç½® = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-        ValueHolder.ÈËÎï½ûÖ¹·ÅÖÃÎ»ÖÃ = new Dictionary<string, List<int>>();
-        ValueHolder.½¨Öş½ûÖ¹·ÅÖÃÎ»ÖÃ = new Dictionary<string, List<int>>();
+        ValueHolder.äººç‰©ç¦æ­¢æ”¾ç½®ä½ç½® = new Dictionary<string, List<int>>();
+        ValueHolder.å»ºç­‘ç¦æ­¢æ”¾ç½®ä½ç½® = new Dictionary<string, List<int>>();
 
-        ValueHolder.ÖĞÁ¢ÑÓÊ±·¨Êõ¿ò = null;
-        ValueHolder.µĞ·½ÑÓÊ±·¨Êõ¿ò = null;
-        ValueHolder.ÎÒ·½ÑÓÊ±·¨Êõ¿ò = null;
+        ValueHolder.ä¸­ç«‹å»¶æ—¶æ³•æœ¯æ¡† = null;
+        ValueHolder.æ•Œæ–¹å»¶æ—¶æ³•æœ¯æ¡† = null;
+        ValueHolder.æˆ‘æ–¹å»¶æ—¶æ³•æœ¯æ¡† = null;
 
-        ValueHolder.·¨Êõ½ûÓÃ = new Dictionary<string, float>();
-        ValueHolder.ÈËÎï½ûÓÃ = new Dictionary<string, float>();
+        ValueHolder.æ³•æœ¯ç¦ç”¨ = new Dictionary<string, float>();
+        ValueHolder.äººç‰©ç¦ç”¨ = new Dictionary<string, float>();
 
-        ValueHolder.ÊÍ·Å·¨Êõuid = null;
+        ValueHolder.é‡Šæ”¾æ³•æœ¯uid = null;
         ValueHolder.uid_to_name = new Dictionary<string, string>();
-        ValueHolder.·¨Êõ×÷ÓÃµĞÎÒÀàĞÍ = 0;
-        ValueHolder.·Å´óÕ¹Ê¾Çø1 = null;
-        ValueHolder.·Å´óÕ¹Ê¾Çø2 = null;
+        ValueHolder.æ³•æœ¯ä½œç”¨æ•Œæˆ‘ç±»å‹ = 0;
+        ValueHolder.æ”¾å¤§å±•ç¤ºåŒº1 = null;
+        ValueHolder.æ”¾å¤§å±•ç¤ºåŒº2 = null;
 
-        ValueHolder.µ¹¼ÆÊ±´¢´æ = new Dictionary<string, float>();
-        ValueHolder.µ¹¼ÆÊ±ÏÔÊ¾1 = null;
-        ValueHolder.µ¹¼ÆÊ±ÏÔÊ¾2 = null;
+        ValueHolder.å€’è®¡æ—¶å‚¨å­˜ = new Dictionary<string, float>();
+        ValueHolder.å€’è®¡æ—¶æ˜¾ç¤º1 = null;
+        ValueHolder.å€’è®¡æ—¶æ˜¾ç¤º2 = null;
+        ValueHolder.ä½“åŠ› = null;
 
-        ValueHolder.ÆúÅÆ = null;
-        ValueHolder.ÆúÅÆÇø = null;
-        ValueHolder.ÆúÅÆÊıÁ¿ = null;
-        ValueHolder.ÆúÅÆÏÔÊ¾ = null;
-        ValueHolder.ÆúÅÆuid = new List<string>();
-        ValueHolder.ÆúÅÆÊıÁ¿ÏŞÖÆ = 0;
-        ValueHolder.»ØºÏ½áÊøÆúÅÆ = 0;
-        ValueHolder.ÏÂ¸ö»ØºÏ = null;
+        ValueHolder.å¼ƒç‰Œ = null;
+        ValueHolder.å¼ƒç‰ŒåŒº = null;
+        ValueHolder.å¼ƒç‰Œæ•°é‡ = null;
+        ValueHolder.å¼ƒç‰Œæ˜¾ç¤º = null;
+        ValueHolder.å¼ƒç‰Œuid = new List<string>();
+        ValueHolder.å¼ƒç‰Œæ•°é‡é™åˆ¶ = 0;
+        ValueHolder.å›åˆç»“æŸå¼ƒç‰Œ = 0;
+        ValueHolder.ä¸‹ä¸ªå›åˆ = null;
 
-        ValueHolder.»Æ = null;
-        ValueHolder.ÂÌ = null;
-        ValueHolder.À¶ = null;
-        ValueHolder.×Ï = null;
-        ValueHolder.ÁéÁ¦À¸ = null;
-        ValueHolder.ÁéÁ¦µ±Ç°×´Ì¬ = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
-        ValueHolder.ÁéÁ¦µ±Ç°ÉÏÏŞ = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
+        ValueHolder.é»„ = null;
+        ValueHolder.ç»¿ = null;
+        ValueHolder.è“ = null;
+        ValueHolder.ç´« = null;
+        ValueHolder.çµåŠ›æ  = null;
+        ValueHolder.çµåŠ›å½“å‰çŠ¶æ€ = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
+        ValueHolder.çµåŠ›å½“å‰ä¸Šé™ = new Dictionary<int, int> { { 1, 0 }, { 2, 0 }, { 3, 0 }, { 4, 0 } };
 
-        ValueHolder.ÆôÓÃµãÑ¡¸ñ×Ó = 0;
-        ValueHolder.µã»÷¸ñ×Ó±àºÅ = 0;
-        ValueHolder.µãÑ¡¼¼ÄÜuid = null;
+        ValueHolder.å¯ç”¨ç‚¹é€‰æ ¼å­ = 0;
+        ValueHolder.ç‚¹å‡»æ ¼å­ç¼–å· = 0;
+        ValueHolder.ç‚¹é€‰æŠ€èƒ½uid = null;
 
         SceneManager.LoadScene("mainpage");
     }

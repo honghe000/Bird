@@ -80,8 +80,14 @@ public static class SkillFactory
                 return new 火灵法师(card, monoBehaviour);
             case "火焰小鬼":
                 return new 火焰小鬼(card, monoBehaviour);
-            case "潜水僵尸":
-                return new 潜水僵尸(card, monoBehaviour);
+            case "尼斯湖水怪":
+                return new 尼斯湖水怪(card, monoBehaviour);
+            case "充能":
+                return new 充能(card, monoBehaviour);
+            case "荒骷髅":
+                return new 荒骷髅(card, monoBehaviour);
+            case "枉死城":
+                return new 枉死城(card, monoBehaviour);
             default:
                 return null;
         }

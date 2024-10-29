@@ -30,6 +30,8 @@ public abstract class BaseSkill : MonoBehaviour
     public int 亡语 = 0; // 亡语触发最后一个技能阶段
 
     public int 场上角色死亡触发 = 0; // 场上角色死亡触发
+    public int 场上敌方角色死亡触发 = 0;
+    public int 场上我方角色死亡触发 = 0;
 
     public int 召唤物id = 0;
 

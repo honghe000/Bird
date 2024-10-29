@@ -2651,7 +2651,7 @@ public class 虾兵蟹将 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 0);
-
+        skill_end = 1;
         activateTurn_2_finish = 1;
     }
 
@@ -2777,7 +2777,7 @@ public class 火焰小鬼 : BaseSkill
             if (grid.transform.childCount != 0 && grids.Key != "0")
             {
                 GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色" && card.GetComponent<MoveController>().法术可作用 == 1)
+                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色" )
                 {
                     卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
 
@@ -2866,7 +2866,7 @@ public class 火灵法师 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
-
+        skill_end = 1;
         activateTurn_2_finish = 1;
     }
 
@@ -2884,11 +2884,11 @@ public class 火灵法师 : BaseSkill
 
 
 
-public class 潜水僵尸 : BaseSkill
+public class 尼斯湖水怪 : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
 
-    public 潜水僵尸(GameObject Card, MonoBehaviour monoBehaviour)
+    public 尼斯湖水怪(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
         skill_end = 0;
@@ -2913,7 +2913,7 @@ public class 潜水僵尸 : BaseSkill
     {
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            ValueHolder.uid_to_name.Add(uid, "潜水僵尸");
+            ValueHolder.uid_to_name.Add(uid, "尼斯湖水怪");
         }
 
     }
@@ -2921,12 +2921,198 @@ public class 潜水僵尸 : BaseSkill
     public override void Action_1()
     {
         card.GetComponent<MoveController>().识水 = 1;
+        skill_end = 1;
         activateTurn_1_finish = 1;
 
     }
 
     public override void Action_2()
     {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 充能 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 充能(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "充能");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        ValueHolder.point += 1;
+        ValueHolder.体力.text = ValueHolder.point.ToString();
+        skill_end = 1;
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 荒骷髅 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 荒骷髅(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        亡语 = 1;
+        召唤物id = 397;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "荒骷髅");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        //可点击范围
+        List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        mainfunction.点选格子(uid, clickable);
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+        skill_end = 1;
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 枉死城 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 枉死城(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        场上我方角色死亡触发= 1;
+        召唤物id = 343;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "枉死城");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        //可点击范围
+        List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        mainfunction.点选格子(uid, clickable);
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+        skill_end = 1;
         activateTurn_2_finish = 1;
     }
 
