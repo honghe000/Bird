@@ -114,6 +114,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
         {
             mainfunction.启用棋盘物件代码("b_moveca", 0);
             mainfunction.启用手牌物件代码("b_cardaction");
+            mainfunction.禁用棋盘物件代码("b_cardaction",0);
             ValueHolder.下个回合.interactable = true;
             ValueHolder.下个回合.image.color = Color.white;
             mainfunction.格子颜色还原();
