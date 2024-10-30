@@ -110,14 +110,32 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         //点选格子（召唤）
-        if (ValueHolder.启用点选格子 == 1)
+        if (ValueHolder.启用点选格子 == 1 && ValueHolder.点选技能uid.Count > 1)
+        {
+            int clicked_index = int.Parse(gameObject.name);
+            ValueHolder.点击格子编号 = clicked_index;
+
+
+            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid.Dequeue()];
+            mainfunction.运行下个技能阶段(skill);
+
+
+            string 召唤物名称 = ValueHolder.gloabCaedData[ValueHolder.SkillAction[ValueHolder.点选技能uid.Peek()].召唤物id].名字;
+            ValueHolder.hintManager.AddHint("请选择位置召唤：" + 召唤物名称);
+
+            return;
+        }
+
+        if (ValueHolder.启用点选格子 == 1 && ValueHolder.点选技能uid.Count == 1)
         {
             mainfunction.启用棋盘物件代码("b_moveca", 0);
             mainfunction.启用手牌物件代码("b_cardaction");
-            mainfunction.禁用棋盘物件代码("b_cardaction",0);
+            mainfunction.禁用棋盘物件代码("b_cardaction", 0);
             ValueHolder.下个回合.interactable = true;
             ValueHolder.下个回合.image.color = Color.white;
             mainfunction.格子颜色还原();
+
+            mainfunction.Send对方继续();
 
 
 
@@ -125,11 +143,10 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             ValueHolder.点击格子编号 = clicked_index;
 
 
-            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid];
+            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid.Dequeue()];
             mainfunction.运行下个技能阶段(skill);
 
             ValueHolder.启用点选格子 = 0;
-            ValueHolder.点选技能uid = null;
             return;
         }
 
@@ -138,10 +155,19 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
         if (ValueHolder.choosed_object!= null)
         {
             int start_index = int.Parse(ValueHolder.choosed_object.transform.parent.name);
-            int end_index = int.Parse(gameObject.name);
+            int end_index = 0;
+            try
+            {
+                end_index = int.Parse(gameObject.name);
+            }
+            catch
+            {
+                Debug.Log(gameObject.name);
+                return;
+            }
+
             List<int> availableMoves = ValueHolder.choosed_object.GetComponent<MoveController>().GetAvailableMoves(start_index);
             int 行动点 = ValueHolder.choosed_object.GetComponent<MoveController>().行动点;
-
 
 
 

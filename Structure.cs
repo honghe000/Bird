@@ -21,3 +21,11 @@ public class Message
     public int effect;
     public int num;
 }
+
+[Serializable]     //序列化
+public class Effect
+{
+    public int effectID;
+    public string uid;
+    public float turn;
+}

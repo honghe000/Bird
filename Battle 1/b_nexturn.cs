@@ -41,6 +41,8 @@ public class b_nexturn : MonoBehaviour
         ValueHolder.turn += 0.5f;
         回合数.text = ((int)Mathf.Floor(ValueHolder.turn)).ToString();
 
+        mainfunction.效果卸载遍历();
+
         if (ValueHolder.回合结束弃牌 == 1){
             mainfunction.弃牌();
         }

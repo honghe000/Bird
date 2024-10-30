@@ -790,11 +790,12 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
-    public static void Send效果挂载(string uid,int effect)
+    public static void Send效果挂载(string uid,int effect,float delay)
     {
         ChangeSendMessage("Action", 26);
         ChangeSendMessage("uid", uid);
         ChangeSendMessage("effect", effect);
+        ChangeSendMessage("turn", ValueHolder.turn +  delay);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
@@ -862,8 +863,28 @@ public class mainfunction : MonoBehaviour
 
     public static void Send摸牌(int num)
     {
-        ChangeSendMessage("Action", 35);
+        ChangeSendMessage("Action", 37);
         ChangeSendMessage("num", num);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send对方暂停()
+    {
+        if (ValueHolder.is_myturn == 1)
+        {
+            return;
+        }
+        ChangeSendMessage("Action", 38);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send对方继续()
+    {
+        if (ValueHolder.is_myturn == 1)
+        {
+            return;
+        }
+        ChangeSendMessage("Action", 39);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
@@ -1241,24 +1262,28 @@ public class mainfunction : MonoBehaviour
             if (level == 1)
             {
                 灵力 = Instantiate(ValueHolder.黄);
+                缩放调整(灵力);
                 灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
             else if (level == 2)
             {
                 灵力 = Instantiate(ValueHolder.绿);
+                缩放调整(灵力);
                 灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
             else if (level == 3)
             {
                 灵力 = Instantiate(ValueHolder.蓝);
+                缩放调整(灵力);
                 灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
             else if (level == 4)
             {
                 灵力 = Instantiate(ValueHolder.紫);
+                缩放调整(灵力);
                 灵力.transform.SetParent(ValueHolder.灵力栏.transform);
                 ValueHolder.灵力当前状态[level] += 1;
             }
@@ -1361,8 +1386,16 @@ public class mainfunction : MonoBehaviour
         ValueHolder.下个回合.interactable = false;
         ValueHolder.下个回合.image.color = Color.gray;
         格子绿色显示(ClickList);
+
+        Send对方暂停();
+
         ValueHolder.启用点选格子 = 1;
-        ValueHolder.点选技能uid = uid;
+        ValueHolder.点选技能uid.Enqueue(uid);
+        if (ValueHolder.点选技能uid.Peek() == uid)
+        {
+            string 召唤物名称 = ValueHolder.gloabCaedData[ValueHolder.SkillAction[uid].召唤物id].名字;
+            ValueHolder.hintManager.AddHint("请选择位置召唤：" + 召唤物名称);
+        }
     }
 
     public static void 格子绿色显示(List<int> availableMoves)
@@ -1443,6 +1476,45 @@ public class mainfunction : MonoBehaviour
                 if (color == "blue")
                 {
                     text.color = UnityEngine.Color.blue;
+                }
+            }
+        }
+    }
+
+
+    public static void 效果卸载(GameObject card,int effect)
+    {
+        if (effect == 1) //击杀免疫
+        {
+            card.GetComponent<MoveController>().击杀免疫 = 0;
+        }
+        else if (effect == 2) //消灭免疫
+        {
+            card.GetComponent<MoveController>().消灭免疫 = 0;
+        }
+        else if (effect == 3) //眩晕
+        {
+            card.GetComponent<MoveController>().眩晕 = 0;
+        }
+        else if (effect == 4)//法术不可作用
+        {
+            card.GetComponent<MoveController>().法术可作用 = 1;
+        }
+        else if (effect == 5)//眩晕免疫
+        {
+            card.GetComponent<MoveController>().眩晕免疫 = 0;
+        }
+    }
+    public static void 效果卸载遍历()
+    {
+        for (int i = 0; i < ValueHolder.效果卸载队列.Count; i++)
+        {
+            Effect effect = ValueHolder.效果卸载队列[i];
+            if (effect.turn == ValueHolder.turn)
+            {
+                GameObject card = uid找卡(effect.uid);
+                if (card != null) { 
+                    效果卸载(card, effect.effectID);
                 }
             }
         }

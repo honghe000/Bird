@@ -38,20 +38,28 @@ public class HintManager : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        CanvasGroup canvasGroup = hint.GetComponent<CanvasGroup>();
-        float startAlpha = canvasGroup.alpha;
+        if (hint == null) yield break; // 检查 hint 是否被销毁
 
+        CanvasGroup canvasGroup = hint.GetComponent<CanvasGroup>();
+        if (canvasGroup == null) yield break; // 检查 CanvasGroup 是否存在
+
+        float startAlpha = canvasGroup.alpha;
         float elapsed = 0f;
         while (elapsed < fadeDuration)
         {
+            if (hint == null) yield break; // 确保提示没有被销毁
             elapsed += Time.deltaTime;
             canvasGroup.alpha = Mathf.Lerp(startAlpha, 0, elapsed / fadeDuration);
             yield return null;
         }
 
-        activeHints.Dequeue();
-        Destroy(hint);
+        if (hint != null) // 再次确认 hint 仍存在
+        {
+            activeHints.Dequeue();
+            Destroy(hint);
+        }
     }
+
 
     // 立即删除最早的提示
     private void RemoveOldestHint()

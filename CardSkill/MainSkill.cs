@@ -471,8 +471,8 @@ public class 佛光 : BaseSkill
         作用目标卡牌.GetComponent<MoveController>().消灭免疫 = 1;
 
         mainfunction.Send敌方红牌法术创建(card_data.id, uid);
-        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1);
-        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2);
+        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1,delay);
+        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2, delay);
 
         ValueHolder.倒计时储存.Add(uid, delay);
         mainfunction.Send倒计时(card_data.uid, (int)delay);
@@ -490,8 +490,8 @@ public class 佛光 : BaseSkill
 
                 卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
                 mainfunction.Send敌方红牌法术销毁(card_data.id, uid);
-                mainfunction.Send效果卸载(作用目标卡牌数据.uid, 1);
-                mainfunction.Send效果卸载(作用目标卡牌数据.uid, 2);
+                //mainfunction.Send效果卸载(作用目标卡牌数据.uid, 1);
+                //mainfunction.Send效果卸载(作用目标卡牌数据.uid, 2);
             }
         }
 
@@ -1049,8 +1049,8 @@ public class 神谕者 : BaseSkill
         card.GetComponent<MoveController>().击杀免疫 = 1;
         card.GetComponent<MoveController>().消灭免疫 = 1;
 
-        mainfunction.Send效果挂载(card_data.uid, 1);
-        mainfunction.Send效果挂载(card_data.uid, 2);
+        mainfunction.Send效果挂载(card_data.uid, 1,delay);
+        mainfunction.Send效果挂载(card_data.uid, 2,delay);
 
         activateTurn_1_finish = 1;
 
@@ -1058,8 +1058,8 @@ public class 神谕者 : BaseSkill
 
     public override void Action_2()
     {
-        mainfunction.Send效果卸载(card_data.uid, 1);
-        mainfunction.Send效果卸载(card_data.uid, 2);
+        //mainfunction.Send效果卸载(card_data.uid, 1);
+        //mainfunction.Send效果卸载(card_data.uid, 2);
 
         card.GetComponent<MoveController>().击杀免疫 = 0;
         card.GetComponent<MoveController>().消灭免疫 = 0;
@@ -1263,7 +1263,7 @@ public class 雷电 : BaseSkill
         card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
         mainfunction.Send我方红牌法术创建(card_data.id, uid);
         作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
-        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
+        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3,1);
 
         activateTurn_2_finish = 1;
 
@@ -1274,7 +1274,7 @@ public class 雷电 : BaseSkill
         if (作用目标卡牌 != null)
         {
             作用目标卡牌.GetComponent<MoveController>().眩晕 = 0;
-            mainfunction.Send效果卸载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
+            //mainfunction.Send效果卸载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
         }
 
         foreach (Transform child in ValueHolder.敌方延时法术框.transform)
@@ -1573,7 +1573,7 @@ public class 困兽之斗 : BaseSkill
                 continue;
             }
            card.GetComponent<MoveController>().眩晕 = 1;
-            mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
+            mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3,delay);
         }
         mainfunction.Send中立法术创建(card_data.id);
        
@@ -1588,7 +1588,7 @@ public class 困兽之斗 : BaseSkill
             if (card != null)
             {
                 card.GetComponent<MoveController>().眩晕 = 0;
-                mainfunction.Send效果卸载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
+                //mainfunction.Send效果卸载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
             }
         }
         foreach (Transform child in ValueHolder.中立延时法术框.transform)
@@ -1745,7 +1745,7 @@ public class 迅雷的崩玉 : BaseSkill
                 continue;
             }
             card.GetComponent<MoveController>().眩晕 = 1;
-            mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
+            mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3, delay);
         }
        
 
@@ -1759,7 +1759,7 @@ public class 迅雷的崩玉 : BaseSkill
             if (card != null)
             {
                 card.GetComponent<MoveController>().眩晕 = 0;
-                mainfunction.Send效果卸载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
+                //mainfunction.Send效果卸载(card.GetComponent<数据显示>().卡牌数据.uid, 3);
             }
         }
         foreach (Transform child in ValueHolder.敌方延时法术框.transform)
@@ -2187,7 +2187,7 @@ public class 贩卖鸦片 : BaseSkill
         card_summon.transform.SetParent(ValueHolder.敌方延时法术框.transform);
         mainfunction.Send我方红牌法术创建(card_data.id, uid);
         作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
-        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3);
+        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3,-1);
 
         activateTurn_2_finish = 1;
         skill_end = 1;
@@ -2241,7 +2241,7 @@ public class 漫步者 : BaseSkill
 
     public override void Action_1()
     {
-        mainfunction.Send效果挂载(uid,4);
+        mainfunction.Send效果挂载(uid,4,-1);
         activateTurn_1_finish = 1;
         skill_end = 1;
     }
@@ -2321,7 +2321,7 @@ public class 杨枝甘露 : BaseSkill
         card_summon.transform.SetParent(ValueHolder.我方延时法术框.transform);
         mainfunction.Send敌方红牌法术创建(card_data.id, uid);
         作用目标卡牌.GetComponent<MoveController>().法术可作用 = 0;
-        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 4);
+        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 4, -1);
 
         activateTurn_2_finish = 1;
         skill_end = 1;
@@ -2378,7 +2378,7 @@ public class 远古石像鬼 : BaseSkill
 
     public override void Action_1()
     {
-        mainfunction.Send效果挂载(uid, 2);
+        mainfunction.Send效果挂载(uid, 2, -1);
         activateTurn_1_finish = 1;
         skill_end = 1;
     }
@@ -2582,7 +2582,7 @@ public class 武僧 : BaseSkill
 
     public override void Action_1()
     {
-        mainfunction.Send效果挂载(uid, 5);
+        mainfunction.Send效果挂载(uid, 5, -1);
         activateTurn_1_finish = 1;
         skill_end = 1;
     }
@@ -3112,8 +3112,6 @@ public class 枉死城 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
-        skill_end = 1;
-        activateTurn_2_finish = 1;
     }
 
     public override void Action_3()

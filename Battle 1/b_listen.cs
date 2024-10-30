@@ -196,9 +196,16 @@ public class b_listen : MonoBehaviour
         {
             回合结束弃牌(mes);
         }
-        else if (mes.Action == 35)
+        else if (mes.Action == 37)
         {
             摸牌(mes);
+        }
+        else if (mes.Action == 38)
+        {
+            我方暂停();
+        } else if (mes.Action == 39)
+        {
+            我方继续();
         }
     }
 
@@ -264,6 +271,8 @@ public class b_listen : MonoBehaviour
 
         ValueHolder.turn += 0.5f;
         回合数.text = ((int)Mathf.Floor(ValueHolder.turn)).ToString();
+
+        mainfunction.效果卸载遍历();
 
         skillturn();
         mainfunction.倒计时回合变化();
@@ -516,6 +525,13 @@ public class b_listen : MonoBehaviour
                 }
             }
         }
+        Effect 效果卸载 = new Effect
+        {
+            effectID = mes.effect,
+            uid = mes.uid,
+            turn = mes.turn
+        };
+        ValueHolder.效果卸载队列.Add(效果卸载);
     }
 
     void 效果卸载(Message mes)
@@ -613,5 +629,23 @@ public class b_listen : MonoBehaviour
     void 摸牌(Message mes)
     {
         summonHandcard(mes.num);
+    }
+
+    void 我方暂停()
+    {
+        mainfunction.禁用棋盘物件代码("b_moveca", 0);
+        mainfunction.禁用手牌物件代码("b_cardaction");
+        ValueHolder.下个回合.interactable = false;
+        ValueHolder.下个回合.image.color = Color.gray;
+        ValueHolder.hintManager.AddHint("等待对方响应");
+    }
+
+    void 我方继续()
+    {
+        mainfunction.启用棋盘物件代码("b_moveca", 0);
+        mainfunction.启用手牌物件代码("b_cardaction");
+        mainfunction.禁用棋盘物件代码("b_cardaction", 0);
+        ValueHolder.下个回合.interactable = true;
+        ValueHolder.下个回合.image.color = Color.white;
     }
 }
