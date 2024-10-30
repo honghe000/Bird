@@ -88,6 +88,14 @@ public static class SkillFactory
                 return new 荒骷髅(card, monoBehaviour);
             case "枉死城":
                 return new 枉死城(card, monoBehaviour);
+            case "青坊主":
+                return new 青坊主(card, monoBehaviour);
+            case "神之审判":
+                return new 神之审判(card, monoBehaviour);
+            case "猎人":
+                return new 猎人(card, monoBehaviour);
+            case "拳师":
+                return new 拳师(card, monoBehaviour);
             default:
                 return null;
         }
