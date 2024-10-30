@@ -1,6 +1,7 @@
 ﻿using ExitGames.Client.Photon;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using TMPro;
 using UnityEngine;
@@ -81,13 +82,13 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
                 //技能初始化
                 BaseSkill skill = SkillFactory.CreateSkill(eventData.pointerDrag,this);
-
+                ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
                 if (skill.activateTurn_1 == ValueHolder.turn)
                 {
                     skill.Action_1();
                     Debug.Log("技能触发");
                 }
-                ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+
             }
         }
     }
@@ -115,24 +116,26 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             int clicked_index = int.Parse(gameObject.name);
             ValueHolder.点击格子编号 = clicked_index;
 
-
-            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid.Dequeue()];
+            Dictionary<string, string> dic = ValueHolder.点选技能uid.Dequeue();
+            BaseSkill skill = ValueHolder.SkillAction[dic.First().Value];
             mainfunction.运行下个技能阶段(skill);
 
-
-            string 召唤物名称 = ValueHolder.gloabCaedData[ValueHolder.SkillAction[ValueHolder.点选技能uid.Peek()].召唤物id].名字;
-            ValueHolder.hintManager.AddHint("请选择位置召唤：" + 召唤物名称);
+            ValueHolder.hintManager.AddHint("请选择位置召唤：" + dic.First().Value);
 
             return;
         }
 
         if (ValueHolder.启用点选格子 == 1 && ValueHolder.点选技能uid.Count == 1)
         {
-            mainfunction.启用棋盘物件代码("b_moveca", 0);
-            mainfunction.启用手牌物件代码("b_cardaction");
-            mainfunction.禁用棋盘物件代码("b_cardaction", 0);
-            ValueHolder.下个回合.interactable = true;
-            ValueHolder.下个回合.image.color = Color.white;
+            if (ValueHolder.is_myturn == 1)
+            {
+                mainfunction.启用棋盘物件代码("b_moveca", 0);
+                mainfunction.启用手牌物件代码("b_cardaction");
+                mainfunction.禁用棋盘物件代码("b_cardaction", 0);
+                ValueHolder.下个回合.interactable = true;
+                ValueHolder.下个回合.image.color = Color.white;
+            }
+
             mainfunction.格子颜色还原();
 
             mainfunction.Send对方继续();
@@ -143,7 +146,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             ValueHolder.点击格子编号 = clicked_index;
 
 
-            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid.Dequeue()];
+            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid.Dequeue().First().Value];
             mainfunction.运行下个技能阶段(skill);
 
             ValueHolder.启用点选格子 = 0;

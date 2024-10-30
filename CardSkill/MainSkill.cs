@@ -1060,7 +1060,10 @@ public class 神谕者 : BaseSkill
     {
         //mainfunction.Send效果卸载(card_data.uid, 1);
         //mainfunction.Send效果卸载(card_data.uid, 2);
-
+        if (card == null)
+        {
+            return;
+        }
         card.GetComponent<MoveController>().击杀免疫 = 0;
         card.GetComponent<MoveController>().消灭免疫 = 0;
         activateTurn_2_finish = 1;
@@ -2643,7 +2646,7 @@ public class 虾兵蟹将 : BaseSkill
     {
         //可点击范围
         List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        mainfunction.点选格子(uid, clickable);
+        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字,uid, clickable);
         activateTurn_1_finish = 1;
 
     }
@@ -2858,7 +2861,7 @@ public class 火灵法师 : BaseSkill
     {
         //可点击范围
         List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        mainfunction.点选格子(uid, clickable);
+        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
         activateTurn_1_finish = 1;
 
     }
@@ -3041,7 +3044,7 @@ public class 荒骷髅 : BaseSkill
     {
         //可点击范围
         List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        mainfunction.点选格子(uid, clickable);
+        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
         activateTurn_1_finish = 1;
 
     }
@@ -3104,7 +3107,7 @@ public class 枉死城 : BaseSkill
     {
         //可点击范围
         List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        mainfunction.点选格子(uid, clickable);
+        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
         activateTurn_1_finish = 1;
 
     }

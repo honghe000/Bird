@@ -1379,7 +1379,7 @@ public class mainfunction : MonoBehaviour
         }
     }
 
-    public static void 点选格子(string uid ,List<int> ClickList)
+    public static void 点选格子(string 召唤物名字, string uid ,List<int> ClickList)
     {
         禁用棋盘物件代码("b_moveca", 0);
         禁用手牌物件代码("b_cardaction");
@@ -1389,12 +1389,13 @@ public class mainfunction : MonoBehaviour
 
         Send对方暂停();
 
+        Dictionary<string,string> dic = new Dictionary<string, string> { { 召唤物名字, uid } };
+
         ValueHolder.启用点选格子 = 1;
-        ValueHolder.点选技能uid.Enqueue(uid);
-        if (ValueHolder.点选技能uid.Peek() == uid)
+        ValueHolder.点选技能uid.Enqueue(dic);
+        if (ValueHolder.点选技能uid.Peek().First().Value == uid)          
         {
-            string 召唤物名称 = ValueHolder.gloabCaedData[ValueHolder.SkillAction[uid].召唤物id].名字;
-            ValueHolder.hintManager.AddHint("请选择位置召唤：" + 召唤物名称);
+            ValueHolder.hintManager.AddHint("请选择位置召唤：" + ValueHolder.点选技能uid.Peek().First().Key);
         }
     }
 

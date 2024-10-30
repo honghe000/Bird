@@ -82,6 +82,40 @@ public class MoveController : MonoBehaviour
         return availableMoves;
     }
 
+    public List<int> GetAvailableAtack(int currentPos)
+    {
+        if (识水 == 1)
+        {
+            obstacles.Remove(12);
+            obstacles.Remove(14);
+        }
+        List<int> availableMoves = new List<int>();
+        if (gameObject.GetComponent<数据显示>().卡牌数据.类别 == "建筑")
+        {
+            return availableMoves;
+        }
+        Vector2Int currentCoords = GetCoordinates(currentPos);
+        Vector2Int[] directions = new Vector2Int[]
+        {
+            new Vector2Int(0, 1),  // 上
+            new Vector2Int(0, -1), // 下
+            new Vector2Int(1, 0),  // 右
+            new Vector2Int(-1, 0)  // 左
+        };
+
+        foreach (var dir in directions)
+        {
+            Vector2Int newCoords = currentCoords + dir;
+            if (IsInBounds(newCoords))
+            {
+                int newPos = GetPosition(newCoords);
+                availableMoves.Add(newPos);
+            }
+        }
+
+        return availableMoves;
+    }
+
     private Vector2Int GetCoordinates(int pos)
     {
         int y = (pos - 1) / 5;

@@ -21,11 +21,11 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
         {
 
             int start_index = int.Parse(ValueHolder.choosed_object.transform.parent.name);
-            List<int> availableMoves = ValueHolder.choosed_object.GetComponent<MoveController>().GetAvailableMoves(start_index);
+            List<int> availableMoves = ValueHolder.choosed_object.GetComponent<MoveController>().GetAvailableAtack(start_index);
             ValueHolder.choosed_object.GetComponent<CanvasGroup>().alpha = 1f;
             int 行动点 = ValueHolder.choosed_object.GetComponent<MoveController>().行动点;
 
-            set_color_white(availableMoves);
+            mainfunction.格子颜色还原();
             if (availableMoves.Contains(enemy_index))
             {
                 if (ValueHolder.point < 0 && 行动点 < 0)
@@ -66,25 +66,7 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
 
     }
 
-    public void set_color_white(List<int> availableMoves)
-    {
-        foreach (int i in availableMoves)
-        {
-            Color grenn = new Color(0.4f, 0.9f, 0.5f, 0f);
-            ValueHolder.棋盘[i.ToString()].GetComponent<UnityEngine.UI.Image>().color = grenn;
-        }
-    }
 
-    void send_move_card(int start_index, int end_index)
-    {
-        start_index = ConvertPosition(start_index);
-        end_index = ConvertPosition(end_index);
-        mainfunction.ChangeSendMessage("Action", 10);
-        mainfunction.ChangeSendMessage("start_index", start_index);
-        mainfunction.ChangeSendMessage("end_index", end_index);
-        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
-
-    }
 
     public int ConvertPosition(int position)
     {
