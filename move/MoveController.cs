@@ -52,6 +52,17 @@ public class MoveController : MonoBehaviour
             obstacles.Remove(12);
             obstacles.Remove(14);
         }
+        else
+        {
+            if (!obstacles.Contains(12))
+            {
+                obstacles.Add(12);
+            }
+            if (!obstacles.Contains(14))
+            {
+                obstacles.Add(14);
+            }
+        }
         List<int> availableMoves = new List<int>();
         if (gameObject.GetComponent<数据显示>().卡牌数据.类别 == "建筑")
         {
@@ -88,6 +99,17 @@ public class MoveController : MonoBehaviour
         {
             obstacles.Remove(12);
             obstacles.Remove(14);
+        }
+        else
+        {
+            if (!obstacles.Contains(12))
+            {
+                obstacles.Add(12);
+            }
+            if (!obstacles.Contains(14))
+            {
+                obstacles.Add(14);
+            }
         }
         List<int> availableMoves = new List<int>();
         if (gameObject.GetComponent<数据显示>().卡牌数据.类别 == "建筑")

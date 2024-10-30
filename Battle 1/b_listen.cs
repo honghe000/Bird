@@ -522,6 +522,10 @@ public class b_listen : MonoBehaviour
                     {
                         card.GetComponent<MoveController>().眩晕免疫 = 1;
                     }
+                    else if (mes.effect == 6)//识水
+                    {
+                        card.GetComponent<MoveController>().识水 = 1;
+                    }
                 }
             }
         }

@@ -2924,6 +2924,7 @@ public class 尼斯湖水怪 : BaseSkill
     public override void Action_1()
     {
         card.GetComponent<MoveController>().识水 = 1;
+        mainfunction.Send效果挂载(card_data.uid, 6,-1);
         skill_end = 1;
         activateTurn_1_finish = 1;
 
