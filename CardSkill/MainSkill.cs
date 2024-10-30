@@ -3186,7 +3186,6 @@ public class 青坊主 : BaseSkill
         作用目标卡牌.GetComponent<MoveController>().击杀免疫 = 1;
         作用目标卡牌.GetComponent<MoveController>().消灭免疫 = 1;
 
-        mainfunction.Send敌方红牌法术创建(card_data.id, uid);
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1, 1);
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2, 1);
 
