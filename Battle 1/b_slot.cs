@@ -29,8 +29,18 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             return;
         }
 
+        int index = 0;
 
-        int index = int.Parse(gameObject.name);
+        try
+        {
+            index = int.Parse(gameObject.name);
+        }
+        catch
+        {
+            return ;
+        }
+
+
         string 禁止放置来源 = mainfunction.判断是否处于禁用位置(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别,index);
 
         if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别 == "角色" &&  禁止放置来源 != "无")

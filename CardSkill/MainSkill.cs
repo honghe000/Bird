@@ -3260,33 +3260,39 @@ public class 神之审判 : BaseSkill
 
         作用目标卡牌数据.maxHp -= 5;
         作用目标卡牌数据.nowHp -= 5;
+        作用目标卡牌.GetComponent<数据显示>().更新数据();
         if (作用目标卡牌数据.nowHp <= 0)
         {
-            mainfunction.卡牌摧毁(card);
-            mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+            
             foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
             {
                 GameObject grid = grids.Value;
                 if (grid.transform.childCount != 0 && grids.Key != "0")
                 {
-                    GameObject card = grid.transform.GetChild(0).gameObject;
-                    if (card.GetComponent<MoveController>().cardType == 0 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                    GameObject card_temp = grid.transform.GetChild(0).gameObject;
+                    if (card_temp.GetComponent<MoveController>().cardType == 0 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色")
                     {
-                        卡牌数据 作用目标卡牌数据1 = card.GetComponent<数据显示>().卡牌数据;
+                        卡牌数据 作用目标卡牌数据1 = card_temp.GetComponent<数据显示>().卡牌数据;
 
                         作用目标卡牌数据1.maxAttack += 1;
                         作用目标卡牌数据1.nowAttack += 1;
-                        card.GetComponent<数据显示>().更新数据();
-                        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 1);
+                        card_temp.GetComponent<数据显示>().更新数据();
+                        mainfunction.Send攻击力改变(作用目标卡牌数据1.uid, 1);
 
                     }
                 }
+
             }
-            作用目标卡牌.GetComponent<数据显示>().更新数据();
-            mainfunction.Send血量改变(作用目标卡牌数据.uid, -5);
-            activateTurn_2_finish = 1;
-            skill_end = 1;
+
+            mainfunction.卡牌摧毁(作用目标卡牌);
+            mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+
         }
+
+
+        mainfunction.Send血量改变(作用目标卡牌数据.uid, -5);
+        activateTurn_2_finish = 1;
+        skill_end = 1;
     }
     public override void Action_3()
     {
