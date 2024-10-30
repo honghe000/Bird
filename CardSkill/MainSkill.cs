@@ -1239,6 +1239,8 @@ public class 雷电 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "雷电");
         }
+        ValueHolder.倒计时储存.Add(uid, 1);
+        mainfunction.Send倒计时(card_data.uid, 1);
     }
     public override void Action_1()
     {
@@ -3116,6 +3118,296 @@ public class 枉死城 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 青坊主 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 青坊主(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+        亡语 = 1;
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "青坊主");
+        }
+    }
+    public override void Action_1()
+    {
+        if (mainfunction.我方人物数量() == 1)
+        {
+            skill_end = 1;
+            return;
+        }
+        mainfunction.选择我方卡牌施放(card_data, 0);
+
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+
+        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
+
+        作用目标卡牌.GetComponent<MoveController>().击杀免疫 = 1;
+        作用目标卡牌.GetComponent<MoveController>().消灭免疫 = 1;
+
+        mainfunction.Send敌方红牌法术创建(card_data.id, uid);
+        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1, 1);
+        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2, 1);
+
+        ValueHolder.倒计时储存.Add(uid, 1);
+        mainfunction.Send倒计时(card_data.uid, 1);
+        activateTurn_2_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 神之审判 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 神之审判(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().场上敌方人数要求 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "神之审判");
+        }
+    }
+    public override void Action_1()
+    {
+        if (mainfunction.敌方人物数量() == 0)
+        {
+            skill_end = 1;
+            return;
+        }
+        mainfunction.选择敌方卡牌施放(card_data, 0);
+
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+
+        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
+
+        作用目标卡牌数据.maxHp -= 5;
+        作用目标卡牌数据.nowHp -= 5;
+        if (作用目标卡牌数据.nowHp <= 0)
+        {
+            mainfunction.卡牌摧毁(card);
+            mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+            foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
+            {
+                GameObject grid = grids.Value;
+                if (grid.transform.childCount != 0 && grids.Key != "0")
+                {
+                    GameObject card = grid.transform.GetChild(0).gameObject;
+                    if (card.GetComponent<MoveController>().cardType == 0 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                    {
+                        卡牌数据 作用目标卡牌数据1 = card.GetComponent<数据显示>().卡牌数据;
+
+                        作用目标卡牌数据1.maxAttack += 1;
+                        作用目标卡牌数据1.nowAttack += 1;
+                        card.GetComponent<数据显示>().更新数据();
+                        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 1);
+
+                    }
+                }
+            }
+            作用目标卡牌.GetComponent<数据显示>().更新数据();
+            mainfunction.Send血量改变(作用目标卡牌数据.uid, -5);
+            activateTurn_2_finish = 1;
+            skill_end = 1;
+        }
+    }
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 猎人 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 猎人(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().场上敌方人数要求 = 1;
+        效果 = "消灭";
+        亡语 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "猎人");
+        }
+    }
+    public override void Action_1()
+    {
+        
+        mainfunction.选择敌方卡牌施放(card_data, 0);
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+        mainfunction.卡牌摧毁(作用目标卡牌);
+        mainfunction.Send卡牌摧毁(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid);
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 拳师 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 拳师(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().杀人后触发 = 1;
+        
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "拳师");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+
+        card.GetComponent<MoveController>().行动点 += 1;
+      
+    }
+
+    public override void Action_2()
+    {
+        
+        activateTurn_2_finish = 1;
+        
     }
 
     public override void Action_3()
