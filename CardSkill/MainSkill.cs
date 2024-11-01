@@ -3151,8 +3151,6 @@ public class 枉死城 : BaseSkill
         //可点击范围
         List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
-        activateTurn_1_finish = 1;
-
     }
 
     public override void Action_2()

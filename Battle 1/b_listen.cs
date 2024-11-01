@@ -650,6 +650,8 @@ public class b_listen : MonoBehaviour
         ValueHolder.下个回合.interactable = false;
         ValueHolder.下个回合.image.color = Color.gray;
         ValueHolder.hintManager.AddHint("等待对方响应");
+
+        SkillExecutor.currentRunningSkillUid = null;
     }
 
     void 我方继续()
@@ -659,6 +661,8 @@ public class b_listen : MonoBehaviour
         mainfunction.禁用棋盘物件代码("b_cardaction", 0);
         ValueHolder.下个回合.interactable = true;
         ValueHolder.下个回合.image.color = Color.white;
+
+        SkillExecutor.currentRunningSkillUid = null;
     }
 
     void 技能释放申请(Message mes)
