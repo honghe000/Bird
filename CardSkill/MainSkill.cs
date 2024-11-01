@@ -3085,12 +3085,14 @@ public class 荒骷髅 : BaseSkill
         //可点击范围
         List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
+        activateTurn_1_finish = 1;
 
     }
 
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+        activateTurn_1_finish = 0;
     }
 
     public override void Action_3()
