@@ -33,6 +33,8 @@ public abstract class BaseSkill : MonoBehaviour
     public int 场上敌方角色死亡触发 = 0;
     public int 场上我方角色死亡触发 = 0;
 
+    public int 用户操作型技能 = 0; // 技能先后级相关
+
     public int 召唤物id = 0;
 
     public abstract void Action_1();

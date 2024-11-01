@@ -63,24 +63,23 @@ public class 张三封大师 : BaseSkill
         List<int> killGrid = Grids.GetNeighbors_九(card_id);
         Dictionary<int, GameObject> killCards = mainfunction.消灭_destroy(killGrid);
 
+        string uid_temp = "";
 
         foreach (KeyValuePair<int, GameObject> kvp in killCards)
         {
+            uid_temp = kvp.Value.GetComponent<数据显示>().卡牌数据.uid;
             mainfunction.卡牌摧毁(kvp.Value);
-
-            mainfunction.ChangeSendMessage("Action", 13);
-            mainfunction.ChangeSendMessage("end_index",kvp.Key);
-            ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+            mainfunction.Send卡牌摧毁(uid_temp);
         }
 
+        uid_temp = card.GetComponent<数据显示>().卡牌数据.uid;
         mainfunction.卡牌摧毁(card);
+        mainfunction.Send卡牌摧毁(uid_temp);
 
-        mainfunction.ChangeSendMessage("Action", 13);
-        mainfunction.ChangeSendMessage("end_index", card_id);
-        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
 
         activateTurn_1_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_2()
@@ -153,7 +152,10 @@ public class 相安无事: BaseSkill
 
         mainfunction.Send中立法术创建(card_data.id);
         mainfunction.Send法术禁用(card_data.id, activateTurn_2);
+
+
         activateTurn_1_finish = 1;
+
     }
 
     public override void Action_2()
@@ -173,6 +175,7 @@ public class 相安无事: BaseSkill
         }
         skill_end = 1;
         activateTurn_2_finish = 1;
+
     }
 
     public override void Action_3()
@@ -231,6 +234,7 @@ public class 鬼屋 : BaseSkill
         List<int> 禁止放置 = Grids.GetColumnIndices(card_grid);
         mainfunction.Send人物位置禁用(card_data.id,禁止放置);
         activateTurn_1_finish = 1;
+
     }
 
     public override void Action_2()
@@ -239,6 +243,7 @@ public class 鬼屋 : BaseSkill
 
         activateTurn_2_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_3()
@@ -292,6 +297,7 @@ public class 鬼将 : BaseSkill
         summonHandcard(1);
         activateTurn_1_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_2()
@@ -367,16 +373,13 @@ public class 龙首之玉 : BaseSkill
         mainfunction.Send我方红牌法术创建(card_data.id, uid);
         mainfunction.Send人物禁用(uid, activateTurn_2);
 
-        Debug.Log(uid);
-        Debug.Log(card_summon.gameObject.GetComponent<数据显示>().卡牌数据.uid);
-
         activateTurn_1_finish = 1;
+
 
     }
 
     public override void Action_2()
     {
-        Debug.Log("摧毁");
         foreach (Transform child in ValueHolder.敌方延时法术框.transform)
         {
             //Debug.Log(uid);
@@ -391,6 +394,8 @@ public class 龙首之玉 : BaseSkill
         }
         activateTurn_2_finish = 1;
         skill_end = 1;
+
+
     }
 
     public override void Action_3()
@@ -443,6 +448,9 @@ public class 佛光 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "佛光");
         }
+
+        ValueHolder.倒计时储存.Add(uid, delay);
+        mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
     {
@@ -474,8 +482,8 @@ public class 佛光 : BaseSkill
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1,delay);
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2, delay);
 
-        ValueHolder.倒计时储存.Add(uid, delay);
-        mainfunction.Send倒计时(card_data.uid, (int)delay);
+
+
 
         activateTurn_2_finish = 1;
     }
@@ -500,6 +508,10 @@ public class 佛光 : BaseSkill
 
         activateTurn_3_finish = 1;
         skill_end = 1;
+
+
+
+
     }
 
     public override void Action_4()
@@ -560,8 +572,10 @@ public class 判官笔 : BaseSkill
 
     public override void Action_2()
     {
+        string uid_temp = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid;
         mainfunction.卡牌摧毁(作用目标卡牌);
-        mainfunction.Send卡牌摧毁(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid);
+        mainfunction.Send卡牌摧毁(uid_temp);
+
 
 
         activateTurn_2_finish = 1;
@@ -629,6 +643,7 @@ public class 巨灵神 : BaseSkill
         card.GetComponent<数据显示>().更新数据();
 
         mainfunction.Send血量改变(card_data.uid, 1);
+
     }
 
     public override void Action_2()
@@ -709,6 +724,7 @@ public class 雅典娜 : BaseSkill
 
         activateTurn_2_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_3()
@@ -785,6 +801,7 @@ public class 蝎尾毒 : BaseSkill
 
         activateTurn_1_finish = 1;
 
+
     }
 
     public override void Action_2()
@@ -794,6 +811,7 @@ public class 蝎尾毒 : BaseSkill
             activateTurn_2_finish = 1;
             Action_3();
             skill_end = 1;
+    
             return;
         }
         mainfunction.Send回合结束弃牌(1);
@@ -802,6 +820,7 @@ public class 蝎尾毒 : BaseSkill
         {
             己方回合开始时触发 = 1;
         }
+
     }
 
     public override void Action_3()
@@ -917,6 +936,7 @@ public class 河神之怒 : BaseSkill
 
         activateTurn_2_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_3()
@@ -978,14 +998,15 @@ public class 舍生 : BaseSkill
 
     public override void Action_2()
     {
-        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
+        string uid_temp = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid;
 
         mainfunction.卡牌摧毁(作用目标卡牌);
-        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+        mainfunction.Send卡牌摧毁(uid_temp);
         summonHandcard(2);
 
         activateTurn_2_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_3()
@@ -1054,6 +1075,7 @@ public class 神谕者 : BaseSkill
 
         activateTurn_1_finish = 1;
 
+
     }
 
     public override void Action_2()
@@ -1068,6 +1090,7 @@ public class 神谕者 : BaseSkill
         card.GetComponent<MoveController>().消灭免疫 = 0;
         activateTurn_2_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_3()
@@ -1125,6 +1148,7 @@ public class 外交官 : BaseSkill
         mainfunction.Send摸牌(1);
         activateTurn_1_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_2()
@@ -1182,6 +1206,7 @@ public class 肥嘟嘟左卫门 : BaseSkill
     {
         Debug.Log("肥嘟嘟左卫门");
         summonHandcard(3);
+
     }
 
     public override void Action_2()
@@ -1272,6 +1297,7 @@ public class 雷电 : BaseSkill
 
         activateTurn_2_finish = 1;
 
+
     }
 
     public override void Action_3()
@@ -1295,6 +1321,7 @@ public class 雷电 : BaseSkill
 
         activateTurn_3_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_4()
@@ -1362,6 +1389,7 @@ public class 阿尔卡祭坛 : BaseSkill
 
         activateTurn_1_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_2()
@@ -1409,6 +1437,7 @@ public class 太乙真人 : BaseSkill
     private void initialization()
     {
         亡语 = 1;
+        用户操作型技能 = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -1440,8 +1469,11 @@ public class 太乙真人 : BaseSkill
         作用目标卡牌.GetComponent<数据显示>().更新数据();
         mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 3);
         mainfunction.Send血量改变(作用目标卡牌数据.uid, 3);
+
+
         activateTurn_2_finish = 1;
         skill_end = 1;
+
     }
 
     public override void Action_3()
@@ -1505,10 +1537,12 @@ public class 关羽 : BaseSkill
 
     public override void Action_2()
     {
+        string uid_temp = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid;
         mainfunction.卡牌摧毁(作用目标卡牌);
-        mainfunction.Send卡牌摧毁(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid);
+        mainfunction.Send卡牌摧毁(uid_temp);
         activateTurn_2_finish = 1;
         activateTurn_1_finish = 0;
+
     }
 
     public override void Action_3()
@@ -1583,6 +1617,7 @@ public class 困兽之斗 : BaseSkill
         mainfunction.Send中立法术创建(card_data.id);
        
         activateTurn_1_finish = 1;
+
     }
 
     public override void Action_2()
@@ -1607,6 +1642,7 @@ public class 困兽之斗 : BaseSkill
         }
         skill_end = 1;
         activateTurn_2_finish = 1;
+
     }
 
     public override void Action_3()
@@ -1853,10 +1889,9 @@ public class 鬼琵琶 : BaseSkill
 
     public override void Action_3()
     {
-        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
-
+        string uid_temp = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid;
         mainfunction.卡牌摧毁(作用目标卡牌);
-        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+        mainfunction.Send卡牌摧毁(uid_temp);
         skill_end = 1;
         activateTurn_3_finish = 1;
 
@@ -1915,20 +1950,20 @@ public class 毒雾 : BaseSkill
             GameObject grid = grids.Value;
             if (grid.transform.childCount != 0 && grids.Key != "0")
             {
-                GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色"&& card.GetComponent<MoveController>().法术可作用 == 1)
+                GameObject card_temp = grid.transform.GetChild(0).gameObject;
+                if (card_temp.GetComponent<MoveController>().cardType == 1 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色"&& card_temp.GetComponent<MoveController>().法术可作用 == 1)
                 {
-                    卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
+                    卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
 
-                    作用目标卡牌数据.nowHp -= 2;
-                    if (作用目标卡牌数据.nowHp <= 0)
+                    card_temp_data.nowHp -= 2;
+                    if (card_temp_data.nowHp <= 0)
                     {
-                        mainfunction.卡牌摧毁(card);
-                        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+                        mainfunction.卡牌摧毁(card_temp);
+                        mainfunction.Send卡牌摧毁(card_temp_data.uid);
                     }
-                    card.GetComponent<数据显示>().更新数据();
-                    mainfunction.Send血量改变(作用目标卡牌数据.uid, -2);
+                    card_temp.GetComponent<数据显示>().更新数据();
+                    mainfunction.Send血量改变(card_temp_data.uid, -2);
 
                 }
             }
@@ -2004,15 +2039,15 @@ public class 战国犀牛 : BaseSkill
             GameObject grid = grids.Value;
             if (grid.transform.childCount != 0 && grids.Key != "0")
             {
-                GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                GameObject card_temp = grid.transform.GetChild(0).gameObject;
+                if (card_temp.GetComponent<MoveController>().cardType == 1 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色")
                 {
-                    卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
+                    卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
-                    if (作用目标卡牌数据.nowHp <= 2)
+                    if (card_temp_data.nowHp <= 2)
                     {
-                        mainfunction.卡牌摧毁(card);
-                        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+                        mainfunction.卡牌摧毁(card_temp);
+                        mainfunction.Send卡牌摧毁(card_temp_data.uid);
                     }
                 }
             }
@@ -2781,20 +2816,20 @@ public class 火焰小鬼 : BaseSkill
             GameObject grid = grids.Value;
             if (grid.transform.childCount != 0 && grids.Key != "0")
             {
-                GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 1 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色" )
+                GameObject card_temp = grid.transform.GetChild(0).gameObject;
+                if (card_temp.GetComponent<MoveController>().cardType == 1 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色" )
                 {
-                    卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
+                    卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
 
-                    作用目标卡牌数据.nowHp -= 1;
-                    if (作用目标卡牌数据.nowHp <= 0)
+                    card_temp_data.nowHp -= 1;
+                    if (card_temp_data.nowHp <= 0)
                     {
-                        mainfunction.卡牌摧毁(card);
-                        mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
+                        mainfunction.卡牌摧毁(card_temp);
+                        mainfunction.Send卡牌摧毁(card_temp_data.uid);
                     }
-                    card.GetComponent<数据显示>().更新数据();
-                    mainfunction.Send血量改变(作用目标卡牌数据.uid, -1);
+                    card_temp.GetComponent<数据显示>().更新数据();
+                    mainfunction.Send血量改变(card_temp_data.uid, -1);
 
                 }
             }
@@ -2870,6 +2905,7 @@ public class 火灵法师 : BaseSkill
 
     public override void Action_2()
     {
+
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
         skill_end = 1;
         activateTurn_2_finish = 1;
@@ -3035,6 +3071,7 @@ public class 荒骷髅 : BaseSkill
     private void initialization()
     {
         亡语 = 1;
+        用户操作型技能 = 1;
         召唤物id = 397;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -3055,6 +3092,8 @@ public class 荒骷髅 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+
+
         skill_end = 1;
         activateTurn_2_finish = 1;
     }
@@ -3098,6 +3137,7 @@ public class 枉死城 : BaseSkill
     private void initialization()
     {
         场上我方角色死亡触发= 1;
+        用户操作型技能 = 1;
         召唤物id = 343;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -3118,6 +3158,7 @@ public class 枉死城 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+
     }
 
     public override void Action_3()
@@ -3159,6 +3200,7 @@ public class 青坊主 : BaseSkill
     private void initialization()
     {
         亡语 = 1;
+        用户操作型技能 = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -3189,8 +3231,7 @@ public class 青坊主 : BaseSkill
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1, 1);
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2, 1);
 
-        ValueHolder.倒计时储存.Add(uid, 1);
-        mainfunction.Send倒计时(card_data.uid, 1);
+
         activateTurn_2_finish = 1;
         skill_end = 1;
     }
@@ -3271,12 +3312,12 @@ public class 神之审判 : BaseSkill
                     GameObject card_temp = grid.transform.GetChild(0).gameObject;
                     if (card_temp.GetComponent<MoveController>().cardType == 0 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色")
                     {
-                        卡牌数据 作用目标卡牌数据1 = card_temp.GetComponent<数据显示>().卡牌数据;
+                        卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
-                        作用目标卡牌数据1.maxAttack += 1;
-                        作用目标卡牌数据1.nowAttack += 1;
+                        card_temp_data.maxAttack += 1;
+                        card_temp_data.nowAttack += 1;
                         card_temp.GetComponent<数据显示>().更新数据();
-                        mainfunction.Send攻击力改变(作用目标卡牌数据1.uid, 1);
+                        mainfunction.Send攻击力改变(card_temp_data.uid, 1);
 
                     }
                 }
@@ -3334,6 +3375,7 @@ public class 猎人 : BaseSkill
         card.GetComponent<MoveController>().场上敌方人数要求 = 1;
         效果 = "消灭";
         亡语 = 1;
+        用户操作型技能 = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "猎人");
@@ -3349,8 +3391,11 @@ public class 猎人 : BaseSkill
 
     public override void Action_2()
     {
+        string uid_temp = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid;
         mainfunction.卡牌摧毁(作用目标卡牌);
-        mainfunction.Send卡牌摧毁(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid);
+        mainfunction.Send卡牌摧毁(uid_temp);
+
+
         activateTurn_2_finish = 1;
     }
 

@@ -206,6 +206,12 @@ public class b_listen : MonoBehaviour
         } else if (mes.Action == 39)
         {
             我方继续();
+        }else if (mes.Action == 40)
+        {
+            技能释放申请(mes);
+        }else if (mes.Action == 41)
+        {
+            技能释放申请同意(mes);
         }
     }
 
@@ -325,19 +331,19 @@ public class b_listen : MonoBehaviour
             {
                 if (skill.activateTurn_1_finish == 0 && skill.activateTurn_1 == ValueHolder.turn)
                 {
-                    skill.Action_1();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_1);
                 }
                 if (skill.activateTurn_2_finish == 0 && skill.activateTurn_2 == ValueHolder.turn)
                 {
-                    skill.Action_2();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_2);
                 }
                 if (skill.activateTurn_3_finish == 0 && skill.activateTurn_3 == ValueHolder.turn)
                 {
-                    skill.Action_3();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_3);
                 }
                 if (skill.activateTurn_4_finish == 0 && skill.activateTurn_4 == ValueHolder.turn)
                 {
-                    skill.Action_4();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_4);
                 }
 
                 if (skill.己方回合开始时触发 == 1)
@@ -652,4 +658,33 @@ public class b_listen : MonoBehaviour
         ValueHolder.下个回合.interactable = true;
         ValueHolder.下个回合.image.color = Color.white;
     }
+
+    void 技能释放申请(Message mes)
+    {
+        ValueHolder.申请释放技能队列.Enqueue(mes.uid);
+    }
+
+    void 技能释放申请同意(Message mes)
+    {
+        mainfunction.Send对方暂停();
+        BaseSkill skill = ValueHolder.SkillAction[mes.uid];
+        if (skill != null)
+        {
+            mainfunction.运行下个技能阶段(skill);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

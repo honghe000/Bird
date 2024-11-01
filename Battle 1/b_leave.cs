@@ -89,8 +89,10 @@ public class b_leave : MonoBehaviour
 
         ValueHolder.启用点选格子 = 0;
         ValueHolder.点击格子编号 = 0;
-        ValueHolder.点选技能uid = new Queue<Dictionary<string, string>>();
+        ValueHolder.点选技能uid = null;
         ValueHolder.效果卸载队列 = new List<Effect>();
+        ValueHolder.申请释放技能队列 = new Queue<string>();
+        //ValueHolder.技能释放中数量 = 0;
 
         SceneManager.LoadScene("mainpage");
     }

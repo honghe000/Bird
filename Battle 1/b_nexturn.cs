@@ -78,19 +78,19 @@ public class b_nexturn : MonoBehaviour
             {
                 if (skill.activateTurn_1_finish == 0 && skill.activateTurn_1 == ValueHolder.turn)
                 {
-                    skill.Action_1();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_1);
                 }
                 if (skill.activateTurn_2_finish == 0 && skill.activateTurn_2 == ValueHolder.turn)
                 {
-                    skill.Action_2();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_2);
                 }
                 if (skill.activateTurn_3_finish == 0 && skill.activateTurn_3 == ValueHolder.turn)
                 {
-                    skill.Action_3();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_3);
                 }
                 if (skill.activateTurn_4_finish == 0 && skill.activateTurn_4 == ValueHolder.turn)
                 {
-                    skill.Action_4();
+                    SkillExecutor.EnqueueSkill(skill, skill.Action_4);
                 }
             }
             mainfunction.DestroyAllChildren(ValueHolder.放大展示区1);

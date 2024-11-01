@@ -120,22 +120,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        //点选格子（召唤）
-        if (ValueHolder.启用点选格子 == 1 && ValueHolder.点选技能uid.Count > 1)
-        {
-            int clicked_index = int.Parse(gameObject.name);
-            ValueHolder.点击格子编号 = clicked_index;
-
-            Dictionary<string, string> dic = ValueHolder.点选技能uid.Dequeue();
-            BaseSkill skill = ValueHolder.SkillAction[dic.First().Value];
-            mainfunction.运行下个技能阶段(skill);
-
-            ValueHolder.hintManager.AddHint("请选择位置召唤：" + dic.First().Value);
-
-            return;
-        }
-
-        if (ValueHolder.启用点选格子 == 1 && ValueHolder.点选技能uid.Count == 1)
+        if (ValueHolder.启用点选格子 == 1 )
         {
             if (ValueHolder.is_myturn == 1)
             {
@@ -148,15 +133,12 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
             mainfunction.格子颜色还原();
 
-            mainfunction.Send对方继续();
-
-
 
             int clicked_index = int.Parse(gameObject.name);
             ValueHolder.点击格子编号 = clicked_index;
+            mainfunction.技能释放结束();
 
-
-            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid.Dequeue().First().Value];
+            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid];
             mainfunction.运行下个技能阶段(skill);
 
             ValueHolder.启用点选格子 = 0;

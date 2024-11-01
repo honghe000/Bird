@@ -35,7 +35,12 @@ public class b_choose_fa : MonoBehaviour, IPointerClickHandler
         mainfunction.HideCardchoose();
         ValueHolder.法术选择取消.gameObject.SetActive(false);
         mainfunction.禁用棋盘物件代码("b_choose_fa", cardType);
+
+
+        mainfunction.技能释放结束();
+
         mainfunction.运行下个技能阶段(skill);
+
 
     }
 }

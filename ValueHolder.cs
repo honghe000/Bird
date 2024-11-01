@@ -174,10 +174,15 @@ public class ValueHolder : MonoBehaviour
     //点选格子
     public static int 启用点选格子 = 0;
     public static int 点击格子编号 = 0;
-    public static Queue<Dictionary<string,string>> 点选技能uid = new Queue<Dictionary<string, string>>();
+    public static string 点选技能uid = null;
 
     //效果卸载
     public static List<Effect> 效果卸载队列 = new List<Effect>();
+
+    ////技能执行先后级临时存储
+    public static Queue<string> 申请释放技能队列 = new Queue<string>();
+    //public static int 技能释放中数量 = 0;
+    //public static string 正在运行技能uid = null;
 
 
 }

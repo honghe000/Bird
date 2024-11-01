@@ -560,15 +560,6 @@ public class mainfunction : MonoBehaviour
             yield return null;
         }
 
-        if (card.GetComponent<MoveController>().cardType == 0 && ValueHolder.SkillAction.ContainsKey(card.GetComponent<数据显示>().卡牌数据.uid))
-        {
-            BaseSkill skill = ValueHolder.SkillAction[card.GetComponent<数据显示>().卡牌数据.uid];
-            if (skill.亡语 == 1)
-            {
-                运行下个技能阶段(skill);
-            }
-        }
-
         // 确保最终状态
         card.transform.localScale = Vector3.zero;
         string endindex = card.transform.parent.name.ToString();
@@ -588,10 +579,8 @@ public class mainfunction : MonoBehaviour
     public static void 卡牌摧毁(GameObject card,GameObject mycard = null)
     {
         场上角色死亡触发(card);
-        //if(card == null)
-        //{
-            //return;
-        //}
+        亡语触发(card);
+
         MonoBehaviour monoBehaviour = card.GetComponent<MonoBehaviour>();
         monoBehaviour.StartCoroutine(RotateAndScaleCoroutine(card, mycard));
     }
@@ -603,20 +592,71 @@ public class mainfunction : MonoBehaviour
         {
             if (skill.场上角色死亡触发 == 1)
             {
-                运行下个技能阶段(skill);
+
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                {
+                    Send技能释放申请(skill.uid);
+                }
+                else
+                {
+                    运行下个技能阶段(skill);
+                }
             }
 
 
             if (skill.场上敌方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 1)
             {
-                运行下个技能阶段(skill);
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                {
+                    Send技能释放申请(skill.uid);
+                }
+                else
+                {
+                    运行下个技能阶段(skill);
+                }
             }
 
             if (skill.场上我方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 0)
             {
-                运行下个技能阶段(skill);
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                {
+                    Send技能释放申请(skill.uid);
+                }
+                else
+                {
+                    运行下个技能阶段(skill);
+                }
             }
         }
+    }
+
+    public static void 亡语触发(GameObject card)
+    {
+        if (card.GetComponent<MoveController>().cardType == 0 && ValueHolder.SkillAction.ContainsKey(card.GetComponent<数据显示>().卡牌数据.uid))
+        {
+            BaseSkill skill = ValueHolder.SkillAction[card.GetComponent<数据显示>().卡牌数据.uid];
+            if (skill.亡语 == 1)
+            {
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                {
+                    Send技能释放申请(skill.uid);
+                }
+                else
+                {
+                    运行下个技能阶段(skill);
+                }
+
+            }
+        }
+    }
+
+    public static void 技能释放结束()
+    {
+        SkillExecutor.currentRunningSkillUid = null;
+    }
+    public static void 技能释放未结束(string uid) 
+    {
+        SkillExecutor.currentRunningSkillUid = uid;
     }
 
     public static void cardAttack(GameObject mycard,GameObject hecard,int is_send)
@@ -890,35 +930,53 @@ public class mainfunction : MonoBehaviour
         {
             return;
         }
+        禁用棋盘物件代码("b_moveca", 0);
+        禁用手牌物件代码("b_cardaction");
+        ValueHolder.下个回合.interactable = false;
+        ValueHolder.下个回合.image.color = Color.gray;
+
         ChangeSendMessage("Action", 39);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
+    public static void Send技能释放申请(string uid)
+    {
+        ChangeSendMessage("Action", 40);
+        ChangeSendMessage("uid", uid);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
 
+    }
+
+    public static void Send技能释放同意(string uid)
+    {
+        ChangeSendMessage("Action", 41);
+        ChangeSendMessage("uid", uid);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
 
     public static void 运行下个技能阶段(BaseSkill skill)
     {
         if (skill.activateTurn_1_finish == 0)
         {
-            skill.Action_1();
+            SkillExecutor.EnqueueSkill(skill, skill.Action_1);
             Debug.Log("运行技能1阶段");
             return;
         }
         if (skill.activateTurn_2_finish == 0)
         {
-            skill.Action_2();
+            SkillExecutor.EnqueueSkill(skill, skill.Action_2);
             Debug.Log("运行技能2阶段");
             return;
         }
         if (skill.activateTurn_3_finish == 0)
         {
-            skill.Action_3();
+            SkillExecutor.EnqueueSkill(skill, skill.Action_3);
             Debug.Log("运行技能3阶段");
             return;
         }
         if (skill.activateTurn_4_finish == 0)
         {
-            skill.Action_4();
+            SkillExecutor.EnqueueSkill(skill, skill.Action_4);
             Debug.Log("运行技能4阶段");
             return;
         }
@@ -1368,6 +1426,7 @@ public class mainfunction : MonoBehaviour
         {
             ValueHolder.法术选择取消.gameObject.SetActive(true);
         }
+        技能释放未结束(card_data.uid);
     }
 
     public static void 选择敌方卡牌施放(卡牌数据 card_data, int can_cancel)
@@ -1383,6 +1442,7 @@ public class mainfunction : MonoBehaviour
         {
             ValueHolder.法术选择取消.gameObject.SetActive(true);
         }
+        技能释放未结束(card_data.uid);
     }
 
     public static void 点选格子(string 召唤物名字, string uid ,List<int> ClickList)
@@ -1393,16 +1453,12 @@ public class mainfunction : MonoBehaviour
         ValueHolder.下个回合.image.color = Color.gray;
         格子绿色显示(ClickList);
 
-        Send对方暂停();
+        技能释放未结束(uid);
 
-        Dictionary<string,string> dic = new Dictionary<string, string> { { 召唤物名字, uid } };
 
         ValueHolder.启用点选格子 = 1;
-        ValueHolder.点选技能uid.Enqueue(dic);
-        if (ValueHolder.点选技能uid.Peek().First().Value == uid)          
-        {
-            ValueHolder.hintManager.AddHint("请选择位置召唤：" + ValueHolder.点选技能uid.Peek().First().Key);
-        }
+        ValueHolder.点选技能uid = uid;
+        ValueHolder.hintManager.AddHint("请选择位置召唤：" + 召唤物名字);
     }
 
     public static void 格子绿色显示(List<int> availableMoves)
