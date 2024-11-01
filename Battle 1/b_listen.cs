@@ -668,10 +668,8 @@ public class b_listen : MonoBehaviour
     {
         mainfunction.Send对方暂停();
         BaseSkill skill = ValueHolder.SkillAction[mes.uid];
-        if (skill != null)
-        {
-            mainfunction.运行下个技能阶段(skill);
-        }
+
+        mainfunction.运行下个技能阶段(skill);
     }
 
 
