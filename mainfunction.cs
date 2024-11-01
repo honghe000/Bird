@@ -958,25 +958,25 @@ public class mainfunction : MonoBehaviour
     {
         if (skill.activateTurn_1_finish == 0)
         {
-            SkillExecutor.EnqueueSkill(skill, skill.Action_1);
+            SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_1);
             Debug.Log("运行技能1阶段");
             return;
         }
         if (skill.activateTurn_2_finish == 0)
         {
-            SkillExecutor.EnqueueSkill(skill, skill.Action_2);
+            SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_2);
             Debug.Log("运行技能2阶段");
             return;
         }
         if (skill.activateTurn_3_finish == 0)
         {
-            SkillExecutor.EnqueueSkill(skill, skill.Action_3);
+            SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_3);
             Debug.Log("运行技能3阶段");
             return;
         }
         if (skill.activateTurn_4_finish == 0)
         {
-            SkillExecutor.EnqueueSkill(skill, skill.Action_4);
+            SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_4);
             Debug.Log("运行技能4阶段");
             return;
         }

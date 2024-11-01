@@ -1,12 +1,13 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.ParticleSystem;
 
 
 public class SkillExecutor : MonoBehaviour
 {
     // 静态队列，用于全局存储技能
-    private static Queue<KeyValuePair<BaseSkill, Action>> skillQueue = new Queue<KeyValuePair<BaseSkill, Action>>();
+    private static LinkedList<KeyValuePair<BaseSkill, Action>> skillQueue = new LinkedList<KeyValuePair<BaseSkill, Action>>();
 
     // 全局UID，用于阻塞技能执行
     public static string currentRunningSkillUid = null;
@@ -15,7 +16,14 @@ public class SkillExecutor : MonoBehaviour
     // 添加技能到队列
     public static void EnqueueSkill(BaseSkill skill, Action action)
     {
-        skillQueue.Enqueue(new KeyValuePair<BaseSkill, Action>(skill, action));
+        // 正常的入队方法，将元素添加到尾部
+        skillQueue.AddLast(new KeyValuePair<BaseSkill, Action>(skill, action));
+    }
+
+    public static void EnqueueSkillAtFront(BaseSkill skill, Action action)
+    {
+        // 从头部插入元素
+        skillQueue.AddFirst(new KeyValuePair<BaseSkill, Action>(skill, action));
     }
 
     private void Start()
@@ -34,7 +42,8 @@ public class SkillExecutor : MonoBehaviour
             // 如果没有技能在执行且队列中有技能，执行下一个技能
             if (currentRunningSkillUid == null && skillQueue.Count > 0)
             {
-                var skillPair = skillQueue.Dequeue();
+                var skillPair = skillQueue.First.Value;
+                skillQueue.RemoveFirst(); // 从队列中移除已执行的技能
                 var skill = skillPair.Key;
                 var action = skillPair.Value;
 

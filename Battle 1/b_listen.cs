@@ -386,6 +386,8 @@ public class b_listen : MonoBehaviour
 
             }
         }
+        mainfunction.启用手牌物件代码("b_cardaction");
+
     }
 
     void 中立法术创建(Message mes)
