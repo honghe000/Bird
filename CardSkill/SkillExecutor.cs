@@ -11,6 +11,8 @@ public class SkillExecutor : MonoBehaviour
     // 全局UID，用于阻塞技能执行
     public static string currentRunningSkillUid = null;
 
+    public static int 继续标志 = 0;
+
 
     // 添加技能到队列
     public static void EnqueueSkill(BaseSkill skill, Action action)
@@ -29,6 +31,8 @@ public class SkillExecutor : MonoBehaviour
     {
         while (true)
         {
+            //Debug.Log("技能队列长度：" + skillQueue.Count);
+            //Debug.Log("当前UID：" + currentRunningSkillUid);
             // 如果没有技能在执行且队列中有技能，执行下一个技能
             if (currentRunningSkillUid == null && skillQueue.Count > 0)
             {
@@ -55,9 +59,11 @@ public class SkillExecutor : MonoBehaviour
                         currentRunningSkillUid = ValueHolder.申请释放技能队列.Dequeue();
                         mainfunction.Send技能释放同意(currentRunningSkillUid);
                     }
-                }else if (currentRunningSkillUid == null && skillQueue.Count == 0  && ValueHolder.is_myturn == 0)
+                    继续标志 = 1;
+                }else if (currentRunningSkillUid == null && skillQueue.Count == 0  && ValueHolder.is_myturn == 0 && 继续标志 == 1)
                 {
                     mainfunction.Send对方继续();
+                    继续标志 = 0;
                 }
                 yield return new WaitForSeconds(0.2f); // 阻塞0.2秒，避免过度循环
             }

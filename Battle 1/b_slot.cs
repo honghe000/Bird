@@ -137,6 +137,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
             int clicked_index = int.Parse(gameObject.name);
             ValueHolder.点击格子编号 = clicked_index;
             mainfunction.技能释放结束();
+            Debug.Log("点击格子编号" + clicked_index);
 
             BaseSkill skill = ValueHolder.SkillAction[ValueHolder.点选技能uid];
             mainfunction.运行下个技能阶段(skill);
