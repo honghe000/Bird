@@ -668,7 +668,7 @@ public class b_listen : MonoBehaviour
     {
         mainfunction.Send对方暂停();
         BaseSkill skill = ValueHolder.SkillAction[mes.uid];
-
+        ValueHolder.敌方回合运行我方技能 = 1;
         mainfunction.运行下个技能阶段(skill);
     }
 

@@ -184,5 +184,7 @@ public class ValueHolder : MonoBehaviour
     //public static int 技能释放中数量 = 0;
     //public static string 正在运行技能uid = null;
 
+    public static int 敌方回合运行我方技能 = 0;
+
 
 }
