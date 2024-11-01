@@ -3091,8 +3091,6 @@ public class 荒骷髅 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
-
-        activateTurn_2_finish = 1;
     }
 
     public override void Action_3()
