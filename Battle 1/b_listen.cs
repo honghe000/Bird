@@ -651,7 +651,7 @@ public class b_listen : MonoBehaviour
         ValueHolder.下个回合.image.color = Color.gray;
         ValueHolder.hintManager.AddHint("等待对方响应");
 
-        SkillExecutor.currentRunningSkillUid = null;
+        SkillExecutor.currentRunningSkillUid = "我方暂停";
     }
 
     void 我方继续()

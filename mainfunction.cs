@@ -280,6 +280,7 @@ public class mainfunction : MonoBehaviour
     public static void SendMessages()
     {
         string message = ValueHolder.sendQueue.Dequeue();
+        Debug.Log(message);
         NetworkStream stream = ValueHolder.client.GetStream();
         byte[] data = Encoding.UTF8.GetBytes(message);
         stream.Write(data, 0, data.Length);
