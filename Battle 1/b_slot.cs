@@ -92,7 +92,14 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
                 //技能初始化
                 BaseSkill skill = SkillFactory.CreateSkill(eventData.pointerDrag,this);
-                ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+                if (ValueHolder.SkillAction.ContainsKey(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid))
+                {
+                    ValueHolder.SkillAction[eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid] = skill;
+                }
+                else
+                {
+                    ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+                }
                 if (skill.activateTurn_1 == ValueHolder.turn)
                 {
                     skill.Action_1();

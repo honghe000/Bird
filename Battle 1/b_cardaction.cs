@@ -127,6 +127,7 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
             {
                 return;
             }
+
             if (skill.activateTurn_1 == ValueHolder.turn)
             {
                 skill.Action_1();
@@ -136,7 +137,15 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
             {
                 Debug.Log(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.名字);
             }
-            ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+
+            if (ValueHolder.SkillAction.ContainsKey(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid))
+            {
+                ValueHolder.SkillAction[eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid] = skill;
+            }
+            else
+            {
+                ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+            }
             Destroy(eventData.pointerDrag.gameObject);
         }
     }
