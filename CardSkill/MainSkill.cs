@@ -3322,7 +3322,6 @@ public class 神之审判 : BaseSkill
             }
 
             mainfunction.卡牌摧毁(作用目标卡牌);
-            mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
 
         }
 
