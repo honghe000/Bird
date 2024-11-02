@@ -588,13 +588,14 @@ public class mainfunction : MonoBehaviour
 
     public static void 场上角色死亡触发(GameObject card)
     {
-
-        foreach(BaseSkill skill in ValueHolder.SkillAction.Values)
+        BaseSkill skill = null;
+        if (ValueHolder.SkillAction.ContainsKey(card.GetComponent<数据显示>().卡牌数据.uid))
         {
+            skill = ValueHolder.SkillAction[card.GetComponent<数据显示>().卡牌数据.uid];
             if (skill.场上角色死亡触发 == 1)
             {
 
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid);
                 }
@@ -607,7 +608,7 @@ public class mainfunction : MonoBehaviour
 
             if (skill.场上敌方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 1)
             {
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid);
                 }
@@ -619,7 +620,7 @@ public class mainfunction : MonoBehaviour
 
             if (skill.场上我方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 0)
             {
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid);
                 }
@@ -629,6 +630,8 @@ public class mainfunction : MonoBehaviour
                 }
             }
         }
+
+
     }
 
     public static void 亡语触发(GameObject card)
