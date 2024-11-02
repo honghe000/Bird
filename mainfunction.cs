@@ -588,14 +588,13 @@ public class mainfunction : MonoBehaviour
 
     public static void 场上角色死亡触发(GameObject card)
     {
-        BaseSkill skill = null;
-        if (ValueHolder.SkillAction.ContainsKey(card.GetComponent<数据显示>().卡牌数据.uid))
+
+        foreach(BaseSkill skill in ValueHolder.SkillAction.Values)
         {
-            skill = ValueHolder.SkillAction[card.GetComponent<数据显示>().卡牌数据.uid];
             if (skill.场上角色死亡触发 == 1)
             {
 
-                if (ValueHolder.is_myturn == 0)
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
                 {
                     Send技能释放申请(skill.uid);
                 }
@@ -608,7 +607,7 @@ public class mainfunction : MonoBehaviour
 
             if (skill.场上敌方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 1)
             {
-                if (ValueHolder.is_myturn == 0)
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
                 {
                     Send技能释放申请(skill.uid);
                 }
@@ -620,7 +619,7 @@ public class mainfunction : MonoBehaviour
 
             if (skill.场上我方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 0)
             {
-                if (ValueHolder.is_myturn == 0)
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
                 {
                     Send技能释放申请(skill.uid);
                 }
@@ -630,8 +629,6 @@ public class mainfunction : MonoBehaviour
                 }
             }
         }
-
-
     }
 
     public static void 亡语触发(GameObject card)
@@ -1417,7 +1414,7 @@ public class mainfunction : MonoBehaviour
         灵力增加(4, ValueHolder.灵力当前上限[4]);
     }
 
-    public static void 选择我方卡牌施放(卡牌数据 card_data, int can_cancel)//可以取消施法：1.不可以为0
+    public static void 选择我方卡牌施放(卡牌数据 card_data)//可以取消施法：1.不可以为0
     {
         ValueHolder.法术作用敌我类型 = 0;
         禁用棋盘物件代码("b_moveca", 0);
@@ -1426,14 +1423,10 @@ public class mainfunction : MonoBehaviour
         启用棋盘物件代码("b_choose_fa", 0);
         ValueHolder.释放法术uid = card_data.uid;
 
-        if (can_cancel == 1)
-        {
-            ValueHolder.法术选择取消.gameObject.SetActive(true);
-        }
         技能释放未结束(card_data.uid);
     }
 
-    public static void 选择敌方卡牌施放(卡牌数据 card_data, int can_cancel)
+    public static void 选择敌方卡牌施放(卡牌数据 card_data)
     {
         ValueHolder.法术作用敌我类型 = 1;
         禁用棋盘物件代码("b_moveca", 0);
@@ -1442,10 +1435,8 @@ public class mainfunction : MonoBehaviour
         启用棋盘物件代码("b_choose_fa", 1);
         ValueHolder.释放法术uid = card_data.uid;
 
-        if (can_cancel == 1)
-        {
-            ValueHolder.法术选择取消.gameObject.SetActive(true);
-        }
+        ValueHolder.法术选择取消.gameObject.SetActive(true);
+
         技能释放未结束(card_data.uid);
     }
 

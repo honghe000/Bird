@@ -454,7 +454,7 @@ public class 佛光 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择我方卡牌施放(card_data, 1);
+        mainfunction.选择我方卡牌施放(card_data);
         activateTurn_1_finish = 1;
 
     }
@@ -562,7 +562,7 @@ public class 判官笔 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择敌方卡牌施放(card_data, 1);
+        mainfunction.选择敌方卡牌施放(card_data);
 
 
         activateTurn_1_finish = 1;
@@ -707,7 +707,7 @@ public class 雅典娜 : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.选择我方卡牌施放(card_data, 0);
+        mainfunction.选择我方卡牌施放(card_data);
 
         activateTurn_1_finish = 1;
 
@@ -991,7 +991,7 @@ public class 舍生 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择我方卡牌施放(card_data, 1);
+        mainfunction.选择我方卡牌施放(card_data);
         activateTurn_1_finish = 1;
 
     }
@@ -1269,7 +1269,7 @@ public class 雷电 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择敌方卡牌施放(card_data, 1);
+        mainfunction.选择敌方卡牌施放(card_data);
 
 
 
@@ -1451,7 +1451,7 @@ public class 太乙真人 : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.选择我方卡牌施放(card_data, 0);
+        mainfunction.选择我方卡牌施放(card_data);
 
         activateTurn_1_finish = 1;
 
@@ -1529,7 +1529,7 @@ public class 关羽 : BaseSkill
         {
             return;
         }
-        mainfunction.选择敌方卡牌施放(card_data, 0);
+        mainfunction.选择敌方卡牌施放(card_data);
         activateTurn_1_finish = 1;
 
 
@@ -1867,7 +1867,7 @@ public class 鬼琵琶 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择我方卡牌施放(card_data, 1);
+        mainfunction.选择我方卡牌施放(card_data);
         activateTurn_1_finish = 1;
 
     }
@@ -2121,7 +2121,7 @@ public class 牛魔 : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.选择敌方卡牌施放(card_data, 0);
+        mainfunction.选择敌方卡牌施放(card_data);
         activateTurn_1_finish = 1;
 
     }
@@ -2203,7 +2203,7 @@ public class 贩卖鸦片 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择敌方卡牌施放(card_data, 1);
+        mainfunction.选择敌方卡牌施放(card_data);
 
 
 
@@ -2342,7 +2342,7 @@ public class 杨枝甘露 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择我方卡牌施放(card_data, 1);
+        mainfunction.选择我方卡牌施放(card_data);
         activateTurn_1_finish = 1;
     }
 
@@ -2480,7 +2480,7 @@ public class 丁达尔效应 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.选择我方卡牌施放(card_data, 1);
+        mainfunction.选择我方卡牌施放(card_data);
         activateTurn_1_finish = 1;
     }
 
@@ -2550,7 +2550,7 @@ public class 钟馗 : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.选择我方卡牌施放(card_data, 0);
+        mainfunction.选择我方卡牌施放(card_data);
         activateTurn_1_finish = 1;
     }
 
@@ -3211,7 +3211,7 @@ public class 青坊主 : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.选择我方卡牌施放(card_data, 0);
+        mainfunction.选择我方卡牌施放(card_data);
 
         activateTurn_1_finish = 1;
 
@@ -3284,7 +3284,7 @@ public class 神之审判 : BaseSkill
             skill_end = 1;
             return;
         }
-        mainfunction.选择敌方卡牌施放(card_data, 0);
+        mainfunction.选择敌方卡牌施放(card_data);
 
         activateTurn_1_finish = 1;
 
@@ -3380,7 +3380,7 @@ public class 猎人 : BaseSkill
     public override void Action_1()
     {
         
-        mainfunction.选择敌方卡牌施放(card_data, 0);
+        mainfunction.选择敌方卡牌施放(card_data);
         activateTurn_1_finish = 1;
         skill_end = 1;
     }

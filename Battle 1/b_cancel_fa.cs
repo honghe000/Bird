@@ -25,6 +25,11 @@ public class b_cancel_fa : MonoBehaviour
         ValueHolder.法术选择取消.gameObject.SetActive(false);
         mainfunction.禁用棋盘物件代码("b_choose_fa", ValueHolder.法术作用敌我类型);
 
+        if (mainfunction.uid找卡(ValueHolder.释放法术uid) != null)
+        {
+            return;
+        }
+
         BaseSkill skill = ValueHolder.SkillAction[ValueHolder.释放法术uid];
         GameObject cardone = Instantiate(ValueHolder.手牌对战牌);
         cardone = summon_one(cardone, skill.card_data.id);
