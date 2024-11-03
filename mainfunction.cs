@@ -1426,6 +1426,8 @@ public class mainfunction : MonoBehaviour
         启用棋盘物件代码("b_choose_fa", 0);
         ValueHolder.释放法术uid = card_data.uid;
 
+        ValueHolder.法术选择取消.gameObject.SetActive(true);
+
         技能释放未结束(card_data.uid);
     }
 
