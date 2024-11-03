@@ -28,6 +28,8 @@ public class MoveController : MonoBehaviour
     public int 行动点 = 0;
 
     public int 识水 = 0;
+
+    public int 无双 = 0;
     public MoveController()
     {
         InitializeBoard();
