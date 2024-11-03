@@ -665,8 +665,11 @@ public class mainfunction : MonoBehaviour
         卡牌数据 card_data1 = mycard.GetComponent<数据显示>().卡牌数据;
         卡牌数据 card_data2 = hecard.GetComponent<数据显示>().卡牌数据;
 
+        if (mycard.GetComponent<MoveController>().无双 == 0)
+        {
+            card_data1.nowHp = card_data1.nowHp - card_data2.nowAttack;
+        }
 
-        card_data1.nowHp = card_data1.nowHp - card_data2.nowAttack;
         card_data2.nowHp = card_data2.nowHp - card_data1.nowAttack;
 
 
