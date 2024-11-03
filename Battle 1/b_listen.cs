@@ -533,6 +533,9 @@ public class b_listen : MonoBehaviour
                     else if (mes.effect == 6)//识水
                     {
                         card.GetComponent<MoveController>().识水 = 1;
+                    }else if (mes.effect == 7)//无双
+                    {
+                        card.GetComponent<MoveController>().无双 = 1;
                     }
                 }
             }

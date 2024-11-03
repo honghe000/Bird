@@ -96,6 +96,8 @@ public static class SkillFactory
                 return new 猎人(card, monoBehaviour);
             case "拳师":
                 return new 拳师(card, monoBehaviour);
+            case "吕布":
+                return new 吕布(card, monoBehaviour);
             default:
                 return null;
         }
