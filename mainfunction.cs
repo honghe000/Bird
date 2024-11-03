@@ -567,7 +567,8 @@ public class mainfunction : MonoBehaviour
         Destroy(card); // 可选择禁用物体
         if (mycard != null)
         {
-            List<int> obstacles = card.GetComponent<MoveController>().obstacles;
+
+            List<int> obstacles = mycard.GetComponent<MoveController>().obstacles;
             if (!obstacles.Contains(int.Parse(endindex)))
             {
                 mycard.transform.SetParent(ValueHolder.棋盘[endindex].transform);
