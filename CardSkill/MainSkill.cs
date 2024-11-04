@@ -3586,7 +3586,7 @@ public class 两面佛 : BaseSkill
        
         card.GetComponent<数据显示>().更新数据();
 
-        mainfunction.Send血量改变(card_data.uid, 1);
+        mainfunction.Send血量改变(card_data.uid, -1);
 
     }
 
@@ -3652,10 +3652,10 @@ public class 大红莲 : BaseSkill
                 GameObject card_temp = grid.transform.GetChild(0).gameObject;
                 if (card_temp.GetComponent<MoveController>().cardType == 0 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色"&& card_temp.GetComponent<MoveController>().法术可作用 == 1)
                 {
-                    卡牌数据 作用全体目标卡牌数据 = card_temp.GetComponent<数据显示>().卡牌数据;
+                    卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
-                    int 治疗量 = mainfunction.治疗(作用目标卡牌, 2);
-                    mainfunction.Send血量改变(作用全体目标卡牌数据.uid, 治疗量);
+                    int 治疗量 = mainfunction.治疗(card_temp, 2);
+                    mainfunction.Send血量改变(card_temp_data.uid, 治疗量);
 
                 }
             }
@@ -3723,14 +3723,17 @@ public class 腥红之月 : BaseSkill
     public override void Action_1()
     {
         
-        foreach (GameObject card in mainfunction.获取全部人物())
+        foreach (GameObject card_temp in mainfunction.获取全部人物())
         {
-            if (card.GetComponent<MoveController>().法术可作用 == 0 )
+            if (card_temp.GetComponent<MoveController>().法术可作用 == 0 )
             {
                 continue;
             }
-            卡牌数据 card_data = card.GetComponent<数据显示>().卡牌数据;
-            card_data.nowHp = 1;
+            卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
+            mainfunction.Send血量改变(card_temp_data.uid, -card_temp_data.nowHp+1);
+            card_temp_data.nowHp = 1;
+            card_temp.GetComponent<数据显示>().更新数据();
+
         }
        
 

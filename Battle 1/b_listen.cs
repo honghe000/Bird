@@ -39,17 +39,33 @@ public class b_listen : MonoBehaviour
             else
             {
                 // 假设 ValueHolder.ResieveMessages 是一个消息队列或存储最新消息的地方
+                string mesString = ValueHolder.receiveQueue.Dequeue();
                 try
                 {
-                    Message mes = JsonUtility.FromJson<Message>(ValueHolder.receiveQueue.Dequeue());
-                    mes.is_used = 1;
-                    mainfunction.ChangeRecieveMessage("is_used", 1);
-                    process(mes); // 处理消息
+                    // 将 mesString 按 "}{“ 进行分割，得到一个字符串数组，每个元素代表一条消息
+                    string[] messages = mesString.Split(new string[] { "}{" }, System.StringSplitOptions.None);
+
+                    foreach (string msg in messages)
+                    {
+                        // 重新加上花括号，保证每条消息完整
+                        string completeMessage = "{" + msg.Trim('{', '}') + "}";
+
+                        // 使用 JsonUtility 解析每条消息
+                        Message mes = JsonUtility.FromJson<Message>(completeMessage);
+                        mes.is_used = 1;
+
+                        // 调用修改接收消息的方法
+                        mainfunction.ChangeRecieveMessage("is_used", 1);
+
+                        // 处理每一条消息
+                        process(mes);
+                    }
+
                 }
                 catch (ArgumentException e)
                 {
                     Debug.LogError("JSON Parsing Error: " + e.Message);
-                    Debug.LogError("JSON String: " + ValueHolder.receiveQueue.Dequeue());
+                    Debug.LogError("JSON String: " + mesString);
                 }
 
                 yield return new WaitForSeconds(0.2f); // 等待0.1秒
