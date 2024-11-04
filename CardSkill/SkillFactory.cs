@@ -98,6 +98,18 @@ public static class SkillFactory
                 return new 拳师(card, monoBehaviour);
             case "吕布":
                 return new 吕布(card, monoBehaviour);
+            case "两面佛":
+                return new 两面佛(card, monoBehaviour);
+            case "大红莲":
+                return new 大红莲(card, monoBehaviour);
+            case "腥红之月":
+                return new 腥红之月(card, monoBehaviour);
+            case "摆渡人":
+                return new 摆渡人(card, monoBehaviour);
+            case "祈晴":
+                return new 祈晴(card, monoBehaviour);
+            case "山贼":
+                return new 山贼(card, monoBehaviour);
             default:
                 return null;
         }
