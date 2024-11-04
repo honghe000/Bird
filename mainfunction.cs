@@ -1589,7 +1589,7 @@ public class mainfunction : MonoBehaviour
         int 治疗量;
         卡牌数据 card_data = card.GetComponent<数据显示>().卡牌数据;
 
-        if (card_data.nowHp > card_data.maxHp)
+        if (card_data.nowHp + num > card_data.maxHp)
         {
             治疗量=card_data.maxHp-card_data.nowHp;
             card_data.nowHp = card_data.maxHp;
