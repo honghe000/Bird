@@ -94,6 +94,12 @@ public class b_leave : MonoBehaviour
         ValueHolder.申请释放技能队列 = new Queue<string>();
         //ValueHolder.技能释放中数量 = 0;
 
+        ValueHolder.单占卜 = null;
+        ValueHolder.双占卜牌堆顶 = null;
+        ValueHolder.双占卜牌堆底 = null;
+        ValueHolder.占卜牌 = null;
+        ValueHolder.幕布 = null;
+
         SceneManager.LoadScene("mainpage");
     }
 }

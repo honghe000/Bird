@@ -36,6 +36,12 @@ public class b_global : MonoBehaviour
 
     public Button 下个回合;
 
+    public GameObject 单占卜;
+    public GameObject 双占卜牌堆顶;
+    public GameObject 双占卜牌堆底;
+    public GameObject 占卜牌;
+    public GameObject 幕布;
+
     private void Start()
     {
         打乱牌组();
@@ -137,5 +143,10 @@ public class b_global : MonoBehaviour
         ValueHolder.灵力栏 = 灵力栏;
 
         ValueHolder.下个回合 = 下个回合;
+        ValueHolder.单占卜 = 单占卜;
+        ValueHolder.双占卜牌堆顶 = 双占卜牌堆顶;
+        ValueHolder.双占卜牌堆底 = 双占卜牌堆底;
+        ValueHolder.占卜牌 = 占卜牌;
+        ValueHolder.幕布 = 幕布;
     }
 }

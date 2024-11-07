@@ -187,4 +187,12 @@ public class ValueHolder : MonoBehaviour
     public static int 敌方回合运行我方技能 = 0;
 
 
+    //占卜
+    public static GameObject 占卜牌 = null;
+    public static GameObject 单占卜 = null;
+    public static GameObject 双占卜牌堆顶 = null;
+    public static GameObject 双占卜牌堆底 = null;
+    public static GameObject 幕布 = null;
+
+
 }

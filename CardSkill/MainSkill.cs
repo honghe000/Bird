@@ -3685,7 +3685,6 @@ public class 大红莲 : BaseSkill
 public class 腥红之月 : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
-    private float delay = 2f;
     public 腥红之月(GameObject Card, MonoBehaviour monoBehaviour)
     {
         card = Card;
@@ -3965,6 +3964,82 @@ public class 山贼 : BaseSkill
         activateTurn_2_finish = 1;
        
 
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+
+
+public class 小雷音寺 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 小雷音寺(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+
+    }
+
+    private void initialization()
+    {
+
+        己方回合结束时触发 = 1;
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "小雷音寺");
+        }
+    }
+
+    public override void Action_1()
+    {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+        if (mainfunction.我方人物数量() == 0)
+        {
+            skill_end = 1;
+            return;
+        }
+        mainfunction.选择我方卡牌施放(card_data);
+
+    }
+
+    public override void Action_2()
+    {
+        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
+        int 治疗量 = mainfunction.治疗(作用目标卡牌, 1);
+        mainfunction.Send血量改变(作用目标卡牌数据.uid, 治疗量);
+
+        作用目标卡牌.GetComponent<数据显示>().更新数据();
+        activateTurn_2_finish = 1;
     }
 
     public override void Action_3()

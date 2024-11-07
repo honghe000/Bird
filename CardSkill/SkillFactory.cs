@@ -110,6 +110,8 @@ public static class SkillFactory
                 return new 祈晴(card, monoBehaviour);
             case "山贼":
                 return new 山贼(card, monoBehaviour);
+            case "小雷音寺":
+                return new 小雷音寺(card, monoBehaviour);
             default:
                 return null;
         }
