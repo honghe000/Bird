@@ -4029,6 +4029,7 @@ public class 小雷音寺 : BaseSkill
             return;
         }
         mainfunction.选择我方卡牌施放(card_data);
+        activateTurn_1_finish = 1;
 
     }
 
@@ -4039,7 +4040,7 @@ public class 小雷音寺 : BaseSkill
         mainfunction.Send血量改变(作用目标卡牌数据.uid, 治疗量);
 
         作用目标卡牌.GetComponent<数据显示>().更新数据();
-        activateTurn_2_finish = 1;
+        activateTurn_1_finish = 0;
     }
 
     public override void Action_3()
