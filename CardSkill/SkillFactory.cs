@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using static 耶稣圣灵;
 
 public static class SkillFactory
 {
@@ -114,6 +115,14 @@ public static class SkillFactory
                 return new 小雷音寺(card, monoBehaviour);
             case "耶稣圣灵":
                 return new 耶稣圣灵(card, monoBehaviour);
+            case "獬豸":
+                return new 獬豸(card, monoBehaviour);
+            case "熊猫人":
+                return new 熊猫人(card, monoBehaviour);
+            case "小卒":
+                return new 小卒(card, monoBehaviour);
+            case "稻草人":
+                return new 稻草人(card, monoBehaviour);
             default:
                 return null;
         }

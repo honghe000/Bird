@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using static 耶稣圣灵;
 using Debug = UnityEngine.Debug;
 
 
@@ -4117,4 +4118,244 @@ public class 耶稣圣灵 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+
+    public class 稻草人 : BaseSkill
+    {
+        private MonoBehaviour monoBehaviour;
+        public 稻草人(GameObject Card, MonoBehaviour monoBehaviour)
+        {
+            card = Card;
+            skill_end = 0;
+            activateTurn_1 = -1;
+            activateTurn_2 = -1;
+            activateTurn_3 = -1;
+            activateTurn_4 = -1;
+
+
+            this.monoBehaviour = monoBehaviour;
+
+            activateTurn_1_finish = 0;
+            activateTurn_2_finish = 0;
+            activateTurn_3_finish = 0;
+            activateTurn_4_finish = 0;
+
+
+            uid = card.GetComponent<数据显示>().卡牌数据.uid;
+            card_data = card.GetComponent<数据显示>().卡牌数据;
+            initialization();
+
+
+        }
+        private void initialization()
+        {
+
+            if (!ValueHolder.uid_to_name.ContainsKey(uid))
+            {
+                ValueHolder.uid_to_name.Add(uid, "稻草人");
+            }
+        }
+        public override void Action_1()
+        {
+            activateTurn_1_finish = 1;
+            skill_end = 1;
+        }
+
+        public override void Action_2()
+        {
+
+            activateTurn_2_finish = 1;
+
+
+        }
+
+        public override void Action_3()
+        {
+            activateTurn_3_finish = 1;
+        }
+
+        public override void Action_4()
+        {
+            activateTurn_4_finish = 1;
+        }
+    }
+
+    public class 小卒 : BaseSkill
+    {
+        private MonoBehaviour monoBehaviour;
+        public 小卒(GameObject Card, MonoBehaviour monoBehaviour)
+        {
+            card = Card;
+            skill_end = 0;
+            activateTurn_1 = -1;
+            activateTurn_2 = -1;
+            activateTurn_3 = -1;
+            activateTurn_4 = -1;
+
+
+            this.monoBehaviour = monoBehaviour;
+
+            activateTurn_1_finish = 0;
+            activateTurn_2_finish = 0;
+            activateTurn_3_finish = 0;
+            activateTurn_4_finish = 0;
+
+
+            uid = card.GetComponent<数据显示>().卡牌数据.uid;
+            card_data = card.GetComponent<数据显示>().卡牌数据;
+            initialization();
+
+
+        }
+        private void initialization()
+        {
+
+            if (!ValueHolder.uid_to_name.ContainsKey(uid))
+            {
+                ValueHolder.uid_to_name.Add(uid, "小卒");
+            }
+        }
+        public override void Action_1()
+        {
+            activateTurn_1_finish = 1;
+            skill_end = 1;
+        }
+
+        public override void Action_2()
+        {
+
+            activateTurn_2_finish = 1;
+
+
+        }
+
+        public override void Action_3()
+        {
+            activateTurn_3_finish = 1;
+        }
+
+        public override void Action_4()
+        {
+            activateTurn_4_finish = 1;
+        }
+    }
+}
+
+public class 熊猫人 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 熊猫人(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "熊猫人");
+        }
+    }
+    public override void Action_1()
+    {
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+}
+
+public class 獬豸 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 獬豸(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "獬豸");
+        }
+    }
+    public override void Action_1()
+    {
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
 }
