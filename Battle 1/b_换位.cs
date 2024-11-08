@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class b_换位 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private Transform originalParent; // 卡牌的原父物体
-    public Transform otherParent; // 其他卡牌的父物体
+    private Transform otherParent; // 其他卡牌的父物体
     private Transform tempParent;
     private int is_chaged = 0;
     private int originalSiblingIndex; // 卡牌初始的SiblingIndex
@@ -15,18 +15,40 @@ public class b_换位 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private RectTransform rectTransform; // 卡牌的 RectTransform
     private GameObject placeholder; // 占位符对象
 
-    private float swapThreshold = 200f; // 交换位置的最小距离阈值
+    private float swapThreshold = 100f; // 交换位置的最小距离阈值
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
+        // originalParent 设置为孙物件的直接父物件
+        originalParent = transform.parent;
+
+        // 获取父物件
+        Transform parentObject = originalParent.parent;
+
+        // 找到 otherParent（父物件下的另一个子物件）
+        foreach (Transform child in parentObject)
+        {
+            if (child != originalParent)
+            {
+                otherParent = child;
+                break;
+            }
+        }
+
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("开始拖拽");
+        swapThreshold = rectTransform.rect.width / 1.5f;
         // 记录卡牌的原父级、位置和索引
         originalParent = transform.parent;
+        //if (originalParent == otherParent)
+        //{
+        //    tempParent = transform.parent;
+        //    originalParent = transform.parent.parent;
+
+        //}
         originalSiblingIndex = transform.GetSiblingIndex();
         originalPosition = rectTransform.anchoredPosition;
 
@@ -42,6 +64,7 @@ public class b_换位 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
         // 暂时移出GridLayoutGroup的控制
         transform.SetParent(originalParent.parent);
     }
+
 
     public void OnDrag(PointerEventData eventData)
     {
@@ -124,11 +147,11 @@ public class b_换位 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
                     newSiblingIndex = originalParent.childCount - 1;
                 }
             }
-            else
-            {
-                is_chaged = 0;
-                newSiblingIndex = 0;
-            }
+            //else
+            //{
+            //    is_chaged = 0;
+            //    newSiblingIndex = 0;
+            //}
         }
 
         // 如果没有找到足够接近的卡牌，则检测是否靠近边缘位置
@@ -159,8 +182,17 @@ public class b_换位 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
             }
             else
             {
-                is_chaged = 1;
-                newSiblingIndex = 0;
+                //is_chaged = 1;
+                //newSiblingIndex = 0;
+                RectTransform otherRectTransform = otherParent.GetComponent<RectTransform>();
+                if (rectTransform.position.x < otherRectTransform.position.x + otherRectTransform.rect.width / 2 &&
+                    rectTransform.position.x > otherRectTransform.position.x - otherRectTransform.rect.width / 2 &&
+                    rectTransform.position.y < otherRectTransform.position.y + otherRectTransform.rect.height / 2 &&
+                    rectTransform.position.y > otherRectTransform.position.y - otherRectTransform.rect.height / 2)
+                {
+                    is_chaged = 1;
+                    newSiblingIndex = 0;
+                }
             }
         }
 

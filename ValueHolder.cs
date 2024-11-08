@@ -189,10 +189,15 @@ public class ValueHolder : MonoBehaviour
 
     //占卜
     public static GameObject 占卜牌 = null;
-    public static GameObject 单占卜 = null;
-    public static GameObject 双占卜牌堆顶 = null;
-    public static GameObject 双占卜牌堆底 = null;
+    public static GameObject 占卜区 = null;
+    public static GameObject 占卜牌堆顶= null;
+    public static GameObject 占卜牌堆底 = null;
+    public static GameObject 占卜确认按钮 = null;
+
     public static GameObject 幕布 = null;
+
+    public static int 占卜数量 = 0;
+
 
 
 }

@@ -1601,5 +1601,48 @@ public class mainfunction : MonoBehaviour
         return num;
     }
 
+    public static void 占卜(int 占卜数量)
+    {
+        ValueHolder.幕布.SetActive(true);
+        ValueHolder.占卜区.SetActive(true);
+        ValueHolder.占卜确认按钮.SetActive(true);
+        ValueHolder.占卜数量 = 占卜数量;
+
+        List<int> 占卜ID = new List<int>();
+        占卜ID = ValueHolder.random_card.Take(占卜数量).ToList();
+        for (int i = 0; i < 占卜数量; i++)
+        {
+            GameObject cardone = Instantiate(ValueHolder.占卜牌);
+
+            GameObject commoncard = 占卜牌生成(cardone, 占卜ID[i]);
+
+            commoncard.transform.SetParent(ValueHolder.占卜牌堆顶.transform);
+
+        }
+    }
+
+    public static GameObject 占卜牌生成(GameObject commoncard , int id)
+    {
+        Texture2D texture = Resources.Load<Texture2D>("card/" + id.ToString());
+        卡牌数据 原卡牌数据 = ValueHolder.gloabCaedData[id];
+        // 深拷贝
+        卡牌数据 新卡牌数据 = new 卡牌数据(原卡牌数据);
+        commoncard.GetComponent<数据显示>().卡牌数据 = 新卡牌数据;
+        commoncard.GetComponent<数据显示>().卡牌数据.uid = "0";
+        commoncard.GetComponent<数据显示>().enabled = true;
+        if (texture != null)
+        {
+            foreach (Image image in commoncard.GetComponentsInChildren<Image>())
+            {
+                if (image.ToString() == "pics (UnityEngine.UI.Image)")
+                {
+                    image.sprite = Sprite.Create(texture, new Rect(0, 0, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
+                }
+            }
+        }
+
+        return commoncard;
+    }
+
 
 }

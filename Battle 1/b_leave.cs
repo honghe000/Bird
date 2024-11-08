@@ -28,12 +28,12 @@ public class b_leave : MonoBehaviour
         ValueHolder.手牌对战牌 = null;
         ValueHolder.initiative = 1;
         ValueHolder.random_card = new List<int> { 1, 2, 3, 4, 76 };
-        ValueHolder.Discard_pile = new List<int>();
+        ValueHolder.Discard_pile.Clear();
         ValueHolder.choosegroup = "666";
         ValueHolder.choosed_object = null;
         ValueHolder.copyed_object = null;
         ValueHolder.is_choose = 0;
-        ValueHolder.棋盘 = new Dictionary<string, GameObject>();
+        ValueHolder.棋盘.Clear();
         ValueHolder.手牌区 = null;
         ValueHolder.拖拽序号 = 0;
         ValueHolder.视图 = null;
@@ -44,28 +44,28 @@ public class b_leave : MonoBehaviour
         ValueHolder.point = 1;
 
         ValueHolder.hintManager = null;
-        ValueHolder.SkillAction = new Dictionary<string, BaseSkill>();
+        ValueHolder.SkillAction.Clear();
 
         ValueHolder.人物可放置位置 = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         ValueHolder.建筑可放置位置 = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
-        ValueHolder.人物禁止放置位置 = new Dictionary<string, List<int>>();
-        ValueHolder.建筑禁止放置位置 = new Dictionary<string, List<int>>();
+        ValueHolder.人物禁止放置位置.Clear();
+        ValueHolder.建筑禁止放置位置.Clear();
 
         ValueHolder.中立延时法术框 = null;
         ValueHolder.敌方延时法术框 = null;
         ValueHolder.我方延时法术框 = null;
 
-        ValueHolder.法术禁用 = new Dictionary<string, float>();
-        ValueHolder.人物禁用 = new Dictionary<string, float>();
+        ValueHolder.法术禁用.Clear();
+        ValueHolder.人物禁用.Clear();
 
         ValueHolder.释放法术uid = null;
-        ValueHolder.uid_to_name = new Dictionary<string, string>();
+        ValueHolder.uid_to_name.Clear();
         ValueHolder.法术作用敌我类型 = 0;
         ValueHolder.放大展示区1 = null;
         ValueHolder.放大展示区2 = null;
 
-        ValueHolder.倒计时储存 = new Dictionary<string, float>();
+        ValueHolder.倒计时储存.Clear();
         ValueHolder.倒计时显示1 = null;
         ValueHolder.倒计时显示2 = null;
         ValueHolder.体力 = null;
@@ -74,7 +74,7 @@ public class b_leave : MonoBehaviour
         ValueHolder.弃牌区 = null;
         ValueHolder.弃牌数量 = null;
         ValueHolder.弃牌显示 = null;
-        ValueHolder.弃牌uid = new List<string>();
+        ValueHolder.弃牌uid.Clear();
         ValueHolder.弃牌数量限制 = 0;
         ValueHolder.回合结束弃牌 = 0;
         ValueHolder.下个回合 = null;
@@ -90,16 +90,17 @@ public class b_leave : MonoBehaviour
         ValueHolder.启用点选格子 = 0;
         ValueHolder.点击格子编号 = 0;
         ValueHolder.点选技能uid = null;
-        ValueHolder.效果卸载队列 = new List<Effect>();
-        ValueHolder.申请释放技能队列 = new Queue<string>();
+        ValueHolder.效果卸载队列.Clear();
+        ValueHolder.申请释放技能队列.Clear();
         //ValueHolder.技能释放中数量 = 0;
 
-        ValueHolder.单占卜 = null;
-        ValueHolder.双占卜牌堆顶 = null;
-        ValueHolder.双占卜牌堆底 = null;
+        ValueHolder.占卜区 = null;
         ValueHolder.占卜牌 = null;
+        ValueHolder.占卜牌堆底 = null;
+        ValueHolder.占卜牌堆顶 = null;
         ValueHolder.幕布 = null;
 
+        ValueHolder.占卜数量 = 0;
         SceneManager.LoadScene("mainpage");
     }
 }
