@@ -16,31 +16,38 @@ public class b_换位 : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDrag
     private GameObject placeholder; // 占位符对象
 
     private float swapThreshold = 100f; // 交换位置的最小距离阈值
+    private int ini = 0;
 
     private void Start()
     {
         rectTransform = GetComponent<RectTransform>();
-        // originalParent 设置为孙物件的直接父物件
-        originalParent = transform.parent;
 
-        // 获取父物件
-        Transform parentObject = originalParent.parent;
-
-        // 找到 otherParent（父物件下的另一个子物件）
-        foreach (Transform child in parentObject)
-        {
-            if (child != originalParent)
-            {
-                otherParent = child;
-                break;
-            }
-        }
 
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        swapThreshold = rectTransform.rect.width / 1.5f;
+        if (ini == 0)
+        {
+            ini = 1;
+            swapThreshold = rectTransform.rect.width / 1.5f;
+            // originalParent 设置为孙物件的直接父物件
+            originalParent = transform.parent;
+
+            // 获取父物件
+            Transform parentObject = originalParent.parent;
+
+            // 找到 otherParent（父物件下的另一个子物件）
+            foreach (Transform child in parentObject)
+            {
+                if (child != originalParent)
+                {
+                    otherParent = child;
+                    break;
+                }
+            }
+        }
+
         // 记录卡牌的原父级、位置和索引
         originalParent = transform.parent;
         //if (originalParent == otherParent)
