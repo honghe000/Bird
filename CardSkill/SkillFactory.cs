@@ -123,6 +123,15 @@ public static class SkillFactory
                 return new 小卒(card, monoBehaviour);
             case "稻草人":
                 return new 稻草人(card, monoBehaviour);
+            case "逆天改命":
+                return new 逆天改命(card, monoBehaviour);
+            case "罗生门":
+                return new 罗生门(card, monoBehaviour);
+            case "机器人":
+                return new 机器人(card, monoBehaviour);
+            case "判官":
+                return new 判官(card, monoBehaviour);
+
             default:
                 return null;
         }
