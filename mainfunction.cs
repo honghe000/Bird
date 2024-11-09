@@ -1569,6 +1569,7 @@ public class mainfunction : MonoBehaviour
             card.GetComponent<MoveController>().眩晕免疫 = 0;
         }
     }
+    
     public static void 效果卸载遍历()
     {
         for (int i = 0; i < ValueHolder.效果卸载队列.Count; i++)
@@ -1601,8 +1602,9 @@ public class mainfunction : MonoBehaviour
         return num;
     }
 
-    public static void 占卜(int 占卜数量)
+    public static void 占卜(string uid, int 占卜数量)
     {
+        mainfunction.技能释放未结束(uid);
         ValueHolder.幕布.SetActive(true);
         ValueHolder.占卜区.SetActive(true);
         ValueHolder.占卜确认按钮.SetActive(true);

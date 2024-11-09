@@ -4094,15 +4094,14 @@ public class 耶稣圣灵 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.占卜(3);
-        summonHandcard(1);
+        mainfunction.占卜(uid,3);
         activateTurn_1_finish = 1;
 
     }
 
     public override void Action_2()
     {
-
+        summonHandcard(1);
         activateTurn_2_finish = 1;
         skill_end = 1;
 
