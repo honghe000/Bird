@@ -42,13 +42,17 @@ public class b_占卜确认 : MonoBehaviour
         ValueHolder.幕布.SetActive(false);
         ValueHolder.占卜确认按钮.SetActive(false);
 
-        mainfunction.技能释放结束();
-        if (ValueHolder.SkillAction.ContainsKey(ValueHolder.释放法术uid))
+        if (ValueHolder.释放法术uid != null && ValueHolder.占卜后立即执行技能 == 1)
         {
-            BaseSkill skill = ValueHolder.SkillAction[ValueHolder.释放法术uid];
-            mainfunction.运行下个技能阶段(skill);
-            ValueHolder.释放法术uid = "0";
+            if (ValueHolder.SkillAction.ContainsKey(ValueHolder.释放法术uid))
+            {
+                BaseSkill skill = ValueHolder.SkillAction[ValueHolder.释放法术uid];
+                mainfunction.运行下个技能阶段(skill);
+                ValueHolder.释放法术uid = null;
+            }
+            mainfunction.技能释放结束();
         }
+
 
     }
 

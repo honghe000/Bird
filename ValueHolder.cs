@@ -197,6 +197,7 @@ public class ValueHolder : MonoBehaviour
     public static GameObject 幕布 = null;
 
     public static int 占卜数量 = 0;
+    public static int 占卜后立即执行技能 = 0;
 
 
 

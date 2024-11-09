@@ -4094,7 +4094,7 @@ public class 耶稣圣灵 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.占卜(uid,3);
+        mainfunction.占卜(uid,3,1);
         activateTurn_1_finish = 1;
 
     }
@@ -4398,7 +4398,7 @@ public class 逆天改命 : BaseSkill
     public override void Action_1()
     {
 
-        mainfunction.占卜(uid, 2);
+        mainfunction.占卜(uid, 2,0);
         activateTurn_1_finish = 1;
         skill_end = 1;
     }
@@ -4457,15 +4457,16 @@ public class 罗生门 : BaseSkill
     public override void Action_1()
     {
 
-        mainfunction.占卜(uid, 2);
+        mainfunction.占卜(uid, 2,0);
         activateTurn_1_finish = 1;
-        skill_end += 1;
+
 
     }
 
     public override void Action_2()
     {
-
+        mainfunction.占卜(uid, 2,0);
+        skill_end += 1;
         activateTurn_2_finish = 1;
     }
 
@@ -4518,7 +4519,7 @@ public class 机器人 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.占卜(uid, 5);
+        mainfunction.占卜(uid, 5,0);
         activateTurn_1_finish = 1;
         skill_end = 1;
     }
@@ -4579,7 +4580,7 @@ public class 判官 : BaseSkill
     public override void Action_1()
     {
         Debug.Log("判官");
-        mainfunction.占卜(uid, 2);
+        mainfunction.占卜(uid, 2,0);
 
     }
 

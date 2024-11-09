@@ -1602,13 +1602,15 @@ public class mainfunction : MonoBehaviour
         return num;
     }
 
-    public static void 占卜(string uid, int 占卜数量)
+    public static void 占卜(string uid, int 占卜数量,int 占卜后立即触发技能)
     {
         mainfunction.技能释放未结束(uid);
         ValueHolder.幕布.SetActive(true);
         ValueHolder.占卜区.SetActive(true);
         ValueHolder.占卜确认按钮.SetActive(true);
         ValueHolder.占卜数量 = 占卜数量;
+        ValueHolder.释放法术uid = uid;
+        ValueHolder.占卜后立即执行技能 = 占卜后立即触发技能;
 
         List<int> 占卜ID = new List<int>();
         占卜ID = ValueHolder.random_card.Take(占卜数量).ToList();
