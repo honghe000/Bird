@@ -1657,10 +1657,15 @@ public class mainfunction : MonoBehaviour
 
     public static void 弃牌堆更新(int CardID,int need_send)
     {
-        ValueHolder.我方弃牌堆卡牌编号.Insert(0, CardID);
+
         if (need_send == 1)
         {
+            ValueHolder.我方弃牌堆卡牌编号.Insert(0, CardID);
             Send弃牌堆更新(CardID);
+        }
+        else if (need_send == 0)
+        {
+            ValueHolder.敌方弃牌堆卡牌编号.Insert(0, CardID);
         }
 
     }
