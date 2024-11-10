@@ -26,10 +26,8 @@ public class b_占卜确认 : MonoBehaviour
             EndID.Add(ValueHolder.占卜牌堆底.transform.GetChild(i).GetComponent<数据显示>().卡牌数据.id);
         }
 
-        ValueHolder.random_card.RemoveRange(0, StartID.Count);
+        ValueHolder.random_card.RemoveRange(0, StartID.Count + EndID.Count);
         ValueHolder.random_card.InsertRange(0, StartID);
-
-        ValueHolder.random_card.RemoveRange(ValueHolder.random_card.Count - EndID.Count, EndID.Count);
         ValueHolder.random_card.AddRange(EndID);
 
 
