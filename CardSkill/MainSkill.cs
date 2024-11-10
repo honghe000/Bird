@@ -50,7 +50,14 @@ public class 张三封大师 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "张三封大师");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(uid,(int)delay);
     }
 
@@ -137,7 +144,14 @@ public class 相安无事: BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "相安无事");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
@@ -354,7 +368,14 @@ public class 龙首之玉 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "龙首之玉");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
@@ -451,7 +472,14 @@ public class 佛光 : BaseSkill
             ValueHolder.uid_to_name.Add(uid, "佛光");
         }
 
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
@@ -780,7 +808,14 @@ public class 蝎尾毒 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "蝎尾毒");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
@@ -884,7 +919,14 @@ public class 河神之怒 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "河神之怒");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
@@ -1062,7 +1104,14 @@ public class 神谕者 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "神谕者");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(uid, (int)delay);
     }
 
@@ -1594,7 +1643,14 @@ public class 困兽之斗 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "困兽之斗");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
@@ -1767,7 +1823,14 @@ public class 迅雷的崩玉 : BaseSkill
         {
             ValueHolder.uid_to_name.Add(uid, "迅雷的崩玉");
         }
-        ValueHolder.倒计时储存.Add(uid, delay);
+        if (!ValueHolder.倒计时储存.ContainsKey(uid))
+        {
+            ValueHolder.倒计时储存.Add(uid, delay);
+        }
+        else
+        {
+            ValueHolder.倒计时储存[uid] = delay;
+        }
         mainfunction.Send倒计时(card_data.uid, (int)delay);
     }
     public override void Action_1()
