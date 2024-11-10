@@ -146,6 +146,7 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
             {
                 ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
             }
+            mainfunction.弃牌堆更新(eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.id,1);
             Destroy(eventData.pointerDrag.gameObject);
         }
     }

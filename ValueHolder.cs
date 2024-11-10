@@ -199,6 +199,14 @@ public class ValueHolder : MonoBehaviour
     public static int 占卜数量 = 0;
     public static int 占卜后立即执行技能 = 0;
 
+    //弃牌堆
+    public static GameObject 弃牌堆 = null;
+    public static GameObject 弃牌堆卡牌 = null;
+    public static Button 弃牌堆关闭 = null;
+    public static List<int> 我方弃牌堆卡牌编号 = new List<int>();
+    public static List<int> 敌方弃牌堆卡牌编号 = new List<int>();
+
+
 
 
 }

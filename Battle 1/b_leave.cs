@@ -99,8 +99,14 @@ public class b_leave : MonoBehaviour
         ValueHolder.占卜牌堆底 = null;
         ValueHolder.占卜牌堆顶 = null;
         ValueHolder.幕布 = null;
-
         ValueHolder.占卜数量 = 0;
+
+        ValueHolder.弃牌堆 = null;
+        ValueHolder.弃牌堆卡牌 = null;
+        ValueHolder.弃牌堆关闭 = null;
+        ValueHolder.我方弃牌堆卡牌编号.Clear();
+        ValueHolder.敌方弃牌堆卡牌编号.Clear();
+
         SceneManager.LoadScene("mainpage");
     }
 }

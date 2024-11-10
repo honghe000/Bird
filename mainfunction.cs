@@ -583,6 +583,7 @@ public class mainfunction : MonoBehaviour
         场上角色死亡触发(card);
         亡语触发(card);
 
+        弃牌堆更新(card.GetComponent<数据显示>().卡牌数据.id,1);
         MonoBehaviour monoBehaviour = card.GetComponent<MonoBehaviour>();
         monoBehaviour.StartCoroutine(RotateAndScaleCoroutine(card, mycard));
     }
@@ -959,6 +960,12 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
+    public static void Send弃牌堆更新(int id)
+    {
+        ChangeSendMessage("Action", 42);
+        ChangeSendMessage("cardID", id);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
     public static void 运行下个技能阶段(BaseSkill skill)
     {
         if (skill.activateTurn_1_finish == 0)
@@ -1618,14 +1625,14 @@ public class mainfunction : MonoBehaviour
         {
             GameObject cardone = Instantiate(ValueHolder.占卜牌);
 
-            GameObject commoncard = 占卜牌生成(cardone, 占卜ID[i]);
+            GameObject commoncard = 卡牌生成(cardone, 占卜ID[i]);
 
             commoncard.transform.SetParent(ValueHolder.占卜牌堆顶.transform);
 
         }
     }
 
-    public static GameObject 占卜牌生成(GameObject commoncard , int id)
+    public static GameObject 卡牌生成(GameObject commoncard , int id)
     {
         Texture2D texture = Resources.Load<Texture2D>("card/" + id.ToString());
         卡牌数据 原卡牌数据 = ValueHolder.gloabCaedData[id];
@@ -1648,5 +1655,13 @@ public class mainfunction : MonoBehaviour
         return commoncard;
     }
 
+    public static void 弃牌堆更新(int CardID,int need_send)
+    {
+        ValueHolder.我方弃牌堆卡牌编号.Insert(0, CardID);
+        if (need_send == 1)
+        {
+            Send弃牌堆更新(CardID);
+        }
 
+    }
 }

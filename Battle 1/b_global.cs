@@ -43,6 +43,11 @@ public class b_global : MonoBehaviour
     public GameObject 占卜牌堆底;
     public GameObject 占卜确认按钮;
 
+    //弃牌堆
+    public GameObject 弃牌堆;
+    public GameObject 弃牌堆卡牌;
+    public Button 弃牌堆关闭;
+
     private void Start()
     {
         打乱牌组();
@@ -151,5 +156,9 @@ public class b_global : MonoBehaviour
         ValueHolder.占卜牌堆顶 = 占卜牌堆顶;
         ValueHolder.占卜牌堆底 = 占卜牌堆底;
         ValueHolder.占卜确认按钮 = 占卜确认按钮;
+
+        ValueHolder.弃牌堆 = 弃牌堆;
+        ValueHolder.弃牌堆卡牌 = 弃牌堆卡牌;
+        ValueHolder.弃牌堆关闭 = 弃牌堆关闭;
     }
 }

@@ -228,6 +228,9 @@ public class b_listen : MonoBehaviour
         }else if (mes.Action == 41)
         {
             技能释放申请同意(mes);
+        }else if (mes.Action == 42)
+        {
+            弃牌堆更新(mes);
         }
     }
 
@@ -698,7 +701,11 @@ public class b_listen : MonoBehaviour
     }
 
 
-
+    void 弃牌堆更新(Message mes)
+    {
+        int cardID = mes.cardID;
+        mainfunction.弃牌堆更新(cardID,0);
+    }
 
 
 
