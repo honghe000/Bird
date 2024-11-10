@@ -20,10 +20,9 @@ public class b_弃牌堆关闭 : MonoBehaviour
 
     void 弃牌堆关闭()
     {
-        mainfunction.DestroyAllChildren(ValueHolder.弃牌堆);
+        mainfunction.DestroyAllChildren(ValueHolder.弃牌堆显示区);
 
         ValueHolder.幕布.SetActive(false);
         ValueHolder.弃牌堆.SetActive(false);
-        ValueHolder.弃牌堆关闭.gameObject.SetActive(false);
     }
 }

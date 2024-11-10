@@ -30,11 +30,10 @@ public class b_弃牌堆显示 : MonoBehaviour
 
             GameObject commoncard = mainfunction.卡牌生成(cardone, lists[i]);
 
-            commoncard.transform.SetParent(ValueHolder.弃牌堆.transform);
+            commoncard.transform.SetParent(ValueHolder.弃牌堆显示区.transform);
         }
 
         ValueHolder.幕布.SetActive(true);
         ValueHolder.弃牌堆.SetActive(true);
-        ValueHolder.弃牌堆关闭.gameObject.SetActive(true);
     }
 }

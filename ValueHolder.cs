@@ -201,6 +201,7 @@ public class ValueHolder : MonoBehaviour
 
     //弃牌堆
     public static GameObject 弃牌堆 = null;
+    public static GameObject 弃牌堆显示区 = null;
     public static GameObject 弃牌堆卡牌 = null;
     public static Button 弃牌堆关闭 = null;
     public static List<int> 我方弃牌堆卡牌编号 = new List<int>();
