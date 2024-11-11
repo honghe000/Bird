@@ -3200,7 +3200,7 @@ public class 枉死城 : BaseSkill
     {
         场上我方角色死亡触发= 1;
         用户操作型技能 = 1;
-        召唤物id = 343;
+        召唤物id = 397;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "枉死城");
@@ -3219,7 +3219,8 @@ public class 枉死城 : BaseSkill
     public override void Action_2()
     {
         mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
-        activateTurn_1_finish = 0;
+        skill_end = 1;
+        activateTurn_2_finish = 1;
 
     }
 
@@ -4650,6 +4651,146 @@ public class 判官 : BaseSkill
     public override void Action_2()
     {
         activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 半兽人 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+
+    public 半兽人(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+    }
+
+    private void initialization()
+    {
+        card.GetComponent<MoveController>().杀人后触发 = 1;
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "半兽人");
+        }
+
+    }
+
+    public override void Action_1()
+    {
+        card_data.nowAttack += 4;
+        card_data.maxAttack += 4;
+        card_data.nowHp += 4;
+        card_data.maxHp += 4;
+        card.GetComponent<数据显示>().更新数据();
+
+        mainfunction.Send攻击力改变(card_data.uid, 4);
+        mainfunction.Send血量改变(card_data.uid, 4);
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 艾孜诺克大坟墓 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 艾孜诺克大坟墓(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+
+    }
+
+    private void initialization()
+    {
+
+        己方回合结束时触发 = 1;
+        召唤物id = 343;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "艾孜诺克大坟墓");
+        }
+    }
+
+    public override void Action_1()
+    {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+        if(ValueHolder.point==0)
+        {
+            activateTurn_1_finish = 1;
+        }
+        ValueHolder.point -= 1;
+        //可点击范围
+        List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
+
+    }
+
+    public override void Action_2()
+    {
+        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
     }
 
     public override void Action_3()
