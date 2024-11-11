@@ -28,6 +28,7 @@ public class b_nexturn : MonoBehaviour
         下个回合.interactable = false;
         下个回合.image.color = Color.gray;
 
+        Debug.Log(ValueHolder.point);
         skillturn();
 
         ValueHolder.point = 0;

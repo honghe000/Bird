@@ -4702,6 +4702,12 @@ public class 半兽人 : BaseSkill
 
     public override void Action_1()
     {
+        Debug.Log("半兽人");
+        if (card ==  null )
+        {
+            skill_end++;
+            return;
+        }
         card_data.nowAttack += 4;
         card_data.maxAttack += 4;
         card_data.nowHp += 4;
@@ -4710,6 +4716,7 @@ public class 半兽人 : BaseSkill
 
         mainfunction.Send攻击力改变(card_data.uid, 4);
         mainfunction.Send血量改变(card_data.uid, 4);
+        card.GetComponent<MoveController>().杀人后触发 = 0;
         activateTurn_1_finish = 1;
         skill_end = 1;
 
@@ -4774,11 +4781,13 @@ public class 艾孜诺克大坟墓 : BaseSkill
     {
         if (card == null)
         {
+            Debug.Log("卡牌不存在");
             skill_end = 1;
             return;
         }
         if(ValueHolder.point==0)
         {
+            Debug.Log("点数不足");
             return;
         }
         ValueHolder.point -= 1;

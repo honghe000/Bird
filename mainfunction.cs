@@ -583,7 +583,11 @@ public class mainfunction : MonoBehaviour
         场上角色死亡触发(card);
         亡语触发(card);
 
-        弃牌堆更新(card.GetComponent<数据显示>().卡牌数据.id,1);
+        if (card.GetComponent<MoveController>().cardType == 0)
+        {
+            弃牌堆更新(card.GetComponent<数据显示>().卡牌数据.id, 1);
+        }
+
         MonoBehaviour monoBehaviour = card.GetComponent<MonoBehaviour>();
         monoBehaviour.StartCoroutine(RotateAndScaleCoroutine(card, mycard));
     }
@@ -971,25 +975,25 @@ public class mainfunction : MonoBehaviour
         if (skill.activateTurn_1_finish == 0)
         {
             SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_1);
-            Debug.Log("运行技能1阶段");
+            Debug.Log(skill.card_data.名字 + ":运行技能1阶段");
             return;
         }
         if (skill.activateTurn_2_finish == 0)
         {
             SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_2);
-            Debug.Log("运行技能2阶段");
+            Debug.Log(skill.card_data.名字 + "运行技能2阶段");
             return;
         }
         if (skill.activateTurn_3_finish == 0)
         {
             SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_3);
-            Debug.Log("运行技能3阶段");
+            Debug.Log(skill.card_data.名字 + "运行技能3阶段");
             return;
         }
         if (skill.activateTurn_4_finish == 0)
         {
             SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_4);
-            Debug.Log("运行技能4阶段");
+            Debug.Log(skill.card_data.名字 + "运行技能4阶段");
             return;
         }
 
