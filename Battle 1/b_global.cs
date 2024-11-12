@@ -49,11 +49,18 @@ public class b_global : MonoBehaviour
     public GameObject 弃牌堆卡牌;
     public Button 弃牌堆关闭;
 
+    //摸牌堆
+    public Image 省略号;
+    public GameObject 摸牌堆;
+    public GameObject 摸牌堆显示区;
+    public TextMeshProUGUI 摸牌堆数量;
+
     private void Start()
     {
+        静态设置();
         打乱牌组();
         生成棋盘();
-        静态设置();
+
         mainfunction.灵力回合更新();
         if (ValueHolder.initiative == 1)
         {
@@ -79,6 +86,8 @@ public class b_global : MonoBehaviour
     {
 
         Shuffle(ValueHolder.random_card);
+
+        ValueHolder.摸牌堆数量.text = ValueHolder.random_card.Count.ToString();
 
 
     }
@@ -117,6 +126,7 @@ public class b_global : MonoBehaviour
         棋盘物件字典.Add("0",棋盘);
 
         ValueHolder.棋盘 = 棋盘物件字典;
+
     }
 
     void 静态设置()
@@ -162,5 +172,10 @@ public class b_global : MonoBehaviour
         ValueHolder.弃牌堆显示区 = 弃牌堆显示区;
         ValueHolder.弃牌堆卡牌 = 弃牌堆卡牌;
         ValueHolder.弃牌堆关闭 = 弃牌堆关闭;
+
+        ValueHolder.省略号 = 省略号;
+        ValueHolder.摸牌堆 = 摸牌堆;
+        ValueHolder.摸牌堆显示区 = 摸牌堆显示区;
+        ValueHolder.摸牌堆数量 = 摸牌堆数量;
     }
 }

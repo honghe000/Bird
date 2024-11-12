@@ -207,6 +207,14 @@ public class ValueHolder : MonoBehaviour
     public static List<int> 我方弃牌堆卡牌编号 = new List<int>();
     public static List<int> 敌方弃牌堆卡牌编号 = new List<int>();
 
+    //摸牌堆
+    public static Image 省略号 = null;
+    public static List<int> 牌堆顶已知 = new List<int>();
+    public static List<int> 牌堆底已知 = new List<int>();
+    public static GameObject 摸牌堆 = null;
+    public static GameObject 摸牌堆显示区 = null;
+    public static TextMeshProUGUI 摸牌堆数量 = null;
+
 
 
 

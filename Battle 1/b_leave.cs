@@ -108,6 +108,13 @@ public class b_leave : MonoBehaviour
         ValueHolder.我方弃牌堆卡牌编号.Clear();
         ValueHolder.敌方弃牌堆卡牌编号.Clear();
 
+        ValueHolder.省略号 = null;
+        ValueHolder.摸牌堆 = null;
+        ValueHolder.摸牌堆显示区 = null;
+        ValueHolder.牌堆顶已知.Clear();
+        ValueHolder.牌堆底已知.Clear();
+        ValueHolder.摸牌堆数量 = null;
+
         SceneManager.LoadScene("mainpage");
     }
 }

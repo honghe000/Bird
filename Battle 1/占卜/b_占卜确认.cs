@@ -26,6 +26,28 @@ public class b_占卜确认 : MonoBehaviour
             EndID.Add(ValueHolder.占卜牌堆底.transform.GetChild(i).GetComponent<数据显示>().卡牌数据.id);
         }
 
+        if (ValueHolder.牌堆顶已知.Count <= StartID.Count)
+        {
+            ValueHolder.牌堆顶已知.Clear();
+            ValueHolder.牌堆顶已知.AddRange(StartID);
+        }
+        else
+        {
+            ValueHolder.牌堆顶已知.RemoveRange(0, StartID.Count);
+            ValueHolder.牌堆顶已知.InsertRange(0,StartID);
+        }
+
+        if (ValueHolder.牌堆底已知.Count <= EndID.Count)
+        {
+            ValueHolder.牌堆底已知.Clear();
+            ValueHolder.牌堆底已知.AddRange(EndID);
+        }
+        else
+        {
+            ValueHolder.牌堆底已知.RemoveRange(ValueHolder.牌堆底已知.Count - EndID.Count, EndID.Count);
+            ValueHolder.牌堆底已知.AddRange(EndID);
+        }
+
         ValueHolder.random_card.RemoveRange(0, StartID.Count + EndID.Count);
         ValueHolder.random_card.InsertRange(0, StartID);
         ValueHolder.random_card.AddRange(EndID);

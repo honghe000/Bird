@@ -259,6 +259,8 @@ public class mainfunction : MonoBehaviour
         // 更新剩余卡牌列表
         ValueHolder.random_card = ValueHolder.random_card.Skip(num).ToList();
 
+        ValueHolder.摸牌堆数量.text = ValueHolder.random_card.Count.ToString();
+
         return result;
     }
 
