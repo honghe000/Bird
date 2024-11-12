@@ -3289,10 +3289,8 @@ public class 青坊主 : BaseSkill
         卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
 
         作用目标卡牌.GetComponent<MoveController>().击杀免疫 = 1;
-        作用目标卡牌.GetComponent<MoveController>().消灭免疫 = 1;
-
         mainfunction.Send效果挂载(作用目标卡牌数据.uid, 1, 1);
-        mainfunction.Send效果挂载(作用目标卡牌数据.uid, 2, 1);
+        
 
 
         activateTurn_2_finish = 1;
@@ -3643,10 +3641,8 @@ public class 两面佛 : BaseSkill
             card.GetComponent<MoveController>().无双 = 1;
             mainfunction.Send效果挂载(card_data.uid, 7, 1);
             card.GetComponent<MoveController>().击杀免疫 = 1;
-            card.GetComponent<MoveController>().消灭免疫 = 1;
-
             mainfunction.Send效果挂载(card_data.uid, 1, 1);
-            mainfunction.Send效果挂载(card_data.uid, 2, 1);
+            
         }
        
         card.GetComponent<数据显示>().更新数据();
@@ -4806,6 +4802,212 @@ public class 艾孜诺克大坟墓 : BaseSkill
 
     public override void Action_3()
     {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 诸葛亮 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 诸葛亮(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+
+    }
+
+    private void initialization()
+    {
+
+        己方回合开始时触发 = 1;
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "诸葛亮");
+        }
+    }
+
+    public override void Action_1()
+    {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+       mainfunction.占卜(uid, 1, 0);
+
+    }
+
+    public override void Action_2()
+    {
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+}
+public class 冰车 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 冰车(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+    private void initialization()
+    {
+        己方回合开始时触发 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "冰车");
+        }
+    }
+    public override void Action_1()
+    {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+        if (card_data.nowHp<=3)
+        {
+            card.GetComponent<MoveController>().行动点 += 1;
+        }
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+}
+public class 恐龙王 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 恐龙王(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = ValueHolder.turn;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+
+    }
+
+    private void initialization()
+    {
+       
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "恐龙王");
+        }
+    }
+
+    public override void Action_1()
+    {
+        if (card == null)
+        {
+            Debug.Log("卡牌不存在");
+            skill_end = 1;
+            return;
+        }
+        card.GetComponent<MoveController>().无双 = 1;
+        mainfunction.Send效果挂载(card_data.uid, 7, -1);
+       
+
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+        己方回合开始时触发 = 1;
+        mainfunction.选择敌方卡牌施放(card_data);
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
+        mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3, 1);
+        card.GetComponent<MoveController>().眩晕 = 1;
+        mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3, 1);
+        activateTurn_2_finish = 0;
         activateTurn_3_finish = 1;
     }
 

@@ -135,6 +135,12 @@ public static class SkillFactory
                 return new 半兽人(card, monoBehaviour);
             case "艾孜诺克大坟墓":
                 return new 艾孜诺克大坟墓(card, monoBehaviour);
+            case "诸葛亮":
+                return new 诸葛亮(card, monoBehaviour);
+            case "冰车":
+                return new 冰车(card, monoBehaviour);
+            case "恐龙王":
+                return new 恐龙王(card, monoBehaviour);
 
             default:
                 return null;
