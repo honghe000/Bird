@@ -304,7 +304,7 @@ public class b_listen : MonoBehaviour
     private IEnumerator nextTurn_Third_Coroutine()
     {
 
-        while (SkillExecutor.skillQueue.Count > 0)
+        while (SkillExecutor.skillQueue.Count > 0 && SkillExecutor.currentRunningSkillUid == null)
         {
             yield return new WaitForSeconds(0.2f);
         }
