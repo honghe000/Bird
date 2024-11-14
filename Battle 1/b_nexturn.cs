@@ -25,12 +25,32 @@ public class b_nexturn : MonoBehaviour
 
     void NextTurn()
     {
+
+        NextTurn_First();
+
+        StartCoroutine(NextTurn_Second_Coroutine());
+
+        
+    }
+    private IEnumerator NextTurn_Second_Coroutine()
+    {
+        while (SkillExecutor.skillQueue.Count > 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        NextTurn_Second();
+
+    }
+    void NextTurn_First()
+    {
         下个回合.interactable = false;
         下个回合.image.color = Color.gray;
-
-        Debug.Log(ValueHolder.point);
         skillturn();
+    }
 
+    void NextTurn_Second()
+    {
         ValueHolder.point = 0;
         体力.text = ValueHolder.point.ToString();
         ValueHolder.is_myturn = 0;
@@ -44,7 +64,8 @@ public class b_nexturn : MonoBehaviour
 
         mainfunction.效果卸载遍历();
 
-        if (ValueHolder.回合结束弃牌 == 1){
+        if (ValueHolder.回合结束弃牌 == 1)
+        {
             mainfunction.弃牌();
         }
         else
@@ -56,6 +77,7 @@ public class b_nexturn : MonoBehaviour
             HintManager.AddHint("敌方回合！");
         }
     }
+
 
     void 行动点归零()
     {
@@ -99,7 +121,7 @@ public class b_nexturn : MonoBehaviour
 
             if (skill.己方回合结束时触发 == 1)
             {
-                mainfunction.运行下个技能阶段(skill);
+                mainfunction.运行己方回合结束时触发技能阶段(skill);
             }
 
             if (skill.skill_end == 1)

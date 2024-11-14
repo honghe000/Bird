@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UnityEngine.ParticleSystem;
 
@@ -7,7 +8,7 @@ using static UnityEngine.ParticleSystem;
 public class SkillExecutor : MonoBehaviour
 {
     // 静态队列，用于全局存储技能
-    private static LinkedList<KeyValuePair<BaseSkill, Action>> skillQueue = new LinkedList<KeyValuePair<BaseSkill, Action>>();
+    public static LinkedList<KeyValuePair<BaseSkill, Action>> skillQueue = new LinkedList<KeyValuePair<BaseSkill, Action>>();
 
     // 全局UID，用于阻塞技能执行
     public static string currentRunningSkillUid = null;
@@ -63,8 +64,10 @@ public class SkillExecutor : MonoBehaviour
                 {
                     while (ValueHolder.申请释放技能队列.Count > 0)
                     {
-                        currentRunningSkillUid = ValueHolder.申请释放技能队列.Dequeue();
-                        mainfunction.Send技能释放同意(currentRunningSkillUid);
+                        Dictionary<string, int> skillInfo = ValueHolder.申请释放技能队列.Dequeue();
+                        currentRunningSkillUid = skillInfo.First().Key;
+                        int skill_type = skillInfo.First().Value;
+                        mainfunction.Send技能释放同意(currentRunningSkillUid,skill_type);
                     }
                 }else if (currentRunningSkillUid == null && skillQueue.Count == 0  && ValueHolder.is_myturn == 0 && ValueHolder.敌方回合运行我方技能 == 1)
                 {

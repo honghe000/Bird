@@ -70,8 +70,9 @@ public class b_占卜确认 : MonoBehaviour
                 mainfunction.运行下个技能阶段(skill);
                 ValueHolder.释放法术uid = null;
             }
-            mainfunction.技能释放结束();
         }
+
+        mainfunction.技能释放结束();
 
 
     }

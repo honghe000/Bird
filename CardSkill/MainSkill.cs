@@ -106,6 +106,55 @@ public class 张三封大师 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 相安无事: BaseSkill
@@ -204,6 +253,55 @@ public class 相安无事: BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 鬼屋 : BaseSkill
@@ -272,6 +370,55 @@ public class 鬼屋 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_2();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 鬼将 : BaseSkill
@@ -329,6 +476,55 @@ public class 鬼将 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_1();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -429,6 +625,55 @@ public class 龙首之玉 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -549,6 +794,55 @@ public class 佛光 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 判官笔 : BaseSkill
@@ -622,6 +916,55 @@ public class 判官笔 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 巨灵神 : BaseSkill
@@ -668,11 +1011,9 @@ public class 巨灵神 : BaseSkill
             skill_end = 1;
             return;
         }
-        card_data.nowHp += 1;
-        card_data.maxHp += 1;
-        card.GetComponent<数据显示>().更新数据();
+        mainfunction.血量上限改变(card, 1);
+        mainfunction.治疗(card, 1);
 
-        mainfunction.Send血量改变(card_data.uid, 1);
 
     }
 
@@ -689,6 +1030,55 @@ public class 巨灵神 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -745,12 +1135,7 @@ public class 雅典娜 : BaseSkill
 
     public override void Action_2()
     {
-        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
-
-        作用目标卡牌数据.maxAttack += 2;
-        作用目标卡牌数据.nowAttack += 2;
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 2);
+        mainfunction.攻击力改变(作用目标卡牌, 2);
 
         activateTurn_2_finish = 1;
         skill_end = 1;
@@ -766,6 +1151,55 @@ public class 雅典娜 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -879,6 +1313,55 @@ public class 蝎尾毒 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+        Action_2();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+        Action_2();
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 
@@ -950,9 +1433,7 @@ public class 河神之怒 : BaseSkill
             int before_atk = card.GetComponent<数据显示>().卡牌数据.nowAttack;
             this.atk.Add(uid, before_atk);
 
-            card.GetComponent<数据显示>().卡牌数据.nowAttack = 0;
-            card.GetComponent<数据显示>().更新数据();
-            mainfunction.Send攻击力改变(uid, -999);
+            mainfunction.攻击力改变(card, -before_atk);
         }
 
         activateTurn_1_finish = 1;
@@ -971,11 +1452,8 @@ public class 河神之怒 : BaseSkill
 
         foreach (KeyValuePair<string, int> kvp in atk)
         {
-            GameObject card = mainfunction.uid找卡(kvp.Key);
-            card.GetComponent<数据显示>().卡牌数据.nowAttack += kvp.Value;
-            card.GetComponent<数据显示>().更新数据();
-
-            mainfunction.Send攻击力改变(kvp.Key, kvp.Value);
+            GameObject card_temp = mainfunction.uid找卡(kvp.Key);
+            mainfunction.攻击力改变(card_temp, kvp.Value);
         }
 
         activateTurn_2_finish = 1;
@@ -991,6 +1469,55 @@ public class 河神之怒 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1062,6 +1589,55 @@ public class 舍生 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1154,6 +1730,55 @@ public class 神谕者 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 
@@ -1217,6 +1842,55 @@ public class 外交官 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 肥嘟嘟左卫门 : BaseSkill
 {
@@ -1273,6 +1947,55 @@ public class 肥嘟嘟左卫门 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1380,6 +2103,55 @@ public class 雷电 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 阿尔卡祭坛 : BaseSkill
 {
@@ -1424,15 +2196,11 @@ public class 阿尔卡祭坛 : BaseSkill
             GameObject grid = grids.Value;
             if (grid.transform.childCount != 0 && grids.Key != "0")
             {
-                GameObject card = grid.transform.GetChild(0).gameObject;
-                if (card.GetComponent<MoveController>().cardType == 0 && card.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                GameObject card_temp = grid.transform.GetChild(0).gameObject;
+                if (card_temp.GetComponent<MoveController>().cardType == 0 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色")
                 {
-                    卡牌数据 作用目标卡牌数据 = card.GetComponent<数据显示>().卡牌数据;
 
-                    作用目标卡牌数据.maxAttack += 1;
-                    作用目标卡牌数据.nowAttack += 1;
-                    card.GetComponent<数据显示>().更新数据();
-                    mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 1);
+                    mainfunction.攻击力改变(card_temp, 1);
 
                 }
             }
@@ -1456,6 +2224,55 @@ public class 阿尔卡祭坛 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1513,13 +2330,9 @@ public class 太乙真人 : BaseSkill
 
         卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
 
-        作用目标卡牌数据.maxAttack += 3;
-        作用目标卡牌数据.nowAttack += 3;
-        作用目标卡牌数据.maxHp += 3;
-        作用目标卡牌数据.nowHp += 3;
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 3);
-        mainfunction.Send血量改变(作用目标卡牌数据.uid, 3);
+        mainfunction.攻击力改变(作用目标卡牌, 3);
+        mainfunction.血量上限改变(作用目标卡牌, 3);
+        mainfunction.治疗(card, 1);
 
 
         activateTurn_2_finish = 1;
@@ -1535,6 +2348,55 @@ public class 太乙真人 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1604,6 +2466,55 @@ public class 关羽 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1713,6 +2624,55 @@ public class 困兽之斗 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 牛头马面 : BaseSkill
 {
@@ -1758,13 +2718,12 @@ public class 牛头马面 : BaseSkill
             return;
         }
 
-        card_data.maxAttack += 1;
-        card_data.nowAttack += 1;
-        card_data.maxHp += 1;
-        card_data.nowHp += 1;
-        card.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(uid, 1);
-        mainfunction.Send血量改变(uid, 1);
+        mainfunction.攻击力改变(card, 1);
+
+        mainfunction.血量上限改变(card, 1);
+        mainfunction.治疗(card, 1);
+
+
 
 
     }
@@ -1782,6 +2741,55 @@ public class 牛头马面 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -1891,6 +2899,55 @@ public class 迅雷的崩玉 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 鬼琵琶 : BaseSkill
@@ -1939,13 +2996,7 @@ public class 鬼琵琶 : BaseSkill
 
     public override void Action_2()
     {
-
-        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
-
-        作用目标卡牌数据.maxAttack += 5;
-        作用目标卡牌数据.nowAttack += 5;
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 5);
+        mainfunction.攻击力改变(作用目标卡牌, 5);
 
 
         activateTurn_2_finish = 1;
@@ -1965,6 +3016,55 @@ public class 鬼琵琶 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+        Action_3();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2021,14 +3121,7 @@ public class 毒雾 : BaseSkill
                     卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
 
-                    card_temp_data.nowHp -= 2;
-                    if (card_temp_data.nowHp <= 0)
-                    {
-                        mainfunction.卡牌摧毁(card_temp);
-                        mainfunction.Send卡牌摧毁(card_temp_data.uid);
-                    }
-                    card_temp.GetComponent<数据显示>().更新数据();
-                    mainfunction.Send血量改变(card_temp_data.uid, -2);
+                    mainfunction.扣血(card_temp, 2);
 
                 }
             }
@@ -2055,6 +3148,55 @@ public class 毒雾 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2141,6 +3283,55 @@ public class 战国犀牛 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 牛魔 : BaseSkill
 {
@@ -2198,10 +3389,8 @@ public class 牛魔 : BaseSkill
         int before_atk = 作用目标卡牌.GetComponent<数据显示>().卡牌数据.nowAttack;
         this.atk.Add(uid, before_atk);
 
-        作用目标卡牌.GetComponent<数据显示>().卡牌数据.nowAttack = 0;
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(uid, -999);
-        
+        mainfunction.攻击力改变(作用目标卡牌, -before_atk);
+
 
         activateTurn_2_finish = 1;
         
@@ -2211,11 +3400,8 @@ public class 牛魔 : BaseSkill
     {
         foreach (KeyValuePair<string, int> kvp in atk)
         {
-            GameObject card = mainfunction.uid找卡(kvp.Key);
-            card.GetComponent<数据显示>().卡牌数据.nowAttack += kvp.Value;
-            card.GetComponent<数据显示>().更新数据();
-
-            mainfunction.Send攻击力改变(kvp.Key, kvp.Value);
+            GameObject card_temp = mainfunction.uid找卡(kvp.Key);
+            mainfunction.攻击力改变(card_temp, kvp.Value);
         }
         activateTurn_3_finish = 1;
         skill_end = 1;
@@ -2224,6 +3410,55 @@ public class 牛魔 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2308,6 +3543,55 @@ public class 贩卖鸦片 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 漫步者 : BaseSkill
 {
@@ -2364,6 +3648,55 @@ public class 漫步者 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2445,6 +3778,55 @@ public class 杨枝甘露 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 远古石像鬼 : BaseSkill
 {
@@ -2501,6 +3883,55 @@ public class 远古石像鬼 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2569,6 +4000,55 @@ public class 丁达尔效应 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 钟馗 : BaseSkill
 {
@@ -2622,13 +4102,11 @@ public class 钟馗 : BaseSkill
     public override void Action_2()
     {
         卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
-        card_data.maxAttack += 作用目标卡牌数据.nowAttack;
-        card_data.nowAttack += 作用目标卡牌数据.nowAttack;
-        card_data.maxHp += 作用目标卡牌数据.nowHp;
-        card_data.nowHp += 作用目标卡牌数据.nowHp;
-        card.GetComponent<数据显示>().更新数据();
-        mainfunction.Send攻击力改变(uid, 作用目标卡牌数据.nowAttack);
-        mainfunction.Send血量改变(uid, 作用目标卡牌数据.nowHp);
+
+        mainfunction.攻击力改变(card, 作用目标卡牌数据.nowAttack);
+        mainfunction.血量上限改变(card, 作用目标卡牌数据.nowHp);
+        mainfunction.治疗(card, 作用目标卡牌数据.nowHp);
+
         mainfunction.卡牌摧毁(作用目标卡牌);
         mainfunction.Send卡牌摧毁(作用目标卡牌数据.uid);
         activateTurn_2_finish = 1;
@@ -2646,6 +4124,55 @@ public class 钟馗 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2705,6 +4232,55 @@ public class 武僧 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2768,6 +4344,55 @@ public class 虾兵蟹将 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2835,6 +4460,55 @@ public class 猩猩守卫 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 火焰小鬼 : BaseSkill
 {
@@ -2887,14 +4561,7 @@ public class 火焰小鬼 : BaseSkill
                     卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
 
 
-                    card_temp_data.nowHp -= 1;
-                    if (card_temp_data.nowHp <= 0)
-                    {
-                        mainfunction.卡牌摧毁(card_temp);
-                        mainfunction.Send卡牌摧毁(card_temp_data.uid);
-                    }
-                    card_temp.GetComponent<数据显示>().更新数据();
-                    mainfunction.Send血量改变(card_temp_data.uid, -1);
+                    mainfunction.扣血(card_temp, 1);
 
                 }
             }
@@ -2921,6 +4588,55 @@ public class 火焰小鬼 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_1();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -2986,6 +4702,55 @@ public class 火灵法师 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 
@@ -3048,6 +4813,55 @@ public class 尼斯湖水怪 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 充能 : BaseSkill
 {
@@ -3105,6 +4919,55 @@ public class 充能 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3170,6 +5033,55 @@ public class 荒骷髅 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_1();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 枉死城 : BaseSkill
 {
@@ -3232,6 +5144,55 @@ public class 枉死城 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3307,6 +5268,55 @@ public class 青坊主 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_1();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 神之审判 : BaseSkill
 {
@@ -3359,9 +5369,8 @@ public class 神之审判 : BaseSkill
 
         卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
 
-        作用目标卡牌数据.nowHp -= 5;
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
-        if (作用目标卡牌数据.nowHp <= 0)
+        int is_kill = mainfunction.扣血(作用目标卡牌, 5);
+        if (is_kill == 1)
         {
             
             foreach (KeyValuePair<string, GameObject> grids in ValueHolder.棋盘)
@@ -3372,12 +5381,7 @@ public class 神之审判 : BaseSkill
                     GameObject card_temp = grid.transform.GetChild(0).gameObject;
                     if (card_temp.GetComponent<MoveController>().cardType == 0 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色")
                     {
-                        卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
-
-                        card_temp_data.maxAttack += 1;
-                        card_temp_data.nowAttack += 1;
-                        card_temp.GetComponent<数据显示>().更新数据();
-                        mainfunction.Send攻击力改变(card_temp_data.uid, 1);
+                         mainfunction.攻击力改变(card_temp, 1);
 
                     }
                 }
@@ -3389,7 +5393,6 @@ public class 神之审判 : BaseSkill
         }
 
 
-        mainfunction.Send血量改变(作用目标卡牌数据.uid, -5);
         activateTurn_2_finish = 1;
         skill_end = 1;
     }
@@ -3401,6 +5404,55 @@ public class 神之审判 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3468,6 +5520,55 @@ public class 猎人 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_1();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 拳师 : BaseSkill
 {
@@ -3527,6 +5628,55 @@ public class 拳师 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3589,6 +5739,55 @@ public class 吕布 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 两面佛 : BaseSkill
 {
@@ -3620,6 +5819,8 @@ public class 两面佛 : BaseSkill
     {
 
         己方回合结束时触发 = 1;
+        血量降低时触发 = 1;
+        血量增加时触发 = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -3634,25 +5835,35 @@ public class 两面佛 : BaseSkill
             skill_end = 1;
             return;
         }
-        card_data.nowHp -= 1;
-        if(card_data.nowHp <=2) 
-        {
-
-            card.GetComponent<MoveController>().无双 = 1;
-            mainfunction.Send效果挂载(card_data.uid, 7, 1);
-            card.GetComponent<MoveController>().击杀免疫 = 1;
-            mainfunction.Send效果挂载(card_data.uid, 1, 1);
-            
-        }
-       
-        card.GetComponent<数据显示>().更新数据();
-
-        mainfunction.Send血量改变(card_data.uid, -1);
+        mainfunction.扣血(card, 1);
 
     }
 
     public override void Action_2()
     {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+
+        if (card_data.nowHp <= 2)
+        {
+
+            card.GetComponent<MoveController>().无双 = 1;
+            mainfunction.Send效果挂载(card_data.uid, 7, -1);
+            card.GetComponent<MoveController>().击杀免疫 = 1;
+            mainfunction.Send效果挂载(card_data.uid, 1, -1);
+
+        }
+        else
+        {
+            card.GetComponent<MoveController>().无双 = 0;
+            mainfunction.Send效果卸载(card_data.uid, 7);
+            card.GetComponent<MoveController>().击杀免疫 = 0;
+            mainfunction.Send效果卸载(card_data.uid, 1);
+        }
+
         activateTurn_2_finish = 1;
     }
 
@@ -3664,6 +5875,55 @@ public class 两面佛 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+        Action_2();
+    }
+
+    public override void Action_血量降低时触发()
+    {
+        Action_2();
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3713,10 +5973,7 @@ public class 大红莲 : BaseSkill
                 GameObject card_temp = grid.transform.GetChild(0).gameObject;
                 if (card_temp.GetComponent<MoveController>().cardType == 0 && card_temp.GetComponent<数据显示>().卡牌数据.类别 == "角色"&& card_temp.GetComponent<MoveController>().法术可作用 == 1)
                 {
-                    卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
-
-                    int 治疗量 = mainfunction.治疗(card_temp, 2);
-                    mainfunction.Send血量改变(card_temp_data.uid, 治疗量);
+                    mainfunction.治疗(card_temp, 2);
 
                 }
             }
@@ -3740,6 +5997,55 @@ public class 大红莲 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3790,9 +6096,7 @@ public class 腥红之月 : BaseSkill
                 continue;
             }
             卡牌数据 card_temp_data = card_temp.GetComponent<数据显示>().卡牌数据;
-            mainfunction.Send血量改变(card_temp_data.uid, -card_temp_data.nowHp+1);
-            card_temp_data.nowHp = 1;
-            card_temp.GetComponent<数据显示>().更新数据();
+            mainfunction.扣血(card_temp, card_temp_data.nowHp - 1);
 
         }
        
@@ -3816,6 +6120,55 @@ public class 腥红之月 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -3895,6 +6248,55 @@ public class 摆渡人 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 祈晴 : BaseSkill
 {
@@ -3949,10 +6351,7 @@ public class 祈晴 : BaseSkill
            
             mainfunction.Send攻击力改变(作用目标卡牌数据.uid, 作用目标卡牌数据.nowHp + 5 - 作用目标卡牌数据.maxHp);
         }
-        int 治疗量=mainfunction.治疗(作用目标卡牌, 5);
-        mainfunction.Send血量改变(作用目标卡牌数据.uid, 治疗量);
-
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
+        mainfunction.治疗(作用目标卡牌, 5);
         activateTurn_2_finish = 1;
         skill_end = 1;
 
@@ -3967,6 +6366,55 @@ public class 祈晴 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -4007,11 +6455,8 @@ public class 山贼 : BaseSkill
 
     public override void Action_1()
     {
-        card_data.nowAttack += 2;
-        card_data.maxAttack += 2;
-        card.GetComponent<数据显示>().更新数据();
 
-        mainfunction.Send攻击力改变(card_data.uid, 2);
+        mainfunction.攻击力改变(card, 2);
 
 
         activateTurn_1_finish = 0;
@@ -4035,6 +6480,55 @@ public class 山贼 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -4096,11 +6590,7 @@ public class 小雷音寺 : BaseSkill
 
     public override void Action_2()
     {
-        卡牌数据 作用目标卡牌数据 = 作用目标卡牌.GetComponent<数据显示>().卡牌数据;
-        int 治疗量 = mainfunction.治疗(作用目标卡牌, 1);
-        mainfunction.Send血量改变(作用目标卡牌数据.uid, 治疗量);
-
-        作用目标卡牌.GetComponent<数据显示>().更新数据();
+        mainfunction.治疗(作用目标卡牌, 1);
         activateTurn_1_finish = 0;
     }
 
@@ -4112,6 +6602,55 @@ public class 小雷音寺 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -4154,7 +6693,7 @@ public class 耶稣圣灵 : BaseSkill
     }
     public override void Action_1()
     {
-        mainfunction.占卜(uid,3,1);
+        mainfunction.占卜(uid, 3, 1);
         activateTurn_1_finish = 1;
 
     }
@@ -4177,126 +6716,276 @@ public class 耶稣圣灵 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
-
-    public class 稻草人 : BaseSkill
+    public override void Action_己方回合结束时触发()
     {
-        private MonoBehaviour monoBehaviour;
-        public 稻草人(GameObject Card, MonoBehaviour monoBehaviour)
-        {
-            card = Card;
-            skill_end = 0;
-            activateTurn_1 = -1;
-            activateTurn_2 = -1;
-            activateTurn_3 = -1;
-            activateTurn_4 = -1;
 
-
-            this.monoBehaviour = monoBehaviour;
-
-            activateTurn_1_finish = 0;
-            activateTurn_2_finish = 0;
-            activateTurn_3_finish = 0;
-            activateTurn_4_finish = 0;
-
-
-            uid = card.GetComponent<数据显示>().卡牌数据.uid;
-            card_data = card.GetComponent<数据显示>().卡牌数据;
-            initialization();
-
-
-        }
-        private void initialization()
-        {
-
-            if (!ValueHolder.uid_to_name.ContainsKey(uid))
-            {
-                ValueHolder.uid_to_name.Add(uid, "稻草人");
-            }
-        }
-        public override void Action_1()
-        {
-            activateTurn_1_finish = 1;
-            skill_end = 1;
-        }
-
-        public override void Action_2()
-        {
-
-            activateTurn_2_finish = 1;
-
-
-        }
-
-        public override void Action_3()
-        {
-            activateTurn_3_finish = 1;
-        }
-
-        public override void Action_4()
-        {
-            activateTurn_4_finish = 1;
-        }
     }
 
-    public class 小卒 : BaseSkill
+    public override void Action_己方回合开始时触发()
     {
-        private MonoBehaviour monoBehaviour;
-        public 小卒(GameObject Card, MonoBehaviour monoBehaviour)
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    } 
+
+}
+
+
+public class 稻草人 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 稻草人(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
-            card = Card;
-            skill_end = 0;
-            activateTurn_1 = -1;
-            activateTurn_2 = -1;
-            activateTurn_3 = -1;
-            activateTurn_4 = -1;
-
-
-            this.monoBehaviour = monoBehaviour;
-
-            activateTurn_1_finish = 0;
-            activateTurn_2_finish = 0;
-            activateTurn_3_finish = 0;
-            activateTurn_4_finish = 0;
-
-
-            uid = card.GetComponent<数据显示>().卡牌数据.uid;
-            card_data = card.GetComponent<数据显示>().卡牌数据;
-            initialization();
-
-
-        }
-        private void initialization()
-        {
-
-            if (!ValueHolder.uid_to_name.ContainsKey(uid))
-            {
-                ValueHolder.uid_to_name.Add(uid, "小卒");
-            }
-        }
-        public override void Action_1()
-        {
-            activateTurn_1_finish = 1;
-            skill_end = 1;
-        }
-
-        public override void Action_2()
-        {
-
-            activateTurn_2_finish = 1;
-
-
-        }
-
-        public override void Action_3()
-        {
-            activateTurn_3_finish = 1;
-        }
-
-        public override void Action_4()
-        {
-            activateTurn_4_finish = 1;
+            ValueHolder.uid_to_name.Add(uid, "稻草人");
         }
     }
+    public override void Action_1()
+    {
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
+}
+
+public class 小卒 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 小卒(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+
+
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+    }
+    private void initialization()
+    {
+
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "小卒");
+        }
+    }
+    public override void Action_1()
+    {
+        activateTurn_1_finish = 1;
+        skill_end = 1;
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+
+
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 
 public class 熊猫人 : BaseSkill
@@ -4357,6 +7046,55 @@ public class 熊猫人 : BaseSkill
     {
         activateTurn_4_finish = 1;
     }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
 }
 
 public class 獬豸 : BaseSkill
@@ -4416,6 +7154,55 @@ public class 獬豸 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 }
 public class 逆天改命 : BaseSkill
@@ -4479,6 +7266,55 @@ public class 逆天改命 : BaseSkill
     {
         activateTurn_4_finish = 1;
     }
+
+    public override void Action_己方回合结束时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
 }
 public class 罗生门 : BaseSkill
 {
@@ -4538,6 +7374,55 @@ public class 罗生门 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+        Action_1();
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -4601,6 +7486,55 @@ public class 机器人 : BaseSkill
     {
         activateTurn_4_finish = 1;
     }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
 }
 public class 判官 : BaseSkill
 {
@@ -4659,6 +7593,55 @@ public class 判官 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 半兽人 : BaseSkill
 {
@@ -4704,14 +7687,10 @@ public class 半兽人 : BaseSkill
             skill_end++;
             return;
         }
-        card_data.nowAttack += 4;
-        card_data.maxAttack += 4;
-        card_data.nowHp += 4;
-        card_data.maxHp += 4;
-        card.GetComponent<数据显示>().更新数据();
+        mainfunction.攻击力改变(card, 4);
+        mainfunction.血量上限改变(card, 4);
+        mainfunction.治疗(card,4);
 
-        mainfunction.Send攻击力改变(card_data.uid, 4);
-        mainfunction.Send血量改变(card_data.uid, 4);
         card.GetComponent<MoveController>().杀人后触发 = 0;
         activateTurn_1_finish = 1;
         skill_end = 1;
@@ -4733,6 +7712,55 @@ public class 半兽人 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        Action_1();
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -4781,7 +7809,7 @@ public class 艾孜诺克大坟墓 : BaseSkill
             skill_end = 1;
             return;
         }
-        if(ValueHolder.point==0)
+        if(ValueHolder.point == 0)
         {
             Debug.Log("点数不足");
             return;
@@ -4808,6 +7836,55 @@ public class 艾孜诺克大坟墓 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }
@@ -4874,6 +7951,55 @@ public class 诸葛亮 : BaseSkill
         activateTurn_4_finish = 1;
     }
 
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
 }
 public class 冰车 : BaseSkill
 {
@@ -4904,7 +8030,7 @@ public class 冰车 : BaseSkill
     }
     private void initialization()
     {
-        己方回合开始时触发 = 1;
+        血量降低时触发 = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "冰车");
@@ -4920,9 +8046,10 @@ public class 冰车 : BaseSkill
         if (card_data.nowHp<=3)
         {
             card.GetComponent<MoveController>().行动点 += 1;
+            activateTurn_1_finish = 1;
+            skill_end = 1;
         }
-        activateTurn_1_finish = 1;
-        skill_end = 1;
+
     }
 
     public override void Action_2()
@@ -4941,6 +8068,58 @@ public class 冰车 : BaseSkill
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+        Action_1();
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+        if (activateTurn_1_finish == 0)
+        {
+            Action_1();
+        }
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 }
 public class 恐龙王 : BaseSkill
@@ -4971,7 +8150,7 @@ public class 恐龙王 : BaseSkill
 
     private void initialization()
     {
-       
+        己方回合开始时触发 = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "恐龙王");
@@ -4996,7 +8175,7 @@ public class 恐龙王 : BaseSkill
 
     public override void Action_2()
     {
-        己方回合开始时触发 = 1;
+
         mainfunction.选择敌方卡牌施放(card_data);
         activateTurn_2_finish = 1;
     }
@@ -5005,15 +8184,63 @@ public class 恐龙王 : BaseSkill
     {
         作用目标卡牌.GetComponent<MoveController>().眩晕 = 1;
         mainfunction.Send效果挂载(作用目标卡牌.GetComponent<数据显示>().卡牌数据.uid, 3, 1);
+
         card.GetComponent<MoveController>().眩晕 = 1;
         mainfunction.Send效果挂载(card.GetComponent<数据显示>().卡牌数据.uid, 3, 1);
-        activateTurn_2_finish = 0;
-        activateTurn_3_finish = 1;
     }
 
     public override void Action_4()
     {
         activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+        Action_2();
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发(){
+        
+    }
+
+    public override void Action_pass()
+    {
+
     }
 
 }

@@ -198,7 +198,7 @@ public class b_listen : MonoBehaviour
         {
             Attack(mes);
         }else if (mes.Action == 30){
-            血量改变(mes);
+            血量上限改变(mes);
         }else if (mes.Action == 31)
         {
             攻击力改变(mes);
@@ -231,6 +231,12 @@ public class b_listen : MonoBehaviour
         }else if (mes.Action == 42)
         {
             弃牌堆更新(mes);
+        }else if (mes.Action == 43)
+        {
+            治疗(mes);
+        }else if (mes.Action == 44)
+        {
+            扣血(mes);
         }
     }
 
@@ -288,6 +294,25 @@ public class b_listen : MonoBehaviour
 
     void nextTurn()
     {
+
+        nextTurn_First();
+        nextTurn_Second();
+        StartCoroutine(nextTurn_Third_Coroutine());
+
+    }
+
+    private IEnumerator nextTurn_Third_Coroutine()
+    {
+
+        while (SkillExecutor.skillQueue.Count > 0)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+
+        nextTurn_Third();
+    }
+    void nextTurn_First()
+    {
         ValueHolder.point = 1;
         ValueHolder.is_myturn = 1;
         体力.text = ValueHolder.point.ToString();
@@ -298,12 +323,18 @@ public class b_listen : MonoBehaviour
         回合数.text = ((int)Mathf.Floor(ValueHolder.turn)).ToString();
 
         mainfunction.效果卸载遍历();
-
-        skillturn();
         mainfunction.倒计时回合变化();
-
-        summonHandcard(1);
         mainfunction.灵力回合更新();
+    }
+
+    void nextTurn_Second()
+    {
+        skillturn();
+    }
+
+    void nextTurn_Third()
+    {
+        summonHandcard(1);
     }
 
      void summonHandcard(int num)
@@ -367,7 +398,7 @@ public class b_listen : MonoBehaviour
 
                 if (skill.己方回合开始时触发 == 1)
                 {
-                    mainfunction.运行下个技能阶段(skill);
+                    mainfunction.运行己方回合开始时触发技能阶段(skill);
                 }
             }
             mainfunction.DestroyAllChildren(ValueHolder.放大展示区1);
@@ -597,6 +628,14 @@ public class b_listen : MonoBehaviour
                     {
                         card.GetComponent<MoveController>().眩晕免疫 = 0;
                     }
+                    else if (mes.effect == 6)//识水
+                    {
+                        card.GetComponent<MoveController>().识水 = 1;
+                    }
+                    else if (mes.effect == 7)//无双
+                    {
+                        card.GetComponent<MoveController>().无双 = 1;
+                    }
                 }
             }
         }
@@ -616,18 +655,12 @@ public class b_listen : MonoBehaviour
         mainfunction.DestroyAllChildren(ValueHolder.放大展示区2);
     }
 
-    void 血量改变(Message mes)
+    void 血量上限改变(Message mes)
     {
         GameObject card = mainfunction.uid找卡(mes.uid);
         if (card != null)
         {
-            card.GetComponent<数据显示>().卡牌数据.nowHp += mes.num;
-            card.GetComponent<数据显示>().卡牌数据.maxHp += mes.num;
-            card.GetComponent<数据显示>().更新数据();
-            if (card.GetComponent<数据显示>().卡牌数据.nowHp <= 0)
-            {
-                mainfunction.卡牌摧毁(card);
-            }
+            mainfunction.血量上限改变(card, mes.num);
 
         }
     }
@@ -637,16 +670,7 @@ public class b_listen : MonoBehaviour
         GameObject card = mainfunction.uid找卡(mes.uid);
         if (card != null)
         {
-            if (mes.num == -999)
-            {
-                card.GetComponent<数据显示>().卡牌数据.nowAttack = 0;
-                card.GetComponent<数据显示>().卡牌数据.maxAttack = 0;
-                card.GetComponent<数据显示>().更新数据();
-                return;
-            }
-            card.GetComponent<数据显示>().卡牌数据.nowAttack += mes.num;
-            card.GetComponent<数据显示>().卡牌数据.maxAttack += mes.num;
-            card.GetComponent<数据显示>().更新数据();
+            mainfunction.攻击力改变(card, mes.num,0);
         }
     }
 
@@ -689,15 +713,54 @@ public class b_listen : MonoBehaviour
 
     void 技能释放申请(Message mes)
     {
-        ValueHolder.申请释放技能队列.Enqueue(mes.uid);
+        Dictionary<string, int> effect1 = new Dictionary<string, int>();
+        effect1.Add(mes.uid, mes.num);
+        ValueHolder.申请释放技能队列.Enqueue(effect1);
     }
 
     void 技能释放申请同意(Message mes)
     {
         mainfunction.Send对方暂停();
         BaseSkill skill = ValueHolder.SkillAction[mes.uid];
+        int skill_type = mes.num;
         ValueHolder.敌方回合运行我方技能 = 1;
-        mainfunction.运行下个技能阶段(skill);
+
+
+        //0 : 普通运行下个技能阶段
+        //1 : 亡语
+        //2 : 场上角色死亡触发
+        //3 : 场上我方角色死亡触发
+        //4 : 场上敌方角色死亡触发
+        //5 : 己方回合开始时触发
+        //6 : 己方回合结束时触发
+        //7 : 杀人后触发
+
+        if (skill_type == 0)
+        {
+            mainfunction.运行下个技能阶段(skill);
+        }else if (skill_type == 1)
+        {
+            mainfunction.运行亡语技能阶段(skill);
+        }else if (skill_type == 2)
+        {
+            mainfunction.运行场上角色死亡触发技能阶段(skill);
+        }else if (skill_type == 3)
+        {
+            mainfunction.运行场上我方角色死亡触发技能阶段(skill);
+        }else if (skill_type == 4)
+        {
+            mainfunction.运行场上敌方角色死亡触发技能阶段(skill);
+        }else if (skill_type == 5)
+        {
+            mainfunction.运行己方回合开始时触发技能阶段(skill);
+        }else if (skill_type == 6)
+        {
+            mainfunction.运行己方回合结束时触发技能阶段(skill);
+        }else if (skill_type == 7)
+        {
+            mainfunction.运行杀人后触发技能阶段(skill);
+        }
+
     }
 
 
@@ -706,6 +769,27 @@ public class b_listen : MonoBehaviour
         int cardID = mes.cardID;
         mainfunction.弃牌堆更新(cardID,0);
     }
+
+
+    void 治疗(Message mes)
+    {
+        GameObject card = mainfunction.uid找卡(mes.uid);
+        if (card != null)
+        {
+            mainfunction.治疗(card, mes.num,0);
+
+        }
+    }
+
+    void 扣血(Message mes)
+    {
+        GameObject card = mainfunction.uid找卡(mes.uid);
+        if (card != null)
+        {
+            mainfunction.扣血(card, mes.num,0);
+        }
+    }
+
 
 
 

@@ -180,7 +180,7 @@ public class ValueHolder : MonoBehaviour
     public static List<Effect> 效果卸载队列 = new List<Effect>();
 
     ////技能执行先后级临时存储
-    public static Queue<string> 申请释放技能队列 = new Queue<string>();
+    public static Queue<Dictionary<string,int>> 申请释放技能队列 = new Queue<Dictionary<string,int>>();
     //public static int 技能释放中数量 = 0;
     //public static string 正在运行技能uid = null;
 

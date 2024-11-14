@@ -33,6 +33,9 @@ public abstract class BaseSkill : MonoBehaviour
     public int 场上敌方角色死亡触发 = 0;
     public int 场上我方角色死亡触发 = 0;
 
+    public int 血量降低时触发 = 0;
+    public int 血量增加时触发 = 0;
+
     public int 用户操作型技能 = 0; // 技能先后级相关
 
     public int 召唤物id = 0;
@@ -41,6 +44,30 @@ public abstract class BaseSkill : MonoBehaviour
     public abstract void Action_2();
     public abstract void Action_3();
     public abstract void Action_4();
+
+    public abstract void Action_己方回合结束时触发();
+
+    public abstract void Action_己方回合开始时触发();
+
+    public abstract void Action_场上角色死亡触发();
+
+    public abstract void Action_场上敌方角色死亡触发();
+
+    public abstract void Action_场上我方角色死亡触发();
+
+    public abstract void Action_亡语();
+
+    public abstract void Action_血量增加时触发();
+
+    public abstract void Action_血量降低时触发();
+
+
+    public abstract void Action_杀人后触发();
+
+    public abstract void Action_pass();
+
+
+
 
 
 

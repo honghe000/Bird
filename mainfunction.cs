@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.Sockets;
+using System.Security.Cryptography;
 using System.Text;
 using TMPro;
 using Unity.Burst.Intrinsics;
@@ -604,11 +605,23 @@ public class mainfunction : MonoBehaviour
 
                 if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
                 {
-                    Send技能释放申请(skill.uid);
+                    Send技能释放申请(skill.uid,2);
                 }
                 else
                 {
-                    运行下个技能阶段(skill);
+                    运行场上角色死亡触发技能阶段(skill);
+                }
+            }
+
+            if (skill.场上我方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 0)
+            {
+                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                {
+                    Send技能释放申请(skill.uid, 3);
+                }
+                else
+                {
+                    运行场上我方角色死亡触发技能阶段(skill);
                 }
             }
 
@@ -617,23 +630,11 @@ public class mainfunction : MonoBehaviour
             {
                 if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
                 {
-                    Send技能释放申请(skill.uid);
+                    Send技能释放申请(skill.uid, 4);
                 }
                 else
                 {
-                    运行下个技能阶段(skill);
-                }
-            }
-
-            if (skill.场上我方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 0)
-            {
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
-                {
-                    Send技能释放申请(skill.uid);
-                }
-                else
-                {
-                    运行下个技能阶段(skill);
+                    运行场上敌方角色死亡触发技能阶段(skill);
                 }
             }
         }
@@ -648,11 +649,11 @@ public class mainfunction : MonoBehaviour
             {
                 if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
                 {
-                    Send技能释放申请(skill.uid);
+                    Send技能释放申请(skill.uid,1);
                 }
                 else
                 {
-                    运行下个技能阶段(skill);
+                    运行亡语技能阶段(skill);
                 }
 
             }
@@ -701,10 +702,10 @@ public class mainfunction : MonoBehaviour
         if (card_data1.nowHp > 0 && card_data2.nowHp <= 0)
         {
 
-            if (mycard.GetComponent<MoveController>().杀人后触发==1)
+            if (mycard.GetComponent<MoveController>().杀人后触发 == 1)
             {
                 BaseSkill skill = ValueHolder.SkillAction[mycard.GetComponent<数据显示>().卡牌数据.uid];
-                运行下个技能阶段(skill);
+                运行杀人后触发技能阶段(skill);
             }
 
             卡牌摧毁(hecard,mycard);
@@ -715,11 +716,7 @@ public class mainfunction : MonoBehaviour
 
         }else if (card_data1.nowHp <= 0 && card_data2.nowHp <= 0)
         {
-            if (mycard.GetComponent<MoveController>().杀人后触发 == 1)
-            {
-                BaseSkill skill = ValueHolder.SkillAction[mycard.GetComponent<数据显示>().卡牌数据.uid];
-                运行下个技能阶段(skill);
-            }
+
             卡牌摧毁(mycard);
             卡牌摧毁(hecard);
         }
@@ -880,9 +877,25 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
-    public static void Send血量改变(string uid,int num)
+    public static void Send血量上限改变(string uid,int num)
     {
         ChangeSendMessage("Action", 30);
+        ChangeSendMessage("uid", uid);
+        ChangeSendMessage("num", num);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send治疗(string uid,int num)
+    {
+        ChangeSendMessage("Action", 43);
+        ChangeSendMessage("uid", uid);
+        ChangeSendMessage("num", num);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send扣血(string uid,int num)
+    {
+        ChangeSendMessage("Action", 44);
         ChangeSendMessage("uid", uid);
         ChangeSendMessage("num", num);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
@@ -951,18 +964,29 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
-    public static void Send技能释放申请(string uid)
+    public static void Send技能释放申请(string uid,int skill_type)
     {
+        //0 : 普通运行下个技能阶段
+        //1 : 亡语
+        //2 : 场上角色死亡触发
+        //3 : 场上我方角色死亡触发
+        //4 : 场上敌方角色死亡触发
+        //5 : 己方回合开始时触发
+        //6 : 己方回合结束时触发
+        //7 : 杀人后触发
+
         ChangeSendMessage("Action", 40);
         ChangeSendMessage("uid", uid);
+        ChangeSendMessage("num", skill_type);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
 
     }
 
-    public static void Send技能释放同意(string uid)
+    public static void Send技能释放同意(string uid, int skill_type)
     {
         ChangeSendMessage("Action", 41);
         ChangeSendMessage("uid", uid);
+        ChangeSendMessage("num", skill_type);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
@@ -1001,6 +1025,68 @@ public class mainfunction : MonoBehaviour
 
         Debug.Log("技能阶段运行完毕");
     }
+
+    //0 : 普通运行下个技能阶段
+    //1 : 亡语
+    //2 : 场上角色死亡触发
+    //3 : 场上我方角色死亡触发
+    //4 : 场上敌方角色死亡触发
+    //5 : 己方回合开始时触发
+    //6 : 己方回合结束时触发
+    public static void 运行亡语技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_亡语);
+        Debug.Log(skill.card_data.名字 + "运行亡语技能");
+    }
+
+    public static void 运行场上角色死亡触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_场上角色死亡触发);
+        Debug.Log(skill.card_data.名字 + "运行场上角色死亡触发技能");
+    }
+
+    public static void 运行场上我方角色死亡触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_场上我方角色死亡触发);
+        Debug.Log(skill.card_data.名字 + "运行场上我方角色死亡触发技能");
+    }
+
+    public static void 运行场上敌方角色死亡触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_场上敌方角色死亡触发);
+        Debug.Log(skill.card_data.名字 + "运行场上敌方角色死亡触发技能");
+    }
+
+    public static void 运行己方回合开始时触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_己方回合开始时触发);
+        Debug.Log(skill.card_data.名字 + "运行己方回合开始时触发技能");
+    }
+
+    public static void 运行己方回合结束时触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_己方回合结束时触发);
+        Debug.Log(skill.card_data.名字 + "运行己方回合结束时触发技能");
+    }
+
+    public static void 运行杀人后触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_杀人后触发);
+        Debug.Log(skill.card_data.名字 + "运行杀人后触发技能");
+    }
+
+    public static void 运行血量增加时触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_血量增加时触发);
+        Debug.Log(skill.card_data.名字 + "运行血量增加时触发技能");
+    }
+
+    public static void 运行血量降低时触发技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_血量降低时触发);
+        Debug.Log(skill.card_data.名字 + "运行血量减少时触发技能");
+    }
+
 
     public static void 禁用棋盘物件代码(string scriptName,int cardtype)
     {
@@ -1581,6 +1667,14 @@ public class mainfunction : MonoBehaviour
         {
             card.GetComponent<MoveController>().眩晕免疫 = 0;
         }
+        else if (effect == 6)//识水
+        {
+            card.GetComponent<MoveController>().识水 = 0;
+        }
+        else if (effect == 7)//无双
+        {
+            card.GetComponent<MoveController>().无双 = 0;
+        }
     }
     
     public static void 效果卸载遍历()
@@ -1595,26 +1689,110 @@ public class mainfunction : MonoBehaviour
                     效果卸载(card, effect.effectID);
                 }
             }
+
+            else if(effect.turn < ValueHolder.turn)
+            {
+                ValueHolder.效果卸载队列.RemoveAt(i);
+            }
         }
     }
 
-    public static int 治疗(GameObject card,int num)
+    public static void 治疗(GameObject card,int num,int needd_send = 1)
     {
-        int 治疗量;
         卡牌数据 card_data = card.GetComponent<数据显示>().卡牌数据;
 
         if (card_data.nowHp + num > card_data.maxHp)
         {
-            治疗量=card_data.maxHp-card_data.nowHp;
             card_data.nowHp = card_data.maxHp;
-            card.GetComponent<数据显示>().更新数据();
-            return 治疗量;
         }
-        card_data.nowHp += num;
+        else
+        {
+            card_data.nowHp += num;
+        }
+
+        if (needd_send == 1)
+        {
+            Send治疗(card_data.uid, num);
+        }
+
         card.GetComponent<数据显示>().更新数据();
-        return num;
+
+        if (ValueHolder.SkillAction.ContainsKey(card_data.uid)){
+
+            BaseSkill skill = ValueHolder.SkillAction[card_data.uid];
+
+            if (skill.血量增加时触发 == 1)
+            {
+                运行血量增加时触发技能阶段(skill);
+            }
+        }
+
     }
 
+    public static int 扣血(GameObject card,int num,int need_send=1)
+    {
+        卡牌数据 card_data = card.GetComponent<数据显示>().卡牌数据;
+        card_data.nowHp -= num;
+        if (need_send == 1)
+        {
+            Send扣血(card_data.uid, num);
+        }
+        if (card_data.nowHp <= 0)
+        {
+            卡牌摧毁(card);
+            Send卡牌摧毁(card_data.uid);
+            return 1;
+        }
+
+        card.GetComponent<数据显示>().更新数据();
+
+        if (ValueHolder.SkillAction.ContainsKey(card_data.uid))
+        {
+
+            BaseSkill skill = ValueHolder.SkillAction[card_data.uid];
+
+            if (skill.血量降低时触发 == 1)
+            {
+                运行血量降低时触发技能阶段(skill);
+            }
+        }
+        return 0;
+    }
+
+    public static void 血量上限改变(GameObject card, int num,int need_send = 1)
+    {
+        card.GetComponent<数据显示>().卡牌数据.maxHp += num;
+
+        if (need_send == 1)
+        {
+            Send血量上限改变(card.GetComponent<数据显示>().卡牌数据.uid, num);
+        }
+        if (card.GetComponent<数据显示>().卡牌数据.nowHp > card.GetComponent<数据显示>().卡牌数据.maxHp)
+        {
+            card.GetComponent<数据显示>().卡牌数据.nowHp = card.GetComponent<数据显示>().卡牌数据.maxHp;
+        }
+        if (card.GetComponent<数据显示>().卡牌数据.nowHp <= 0)
+        {
+            卡牌摧毁(card);
+            Send卡牌摧毁(card.GetComponent<数据显示>().卡牌数据.uid);
+            return;
+        }
+
+
+        card.GetComponent<数据显示>().更新数据();
+    }
+
+    public static void 攻击力改变(GameObject card, int num, int need_send = 1)
+    {
+        card.GetComponent<数据显示>().卡牌数据.nowAttack += num;
+        card.GetComponent<数据显示>().卡牌数据.maxAttack += num;
+        card.GetComponent<数据显示>().更新数据();
+
+        if (need_send == 1)
+        {
+            Send攻击力改变(card.GetComponent<数据显示>().卡牌数据.uid, num);
+        }
+    }
     public static void 占卜(string uid, int 占卜数量,int 占卜后立即触发技能)
     {
         mainfunction.技能释放未结束(uid);
@@ -1675,4 +1853,6 @@ public class mainfunction : MonoBehaviour
         }
 
     }
+
+
 }
