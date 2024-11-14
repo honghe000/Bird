@@ -1795,7 +1795,7 @@ public class mainfunction : MonoBehaviour
     }
     public static void 占卜(string uid, int 占卜数量,int 占卜后立即触发技能)
     {
-        mainfunction.技能释放未结束(uid);
+        技能释放未结束(uid);
         ValueHolder.幕布.SetActive(true);
         ValueHolder.占卜区.SetActive(true);
         ValueHolder.占卜确认按钮.SetActive(true);

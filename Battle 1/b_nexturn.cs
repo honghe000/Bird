@@ -34,7 +34,7 @@ public class b_nexturn : MonoBehaviour
     }
     private IEnumerator NextTurn_Second_Coroutine()
     {
-        while (SkillExecutor.skillQueue.Count > 0 && SkillExecutor.currentRunningSkillUid == null)
+        while (SkillExecutor.skillQueue.Count > 0 || SkillExecutor.currentRunningSkillUid != null)
         {
             yield return new WaitForSeconds(0.2f);
         }
