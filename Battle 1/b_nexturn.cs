@@ -46,6 +46,7 @@ public class b_nexturn : MonoBehaviour
     {
         下个回合.interactable = false;
         下个回合.image.color = Color.gray;
+        ValueHolder.is_myturn = 0;
         skillturn();
     }
 
@@ -53,7 +54,6 @@ public class b_nexturn : MonoBehaviour
     {
         ValueHolder.point = 0;
         体力.text = ValueHolder.point.ToString();
-        ValueHolder.is_myturn = 0;
         del_action();
 
 
