@@ -262,6 +262,15 @@ public class mainfunction : MonoBehaviour
 
         ValueHolder.摸牌堆数量.text = ValueHolder.random_card.Count.ToString();
 
+        if (ValueHolder.牌堆底已知.Count > num)
+        {
+            ValueHolder.牌堆底已知.RemoveRange(0, num);
+        }
+        else
+        {
+            ValueHolder.牌堆底已知.Clear();
+        }
+
         return result;
     }
 
