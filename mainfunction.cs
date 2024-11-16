@@ -717,7 +717,6 @@ public class mainfunction : MonoBehaviour
         if (主动攻击.GetComponent<MoveController>().无双 == 0)
         {
             扣血(主动攻击, card_data2.nowAttack, 0);
-            card_data1.nowHp = card_data1.nowHp - card_data2.nowAttack;
         }
 
         扣血(承受攻击, card_data1.nowAttack, 0);
