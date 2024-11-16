@@ -39,16 +39,7 @@ public class b_占卜确认 : MonoBehaviour
             ValueHolder.牌堆顶已知.InsertRange(0,StartID);
         }
 
-        if (ValueHolder.牌堆底已知.Count <= EndID.Count)
-        {
-            ValueHolder.牌堆底已知.Clear();
-            ValueHolder.牌堆底已知.AddRange(EndID);
-        }
-        else
-        {
-            ValueHolder.牌堆底已知.RemoveRange(ValueHolder.牌堆底已知.Count - EndID.Count, EndID.Count);
-            ValueHolder.牌堆底已知.AddRange(EndID);
-        }
+        ValueHolder.牌堆底已知.AddRange(EndID);
 
         ValueHolder.random_card.RemoveRange(0, StartID.Count + EndID.Count);
         ValueHolder.random_card.InsertRange(0, StartID);
