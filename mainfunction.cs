@@ -691,11 +691,19 @@ public class mainfunction : MonoBehaviour
                 BaseSkill skill = 卡找技能(承受攻击);
                 try
                 {
-
                     if (skill.血恨 == 1)
                     {
-                        运行血恨技能阶段(skill);
+                        if (ValueHolder.is_myturn == 0)
+                        {
+                            Send技能释放申请(skill.uid, 8);
+                        }
+                        else
+                        {
+                            运行血恨技能阶段(skill);
+                        }
                     }
+
+
 
                 }
                 catch
@@ -741,7 +749,14 @@ public class mainfunction : MonoBehaviour
 
                     if (skill.杀人后触发 == 1)
                     {
-                        运行杀人后触发技能阶段(skill);
+                        if (ValueHolder.is_myturn == 0)
+                        {
+                            Send技能释放申请(skill.uid, 7);
+                        }
+                        else
+                        {
+                            运行杀人后触发技能阶段(skill);
+                        }
                     }
 
                 }
@@ -1082,6 +1097,10 @@ public class mainfunction : MonoBehaviour
     //4 : 场上敌方角色死亡触发
     //5 : 己方回合开始时触发
     //6 : 己方回合结束时触发
+    //7 : 杀人后触发
+    // 8 : 血恨
+    // 9 : 血量增加时触发
+    // 10 : 血量降低时触发
     public static void 运行亡语技能阶段(BaseSkill skill)
     {
         SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_亡语);
@@ -1803,11 +1822,21 @@ public class mainfunction : MonoBehaviour
 
         if (ValueHolder.SkillAction.ContainsKey(card_data.uid)){
 
-            BaseSkill skill = ValueHolder.SkillAction[card_data.uid];
-
-            if (skill.血量增加时触发 == 1)
+            if (card.GetComponent<MoveController>().cardType == 0)
             {
-                运行血量增加时触发技能阶段(skill);
+                BaseSkill skill = ValueHolder.SkillAction[card_data.uid];
+
+                if (skill.血量增加时触发 == 1)
+                {
+                    if (ValueHolder.is_myturn == 0)
+                    {
+                        Send技能释放申请(skill.uid, 9);
+                    }
+                    else
+                    {
+                        运行血量增加时触发技能阶段(skill);
+                    }
+                }
             }
         }
 
@@ -1832,13 +1861,23 @@ public class mainfunction : MonoBehaviour
 
         if (ValueHolder.SkillAction.ContainsKey(card_data.uid))
         {
-
-            BaseSkill skill = ValueHolder.SkillAction[card_data.uid];
-
-            if (skill.血量降低时触发 == 1)
+            if (card.GetComponent<MoveController>().cardType == 0)
             {
-                运行血量降低时触发技能阶段(skill);
+                BaseSkill skill = ValueHolder.SkillAction[card_data.uid];
+
+                if (skill.血量降低时触发 == 1)
+                {
+                    if (ValueHolder.is_myturn == 0)
+                    {
+                        Send技能释放申请(skill.uid, 10);
+                    }
+                    else
+                    {
+                        运行血量降低时触发技能阶段(skill);
+                    }
+                }
             }
+
         }
         return 0;
     }

@@ -734,6 +734,7 @@ public class b_listen : MonoBehaviour
         //5 : 己方回合开始时触发
         //6 : 己方回合结束时触发
         //7 : 杀人后触发
+        //8 : 血恨
 
         if (skill_type == 0)
         {
@@ -759,6 +760,9 @@ public class b_listen : MonoBehaviour
         }else if (skill_type == 7)
         {
             mainfunction.运行杀人后触发技能阶段(skill);
+        }else if (skill_type == 8)
+        {
+            mainfunction.运行血恨技能阶段(skill);
         }
 
     }

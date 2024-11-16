@@ -6,7 +6,7 @@ public class MoveController : MonoBehaviour
 {
     private int[,] board = new int[5, 5];
     public List<int> obstacles = new List<int> { 12, 14 }; // 障碍物格子编号
-    public int cardType = 1; // 0表示我方卡牌，1表示敌方卡牌
+    public int cardType = 0; // 0表示我方卡牌，1表示敌方卡牌
     public int is_myturn = 1; // 0表示敌方回合，1表示我方回合
     public int point = 1; // 0表示没有体力，1表示有体力
 

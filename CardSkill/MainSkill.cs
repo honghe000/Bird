@@ -8504,7 +8504,10 @@ public class 恐龙王 : BaseSkill
 
     public override void Action_2()
     {
-
+        if (mainfunction.敌方人物数量() == 0)
+        {
+            return;
+        }
         mainfunction.选择敌方卡牌施放(card_data);
         activateTurn_2_finish = 1;
     }
