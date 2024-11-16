@@ -150,6 +150,11 @@ public class 张三封大师 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -297,6 +302,11 @@ public class 相安无事: BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -414,6 +424,11 @@ public class 鬼屋 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -520,6 +535,11 @@ public class 鬼将 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -669,6 +689,11 @@ public class 龙首之玉 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -838,6 +863,11 @@ public class 佛光 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -960,6 +990,11 @@ public class 判官笔 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -1074,6 +1109,11 @@ public class 巨灵神 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -1195,6 +1235,11 @@ public class 雅典娜 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -1357,6 +1402,11 @@ public class 蝎尾毒 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -1515,6 +1565,11 @@ public class 河神之怒 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -1633,6 +1688,11 @@ public class 舍生 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -1774,6 +1834,11 @@ public class 神谕者 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -1886,6 +1951,11 @@ public class 外交官 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -1919,7 +1989,7 @@ public class 肥嘟嘟左卫门 : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().杀人后触发 = 1;
+        杀人后触发 = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "肥嘟嘟左卫门");
@@ -1991,6 +2061,11 @@ public class 肥嘟嘟左卫门 : BaseSkill
 
     public override void Action_杀人后触发(){
         Action_1();
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -2147,6 +2222,11 @@ public class 雷电 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -2270,6 +2350,11 @@ public class 阿尔卡祭坛 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -2305,7 +2390,7 @@ public class 太乙真人 : BaseSkill
     private void initialization()
     {
         亡语 = 1;
-        用户操作型技能 = 1;
+
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -2394,6 +2479,11 @@ public class 太乙真人 : BaseSkill
         Action_1();
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -2427,7 +2517,7 @@ public class 关羽 : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().杀人后触发 = 1;
+        杀人后触发 = 1;
         效果 = "消灭";
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -2510,6 +2600,11 @@ public class 关羽 : BaseSkill
 
     public override void Action_杀人后触发(){
         Action_1();
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -2668,6 +2763,11 @@ public class 困兽之斗 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -2785,6 +2885,11 @@ public class 牛头马面 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -2943,6 +3048,11 @@ public class 迅雷的崩玉 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -3060,6 +3170,11 @@ public class 鬼琵琶 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -3192,6 +3307,11 @@ public class 毒雾 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -3327,6 +3447,11 @@ public class 战国犀牛 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -3454,6 +3579,11 @@ public class 牛魔 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -3587,6 +3717,11 @@ public class 贩卖鸦片 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -3692,6 +3827,11 @@ public class 漫步者 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -3822,6 +3962,11 @@ public class 杨枝甘露 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -3927,6 +4072,11 @@ public class 远古石像鬼 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -4042,6 +4192,11 @@ public class 丁达尔效应 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -4170,6 +4325,11 @@ public class 钟馗 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -4276,6 +4436,11 @@ public class 武僧 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -4390,6 +4555,11 @@ public class 虾兵蟹将 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -4502,6 +4672,11 @@ public class 猩猩守卫 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -4634,6 +4809,11 @@ public class 火焰小鬼 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -4744,6 +4924,11 @@ public class 火灵法师 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -4857,6 +5042,11 @@ public class 尼斯湖水怪 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -4965,6 +5155,11 @@ public class 充能 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -4999,7 +5194,7 @@ public class 荒骷髅 : BaseSkill
     private void initialization()
     {
         亡语 = 1;
-        用户操作型技能 = 1;
+
         召唤物id = 397;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -5077,6 +5272,11 @@ public class 荒骷髅 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -5111,7 +5311,6 @@ public class 枉死城 : BaseSkill
     private void initialization()
     {
         场上我方角色死亡触发= 1;
-        用户操作型技能 = 1;
         召唤物id = 397;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -5190,6 +5389,11 @@ public class 枉死城 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -5224,7 +5428,7 @@ public class 青坊主 : BaseSkill
     private void initialization()
     {
         亡语 = 1;
-        用户操作型技能 = 1;
+
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -5310,6 +5514,11 @@ public class 青坊主 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -5450,6 +5659,11 @@ public class 神之审判 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -5486,7 +5700,7 @@ public class 猎人 : BaseSkill
         card.GetComponent<MoveController>().场上敌方人数要求 = 1;
         效果 = "消灭";
         亡语 = 1;
-        用户操作型技能 = 1;
+
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "猎人");
@@ -5564,6 +5778,11 @@ public class 猎人 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -5597,7 +5816,7 @@ public class 拳师 : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().杀人后触发 = 1;
+        杀人后触发 = 1;
         
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -5672,6 +5891,11 @@ public class 拳师 : BaseSkill
 
     public override void Action_杀人后触发(){
         Action_1();
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -5781,6 +6005,11 @@ public class 吕布 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -5921,6 +6150,11 @@ public class 两面佛 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -6041,6 +6275,11 @@ public class 大红莲 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -6164,6 +6403,11 @@ public class 腥红之月 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -6292,6 +6536,11 @@ public class 摆渡人 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -6412,6 +6661,11 @@ public class 祈晴 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -6445,7 +6699,7 @@ public class 山贼 : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().杀人后触发 = 1;
+        杀人后触发 = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "山贼");
@@ -6524,6 +6778,11 @@ public class 山贼 : BaseSkill
 
     public override void Action_杀人后触发(){
         Action_1();
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -6648,6 +6907,11 @@ public class 小雷音寺 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -6758,6 +7022,11 @@ public class 耶稣圣灵 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -6871,6 +7140,11 @@ public class 稻草人 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -6979,6 +7253,11 @@ public class 小卒 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -7091,6 +7370,11 @@ public class 熊猫人 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -7198,6 +7482,11 @@ public class 獬豸 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -7311,6 +7600,11 @@ public class 逆天改命 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -7418,6 +7712,11 @@ public class 罗生门 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -7531,6 +7830,11 @@ public class 机器人 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -7563,7 +7867,7 @@ public class 判官 : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().杀人后触发 = 1;
+        杀人后触发 = 1;
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
             ValueHolder.uid_to_name.Add(uid, "判官");
@@ -7637,6 +7941,11 @@ public class 判官 : BaseSkill
         Action_1();
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -7670,7 +7979,7 @@ public class 半兽人 : BaseSkill
 
     private void initialization()
     {
-        card.GetComponent<MoveController>().杀人后触发 = 1;
+        杀人后触发 = 1;
 
         if (!ValueHolder.uid_to_name.ContainsKey(uid))
         {
@@ -7691,7 +8000,7 @@ public class 半兽人 : BaseSkill
         mainfunction.血量上限改变(card, 4);
         mainfunction.治疗(card,4);
 
-        card.GetComponent<MoveController>().杀人后触发 = 0;
+        杀人后触发 = 0;
         activateTurn_1_finish = 1;
         skill_end = 1;
 
@@ -7756,6 +8065,11 @@ public class 半兽人 : BaseSkill
 
     public override void Action_杀人后触发(){
         Action_1();
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -7882,6 +8196,11 @@ public class 艾孜诺克大坟墓 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -7993,6 +8312,11 @@ public class 诸葛亮 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
     }
 
     public override void Action_pass()
@@ -8117,6 +8441,11 @@ public class 冰车 : BaseSkill
         
     }
 
+    public override void Action_血恨()
+    {
+
+    }
+
     public override void Action_pass()
     {
 
@@ -8236,6 +8565,149 @@ public class 恐龙王 : BaseSkill
 
     public override void Action_杀人后触发(){
         
+    }
+
+    public override void Action_血恨()
+    {
+
+    }
+
+    public override void Action_pass()
+    {
+
+    }
+
+}
+
+
+public class 炸弹人 : BaseSkill
+{
+    private MonoBehaviour monoBehaviour;
+    public 炸弹人(GameObject Card, MonoBehaviour monoBehaviour)
+    {
+        card = Card;
+        skill_end = 0;
+        activateTurn_1 = -1;
+        activateTurn_2 = -1;
+        activateTurn_3 = -1;
+        activateTurn_4 = -1;
+        this.monoBehaviour = monoBehaviour;
+
+        activateTurn_1_finish = 0;
+        activateTurn_2_finish = 0;
+        activateTurn_3_finish = 0;
+        activateTurn_4_finish = 0;
+
+        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+        card_data = card.GetComponent<数据显示>().卡牌数据;
+        initialization();
+
+
+
+    }
+
+    private void initialization()
+    {
+        血恨 = 1;
+        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+        {
+            ValueHolder.uid_to_name.Add(uid, "炸弹人");
+        }
+    }
+
+    public override void Action_1()
+    {
+
+
+        activateTurn_1_finish = 1;
+
+    }
+
+    public override void Action_2()
+    {
+
+        activateTurn_2_finish = 1;
+    }
+
+    public override void Action_3()
+    {
+        activateTurn_3_finish = 1;
+    }
+
+    public override void Action_4()
+    {
+        activateTurn_4_finish = 1;
+    }
+
+    public override void Action_己方回合结束时触发()
+    {
+
+    }
+
+    public override void Action_己方回合开始时触发()
+    {
+
+    }
+
+    public override void Action_场上角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上敌方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_场上我方角色死亡触发()
+    {
+
+    }
+
+    public override void Action_亡语()
+    {
+
+    }
+
+    public override void Action_血量增加时触发()
+    {
+
+    }
+
+    public override void Action_血量降低时触发()
+    {
+
+    }
+
+    public override void Action_杀人后触发()
+    {
+
+    }
+
+    public override void Action_血恨()
+    {
+        if (card == null)
+        {
+            skill_end = 1;
+            return;
+        }
+        int card_id = int.Parse(card.transform.parent.name);
+        List<int> killGrid = Grids.GetNeighbors_九(card_id);
+        Dictionary<int, GameObject> killCards = mainfunction.消灭_destroy(killGrid);
+
+        string uid_temp = "";
+
+        foreach (KeyValuePair<int, GameObject> kvp in killCards)
+        {
+            uid_temp = kvp.Value.GetComponent<数据显示>().卡牌数据.uid;
+            mainfunction.卡牌摧毁(kvp.Value);
+            mainfunction.Send卡牌摧毁(uid_temp);
+        }
+
+        uid_temp = card.GetComponent<数据显示>().卡牌数据.uid;
+        mainfunction.卡牌摧毁(card);
+        mainfunction.Send卡牌摧毁(uid_temp);
+        skill_end = 1;
     }
 
     public override void Action_pass()

@@ -612,7 +612,7 @@ public class mainfunction : MonoBehaviour
             if (skill.场上角色死亡触发 == 1)
             {
 
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid,2);
                 }
@@ -624,7 +624,7 @@ public class mainfunction : MonoBehaviour
 
             if (skill.场上我方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 0)
             {
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid, 3);
                 }
@@ -637,7 +637,7 @@ public class mainfunction : MonoBehaviour
 
             if (skill.场上敌方角色死亡触发 == 1 && card.GetComponent<MoveController>().cardType == 1)
             {
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid, 4);
                 }
@@ -656,7 +656,7 @@ public class mainfunction : MonoBehaviour
             BaseSkill skill = ValueHolder.SkillAction[card.GetComponent<数据显示>().卡牌数据.uid];
             if (skill.亡语 == 1)
             {
-                if (ValueHolder.is_myturn == 0 && skill.用户操作型技能 == 1)
+                if (ValueHolder.is_myturn == 0)
                 {
                     Send技能释放申请(skill.uid,1);
                 }
@@ -678,12 +678,35 @@ public class mainfunction : MonoBehaviour
         SkillExecutor.currentRunningSkillUid = uid;
     }
 
-    public static void cardAttack(GameObject mycard,GameObject hecard,int is_send)
+    public static void cardAttack(GameObject 主动攻击,GameObject 承受攻击,int is_send)
     {
-        卡牌数据 card_data1 = mycard.GetComponent<数据显示>().卡牌数据;
-        卡牌数据 card_data2 = hecard.GetComponent<数据显示>().卡牌数据;
+        卡牌数据 card_data1 = 主动攻击.GetComponent<数据显示>().卡牌数据;
+        卡牌数据 card_data2 = 承受攻击.GetComponent<数据显示>().卡牌数据;
 
-        if (mycard.GetComponent<MoveController>().无双 == 0)
+        if(card_data2.nowHp - card_data1.nowAttack > 0 && card_data1.nowAttack > 0)
+        {
+            if (承受攻击.GetComponent<MoveController>().cardType == 0)
+            {
+
+                BaseSkill skill = 卡找技能(承受攻击);
+                try
+                {
+
+                    if (skill.血恨 == 1)
+                    {
+                        运行血恨技能阶段(skill);
+                    }
+
+                }
+                catch
+                {
+
+                }
+
+            }
+        }
+
+        if (主动攻击.GetComponent<MoveController>().无双 == 0)
         {
             card_data1.nowHp = card_data1.nowHp - card_data2.nowAttack;
         }
@@ -691,8 +714,8 @@ public class mainfunction : MonoBehaviour
         card_data2.nowHp = card_data2.nowHp - card_data1.nowAttack;
 
 
-        mycard.GetComponent<数据显示>().更新数据();
-        hecard.GetComponent<数据显示>().更新数据();
+        主动攻击.GetComponent<数据显示>().更新数据();
+        承受攻击.GetComponent<数据显示>().更新数据();
 
         if (is_send == 0)
         {
@@ -702,32 +725,49 @@ public class mainfunction : MonoBehaviour
 
 
         ValueHolder.is_choose = 0;
-        mycard.GetComponent<CanvasGroup>().alpha = 1.0f;
-        mycard.GetComponent<CanvasGroup>().blocksRaycasts = true;
+        主动攻击.GetComponent<CanvasGroup>().alpha = 1.0f;
+        承受攻击.GetComponent<CanvasGroup>().blocksRaycasts = true;
 
 
 
 
         if (card_data1.nowHp > 0 && card_data2.nowHp <= 0)
         {
-
-            if (mycard.GetComponent<MoveController>().杀人后触发 == 1)
+            if (主动攻击.GetComponent<MoveController>().cardType == 0)
             {
-                BaseSkill skill = ValueHolder.SkillAction[mycard.GetComponent<数据显示>().卡牌数据.uid];
-                运行杀人后触发技能阶段(skill);
+                BaseSkill skill = 卡找技能(主动攻击);
+                try
+                {
+
+                    if (skill.杀人后触发 == 1)
+                    {
+                        运行杀人后触发技能阶段(skill);
+                    }
+
+                }
+                catch
+                {
+                
+                }
             }
 
-            卡牌摧毁(hecard,mycard);
+
+            卡牌摧毁(承受攻击, 主动攻击);
 
         }else if (card_data1.nowHp <= 0 && card_data2.nowHp > 0)
         {
-            卡牌摧毁(mycard);
+            
+            卡牌摧毁(主动攻击);
 
         }else if (card_data1.nowHp <= 0 && card_data2.nowHp <= 0)
         {
 
-            卡牌摧毁(mycard);
-            卡牌摧毁(hecard);
+            卡牌摧毁(主动攻击);
+            卡牌摧毁(承受攻击);
+        }
+        else
+        {
+
         }
 
 
@@ -1048,6 +1088,11 @@ public class mainfunction : MonoBehaviour
         Debug.Log(skill.card_data.名字 + "运行亡语技能");
     }
 
+    public static void 运行血恨技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_血恨);
+        Debug.Log(skill.card_data.名字 + "运行血恨技能");
+    }
     public static void 运行场上角色死亡触发技能阶段(BaseSkill skill)
     {
         SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_场上角色死亡触发);
@@ -1095,6 +1140,7 @@ public class mainfunction : MonoBehaviour
         SkillExecutor.EnqueueSkillAtFront(skill, skill.Action_血量降低时触发);
         Debug.Log(skill.card_data.名字 + "运行血量减少时触发技能");
     }
+
 
 
     public static void 禁用棋盘物件代码(string scriptName,int cardtype)
@@ -1556,6 +1602,31 @@ public class mainfunction : MonoBehaviour
 
     public static void 点选格子(string 召唤物名字, string uid ,List<int> ClickList)
     {
+        int counts = 0;
+
+        for (int i = 0; i < ClickList.Count; i++)
+        {
+            if (ValueHolder.棋盘[ClickList[i].ToString()].transform.childCount > 0)
+            {
+                counts++;
+            }
+        }
+        if (counts == ClickList.Count)
+        {
+            if (ValueHolder.is_myturn == 0)
+            {
+                if (SkillExecutor.skillQueue.Count > 0 || SkillExecutor.currentRunningSkillUid != null)
+                {
+                    return;
+                }
+                else
+                {
+                    Send对方继续();
+                    return;
+                }
+            }
+            return;
+        }
         禁用棋盘物件代码("b_moveca", 0);
         禁用手牌物件代码("b_cardaction");
         ValueHolder.下个回合.interactable = false;
@@ -1574,6 +1645,10 @@ public class mainfunction : MonoBehaviour
     {
         foreach (int i in availableMoves)
         {
+            if (ValueHolder.棋盘[i.ToString()].transform.childCount > 0)
+            {
+                continue;
+            }
             Color green = new Color(0.4f, 0.9f, 0.5f, 0.3f);
             ValueHolder.棋盘[i.ToString()].GetComponent<UnityEngine.UI.Image>().color = green;
         }
@@ -1863,5 +1938,17 @@ public class mainfunction : MonoBehaviour
 
     }
 
+    public static BaseSkill 卡找技能(GameObject card)
+    {
+        string uid = card.GetComponent<数据显示>().卡牌数据.uid;
 
+        if (ValueHolder.SkillAction.ContainsKey(uid))
+        {
+            return ValueHolder.SkillAction[uid];
+        }
+        else
+        {
+            return null;
+        }
+    }
 }

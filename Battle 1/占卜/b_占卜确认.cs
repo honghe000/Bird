@@ -26,6 +26,8 @@ public class b_占卜确认 : MonoBehaviour
             EndID.Add(ValueHolder.占卜牌堆底.transform.GetChild(i).GetComponent<数据显示>().卡牌数据.id);
         }
 
+
+        //牌堆顶
         if (ValueHolder.牌堆顶已知.Count <= StartID.Count)
         {
             ValueHolder.牌堆顶已知.Clear();

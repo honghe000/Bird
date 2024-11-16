@@ -27,6 +27,18 @@ public class b_cancel_fa : MonoBehaviour
 
         if (mainfunction.uid找卡(ValueHolder.释放法术uid) != null)
         {
+            if(ValueHolder.is_myturn == 0)
+            {
+                if (SkillExecutor.skillQueue.Count > 0 || SkillExecutor.currentRunningSkillUid != null)
+                {
+                    return;
+                }
+                else
+                {
+                    mainfunction.Send对方继续();
+                    return;
+                }
+            }
             return;
         }
 

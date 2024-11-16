@@ -127,7 +127,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (ValueHolder.启用点选格子 == 1 )
+        if (ValueHolder.启用点选格子 == 1 && eventData.pointerClick.transform.childCount == 0)
         {
             if (ValueHolder.is_myturn == 1)
             {

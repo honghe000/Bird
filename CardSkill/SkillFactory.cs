@@ -141,6 +141,8 @@ public static class SkillFactory
                 return new 冰车(card, monoBehaviour);
             case "恐龙王":
                 return new 恐龙王(card, monoBehaviour);
+            case "炸弹人":
+                return new 炸弹人(card, monoBehaviour);
 
             default:
                 return null;

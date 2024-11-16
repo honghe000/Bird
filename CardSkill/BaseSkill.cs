@@ -18,16 +18,25 @@ public abstract class BaseSkill : MonoBehaviour
 
     public string uid { get; protected set; }
 
-    public int 己方回合开始时触发 = 0;
-    public int 己方回合结束时触发 = 0;
-
-
     public 卡牌数据 card_data { get; protected set; } // 技能对应的卡牌数据
     public GameObject 作用目标卡牌 { get; set; } // 技能作用的目标卡牌
 
     public string 效果 = ""; // 技能效果
 
+    public int 召唤物id = 0;
+
+
+
+
+
+    public int 杀人后触发 = 0; // 杀人后触发
     public int 亡语 = 0; // 亡语触发最后一个技能阶段
+    public int 血恨 = 0; // 血恨触发最后一个技能阶段
+
+
+    public int 己方回合开始时触发 = 0;
+    public int 己方回合结束时触发 = 0;
+
 
     public int 场上角色死亡触发 = 0; // 场上角色死亡触发
     public int 场上敌方角色死亡触发 = 0;
@@ -36,9 +45,7 @@ public abstract class BaseSkill : MonoBehaviour
     public int 血量降低时触发 = 0;
     public int 血量增加时触发 = 0;
 
-    public int 用户操作型技能 = 0; // 技能先后级相关
 
-    public int 召唤物id = 0;
 
     public abstract void Action_1();
     public abstract void Action_2();
@@ -63,6 +70,8 @@ public abstract class BaseSkill : MonoBehaviour
 
 
     public abstract void Action_杀人后触发();
+
+    public abstract void Action_血恨();
 
     public abstract void Action_pass();
 

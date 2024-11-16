@@ -63,48 +63,48 @@ public class b_al_ac : MonoBehaviour,IPointerExitHandler,IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-            倒计时显示(transform.gameObject);
+        倒计时显示(transform.gameObject);
 
-            // 生成卡牌复制品
-            copycard = Instantiate(commoncard);
+        // 生成卡牌复制品
+        copycard = Instantiate(commoncard);
 
-            // 复制卡牌数据
-            copycard.GetComponent<数据显示>().卡牌数据 = transform.gameObject.GetComponent<数据显示>().卡牌数据;
-            copycard.GetComponent<数据显示>().enabled = true;
+        // 复制卡牌数据
+        copycard.GetComponent<数据显示>().卡牌数据 = transform.gameObject.GetComponent<数据显示>().卡牌数据;
+        copycard.GetComponent<数据显示>().enabled = true;
 
-        //Debug.Log(transform.gameObject.GetComponent<数据显示>().卡牌数据.uid);
-            Load_img(copycard, transform.gameObject.GetComponent<数据显示>().卡牌数据.id);
+    //Debug.Log(transform.gameObject.GetComponent<数据显示>().卡牌数据.uid);
+        Load_img(copycard, transform.gameObject.GetComponent<数据显示>().卡牌数据.id);
 
 
-            if(卡牌放大展示.transform.childCount > 0)
+        if(卡牌放大展示.transform.childCount > 0)
+        {
+            Destroy(卡牌放大展示.transform.GetChild(0).gameObject);
+        }
+        // 设置复制品的父物体
+        copycard.transform.SetParent(卡牌放大展示.transform, false);
+
+        foreach (Transform child in transform)
+        {
+            TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+
+            if (text != null)
             {
-                Destroy(卡牌放大展示.transform.GetChild(0).gameObject);
+                color1 = text.color;
+                break;
             }
-            // 设置复制品的父物体
-            copycard.transform.SetParent(卡牌放大展示.transform, false);
+        }
 
-            foreach (Transform child in transform)
+        foreach (Transform child in copycard.transform)
+        {
+            TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
+            if (text != null){
+            if (text.transform.name == "灵力消耗")
             {
-                TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-
-                if (text != null)
-                {
-                    color1 = text.color;
-                    break;
-                }
+                continue;
             }
-
-            foreach (Transform child in copycard.transform)
-            {
-                TextMeshProUGUI text = child.GetComponent<TextMeshProUGUI>();
-                if (text != null){
-                if (text.transform.name == "灵力消耗")
-                {
-                    continue;
-                }
-                text.color = color1;
-                }
+            text.color = color1;
             }
+        }
 
 
         ValueHolder.copyed_object = copycard;
