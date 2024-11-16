@@ -735,6 +735,8 @@ public class b_listen : MonoBehaviour
         //6 : 己方回合结束时触发
         //7 : 杀人后触发
         //8 : 血恨
+        //9 : 血量增加时触发
+        //10 : 血量降低时触发
 
         if (skill_type == 0)
         {
@@ -763,6 +765,12 @@ public class b_listen : MonoBehaviour
         }else if (skill_type == 8)
         {
             mainfunction.运行血恨技能阶段(skill);
+        }else if (skill_type == 9)
+        {
+            mainfunction.运行血量增加时触发技能阶段(skill);
+        }else if (skill_type == 10)
+        {
+            mainfunction.运行血量降低时触发技能阶段(skill);
         }
 
     }

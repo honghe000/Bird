@@ -1090,6 +1090,7 @@ public class mainfunction : MonoBehaviour
         Debug.Log("技能阶段运行完毕");
     }
 
+    //需修改b_listen
     //0 : 普通运行下个技能阶段
     //1 : 亡语
     //2 : 场上角色死亡触发
