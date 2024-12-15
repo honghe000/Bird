@@ -25,11 +25,11 @@ public class ValueHolder : MonoBehaviour
     //public static string socket_ip = "127.0.0.1";
     //public static int socket_port = 12345;
 
-    // public static string socket_ip = "cn-hb-sy-2.starryfrp.com";
-    // public static int socket_port = 55655;
+    public static string socket_ip = "kic067r4y.shenzhuo.vip";
+    public static int socket_port = 44114;
 
-    public static string socket_ip = "222.211.75.240";
-    public static int socket_port = 43185;
+    //public static string socket_ip = "222.211.75.240";
+    //public static int socket_port = 43185;
 
     public static TcpClient client = null;
     public static readonly object sendLock = new object();
