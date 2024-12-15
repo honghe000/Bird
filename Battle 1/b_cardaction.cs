@@ -128,24 +128,39 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
                 return;
             }
 
-            if (skill.activateTurn_1 == ValueHolder.turn)
-            {
-                skill.Action_1();
-            }
             ValueHolder.释放法术uid = eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid;
-            if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid == "0")
-            {
-                Debug.Log(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.名字);
-            }
 
-            if (ValueHolder.SkillAction.ContainsKey(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid))
+            if (skill.扣发 == 1)
             {
-                ValueHolder.SkillAction[eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid] = skill;
+                if (ValueHolder.扣发技能.ContainsKey(skill.uid))
+                {
+                    ValueHolder.扣发技能[skill.uid] = skill;
+                }
+                else
+                {
+                    ValueHolder.扣发技能.Add(skill.uid, skill);
+                }
+
             }
             else
             {
-                ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+                if (skill.activateTurn_1 == ValueHolder.turn)
+                {
+                    skill.Action_1();
+                }
+
+
+                if (ValueHolder.SkillAction.ContainsKey(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid))
+                {
+                    ValueHolder.SkillAction[eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid] = skill;
+                }
+                else
+                {
+                    ValueHolder.SkillAction.Add(eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.uid, skill);
+                }
             }
+
+
             mainfunction.弃牌堆更新(eventData.pointerDrag.gameObject.GetComponent<数据显示>().卡牌数据.id,1);
             Destroy(eventData.pointerDrag.gameObject);
         }

@@ -237,6 +237,18 @@ public class b_listen : MonoBehaviour
         }else if (mes.Action == 44)
         {
             扣血(mes);
+        }else if (mes.Action == 45)
+        {
+            攻击申请(mes);
+        }else if (mes.Action == 46)
+        {
+            攻击申请同意(mes);
+        }else if (mes.Action == 47)
+        {
+            扣发思考中(mes);
+        }else if (mes.Action == 48)
+        {
+            扣发思考结束(mes);
         }
     }
 
@@ -257,7 +269,7 @@ public class b_listen : MonoBehaviour
         GameObject mycard = mainfunction.uid找卡(mes.uid);
         GameObject hecard = mainfunction.uid找卡(mes.uid1);
 
-        mainfunction.cardAttack(mycard, hecard,1);
+        mainfunction.cardAttack(mes.uid, mes.uid1);
     }
 
     void level_room(Message mes)
@@ -803,6 +815,44 @@ public class b_listen : MonoBehaviour
     }
 
 
+    
+    void 攻击申请(Message mes)
+    {
+        ValueHolder.Listen_主动攻击uid = mes.uid;
+        ValueHolder.Listen_承受攻击uid = mes.uid1;
+
+        foreach (KeyValuePair<string,BaseSkill > kvp in ValueHolder.扣发技能)
+        {
+            BaseSkill skill = kvp.Value;
+
+            if (skill.扣发触发条件 == "敌方攻击")
+            {
+                mainfunction.运行下个技能阶段(skill);
+            }
+
+        }
+
+        mainfunction.cardAttack(mes.uid, mes.uid1);
+        mainfunction.Send攻击同意(mes.uid, mes.uid1);
+
+
+    }
+
+    void 攻击申请同意(Message mes)
+    {
+        mainfunction.cardAttack(mes.uid, mes.uid1);
+    }
+
+    void 扣发思考中(Message mes)
+    {
+        ValueHolder.幕布.SetActive(true);
+        ValueHolder.hintManager.AddHint("敌方扣发思考中。。。");
+    }
+
+    void 扣发思考结束(Message mes)
+    {
+        ValueHolder.幕布.SetActive(false);
+    }
 
 
 

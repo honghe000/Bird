@@ -33,8 +33,8 @@ public class ValueHolder : MonoBehaviour
 
     public static TcpClient client = null;
     public static readonly object sendLock = new object();
-    public static string SendMessages = "{\"SendUser\":\"\",\"ReceiveUser\":\"\",\"chat\":\"\",\"RoomName\":\"\",\"Action\":0,\"is_used\":1,\"cradgroup\":\"\",\"cardID\":1,\"start_index\":1,\"end_index\":1,\"initiative\":1,\"turn\":0.5,\"uid\":\"\",\"effect\":0,\"num\":0}";
-    public static string ResieveMessages = "{\"SendUser\":\"\",\"ReceiveUser\":\"\",\"chat\":\"\",\"RoomName\":\"\",\"Action\":0,\"is_used\":1,\"cradgroup\":\"\",\"cardID\":1,\"start_index\":1,\"end_index\":1,\"initiative\":1,\"turn\":0.5,\"uid\":\"\",\"effect\":0,\"num\":0}";
+    public static string SendMessages = "{\"SendUser\":\"\",\"ReceiveUser\":\"\",\"chat\":\"\",\"RoomName\":\"\",\"Action\":0,\"is_used\":1,\"cradgroup\":\"\",\"cardID\":1,\"start_index\":1,\"end_index\":1,\"initiative\":1,\"turn\":0.5,\"uid\":\"\",\"uid1\":\"\",\"effect\":0,\"num\":0}";
+    public static string ResieveMessages = "{\"SendUser\":\"\",\"ReceiveUser\":\"\",\"chat\":\"\",\"RoomName\":\"\",\"Action\":0,\"is_used\":1,\"cradgroup\":\"\",\"cardID\":1,\"start_index\":1,\"end_index\":1,\"initiative\":1,\"turn\":0.5,\"uid\":\"\",\"uid1\":\"\",\"effect\":0,\"num\":0}";
 
     public static Queue<string> sendQueue = new Queue<string>();
     public static Queue<string> receiveQueue = new Queue<string>();
@@ -215,7 +215,16 @@ public class ValueHolder : MonoBehaviour
     public static GameObject 摸牌堆显示区 = null;
     public static TextMeshProUGUI 摸牌堆数量 = null;
 
+    //扣发
+    public static Dictionary<string, BaseSkill> 扣发技能 = new Dictionary<string, BaseSkill>();
+    public static GameObject 扣发显示 = null;
+    public static GameObject 扣发grid = null;
+    public static GameObject 扣发显示牌 = null;
+    public static Button 扣发触发 = null;
+    public static Button 扣发取消 = null;
 
+    public static string Listen_主动攻击uid = null;
+    public static string Listen_承受攻击uid = null;
 
 
 }

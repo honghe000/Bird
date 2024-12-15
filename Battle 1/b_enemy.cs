@@ -43,7 +43,8 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
                 {
                     return;
                 }
-                mainfunction.cardAttack(ValueHolder.choosed_object,this.gameObject,0);
+                //mainfunction.cardAttack(int.Parse(ValueHolder.choosed_object.transform.parent.name), int.Parse(this.gameObject.transform.parent.name), 0);
+                mainfunction.Send攻击申请(ValueHolder.choosed_object.GetComponent<数据显示>().卡牌数据.uid,this.gameObject.GetComponent<数据显示>().卡牌数据.uid);
 
                 if (行动点 > 0)
                 {

@@ -20,6 +20,8 @@ public class MoveController : MonoBehaviour
     public int 击杀免疫 = 0;
     public int 消灭免疫 = 0;
 
+    public int 攻击免疫次数 = 0;
+
     public int 眩晕免疫 = 0;
     public int 眩晕 = 0;
 

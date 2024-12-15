@@ -115,6 +115,16 @@ public class b_leave : MonoBehaviour
         ValueHolder.牌堆底已知.Clear();
         ValueHolder.摸牌堆数量 = null;
 
+        ValueHolder.扣发技能.Clear();
+        ValueHolder.扣发显示 = null;
+        ValueHolder.扣发grid = null;
+        ValueHolder.扣发显示牌 = null;
+        ValueHolder.扣发触发 =  null;
+        ValueHolder.扣发取消 =  null ;
+
+        ValueHolder.Listen_主动攻击uid = null;
+        ValueHolder.Listen_承受攻击uid = null;
+
         SceneManager.LoadScene("mainpage");
     }
 }

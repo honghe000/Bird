@@ -27,6 +27,13 @@ public abstract class BaseSkill : MonoBehaviour
 
 
 
+    public int 扣发 = 0;
+
+    //可选：敌方攻击
+    public string 扣发触发条件 = "";
+
+    public virtual void 扣发_敌方攻击() { }
+
 
 
     public int 杀人后触发 = 0; // 杀人后触发
@@ -47,33 +54,34 @@ public abstract class BaseSkill : MonoBehaviour
 
 
 
-    public abstract void Action_1();
-    public abstract void Action_2();
-    public abstract void Action_3();
-    public abstract void Action_4();
+    public virtual void Action_1() { }
+    public virtual void Action_2() { }
+    public virtual void Action_3() { }
+    public virtual void Action_4() { }
 
-    public abstract void Action_己方回合结束时触发();
+    public virtual void Action_己方回合结束时触发() { }
 
-    public abstract void Action_己方回合开始时触发();
+    public virtual void Action_己方回合开始时触发() { }
 
-    public abstract void Action_场上角色死亡触发();
+    public virtual void Action_场上角色死亡触发() { }
 
-    public abstract void Action_场上敌方角色死亡触发();
+    public virtual void Action_场上敌方角色死亡触发() { }
 
-    public abstract void Action_场上我方角色死亡触发();
+    public virtual void Action_场上我方角色死亡触发() { }
 
-    public abstract void Action_亡语();
+    public virtual void Action_亡语() { }
 
-    public abstract void Action_血量增加时触发();
+    public virtual void Action_血量增加时触发() { }
 
-    public abstract void Action_血量降低时触发();
+    public virtual void Action_血量降低时触发() { }
 
 
-    public abstract void Action_杀人后触发();
+    public virtual void Action_杀人后触发() { }
 
-    public abstract void Action_血恨();
+    public virtual void Action_血恨() { }
 
-    public abstract void Action_pass();
+    public virtual void Action_pass() { }
+
 
 
 

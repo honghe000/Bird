@@ -55,6 +55,13 @@ public class b_global : MonoBehaviour
     public GameObject 摸牌堆显示区;
     public TextMeshProUGUI 摸牌堆数量;
 
+    //扣发
+    public GameObject 扣发显示;
+    public GameObject 扣发grid;
+    public GameObject 扣发显示牌;
+    public Button 扣发触发;
+    public Button 扣发取消;
+
     private void Start()
     {
         静态设置();
@@ -177,5 +184,12 @@ public class b_global : MonoBehaviour
         ValueHolder.摸牌堆 = 摸牌堆;
         ValueHolder.摸牌堆显示区 = 摸牌堆显示区;
         ValueHolder.摸牌堆数量 = 摸牌堆数量;
+
+
+        ValueHolder.扣发显示 = 扣发显示;
+        ValueHolder.扣发grid = 扣发grid;
+        ValueHolder.扣发显示牌 = 扣发显示牌;
+        ValueHolder.扣发触发 = 扣发触发;
+        ValueHolder.扣发取消 = 扣发取消;
     }
 }

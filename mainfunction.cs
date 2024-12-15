@@ -678,8 +678,18 @@ public class mainfunction : MonoBehaviour
         SkillExecutor.currentRunningSkillUid = uid;
     }
 
-    public static void cardAttack(GameObject 主动攻击,GameObject 承受攻击,int is_send)
+    public static void cardAttack(string 主动攻击_uid,string 承受攻击_uid)
     {
+        GameObject 主动攻击 = uid找卡(主动攻击_uid);
+        GameObject 承受攻击 = uid找卡(承受攻击_uid);
+
+        if (主动攻击 == null || 承受攻击 == null)
+        {
+            Debug.Log("攻击卡牌不存在");
+            return;
+        }
+
+
         卡牌数据 card_data1 = 主动攻击.GetComponent<数据显示>().卡牌数据;
         卡牌数据 card_data2 = 承受攻击.GetComponent<数据显示>().卡牌数据;
 
@@ -702,9 +712,6 @@ public class mainfunction : MonoBehaviour
                             运行血恨技能阶段(skill);
                         }
                     }
-
-
-
                 }
                 catch
                 {
@@ -714,21 +721,32 @@ public class mainfunction : MonoBehaviour
             }
         }
 
-        if (主动攻击.GetComponent<MoveController>().无双 == 0)
+        if (主动攻击.GetComponent<MoveController>().无双 == 0 || 主动攻击.GetComponent<MoveController>().攻击免疫次数 == 0)
         {
             扣血(主动攻击, card_data2.nowAttack, 0);
+        }else if (主动攻击.GetComponent<MoveController>().攻击免疫次数 > 0)
+        {
+            主动攻击.GetComponent<MoveController>().攻击免疫次数 -= 1;
         }
 
-        扣血(承受攻击, card_data1.nowAttack, 0);
+        if (承受攻击.GetComponent<MoveController>().攻击免疫次数 == 0)
+        {
+            扣血(承受攻击, card_data1.nowAttack, 0);
+        }
+        else
+        {
+            承受攻击.GetComponent<MoveController>().攻击免疫次数 -= 1;
+        }
+
 
 
         主动攻击.GetComponent<数据显示>().更新数据();
         承受攻击.GetComponent<数据显示>().更新数据();
 
-        if (is_send == 0)
-        {
-            Send攻击(card_data1.uid, card_data2.uid);
-        }
+        //if (need_send == 1)
+        //{
+        //    Send攻击(card_data1.uid, card_data2.uid);
+        //}
 
 
 
@@ -949,21 +967,7 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
-    public static void Send治疗(string uid,int num)
-    {
-        ChangeSendMessage("Action", 43);
-        ChangeSendMessage("uid", uid);
-        ChangeSendMessage("num", num);
-        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
-    }
 
-    public static void Send扣血(string uid,int num)
-    {
-        ChangeSendMessage("Action", 44);
-        ChangeSendMessage("uid", uid);
-        ChangeSendMessage("num", num);
-        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
-    }
 
     public static void Send攻击力改变(string uid,int num)
     {
@@ -1028,7 +1032,7 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
-    public static void Send技能释放申请(string uid,int skill_type)
+    public static void Send技能释放申请(string uid, int skill_type)
     {
         //0 : 普通运行下个技能阶段
         //1 : 亡语
@@ -1054,12 +1058,68 @@ public class mainfunction : MonoBehaviour
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
 
+
     public static void Send弃牌堆更新(int id)
     {
         ChangeSendMessage("Action", 42);
         ChangeSendMessage("cardID", id);
         ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
     }
+
+    public static void Send治疗(string uid, int num)
+    {
+        ChangeSendMessage("Action", 43);
+        ChangeSendMessage("uid", uid);
+        ChangeSendMessage("num", num);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send扣血(string uid, int num)
+    {
+        ChangeSendMessage("Action", 44);
+        ChangeSendMessage("uid", uid);
+        ChangeSendMessage("num", num);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send攻击申请(string 主动进攻_uid, string 承受攻击_uid)
+    {
+        ChangeSendMessage("Action", 45);
+        ChangeSendMessage("uid", 主动进攻_uid);
+        ChangeSendMessage("uid1", 承受攻击_uid);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send攻击同意(string 主动进攻_uid, string 承受攻击_uid)
+    {
+        ChangeSendMessage("Action", 46);
+        ChangeSendMessage("uid", 主动进攻_uid);
+        ChangeSendMessage("uid1", 承受攻击_uid);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send扣发思考中()
+    {
+        ChangeSendMessage("Action", 47);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+    }
+
+    public static void Send扣发思考结束()
+    {
+        ChangeSendMessage("Action", 48);
+        ValueHolder.sendQueue.Enqueue(ValueHolder.SendMessages);
+
+    }
+
+
+
+
+
+
+
+
+
+
     public static void 运行下个技能阶段(BaseSkill skill)
     {
         if (skill.activateTurn_1_finish == 0)
@@ -1161,7 +1221,12 @@ public class mainfunction : MonoBehaviour
         Debug.Log(skill.card_data.名字 + "运行血量减少时触发技能");
     }
 
-
+    public static void 运行扣发_敌方攻击技能阶段(BaseSkill skill)
+    {
+        SkillExecutor.EnqueueSkillAtFront(skill, skill.扣发_敌方攻击);
+        技能释放结束();
+        Debug.Log(skill.card_data.名字 + "运行扣发_敌方攻击触发技能");
+    }
 
     public static void 禁用棋盘物件代码(string scriptName,int cardtype)
     {
@@ -1991,4 +2056,52 @@ public class mainfunction : MonoBehaviour
             return null;
         }
     }
+
+    public static GameObject 格子id找卡(int index)
+    {
+        GameObject grid = ValueHolder.棋盘[index.ToString()];
+
+        if (grid.transform.childCount != 0)
+        {
+            GameObject card = grid.transform.GetChild(0).gameObject;
+            return card;
+        }
+
+        return null;
+    }
+
+
+    //扣发
+
+    public static void 扣发触发显示(int cardID,string uid)
+    {
+        ValueHolder.幕布.SetActive(true);
+        ValueHolder.扣发显示.SetActive(true);
+        DestroyAllChildren(ValueHolder.扣发grid);
+        GameObject cardone = Instantiate(ValueHolder.扣发显示牌);
+        GameObject commoncard = 卡牌生成(cardone, cardID);
+        commoncard.GetComponent<数据显示>().卡牌数据.uid = uid;
+        commoncard.transform.SetParent(ValueHolder.扣发grid.transform);
+    }
+
+    public static void 等待敌方思考扣发()
+    {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
