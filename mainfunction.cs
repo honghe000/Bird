@@ -1919,7 +1919,7 @@ public class mainfunction : MonoBehaviour
         if (card_data.nowHp <= 0)
         {
             卡牌摧毁(card);
-            Send卡牌摧毁(card_data.uid);
+            //Send卡牌摧毁(card_data.uid);
             return 1;
         }
 
