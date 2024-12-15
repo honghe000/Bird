@@ -575,18 +575,8 @@ public class mainfunction : MonoBehaviour
 
         // 确保最终状态
         card.transform.localScale = Vector3.zero;
-        string endindex = card.transform.parent.name.ToString();
         Destroy(card); // 可选择禁用物体
-        if (mycard != null)
-        {
 
-            List<int> obstacles = mycard.GetComponent<MoveController>().obstacles;
-            if (!obstacles.Contains(int.Parse(endindex)))
-            {
-                mycard.transform.SetParent(ValueHolder.棋盘[endindex].transform);
-            }
-
-        }
     }
 
 
@@ -682,6 +672,8 @@ public class mainfunction : MonoBehaviour
     {
         GameObject 主动攻击 = uid找卡(主动攻击_uid);
         GameObject 承受攻击 = uid找卡(承受攻击_uid);
+        string 主动index = 主动攻击.transform.parent.name.ToString();
+        string 承受index = 承受攻击.transform.parent.name.ToString();
 
         if (主动攻击 == null || 承受攻击 == null)
         {
@@ -783,23 +775,11 @@ public class mainfunction : MonoBehaviour
                 
                 }
             }
-
-
-            卡牌摧毁(承受攻击, 主动攻击);
-
-        }else if (card_data1.nowHp <= 0 && card_data2.nowHp > 0)
-        {
-            
-            卡牌摧毁(主动攻击);
-
-        }else if (card_data1.nowHp <= 0 && card_data2.nowHp <= 0)
-        {
-
-            卡牌摧毁(主动攻击);
-            卡牌摧毁(承受攻击);
-        }
-        else
-        {
+            List<int> obstacles = 主动攻击.GetComponent<MoveController>().obstacles;
+            if (!obstacles.Contains(int.Parse(承受index)))
+            {
+                主动攻击.transform.SetParent(ValueHolder.棋盘[承受index].transform);
+            }
 
         }
 
