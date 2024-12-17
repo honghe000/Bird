@@ -53,6 +53,7 @@ public class b_cancel_fa : MonoBehaviour
 
         //返还灵力
         mainfunction.灵力增加(skill.card_data.灵力消耗等级, skill.card_data.灵力消耗数量);
+        mainfunction.技能释放结束();
 
     }
 
