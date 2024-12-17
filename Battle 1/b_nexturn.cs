@@ -36,6 +36,12 @@ public class b_nexturn : MonoBehaviour
     {
         while (SkillExecutor.skillQueue.Count > 0 || SkillExecutor.currentRunningSkillUid != null)
         {
+            //if (SkillExecutor.currentRunningSkillUid != null)
+            //{
+            //    Debug.Log("SkillExecutor.currentRunningSkillUid != null");
+            //}else if (SkillExecutor.skillQueue.Count > 0){
+            //    Debug.Log("SkillExecutor.skillQueue.Count > 0");
+            //}
             yield return new WaitForSeconds(0.2f);
         }
 

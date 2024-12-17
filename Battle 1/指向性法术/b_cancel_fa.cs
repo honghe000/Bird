@@ -39,10 +39,12 @@ public class b_cancel_fa : MonoBehaviour
                     return;
                 }
             }
+            mainfunction.技能释放结束();
             return;
         }
 
         BaseSkill skill = ValueHolder.SkillAction[ValueHolder.释放法术uid];
+        Debug.Log("取消法术" + skill.card_data.名字);
         GameObject cardone = Instantiate(ValueHolder.手牌对战牌);
         cardone = summon_one(cardone, skill.card_data.id);
         cardone.GetComponent<数据显示>().卡牌数据.uid = skill.card_data.uid;
