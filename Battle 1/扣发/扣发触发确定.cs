@@ -18,6 +18,7 @@ public class 扣发触发确定 : MonoBehaviour
         卡牌数据 carddata = card.GetComponent<数据显示>().卡牌数据;
 
         BaseSkill skill = ValueHolder.扣发技能[carddata.uid];
+        ValueHolder.扣发技能.Remove(carddata.uid);
 
         mainfunction.运行扣发_敌方攻击技能阶段(skill);
 

@@ -5774,9 +5774,9 @@ public class 还魂丹 : BaseSkill
     public override void 扣发_敌方攻击()
     {
 
-        GameObject 承受卡 = mainfunction.uid找卡(card_data.uid);
+        GameObject 承受卡 = mainfunction.uid找卡(ValueHolder.Listen_承受攻击uid);
         承受卡.GetComponent<MoveController>().攻击免疫次数 += 1;
-        mainfunction.Send效果挂载(uid, 8, -1);
+        mainfunction.Send效果挂载(ValueHolder.Listen_承受攻击uid, 8, -1);
 
     }
 
