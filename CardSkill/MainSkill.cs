@@ -5776,6 +5776,7 @@ public class 还魂丹 : BaseSkill
 
         GameObject 承受卡 = mainfunction.uid找卡(card_data.uid);
         承受卡.GetComponent<MoveController>().攻击免疫次数 += 1;
+        mainfunction.Send效果挂载(uid, 8, -1);
 
     }
 

@@ -17,6 +17,7 @@ public class 扣发触发取消 : MonoBehaviour
         ValueHolder.幕布.SetActive(false);
         ValueHolder.扣发显示.SetActive(false);
         mainfunction.技能释放结束();
+        ValueHolder.等待攻击扣发技能数量 -= 1;
     }
 
 }

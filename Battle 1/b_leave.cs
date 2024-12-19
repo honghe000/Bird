@@ -125,6 +125,8 @@ public class b_leave : MonoBehaviour
         ValueHolder.Listen_主动攻击uid = null;
         ValueHolder.Listen_承受攻击uid = null;
 
+        ValueHolder.等待攻击扣发技能数量 = 0;
+
         SceneManager.LoadScene("mainpage");
     }
 }

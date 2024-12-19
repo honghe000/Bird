@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Security.Cryptography;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -598,6 +599,9 @@ public class b_listen : MonoBehaviour
                     }else if (mes.effect == 7)//无双
                     {
                         card.GetComponent<MoveController>().无双 = 1;
+                    }else if (mes.effect == 8)//免疫攻击一次
+                    {
+                        card.GetComponent<MoveController>().攻击免疫次数 += 1;
                     }
                 }
             }
@@ -821,22 +825,39 @@ public class b_listen : MonoBehaviour
         ValueHolder.Listen_主动攻击uid = mes.uid;
         ValueHolder.Listen_承受攻击uid = mes.uid1;
 
+        int temp = 0;
         foreach (KeyValuePair<string,BaseSkill > kvp in ValueHolder.扣发技能)
         {
             BaseSkill skill = kvp.Value;
 
             if (skill.扣发触发条件 == "敌方攻击")
             {
+                if (temp == 0)
+                {
+                    temp = 1;
+                    mainfunction.Send扣发思考中();
+                }
+
+                ValueHolder.等待攻击扣发技能数量 += 1;
                 mainfunction.运行下个技能阶段(skill);
             }
 
         }
 
+        StartCoroutine(等待攻击同意(mes));
+    }
+
+    IEnumerator 等待攻击同意(Message mes)
+    {
+        while (ValueHolder.等待攻击扣发技能数量 >= 1)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        mainfunction.Send扣发思考结束();
         mainfunction.cardAttack(mes.uid, mes.uid1);
         mainfunction.Send攻击同意(mes.uid, mes.uid1);
 
-
-    }
+    } 
 
     void 攻击申请同意(Message mes)
     {
