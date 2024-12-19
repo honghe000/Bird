@@ -849,7 +849,7 @@ public class b_listen : MonoBehaviour
 
     IEnumerator 等待攻击同意(Message mes)
     {
-        while (ValueHolder.等待攻击扣发技能数量 >= 1)
+        while (ValueHolder.等待攻击扣发技能数量 >= 1 && SkillExecutor.skillQueue.Count >= 1)
         {
             yield return new WaitForSeconds(0.1f);
         }

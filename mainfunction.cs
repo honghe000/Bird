@@ -713,7 +713,7 @@ public class mainfunction : MonoBehaviour
             }
         }
 
-        if (主动攻击.GetComponent<MoveController>().无双 == 0 || 主动攻击.GetComponent<MoveController>().攻击免疫次数 == 0)
+        if (主动攻击.GetComponent<MoveController>().无双 == 0 && 主动攻击.GetComponent<MoveController>().攻击免疫次数 == 0)
         {
             扣血(主动攻击, card_data2.nowAttack, 0);
         }else if (主动攻击.GetComponent<MoveController>().攻击免疫次数 > 0)
