@@ -82,12 +82,12 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                 mainfunction.改变卡牌汉字颜色(eventData.pointerDrag,"blue");
                 mainfunction.格子颜色还原();
 
-                if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别 == "角色")
-                {
-                    //更新体力
-                    ValueHolder.point -= 1;
-                    ValueHolder.体力.text = ValueHolder.point.ToString();
-                }
+                //if (eventData.pointerDrag.GetComponent<数据显示>().卡牌数据.类别 == "角色")
+                //{
+                //    //更新体力
+                //    ValueHolder.point -= 1;
+                //    ValueHolder.体力.text = ValueHolder.point.ToString();
+                //}
 
 
                 //技能初始化
@@ -176,7 +176,7 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
 
             if (availableMoves.Contains(end_index))
             {
-                if (ValueHolder.point < 0 && 行动点 < 0)
+                if (行动点 < 0)
                 {
                     return;
                 }
@@ -195,11 +195,11 @@ public class b_slot : MonoBehaviour,IDropHandler,IPointerClickHandler
                 {
                     ValueHolder.choosed_object.GetComponent<MoveController>().行动点 -= 1;
                 }
-                else
-                {
-                    ValueHolder.point -= 1;
-                    体力.text = ValueHolder.point.ToString();
-                }
+                //else
+                //{
+                //    ValueHolder.point -= 1;
+                //    体力.text = ValueHolder.point.ToString();
+                //}
 
                 ValueHolder.choosed_object = null;
                 mainfunction.格子颜色还原();

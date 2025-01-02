@@ -29,9 +29,9 @@ public class b_moveca : MonoBehaviour,IPointerClickHandler
             return;
         }
 
-        if (ValueHolder.point <= 0 && eventData.pointerClick.GetComponent<MoveController>().行动点 <= 0)
+        if (eventData.pointerClick.GetComponent<MoveController>().行动点 <= 0)
         {
-            ValueHolder.hintManager.AddHint("体力不足！");
+            ValueHolder.hintManager.AddHint("行动点不足！");
             return;
         }
 

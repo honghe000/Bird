@@ -83,8 +83,8 @@ public static class SkillFactory
                 return new 火焰小鬼(card, monoBehaviour);
             case "尼斯湖水怪":
                 return new 尼斯湖水怪(card, monoBehaviour);
-            case "充能":
-                return new 充能(card, monoBehaviour);
+            //case "充能":
+            //    return new 充能(card, monoBehaviour);
             case "荒骷髅":
                 return new 荒骷髅(card, monoBehaviour);
             case "枉死城":
@@ -133,8 +133,8 @@ public static class SkillFactory
                 return new 判官(card, monoBehaviour);
             case "半兽人":
                 return new 半兽人(card, monoBehaviour);
-            case "艾孜诺克大坟墓":
-                return new 艾孜诺克大坟墓(card, monoBehaviour);
+            //case "艾孜诺克大坟墓":
+            //    return new 艾孜诺克大坟墓(card, monoBehaviour);
             case "诸葛亮":
                 return new 诸葛亮(card, monoBehaviour);
             case "冰车":

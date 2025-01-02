@@ -8,7 +8,7 @@ public class MoveController : MonoBehaviour
     public List<int> obstacles = new List<int> { 12, 14 }; // 障碍物格子编号
     public int cardType = 0; // 0表示我方卡牌，1表示敌方卡牌
     public int is_myturn = 1; // 0表示敌方回合，1表示我方回合
-    public int point = 1; // 0表示没有体力，1表示有体力
+    //public int point = 1; // 0表示没有体力，1表示有体力
 
     public Dictionary<string,string> 效果 = new Dictionary<string,string>();
 
@@ -191,7 +191,7 @@ public class MoveController : MonoBehaviour
         if (is_myturn == 1) {
 
             //建筑不消耗体力，角色消耗体力
-            if (gameObject.GetComponent<数据显示>().卡牌数据.类别 == "角色" && point >= 1)
+            if (gameObject.GetComponent<数据显示>().卡牌数据.类别 == "角色")
             {
                 return ValueHolder.人物可放置位置;
             }

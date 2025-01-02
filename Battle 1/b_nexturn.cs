@@ -58,8 +58,8 @@ public class b_nexturn : MonoBehaviour
 
     void NextTurn_Second()
     {
-        ValueHolder.point = 0;
-        体力.text = ValueHolder.point.ToString();
+        //ValueHolder.point = 0;
+        //体力.text = ValueHolder.point.ToString();
         del_action();
 
 
@@ -154,7 +154,7 @@ public class b_nexturn : MonoBehaviour
             }
             if (item.transform.childCount > 0 && item.transform.GetChild(0).gameObject.GetComponent<MoveController>().cardType == 0)
             {
-                item.transform.GetChild(0).gameObject.GetComponent<MoveController>().point = 0;
+                //item.transform.GetChild(0).gameObject.GetComponent<MoveController>().point = 0;
                 item.transform.GetChild(0).gameObject.GetComponent<MoveController>().is_myturn = 0;
                 item.transform.GetChild(0).gameObject.GetComponent<b_moveca>().enabled = false;
             }

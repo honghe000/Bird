@@ -72,13 +72,13 @@ public class b_global : MonoBehaviour
         if (ValueHolder.initiative == 1)
         {
             ValueHolder.is_myturn = 1;
-            ValueHolder.point = 1;
+            //ValueHolder.point = 1;
             体力.text = "0";
         }
         else
         {
             ValueHolder.is_myturn = 0;
-            ValueHolder.point = 0;
+            //ValueHolder.point = 0;
             体力.text = "0";
         }
     }

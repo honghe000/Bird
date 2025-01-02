@@ -326,9 +326,13 @@ public class b_listen : MonoBehaviour
     }
     void nextTurn_First()
     {
-        ValueHolder.point = 1;
+        foreach(GameObject cards in mainfunction.获取我方全部人物())
+        {
+            cards.GetComponent<MoveController>().行动点 = 1;
+        }
+        //ValueHolder.point = 1;
         ValueHolder.is_myturn = 1;
-        体力.text = ValueHolder.point.ToString();
+        //体力.text = ValueHolder.point.ToString();
         hintManager.AddHint("我的回合！");
         activae_action();
 
@@ -443,7 +447,7 @@ public class b_listen : MonoBehaviour
             if (item.transform.childCount > 0 && item.transform.GetChild(0).gameObject.GetComponent<MoveController>().cardType == 0)
             {
                 GameObject cardone = item.transform.GetChild(0).gameObject;
-                cardone.GetComponent<MoveController>().point = 1;
+                //cardone.GetComponent<MoveController>().point = 1;
                 cardone.GetComponent<MoveController>().is_myturn = 1;
                 cardone.GetComponent<b_moveca>().enabled = true;
 

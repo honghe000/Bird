@@ -41,7 +41,7 @@ public class b_leave : MonoBehaviour
         ValueHolder.法术选择取消 = null;
 
         ValueHolder.is_myturn = 1;
-        ValueHolder.point = 1;
+        //ValueHolder.point = 1;
 
         ValueHolder.hintManager = null;
         ValueHolder.SkillAction.Clear();

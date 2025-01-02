@@ -121,7 +121,7 @@ public class ValueHolder : MonoBehaviour
     public static Button 法术选择取消 = null;
 
     public static int is_myturn = 1;
-    public static int point = 1;
+    //public static int point = 1;
 
     public static HintManager hintManager = null;
     public static Dictionary<string, BaseSkill> SkillAction = new Dictionary<string, BaseSkill>();

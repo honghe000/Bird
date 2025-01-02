@@ -72,7 +72,7 @@ public class b_summon : MonoBehaviour
         leave.image.color = Color.gray;
         // 等待 ChangeSubtitle 完成
         yield return StartCoroutine(ChangeSubtitle(ValueHolder.initiative));
-        体力.text = ValueHolder.point.ToString();
+        //体力.text = ValueHolder.point.ToString();
         StartCoroutine(FadeOut());
         if (ValueHolder.initiative != 0)
         {

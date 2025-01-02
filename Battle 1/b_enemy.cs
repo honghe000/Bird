@@ -28,7 +28,7 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
             mainfunction.格子颜色还原();
             if (availableMoves.Contains(enemy_index))
             {
-                if (ValueHolder.point < 0 && 行动点 < 0)
+                if (行动点 < 0)
                 {
                     return;
                 }
@@ -50,11 +50,11 @@ public class b_enemy : MonoBehaviour, IPointerClickHandler
                 {
                     ValueHolder.choosed_object.GetComponent<MoveController>().行动点 -= 1;
                 }
-                else
-                {
-                    ValueHolder.point -= 1;
-                    体力.text = ValueHolder.point.ToString();
-                }
+                //else
+                //{
+                //    ValueHolder.point -= 1;
+                //    体力.text = ValueHolder.point.ToString();
+                //}
 
                 ValueHolder.choosed_object = null;
 

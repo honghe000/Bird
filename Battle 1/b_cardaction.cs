@@ -39,7 +39,7 @@ public class b_cardaction : MonoBehaviour,IDragHandler,IBeginDragHandler,IEndDra
         //更新卡牌内部的值，判断是否可以放置
         卡牌数据 card_data = eventData.pointerDrag.GetComponent<数据显示>().卡牌数据;
         eventData.pointerDrag.GetComponent<MoveController>().is_myturn = ValueHolder.is_myturn;
-        eventData.pointerDrag.GetComponent<MoveController>().point = ValueHolder.point;
+        //eventData.pointerDrag.GetComponent<MoveController>().point = ValueHolder.point;
         //提示可以拖拽的放置的位置
         List<int> avalibaleDrag = eventData.pointerDrag.GetComponent<MoveController>().GetAvailableDrag();
 

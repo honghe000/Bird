@@ -3325,72 +3325,70 @@ public class 尼斯湖水怪 : BaseSkill
 
 
 }
-public class 充能 : BaseSkill
-{
-    private MonoBehaviour monoBehaviour;
+//public class 充能 : BaseSkill
+//{
+//    private MonoBehaviour monoBehaviour;
 
-    public 充能(GameObject Card, MonoBehaviour monoBehaviour)
-    {
-        card = Card;
-        skill_end = 0;
-        activateTurn_1 = ValueHolder.turn;
-        activateTurn_2 = -1;
-        activateTurn_3 = -1;
-        activateTurn_4 = -1;
-        this.monoBehaviour = monoBehaviour;
+//    public 充能(GameObject Card, MonoBehaviour monoBehaviour)
+//    {
+//        card = Card;
+//        skill_end = 0;
+//        activateTurn_1 = ValueHolder.turn;
+//        activateTurn_2 = -1;
+//        activateTurn_3 = -1;
+//        activateTurn_4 = -1;
+//        this.monoBehaviour = monoBehaviour;
 
-        activateTurn_1_finish = 0;
-        activateTurn_2_finish = 0;
-        activateTurn_3_finish = 0;
-        activateTurn_4_finish = 0;
+//        activateTurn_1_finish = 0;
+//        activateTurn_2_finish = 0;
+//        activateTurn_3_finish = 0;
+//        activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
-        card_data = card.GetComponent<数据显示>().卡牌数据;
-        if (card_data.类别 != "角色")
-        {
-            card_data = new 卡牌数据(card.GetComponent<数据显示>().卡牌数据);
-        }
-        initialization();
+//        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+//        card_data = card.GetComponent<数据显示>().卡牌数据;
+//        if (card_data.类别 != "角色")
+//        {
+//            card_data = new 卡牌数据(card.GetComponent<数据显示>().卡牌数据);
+//        }
+//        initialization();
 
-    }
+//    }
 
-    private void initialization()
-    {
-        if (!ValueHolder.uid_to_name.ContainsKey(uid))
-        {
-            ValueHolder.uid_to_name.Add(uid, "充能");
-        }
+//    private void initialization()
+//    {
+//        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+//        {
+//            ValueHolder.uid_to_name.Add(uid, "充能");
+//        }
 
-    }
+//    }
 
-    public override void Action_1()
-    {
-        ValueHolder.point += 1;
-        ValueHolder.体力.text = ValueHolder.point.ToString();
-        skill_end = 1;
-        activateTurn_1_finish = 1;
+//    public override void Action_1()
+//    {
+//        ValueHolder.point += 1;
+//        ValueHolder.体力.text = ValueHolder.point.ToString();
+//        skill_end = 1;
+//        activateTurn_1_finish = 1;
 
-    }
+//    }
 
-    public override void Action_2()
-    {
-        activateTurn_2_finish = 1;
-    }
+//    public override void Action_2()
+//    {
+//        activateTurn_2_finish = 1;
+//    }
 
-    public override void Action_3()
-    {
-        activateTurn_3_finish = 1;
-    }
+//    public override void Action_3()
+//    {
+//        activateTurn_3_finish = 1;
+//    }
 
-    public override void Action_4()
-    {
-        activateTurn_4_finish = 1;
-    }
-
-
+//    public override void Action_4()
+//    {
+//        activateTurn_4_finish = 1;
+//    }
 
 
-}
+//}
 public class 荒骷髅 : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
@@ -5267,92 +5265,90 @@ public class 半兽人 : BaseSkill
 
 
 }
-public class 艾孜诺克大坟墓 : BaseSkill
-{
-    private MonoBehaviour monoBehaviour;
-    public 艾孜诺克大坟墓(GameObject Card, MonoBehaviour monoBehaviour)
-    {
-        card = Card;
-        skill_end = 0;
-        activateTurn_1 = -1;
-        activateTurn_2 = -1;
-        activateTurn_3 = -1;
-        activateTurn_4 = -1;
-        this.monoBehaviour = monoBehaviour;
+//public class 艾孜诺克大坟墓 : BaseSkill
+//{
+//    private MonoBehaviour monoBehaviour;
+//    public 艾孜诺克大坟墓(GameObject Card, MonoBehaviour monoBehaviour)
+//    {
+//        card = Card;
+//        skill_end = 0;
+//        activateTurn_1 = -1;
+//        activateTurn_2 = -1;
+//        activateTurn_3 = -1;
+//        activateTurn_4 = -1;
+//        this.monoBehaviour = monoBehaviour;
 
-        activateTurn_1_finish = 0;
-        activateTurn_2_finish = 0;
-        activateTurn_3_finish = 0;
-        activateTurn_4_finish = 0;
+//        activateTurn_1_finish = 0;
+//        activateTurn_2_finish = 0;
+//        activateTurn_3_finish = 0;
+//        activateTurn_4_finish = 0;
 
-        uid = card.GetComponent<数据显示>().卡牌数据.uid;
-        card_data = card.GetComponent<数据显示>().卡牌数据;
-        if (card_data.类别 != "角色")
-        {
-            card_data = new 卡牌数据(card.GetComponent<数据显示>().卡牌数据);
-        }
-        initialization();
-
-
-
-    }
-
-    private void initialization()
-    {
-
-        己方回合结束时触发 = 1;
-        召唤物id = 343;
-        if (!ValueHolder.uid_to_name.ContainsKey(uid))
-        {
-            ValueHolder.uid_to_name.Add(uid, "艾孜诺克大坟墓");
-        }
-    }
-
-    public override void Action_1()
-    {
-        if (card == null)
-        {
-            Debug.Log("卡牌不存在");
-            skill_end = 1;
-            return;
-        }
-        if(ValueHolder.point == 0)
-        {
-            Debug.Log("点数不足");
-            return;
-        }
-        ValueHolder.point -= 1;
-        //可点击范围
-        List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
-        activateTurn_1_finish = 1;
-
-    }
-
-    public override void Action_2()
-    {
-        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
-        activateTurn_1_finish = 0;
-    }
-
-    public override void Action_3()
-    {
-        activateTurn_3_finish = 1;
-    }
-
-    public override void Action_4()
-    {
-        activateTurn_4_finish = 1;
-    }
-
-    public override void Action_己方回合结束时触发()
-    {
-        Action_1();
-    }
+//        uid = card.GetComponent<数据显示>().卡牌数据.uid;
+//        card_data = card.GetComponent<数据显示>().卡牌数据;
+//        if (card_data.类别 != "角色")
+//        {
+//            card_data = new 卡牌数据(card.GetComponent<数据显示>().卡牌数据);
+//        }
+//        initialization();
 
 
 
-}
+//    }
+
+//    private void initialization()
+//    {
+
+//        己方回合结束时触发 = 1;
+//        召唤物id = 343;
+//        if (!ValueHolder.uid_to_name.ContainsKey(uid))
+//        {
+//            ValueHolder.uid_to_name.Add(uid, "艾孜诺克大坟墓");
+//        }
+//    }
+
+//    public override void Action_1()
+//    {
+//        if (card == null)
+//        {
+//            Debug.Log("卡牌不存在");
+//            skill_end = 1;
+//            return;
+//        }
+//        if(ValueHolder.point == 0)
+//        {
+//            Debug.Log("点数不足");
+//            return;
+//        }
+//        ValueHolder.point -= 1;
+//        //可点击范围
+//        List<int> clickable = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+//        mainfunction.点选格子(ValueHolder.gloabCaedData[召唤物id].名字, uid, clickable);
+//        activateTurn_1_finish = 1;
+
+//    }
+
+//    public override void Action_2()
+//    {
+//        mainfunction.指定位置生成卡牌(ValueHolder.点击格子编号, 召唤物id, 1);
+//        activateTurn_1_finish = 0;
+//    }
+
+//    public override void Action_3()
+//    {
+//        activateTurn_3_finish = 1;
+//    }
+
+//    public override void Action_4()
+//    {
+//        activateTurn_4_finish = 1;
+//    }
+
+//    public override void Action_己方回合结束时触发()
+//    {
+//        Action_1();
+//    }
+
+//}
 public class 诸葛亮 : BaseSkill
 {
     private MonoBehaviour monoBehaviour;
